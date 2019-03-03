@@ -13,25 +13,37 @@ public class UniversityController {
 
 	University school;
 	
+	public UniversityController()
+	{
+		this.school = null;
+	}
 	/**
-	 * 
+	 * constructs a new UniversityController with the school provided 
+	 * @param schooltoChange the University object that will be changed/updated
 	 */
 	public UniversityController(University schoolToChange) {
 		this.school = schoolToChange;
 	}
 	
-	
+	/*
+	 * returns a string of all the school's attributes
+	 * @return String the string for the school
+	 */
 	public String getSchoolDetails()
 	{
 		return school.toString();
 	}
+	
+	/*
+	 * updates the information for a school from what the admin provided
+	 */
 	public University updateUniversityInfo(String schoolName, String state, String location,
 			String control, String numStudents, String perFemale, String SATVerbal, String SATMath,
 			String expenses, String financialAid, String numAplicants, String admitted, String enrolled,
 			String academicScale, String socialScale, String qualityLife, String emphases)
 	
 	{
-		
+		//goes through and tests every parameter to see if it has a value so that only the parameters with new values are updated
 		if(!schoolName.equals(null))
 		{
 			school.setSchoolName(schoolName);
@@ -111,7 +123,7 @@ public class UniversityController {
 		newSchool = new University(schoolName, state, location, control, numStudents, perFemale, SATVerbal,
 				SATMath, expenses, financialAid, numAplicants, admitted, enrolled, academicScale, socialScale,
 				qualityLife, empahses);
-		
+		this.school = newSchool;
 		return newSchool;
 	}
 }
