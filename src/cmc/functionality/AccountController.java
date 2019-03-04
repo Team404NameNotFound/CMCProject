@@ -23,7 +23,7 @@ public class AccountController {
 
 	public AccountController()
 	{
-	
+		
 	}
 	public List<University> getSchoolList()
 	{
@@ -37,13 +37,25 @@ public class AccountController {
 	
 	public void toggleActivationStatus()
 	{
-		account.changeStatus();
+		if(account.getStatus.equals("N")
+		{
+			account.setStatus("Y");
+		}
+		else
+		{
+			account.setStatus("N");
+		}
 	}
 	
 	public boolean checkPassword(String password)
 	{
 		//check to see if passwords match, if they do not then returns false
-		if account.getPassword.equals(password)
+		if(password.equals("") || password.equals(null))
+		{
+			throw new IllegalArgumentException("sorry, you need to provide a valid password");
+		}
+		
+		if (this.account.getPassword.equals(password))
 		{
 			return true;
 		}
@@ -65,36 +77,44 @@ public class AccountController {
 		{
 			int newChar =  (int) ((int)35*Math.random());
 			newPass = newPass + character[newChar];
-			System.out.println(newPass);;
+//			System.out.println(newPass);;
 		}
 		return newPass;
 	}
 	
 	public void updatePassword(String newPassword)
 	{
+		if(newPassword.equals(null) || newPassowrd.equals(""))
+		{
+			throw new IllegalArgumentException("Sorry, new password has to have a password");
+		}
+		else
+		{
 		account.setPassword(newPassword);
+		sendEmail();
+		}
 	}
 	
 	public void sendEmail()
 	{
-		
+		String email = account.getUsername();
 	}
 	
 	public Account updateUserInfo(String fName, String lName, String password, String type, String status)
 	{
-		if(!fName.equals(null))
+		if(!fName.equals(null) && !fName.equals(""))
 		{
 			account.setFirstName(fName);
 		}
-		if(!lName.equals(null))
+		if(!lName.equals(null) && !lName.equals(""))
 		{
 			account.setLastName(lName);
 		}
-		if(!password.equals(null))
+		if(!password.equals(null) && !password.equals(""))
 		{
 			account.setPassword(password);
 		}
-		if(!type.equals(null))
+		if(!type.equals(null) && !type.equals(""))
 		{
 			if(type.equals("u"))
 			{
@@ -105,7 +125,7 @@ public class AccountController {
 				account.setType("a");
 			}
 		}
-		if(!status.equals(null));
+		if(!status.equals(null) && !status.equals(""))
 		{
 			if(status.equals("Y"))
 			{
@@ -132,15 +152,15 @@ public class AccountController {
 	{
 		if(type.equals("a"))
 		{
-			
+			account = new Admin(fName, lName, userName, password, type);
 		}
 		else if(type.equals("u"))
 		{
-			
+			account = new Student(fName, lName, userName, password, type);
 		}
 		else 
 		{
-			
+			throw new IllegalArgumentException("sorry you need to specify the type of user ");
 		}
 	}
 //	public static void main(String[] args)
