@@ -16,26 +16,26 @@ public class University {
 	private String state;
 	private String location;
 	private String control;
-	private int enrollment;
-	private float percentFemale;
-	private float satVerbal;
-	private float satMath;
-	private float cost;
-	private float percentFinAid;
-	private float percentEnrolled;
-	private int applicants;
-	private float percentAdmitted;
-	private int academicScale;
-	private int socialScale;
-	private int qualityOfLife;
+	private String enrollment;
+	private String percentFemale;
+	private String satVerbal;
+	private String satMath;
+	private String cost;
+	private String percentFinAid;
+	private String percentEnrolled;
+	private String applicants;
+	private String percentAdmitted;
+	private String academicScale;
+	private String socialScale;
+	private String qualityOfLife;
 	private String[] emphases;
 	private ArrayList<Student> savedSchool;
 
 
 
-	public University(String name, String state, String location, String control, int enrollment, float percentFemale,
-			float satVerbal, float satMath, float cost, float percentFinAid, float percentEnrolled, int applicants,
-			float percentAdmitted, int academicScale, int socialScale, int qualityOfLife, String[] emphases,
+	public University(String name, String state, String location, String control, String enrollment, String percentFemale,
+			String satVerbal, String satMath, String cost, String percentFinAid, String percentEnrolled, String applicants,
+			String percentAdmitted, String academicScale, String socialScale, String qualityOfLife, String[] emphases,
 			ArrayList<Student> savedSchool) {
 		super();
 		this.name = name;
@@ -90,99 +90,99 @@ public class University {
 		this.control = control;
 	}
 
-	public int getEnrollment() {
+	public String getEnrollment() {
 		return enrollment;
 	}
 
-	public void setEnrollment(int enrollment) {
+	public void setEnrollment(String enrollment) {
 		this.enrollment = enrollment;
 	}
 
-	public float getPercentFemale() {
+	public String getPercentFemale() {
 		return percentFemale;
 	}
 
-	public void setPercentFemale(float percentFemale) {
+	public void setPercentFemale(String percentFemale) {
 		this.percentFemale = percentFemale;
 	}
 
-	public float getSatVerbal() {
+	public String getSatVerbal() {
 		return satVerbal;
 	}
 
-	public void setSatVerbal(float satVerbal) {
+	public void setSatVerbal(String satVerbal) {
 		this.satVerbal = satVerbal;
 	}
 
-	public float getSatMath() {
+	public String getSatMath() {
 		return satMath;
 	}
 
-	public void setSatMath(float satMath) {
+	public void setSatMath(String satMath) {
 		this.satMath = satMath;
 	}
 
-	public float getCost() {
+	public String getCost() {
 		return cost;
 	}
 
-	public void setCost(float cost) {
+	public void setCost(String cost) {
 		this.cost = cost;
 	}
 
-	public float getPercentFinAid() {
+	public String getPercentFinAid() {
 		return percentFinAid;
 	}
 
-	public void setPercentFinAid(float percentFinAid) {
+	public void setPercentFinAid(String percentFinAid) {
 		this.percentFinAid = percentFinAid;
 	}
 
-	public float getPercentEnrolled() {
+	public String getPercentEnrolled() {
 		return percentEnrolled;
 	}
 
-	public void setPercentEnrolled(float percentEnrolled) {
+	public void setPercentEnrolled(String percentEnrolled) {
 		this.percentEnrolled = percentEnrolled;
 	}
 
-	public int getApplicants() {
+	public String getApplicants() {
 		return applicants;
 	}
 
-	public void setApplicants(int applicants) {
+	public void setApplicants(String applicants) {
 		this.applicants = applicants;
 	}
 
-	public float getPercentAdmitted() {
+	public String getPercentAdmitted() {
 		return percentAdmitted;
 	}
 
-	public void setPercentAdmitted(float percentAdmitted) {
+	public void setPercentAdmitted(String percentAdmitted) {
 		this.percentAdmitted = percentAdmitted;
 	}
 
-	public int getAcademicScale() {
+	public String getAcademicScale() {
 		return academicScale;
 	}
 
-	public void setAcademicScale(int academicScale) {
+	public void setAcademicScale(String academicScale) {
 		this.academicScale = academicScale;
 	}
 
-	public int getSocialScale() {
+	public String getSocialScale() {
 		return socialScale;
 	}
 
-	public void setSocialScale(int socialScale) {
+	public void setSocialScale(String socialScale) {
 		this.socialScale = socialScale;
 	}
 
-	public int getQualityOfLife() {
+	public String getQualityOfLife() {
 		return qualityOfLife;
 	}
 
-	public void setQualityOfLife(int qualityOfLife) {
+	public void setQualityOfLife(String qualityOfLife) {
 		this.qualityOfLife = qualityOfLife;
 	}
 

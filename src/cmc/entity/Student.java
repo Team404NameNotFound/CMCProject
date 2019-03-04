@@ -27,4 +27,23 @@ public class Student extends Account {
 	public void setSavedSchools(ArrayList<UserSavedSchool> savedSchools) {
 		this.savedSchools = savedSchools;
 	}
+	
+	public boolean isSchoolSaved(String universityName) {
+		boolean found = false;
+		for(UserSavedSchool university: savedSchools) {
+			if(university.getName().equals(universityName)) {
+				found = true;
+			}
+		}
+		return found;
+	}
+	
+	public void removeSchool(String universityName) {
+		for(int i=0; i<savedSchools.size(); i++) {
+			if(savedSchools.get(i).getName().equals(universityName)) {
+				savedSchools.remove(i);
+			}
+		}
+	}
+
 }
