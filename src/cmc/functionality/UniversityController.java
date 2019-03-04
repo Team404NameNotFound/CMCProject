@@ -3,6 +3,8 @@
  */
 package cmc.functionality;
 
+import java.util.ArrayList;
+
 import cmc.entity.*;
 
 /**
@@ -37,15 +39,15 @@ public class UniversityController {
 	/*
 	 * updates the information for a school from what the admin provided
 	 */
-	public University updateUniversityInfo(String schoolName, String state, String location,
-			String control, String numStudents, String perFemale, String SATVerbal, String SATMath,
-			String expenses, String financialAid, String numAplicants, String admitted, String enrolled,
-			String academicScale, String socialScale, String qualityLife, String emphases)
+	public University updateUniversityInfo(String name, String state, String location, String control, String enrollment, String percentFemale,
+			String satVerbal, String satMath, String cost, String percentFinAid, String percentEnrolled, String applicants,
+			String percentAdmitted, String academicScale, String socialScale, String qualityOfLife, String[] emphases,
+			ArrayList<Student> savedSchool)
 	{
 		//goes through and tests every parameter to see if it has a value so that only the parameters with new values are updated
-		if(!schoolName.equals(null))
+		if(!name.equals(null))
 		{
-			school.setName(schoolName);
+			school.setName(name);
 		}
 		if(!state.equals(null))
 		{
@@ -59,41 +61,41 @@ public class UniversityController {
 		{
 			school.setControl(null);
 		}
-		if(!numStudents.equals(null))
+		if(!enrollment.equals(null))
 		{
-			school.setNumStudents(numStudents);
+			school.setEnrollment(enrollment);
 		}
-		if(!perFemale.equals(nul))
+		if(!percentFemale.equals(null))
 		{
-			school.setPercentFemale(perFemale);
+			school.setPercentFemale(percentFemale);
 		}
-		if(!SATVerbal.equals(null))
+		if(!satVerbal.equals(null))
 		{
-			school.setSATVerbal(SATVerbal);
+			school.setSatVerbal(satVerbal);
 		}
-		if(!SATMath.equals(null))
+		if(!satMath.equals(null))
 		{
-			school.setSATMath(SATMath);
+			school.setSatMath(satMath);
 		}
-		if(!expenses.equals(null))
+		if(!cost.equals(null))
 		{
-			school.setExpenses(expenses);
+			school.setCost(cost);
 		}
-		if(!financialAid.equals(null))
+		if(!percentFinAid.equals(null))
 		{
-			school.setFinancialAid(financialAid);
+			school.setPercentFinAid(percentFinAid);
 		}
-		if(!numAplicants.equals(null))
+		if(!applicants.equals(null))
 		{
-			school.setNumberOfApplicants(numAplicants);
+			school.setApplicants(applicants);
 		}
-		if(!admitted.equals(null))
+		if(!percentAdmitted.equals(null))
 		{
-			schol.setAdmitted(admitted);
+			school.setPercentAdmitted(percentAdmitted);
 		}
-		if(!enrolled.equals(null))
+		if(!percentEnrolled.equals(null))
 		{
-			school.setEnrollment(enrolled);
+			school.setPercentEnrolled(percentEnrolled);
 		}
 		if(!academicScale.equals(null))
 		{
@@ -103,9 +105,9 @@ public class UniversityController {
 		{
 			school.setSocialScale(socialScale);
 		}
-		if(!qualityLife.equals(null))
+		if(!qualityOfLife.equals(null))
 		{
-			school.setQualityOfLife(qualityLife);
+			school.setQualityOfLife(qualityOfLife);
 		}
 		if(!emphases.equals(null))
 		{
@@ -113,15 +115,16 @@ public class UniversityController {
 		}
 		return school;
 	}
-	public University createNewUniversity(String schoolName, String state, String location,
-			String control, String numStudents, String perFemale, String SATVerbal, String SATMath,
-			String expenses, String financialAid, String numAplicants, String admitted, String enrolled,
-			String academicScale, String socialScale, String qualityLife, String empahses)
+	
+	public University createNewUniversity(String name, String state, String location, String control, String enrollment, String percentFemale,
+			String satVerbal, String satMath, String cost, String percentFinAid, String percentEnrolled, String applicants,
+			String percentAdmitted, String academicScale, String socialScale, String qualityOfLife, String[] emphases,
+			ArrayList<Student> savedSchool)
 	{
 		University newSchool;
-		newSchool = new University(schoolName, state, location, control, numStudents, perFemale, SATVerbal,
-				SATMath, expenses, financialAid, numAplicants, admitted, enrolled, academicScale, socialScale,
-				qualityLife, empahses);
+		newSchool = new University(name, state, location, control, enrollment, percentFemale, satVerbal,
+				satMath, cost, percentFinAid, percentEnrolled, applicants, percentAdmitted, academicScale, socialScale,
+				qualityOfLife, emphases, savedSchool);
 		this.school = newSchool;
 		return newSchool;
 	}

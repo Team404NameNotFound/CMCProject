@@ -33,7 +33,7 @@ public class AccountController {
 	
 	public boolean checkIfShoolSaved(University school)
 	{
-		return account.isSchoolSaved(school);
+		return ((Student)account).isSchoolSaved(school.getName());
 	}
 	
 	public void toggleActivationStatus()
@@ -145,9 +145,9 @@ public class AccountController {
 		return account.saveSchool(schoolToSave);
 	}
 	
-	public boolean removeUniversity(University schoolToRemove)
+	public void removeUniversity(University schoolToRemove)
 	{
-		return account.removeSchool(schoolToRemove);
+		 ((Student) account).removeSchool(schoolToRemove.getName());
 	}
 	
 	public Account createNewAccount(String fName, String lName, String userName, String password, String type,
