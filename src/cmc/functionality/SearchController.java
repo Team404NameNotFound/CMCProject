@@ -3,7 +3,10 @@
  */
 package cmc.functionality;
 
+import java.util.ArrayList;
 
+import cmc.entity.University;
+import cmc.entity.UserSavedSchool;
 
 /**
  * @author kmendel001
@@ -11,12 +14,13 @@ package cmc.functionality;
  */
 public class SearchController {
 
-	List<String> quizQuestions = {};
-	List<University> universityList;
+	String[] quizQuestions = {"Question 1", "Question2", "QUestoin 3", "Question 4"};
+	ArrayList<University> universityList;
+	
 	/**
 	 * 
 	 */
-	public SearchController(List<University> allSchools) {
+	public SearchController(ArrayList<University> allSchools) {
 		this.universityList = allSchools;
 	}
 
