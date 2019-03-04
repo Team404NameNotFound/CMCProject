@@ -6,7 +6,7 @@ package cmc.functionality;
 import java.util.ArrayList;
 
 import cmc.entity.University;
-import cmc.entity.UserSavedSchool;
+
 
 /**
  * @author kmendel001
@@ -23,5 +23,26 @@ public class SearchController {
 	public SearchController(ArrayList<University> allSchools) {
 		this.universityList = allSchools;
 	}
+	
+	public String[] getQuizQuestions()
+	{
+		return quizQuestions;
+	}
+	
+	public ArrayList<University> doQuizSearch()
+	{
+		ArrayList<University> closeSchools = new  ArrayList<University>();
+		return closeSchools;
+	}
+	
+	public ArrayList<University> rankUniversity()
+	{
+		return null;
+	}
 
+	public University[] search()
+	{
+		University[] schoolMatches = new University[this.universityList.size()];
+		return schoolMatches;
+	}
 }
