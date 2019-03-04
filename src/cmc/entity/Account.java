@@ -16,11 +16,11 @@ public class Account {
 	private String lastName;
 	private String username;
 	private String password;
-	private char userType;
-	private char userStatus;
+	private String userType;
+	private String userStatus;
 	
-	public Account(String firstName, String lastName, String username, String password, char userType,
-			char userStatus) {
+	public Account(String firstName, String lastName, String username, String password, String userType,
+			String userStatus) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -66,15 +66,15 @@ public class Account {
 		return userType;
 	}
 
-	public void setUserType(char userType) {
+	public void setUserType(String userType) {
 		this.userType = userType;
 	}
 
-	public char getUserStatus() {
+	public String getUserStatus() {
 		return userStatus;
 	}
 
-	public void setUserStatus(char userStatus) {
+	public void setUserStatus(String userStatus) {
 		this.userStatus = userStatus;
 	}
 

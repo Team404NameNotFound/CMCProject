@@ -4,6 +4,7 @@
 package cmc.functionality;
 
 import java.awt.List;
+import java.util.ArrayList;
 
 import cmc.entity.*;
 
@@ -25,9 +26,9 @@ public class AccountController {
 	{
 		
 	}
-	public List<University> getSchoolList()
+	public ArrayList<UserSavedSchool> getSchoolList()
 	{
-		return account.getSchoolList();
+		return ((Student) account).getSavedSchools();
 	}
 	
 	public boolean checkIfShoolSaved(University school)
@@ -37,13 +38,13 @@ public class AccountController {
 	
 	public void toggleActivationStatus()
 	{
-		if(account.getStatus.equals("N")
+		if(account.getUserStatus().equals("N"))
 		{
-			account.setStatus("Y");
+			account.setUserStatus("Y");
 		}
 		else
 		{
-			account.setStatus("N");
+			account.setUserStatus("N");
 		}
 	}
 	
@@ -55,7 +56,7 @@ public class AccountController {
 			throw new IllegalArgumentException("sorry, you need to provide a valid password");
 		}
 		
-		if (this.account.getPassword.equals(password))
+		if (this.account.getPassword().equals(password))
 		{
 			return true;
 		}
@@ -84,7 +85,7 @@ public class AccountController {
 	
 	public void updatePassword(String newPassword)
 	{
-		if(newPassword.equals(null) || newPassowrd.equals(""))
+		if(newPassword.equals(null) || newPassword.equals(""))
 		{
 			throw new IllegalArgumentException("Sorry, new password has to have a password");
 		}
@@ -118,24 +119,25 @@ public class AccountController {
 		{
 			if(type.equals("u"))
 			{
-				account.setType("u");
+				account.setUserType("u");
 			}
 			else if(type.equals("a"))
 			{
-				account.setType("a");
+				account.setUserType("a");
 			}
 		}
 		if(!status.equals(null) && !status.equals(""))
 		{
 			if(status.equals("Y"))
 			{
-				account.setStatus("Y");
+				account.setUserStatus("Y");
 			}
 			else if(status.equals("N"))
 			{
-				account.setStatus("N");
+				account.setUserStatus("N");
 			}
 		}
+		return account;
 	}
 	
 	public boolean saveSchool(University schoolToSave)
@@ -148,15 +150,18 @@ public class AccountController {
 		return account.removeSchool(schoolToRemove);
 	}
 	
-	public Account createNewAccount(String fName, String lName, String userName, String password, String type)
+	public Account createNewAccount(String fName, String lName, String userName, String password, String type,
+			ArrayList<UserSavedSchool> savedSchools)
 	{
 		if(type.equals("a"))
 		{
-			account = new Admin(fName, lName, userName, password, type);
+			account = new Admin(fName, lName, userName, password, type, "Y");
+			return account;
 		}
 		else if(type.equals("u"))
 		{
-			account = new Student(fName, lName, userName, password, type);
+			account = new Student(fName, lName, userName, password, type, "Y", savedSchools);
+			return account;
 		}
 		else 
 		{

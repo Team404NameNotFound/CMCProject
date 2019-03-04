@@ -14,8 +14,8 @@ public class Student extends Account {
 	 */
 	private ArrayList<UserSavedSchool> savedSchools;
 
-	public Student(String firstName, String lastName, String username, String password, char userType,
-			char userStatus, ArrayList<UserSavedSchool> savedSchools) {
+	public Student(String firstName, String lastName, String username, String password, String userType,
+			String userStatus, ArrayList<UserSavedSchool> savedSchools) {
 		super(firstName, lastName, username, password, userType, userStatus);
 		this.savedSchools = savedSchools;
 	}
