@@ -62,7 +62,7 @@ public class Account {
 		this.password = password;
 	}
 
-	public char getUserType() {
+	public String getUserType() {
 		return userType;
 	}
 
