@@ -3,7 +3,7 @@
  */
 package cmc.functionality;
 
-import cmc.entity.University;
+import cmc.entity.*;
 
 /**
  * @author kmendel001
@@ -41,12 +41,11 @@ public class UniversityController {
 			String control, String numStudents, String perFemale, String SATVerbal, String SATMath,
 			String expenses, String financialAid, String numAplicants, String admitted, String enrolled,
 			String academicScale, String socialScale, String qualityLife, String emphases)
-	
 	{
 		//goes through and tests every parameter to see if it has a value so that only the parameters with new values are updated
 		if(!schoolName.equals(null))
 		{
-			school.setSchoolName(schoolName);
+			school.setName(schoolName);
 		}
 		if(!state.equals(null))
 		{
@@ -94,7 +93,7 @@ public class UniversityController {
 		}
 		if(!enrolled.equals(null))
 		{
-			school.setEnrolled(enrolled);
+			school.setEnrollment(enrolled);
 		}
 		if(!academicScale.equals(null))
 		{
