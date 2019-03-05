@@ -30,6 +30,12 @@ public class Account {
 		this.userStatus = userStatus;
 	}
 
+	public Account logon(String firstName, String lastName, String username, String password, String userType,
+			String userStatus) {
+		Account user = new Account(firstName, lastName, username, password, userType, userStatus);
+		return user;
+	}
+	
 	public String getFirstName() {
 		return firstName;
 	}

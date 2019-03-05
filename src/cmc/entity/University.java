@@ -12,24 +12,24 @@ public class University {
 	/**
 	 * 
 	 */
-	private String name;
-	private String state;
-	private String location;
-	private String control;
-	private String enrollment;
-	private String percentFemale;
-	private String satVerbal;
-	private String satMath;
-	private String cost;
-	private String percentFinAid;
-	private String percentEnrolled;
-	private String applicants;
-	private String percentAdmitted;
-	private String academicScale;
-	private String socialScale;
-	private String qualityOfLife;
-	private String[] emphases;
-	private ArrayList<Student> savedSchool;
+	protected String name;
+	protected String state;
+	protected String location;
+	protected String control;
+	protected String enrollment;
+	protected String percentFemale;
+	protected String satVerbal;
+	protected String satMath;
+	protected String cost;
+	protected String percentFinAid;
+	protected String percentEnrolled;
+	protected String applicants;
+	protected String percentAdmitted;
+	protected String academicScale;
+	protected String socialScale;
+	protected String qualityOfLife;
+	protected String[] emphases;
+	protected ArrayList<Student> savedSchool;
 
 
 

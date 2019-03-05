@@ -12,7 +12,7 @@ public class Student extends Account {
 	/**
 	 * 
 	 */
-	private ArrayList<UserSavedSchool> savedSchools;
+	protected ArrayList<UserSavedSchool> savedSchools;
 
 	public Student(String firstName, String lastName, String username, String password, String userType,
 			String userStatus, ArrayList<UserSavedSchool> savedSchools) {
@@ -45,5 +45,15 @@ public class Student extends Account {
 			}
 		}
 	}
+	
+	public void saveSchool(University university, String dateAdded) {
+		UserSavedSchool savedUniversity = new UserSavedSchool(university.getName(), university.getState(), university.getLocation(), 
+				university.getControl(), university.getEnrollment(), university.getPercentFemale(), university.getSatVerbal(), 
+				university.getSatMath(), university.getCost(), university.getPercentFinAid(), university.getPercentEnrolled(), 
+				university.getApplicants(), university.getPercentAdmitted(), university.getAcademicScale(), university.getSocialScale(),
+				university.getQualityOfLife(), university.getEmphases(), university.getSavedSchool(), dateAdded);
+		savedSchools.add(savedUniversity);
+	}
+	
 
 }
