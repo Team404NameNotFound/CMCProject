@@ -3,7 +3,7 @@
  */
 package cmc.functionality;
 
-import java.awt.List;
+import java.util.Date;
 import java.util.ArrayList;
 
 import cmc.entity.*;
@@ -140,9 +140,10 @@ public class AccountController {
 		return account;
 	}
 	
-	public boolean saveSchool(University schoolToSave)
+	public void saveSchool(University schoolToSave)
 	{
-		return account.saveSchool(schoolToSave);
+		Date time = new Date();
+		 ((Student)account).saveSchool(schoolToSave, time.toString());
 	}
 	
 	public void removeUniversity(University schoolToRemove)
@@ -171,5 +172,7 @@ public class AccountController {
 //	public static void main(String[] args)
 //	{
 //		System.out.println(makeRandomPassword());
+//		Date date = new Date();
+//		System.out.println(date.toString());
 //	}
 }
