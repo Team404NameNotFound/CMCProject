@@ -92,7 +92,7 @@ public class SearchController {
 		}
 		if( Double.parseDouble( testSchool.getPercentFemale() ) > 0.0 || Double.parseDouble( testSchool.getPercentFemale() ) < 1.0)
 		{
-			score = score + ((Double.parseDouble(testSchool.getPercentFemale()) - .3) / (1)) + ( (  - (Double.parseDouble(testSchool.getPercentFemale()))) / (1));
+			score = score + ((Double.parseDouble(testSchool.getPercentFemale()) - .4) / (1)) + ( (.4  - (Double.parseDouble(testSchool.getPercentFemale()))) / (1));
 		}
 	}
 	
