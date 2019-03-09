@@ -96,7 +96,7 @@ public class AccountController {
 		}
 	}
 	
-	public void sendEmail()
+	public void sendEmail(String message)
 	{
 		String email = account.getUsername();
 	}
