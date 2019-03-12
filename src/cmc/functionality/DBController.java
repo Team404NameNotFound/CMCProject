@@ -84,7 +84,7 @@ public class DBController
 				n++;
 			}
 		}
-		return new Account("","","","","","");
+		return null;
 	}
 	
 	public void setAccount(Account account)
@@ -100,9 +100,7 @@ public class DBController
 	public boolean findUniversity(String school)
 	{
 		String[][] schoolList = dbLibrary.university_getUniversities();
-		int n = 0;
 		
-		while (schoolList[n][0] != null)
 		{
 			if (schoolList[n][0].equals(school))
 			{
@@ -131,9 +129,8 @@ public class DBController
 	public List<Account> getAccountList()
 	{
 		String[][] accountList = dbLibrary.user_getUsers();
-		int n = 0;
 		List<Account> returnList;
-		
+		for (int n = 0; n < accountList.length; n++)
 		{
 			try
 			{
