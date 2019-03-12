@@ -129,19 +129,10 @@ public class DBController
 	public ArrayList<Account> getAccountList()
 	{
 		String[][] accountList = dbLibrary.user_getUsers();
-		ArrayList<Account> returnList;
+		ArrayList<Account> returnList = new ArrayList<Account>();
 		for (int n = 0; n < accountList.length; n++)
-				{
-			try
-			{
+		{
 				returnList.add(new Account(accountList[n][0], accountList[n][1],accountList[n][2],accountList[n][3],accountList[n][4],accountList[n][5]));
-			}
-			catch(Exception e)
-			{
-				return returnList;
-			}
-			n++;
-			
 		}
 		return returnList;
 		
@@ -149,7 +140,14 @@ public class DBController
 	
 	public ArrayList<University> getSchoolList(Account account)
 	{
-		String[][] accountList = dbLibrary.user_getUsers();
-
+		String[][] schoolList = dbLibrary.university_getUniversities();
+		String[][] savedSchools = dbLibrary.user_getUsernamesWithSavedSchools();
+		
+		for(int n = 0; n < savedSchools.length; n++)
+		{
+			
+		}
+		
+		return null;
 	}
 }
