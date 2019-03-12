@@ -29,10 +29,10 @@ public class UserFunctionalityController {
 	 * @param password
 	 * @return true in log on is successful
 	 */
-	public boolean logon(String userName, String password) {
+	public boolean login(String userName, String password) {
 		if (!loggedIn) {
 			if (this.DBCon.checkUser(userName)) {
-				if (this.DBCon.getAccount(userName).getUserStatus().equals("active<placeHolder>")) {
+				if (this.DBCon.getAccount(userName).getUserStatus().equals('Y')) {
 					AccountController userAcc = new AccountController(this.DBCon.getAccount(userName));
 					if (userAcc.checkPassword(password)) {
 						System.out.println("Login Successful");
@@ -51,6 +51,7 @@ public class UserFunctionalityController {
 				return false;
 			}
 		}
+		return false;
 	}
 	
 	
