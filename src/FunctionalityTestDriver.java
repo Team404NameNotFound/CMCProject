@@ -2,12 +2,16 @@
  * 
  */
 import cmc.*;
+import cmc.entity.*;
+import cmc.interaction.*;
 /**
  * @author kmendel001
  *
  */
 public class FunctionalityTestDriver {
-
+	
+	AccountInteraction user = new AccountInteraction();
+	
 	/**
 	 * @param args
 	 */
@@ -15,7 +19,7 @@ public class FunctionalityTestDriver {
 		//successful login (user)
 		String userUsername = "John";
 		String userPassword = "User";
-		Account user = login(userUsername, userPassword);
+		user.login(userUsername, userPassword);
 		
 		//successful login (admin)
 		String adminUsername = "Noreen";
