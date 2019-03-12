@@ -91,11 +91,11 @@ public class AccountController {
 		else
 		{
 		account.setPassword(newPassword);
-		sendEmail();
+		
 		}
 	}
 	
-	public void sendEmail()
+	public void sendEmail(String message)
 	{
 		String email = account.getUsername();
 	}

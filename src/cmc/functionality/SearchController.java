@@ -39,7 +39,7 @@ public class SearchController {
 		return closeSchools;
 	}
 	
-	public ArrayList<University> rankUniversity()
+	public ArrayList<University> rankUniversity(String university)
 	{
 		return null;
 	}
@@ -313,6 +313,7 @@ public class SearchController {
 		if( Double.parseDouble( testSchool.getPercentFemale() ) > 0.0 || Double.parseDouble( testSchool.getPercentFemale() ) < 1.0)
 		{
 			score = score + ((Double.parseDouble(testSchool.getPercentFemale()) - .4) / (1)) + ( ( .4 - (Double.parseDouble(testSchool.getPercentFemale()))) / (1));
+
 		}
 	}
 	
