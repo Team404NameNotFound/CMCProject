@@ -1,5 +1,5 @@
 package cmc.functionality;
-import java.util.List;
+import java.util.ArrayList;
 
 import cmc.entity.Account;
 import cmc.entity.University;
@@ -84,7 +84,7 @@ public class DBController
 				n++;
 			}
 		}
-		return new Account("","","","","","");
+		return null;
 	}
 	
 	public void setAccount(Account account)
@@ -116,10 +116,10 @@ public class DBController
 		return false;
 	}
 	
-	public List<University> getUniversityList()
+	public ArrayList<University> getUniversityList()
 	{
 		String[][] schoolList = dbLibrary.university_getUniversities();
-		List<University> returnList;
+		ArrayList<University> returnList;
 		for (int i = 0; i < schoolList.length; i++)
 		{
 				returnList.add(new University(schoolList[n][0], schoolList[n][1], schoolList[n][2], schoolList[n][3], schoolList[n][4], schoolList[n][5], schoolList[n][6], schoolList[n][7], schoolList[n][8], schoolList[n][9], schoolList[n][10], schoolList[n][11], schoolList[n][12], schoolList[n][13], schoolList[n][14], schoolList[n][15]));
@@ -128,11 +128,11 @@ public class DBController
 		
 	}
 	
-	public List<Account> getAccountList()
+	public ArrayList<Account> getAccountList()
 	{
 		String[][] accountList = dbLibrary.user_getUsers();
 		int n = 0;
-		List<Account> returnList;
+		ArrayList<Account> returnList;
 		
 		{
 			try
@@ -150,7 +150,7 @@ public class DBController
 		
 	}
 	
-	public List<University> getSchoolList(Account account)
+	public ArrayList<University> getSchoolList(Account account)
 	{
 		String[][] accountList = dbLibrary.user_getUsers();
 
