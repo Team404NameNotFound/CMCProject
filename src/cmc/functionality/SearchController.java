@@ -39,7 +39,7 @@ public class SearchController {
 		return closeSchools;
 	}
 	
-	public ArrayList<University> rankUniversity()
+	public ArrayList<University> rankUniversity(String university)
 	{
 		return null;
 	}

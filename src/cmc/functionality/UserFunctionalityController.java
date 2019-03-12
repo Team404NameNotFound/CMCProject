@@ -12,20 +12,22 @@ public class UserFunctionalityController {
 	//Making instance variables
 	AccountController account;
 	DBController DBCon;
+	UniversityController universityCon;
 	Boolean loggedIn;
 	//class constructor
 	public UserFunctionalityController() {
 		super();
 		this.DBCon = new DBController();
+		this.universityCon = new UniversityController();
 		this.loggedIn = false;
 	}
 	
 	/**
-	 * Logon checks to see if the the user is logged in and is an active user. If both are true, 
+	 * Log on checks to see if the the user is logged in and is an active user. If both are true, 
 	 * the password and user name are verified and the user is logged in.
 	 * @param userName
 	 * @param password
-	 * @return true in loggin is successful
+	 * @return true in log on is successful
 	 */
 	public boolean logon(String userName, String password) {
 		if (!loggedIn) {
@@ -66,17 +68,37 @@ public class UserFunctionalityController {
 	 * Finds the information of a specified user and prints the users details
 	 * @param userName
 	 */
-	public void viewUserProfile(String userName) {
+	public ArrayList<String> viewUserProfile(String userName) {
 		if (this.DBCon.checkUser(userName)) {
-			Account userAcc = DBCon.getAccount(userName);
-			System.out.println("First Name: " + userAcc.getFirstName());
-			System.out.println("Last Name: " + userAcc.getLastName());
-			System.out.println("Username: " + userAcc.getUsername());
-			System.out.println("Password: " + userAcc.getPassword());
-			System.out.println("Type: " + userAcc.getUserType());
+			Account userAcc = this.DBCon.getAccount(userName);
+			ArrayList<String> profile = new ArrayList<String>();
+			profile.add(userAcc.getFirstName());
+			profile.add(userAcc.getLastName());
+			profile.add(userAcc.getUsername());
+			profile.add(userAcc.getPassword());
+			profile.add(userAcc.getUserType());
+			return profile;
 			}
 		else {
 			throw new IllegalArgumentException(userName + " does not exist in the database!");
+		}
+	}
+	
+	/**
+	 * Updates the first name, last name and password of the specified user
+	 * @param userName
+	 * @param firstName
+	 * @param lastName
+	 * @param password
+	 */
+	public void editUserProfile(String userName, String firstName, String lastName, 
+			String password) {
+		if (this.DBCon.checkUser(userName)) {
+			Account userAcc = this.DBCon.getAccount(userName);
+			userAcc.setFirstName(firstName);
+			userAcc.setLastName(lastName);
+			userAcc.setPassword(password);
+			this.DBCon.setAccount(userAcc);
 		}
 	}
 	
@@ -86,10 +108,10 @@ public class UserFunctionalityController {
 	 */
 	public void viewSchoolList() {
 		University[] universityList = this.DBCon.getUniversityList();
-		if (account instanceof Admin) {
+		if (this.account.account instanceof Admin) {
 			// display list info for admins
 		}
-		else if (account instanceof Student) {
+		else if (account.account instanceof Student) {
 			// display school list for students
 		}
 	}
