@@ -14,7 +14,7 @@ import cmc.entity.*;
  */
 public class AccountController {
 
-		Account account;
+	Account account;
 	/**
 	 * creates new AccountController for student being accessed
 	 */
@@ -24,7 +24,6 @@ public class AccountController {
 
 	public AccountController()
 	{
-		
 	}
 	public ArrayList<UserSavedSchool> getSchoolList()
 	{
@@ -92,7 +91,7 @@ public class AccountController {
 		else
 		{
 		account.setPassword(newPassword);
-		sendEmail();
+		
 		}
 	}
 	
