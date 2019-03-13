@@ -76,7 +76,7 @@ public class University {
 		this.emphases = emphases;
 		this.savedSchool = savedSchool;
 	}
-
+	
 	/**
 	 * @return university name
 	 */

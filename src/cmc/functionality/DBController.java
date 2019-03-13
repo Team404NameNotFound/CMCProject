@@ -78,7 +78,7 @@ public class DBController
 					}
 				}
 				
-				return new University(getUniversity(school),savedStudents, returnEmphases);
+				return new University(school, school, school, school, school, school, school, school, school, school, school, school, school, school, school, school, returnEmphases, null);
 
 			}
 		}
