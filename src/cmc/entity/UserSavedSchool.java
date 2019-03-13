@@ -23,6 +23,11 @@ public class UserSavedSchool extends University{
 				percentEnrolled, applicants, percentAdmitted, academicScale, socialScale, qualityOfLife, emphases, savedSchool);
 		this.dateAdded = dateAdded;
 	}
+	public UserSavedSchool(University school, String dateAdded) {
+		super(school.getName(), school.getState(), school.getLocation(), school.getControl(), school.getEnrollment(), school.getPercentFemale(), school.getSatVerbal(), school.getSatMath(), school.getCost(), school.getPercentFinAid(),
+				school.getPercentEnrolled(), school.getApplicants(), school.getPercentAdmitted(), school.getAcademicScale(), school.getSocialScale(), school.getQualityOfLife(), school.getEmphases(), school.getSavedSchool());
+		this.dateAdded = dateAdded;
+	}
 
 	public String getDateAdded() {
 		return dateAdded;

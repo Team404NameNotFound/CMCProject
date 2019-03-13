@@ -19,6 +19,11 @@ public class Student extends Account {
 		super(firstName, lastName, username, password, userType, userStatus);
 		this.savedSchools = savedSchools;
 	}
+	public Student(Account account, ArrayList<UserSavedSchool> savedSchools) {
+		super(account.getFirstName(), account.getLastName(), account.getUsername(), 
+				account.getPassword(), account.getUserType(), account.getUserStatus());
+		this.savedSchools = savedSchools;
+	}
 
 	public ArrayList<UserSavedSchool> getSavedSchools() {
 		return savedSchools;
