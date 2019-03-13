@@ -135,14 +135,14 @@ public class DBController
 		return false;
 	}
 	
-	public University[] getUniversityList()
+	public ArrayList<University> getUniversityList()
 	{
 		String[][] schoolList = dbLibrary.university_getUniversities();
 
-		University[] returnArray = new University[schoolList.length];
+		ArrayList<University> returnArray = new ArrayList<University>();
 		for (int i = 0; i < schoolList.length; i++)
 		{
-				returnArray[i] = getUniversity(schoolList[i][0]);
+				returnArray.add(getUniversity(schoolList[i][0]));
 		}
 		return returnArray;
 		
