@@ -10,7 +10,7 @@ import cmc.entity.*;
  */
 public class StudentFunctionalityController extends UserFunctionalityController {
 	
-	SearchController searchCon;
+	public SearchController searchCon;
 	//constructer
 	public StudentFunctionalityController() {
 		this.searchCon = new SearchController(this.DBCon.getUniversityList());
