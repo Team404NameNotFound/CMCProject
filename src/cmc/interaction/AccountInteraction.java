@@ -1,5 +1,7 @@
 package cmc.interaction;
 
+import java.util.ArrayList;
+
 import cmc.functionality.UserFunctionalityController;
 
 /**
@@ -27,6 +29,16 @@ public class AccountInteraction {
 		}
 	
 		
+	}
+	
+	public void viewProfile(String userName)
+	{
+		ArrayList<String> userInfo = UFCon.viewUserProfile(userName);
+		System.out.println("User info gotten for:  " + userInfo.get(0));
+		for(int i = 0; i < userInfo.size(); i++)
+		{
+			System.out.println("" + userInfo.get(i));
+		}
 	}
 	
 	public void logout(){

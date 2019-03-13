@@ -44,8 +44,8 @@ public class FunctionalityTestDriver {
 		
 		//view profile (user)
 		user.login(userUsername, userPassword);
-//		
-//		user.viewProfile();
+		
+		user.viewProfile(userUsername);
 //		
 //		
 //		//edit profile (user)
