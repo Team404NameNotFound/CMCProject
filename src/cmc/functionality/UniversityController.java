@@ -118,13 +118,12 @@ public class UniversityController {
 	
 	public University createNewUniversity(String name, String state, String location, String control, String enrollment, String percentFemale,
 			String satVerbal, String satMath, String cost, String percentFinAid, String percentEnrolled, String applicants,
-			String percentAdmitted, String academicScale, String socialScale, String qualityOfLife, String[] emphases,
-			ArrayList<Student> savedSchool)
+			String percentAdmitted, String academicScale, String socialScale, String qualityOfLife, String[] emphases)
 	{
 		University newSchool;
 		newSchool = new University(name, state, location, control, enrollment, percentFemale, satVerbal,
 				satMath, cost, percentFinAid, percentEnrolled, applicants, percentAdmitted, academicScale, socialScale,
-				qualityOfLife, emphases, savedSchool);
+				qualityOfLife, emphases);
 		this.school = newSchool;
 		return newSchool;
 	}

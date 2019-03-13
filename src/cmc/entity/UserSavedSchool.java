@@ -41,7 +41,7 @@ public class UserSavedSchool extends University{
 			String percentEnrolled, String applicants, String percentAdmitted, String academicScale, String socialScale,
 			String qualityOfLife, String[] emphases, ArrayList<Student> savedSchool, String dateAdded) {
 		super(name, state, location, control, enrollment, percentFemale, satVerbal, satMath, cost, percentFinAid,
-				percentEnrolled, applicants, percentAdmitted, academicScale, socialScale, qualityOfLife, emphases, savedSchool);
+				percentEnrolled, applicants, percentAdmitted, academicScale, socialScale, qualityOfLife, emphases);
 		this.dateAdded = dateAdded;
 	}
 	/**
@@ -50,7 +50,7 @@ public class UserSavedSchool extends University{
 	 */
 	public UserSavedSchool(University school, String dateAdded) {
 		super(school.getName(), school.getState(), school.getLocation(), school.getControl(), school.getEnrollment(), school.getPercentFemale(), school.getSatVerbal(), school.getSatMath(), school.getCost(), school.getPercentFinAid(),
-				school.getPercentEnrolled(), school.getApplicants(), school.getPercentAdmitted(), school.getAcademicScale(), school.getSocialScale(), school.getQualityOfLife(), school.getEmphases(), school.getSavedSchool());
+				school.getPercentEnrolled(), school.getApplicants(), school.getPercentAdmitted(), school.getAcademicScale(), school.getSocialScale(), school.getQualityOfLife(), school.getEmphases());
 		this.dateAdded = dateAdded;
 	}
 

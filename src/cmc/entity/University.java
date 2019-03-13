@@ -29,7 +29,7 @@ public class University {
 	private String socialScale;
 	private String qualityOfLife;
 	private String[] emphases;
-	private ArrayList<Account> savedSchool;
+	private ArrayList<Student> savedSchool;
 
 
 	/**
@@ -50,12 +50,10 @@ public class University {
 	 * @param socialScale integer value between 1 and 5 indicating social life at the university
 	 * @param qualityOfLife integer value between 1 and 5 indicating quality of life at the university
 	 * @param emphases up to five areas of study that the university excels in
-	 * @param savedSchool list of students that have saved this school
 	 */
 	public University(String name, String state, String location, String control, String enrollment, String percentFemale,
 			String satVerbal, String satMath, String cost, String percentFinAid, String percentEnrolled, String applicants,
-			String percentAdmitted, String academicScale, String socialScale, String qualityOfLife, String[] emphases,
-			ArrayList<Account> savedSchool) {
+			String percentAdmitted, String academicScale, String socialScale, String qualityOfLife, String[] emphases) {
 		super();
 		this.name = name;
 		this.state = state;
@@ -74,7 +72,6 @@ public class University {
 		this.socialScale = socialScale;
 		this.qualityOfLife = qualityOfLife;
 		this.emphases = emphases;
-		this.savedSchool = savedSchool;
 	}
 	
 	/**
@@ -325,9 +322,10 @@ public class University {
 
 	/**
 	 * @param savedSchool list of students that saved the school
-	 */
+	 
 	public void setSavedSchool(ArrayList<Student> savedSchool) {
 		this.savedSchool = savedSchool;
 	}
+	*/
 
 }
