@@ -79,7 +79,7 @@ public class FunctionalityTestDriver {
 		int numStudentsLower = 10000;
 		int numStudentsUpper = 12000;
 		String[] emphases = {};
-		ArrayList<University> results = search( "", state, "", numStudentsLower,
+		student.fieldSearch( "", state, "", numStudentsLower,
 				numStudentsUpper, (float)-1.0,(float)-1.0, -1, 
 				-1, -1, -1, -1, -1, 
 				(float)-1.0, (float)-1.0, -1, 
