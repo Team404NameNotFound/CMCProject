@@ -29,14 +29,14 @@ public class University {
 	protected String socialScale;
 	protected String qualityOfLife;
 	protected String[] emphases;
-	protected ArrayList<Student> savedSchool;
+	protected ArrayList<Account> savedSchool;
 
 
 
 	public University(String name, String state, String location, String control, String enrollment, String percentFemale,
 			String satVerbal, String satMath, String cost, String percentFinAid, String percentEnrolled, String applicants,
 			String percentAdmitted, String academicScale, String socialScale, String qualityOfLife, String[] emphases,
-			ArrayList<Student> savedSchool) {
+			ArrayList<Account> savedSchool) {
 		super();
 		this.name = name;
 		this.state = state;
@@ -194,11 +194,11 @@ public class University {
 		this.emphases = emphases;
 	}
 
-	public ArrayList<Student> getSavedSchool() {
+	public ArrayList<Account> getSavedSchool() {
 		return savedSchool;
 	}
 
-	public void setSavedSchool(ArrayList<Student> savedSchool) {
+	public void setSavedSchool(ArrayList<Account> savedSchool) {
 		this.savedSchool = savedSchool;
 	}
 
