@@ -3,6 +3,7 @@
  */
 package cmc.interaction;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cmc.entity.University;
@@ -38,7 +39,7 @@ public class StudentInteraction extends AccountInteraction{
 		if(sfCon.loggedIn) {
 	    //sfCon.searchCon = new SearchController();
 	    // do I need to make a new SearchController using DBController.getUniversityList() as a param?
-		Double[][] matchSchools =  
+		ArrayList<University> matchSchools =  
 				sfCon.searchCon.search("", state, "", numStudentsMin, numStudentsMax, 
 				(float)0.0, (float)1.0, 0,1000,0,1000,0,1000000000,
 				(float)0.0,(float)1.0,0,1000000000,(float)0.0,(float)1.0,
