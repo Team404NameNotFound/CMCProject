@@ -462,11 +462,11 @@ public class SearchController {
 	}
 	
 	
-	public static void main(String[] args)
-	{
-
-		DBController db = new DBController();
-		SearchController sc = new SearchController(db.getUniversityList());
-		University testUniversity = new University();
-	}
+//	public static void main(String[] args)
+//	{
+//
+//		DBController db = new DBController();
+//		SearchController sc = new SearchController(db.getUniversityList());
+//		University testUniversity = new University();
+//	}
 }
