@@ -32,7 +32,7 @@ public class UserFunctionalityController {
 	public boolean login(String userName, String password) {
 		if (!loggedIn) {
 			if (this.DBCon.checkUser(userName)) {
-				if (this.DBCon.getAccount(userName).getUserStatus().equals('Y')) {
+				if (this.DBCon.getAccount(userName).getUserStatus().equals("Y")) {
 					AccountController userAcc = new AccountController(this.DBCon.getAccount(userName));
 					if (userAcc.checkPassword(password)) {
 						//System.out.println("Login Successful");
