@@ -25,8 +25,8 @@ public class FunctionalityTestDriver {
 		user.logout();
 		
 		//successful login (admin)
-		String adminUsername = "luser";
-		String adminPassword = "user";
+		String adminUsername = "nadmin";
+		String adminPassword = "admin";
 		user.login(adminUsername, adminPassword);
 		user.logout();
 		
