@@ -64,7 +64,7 @@ public class SearchController {
 		int socialScale = Integer.parseInt(university.getSocialScale());
 		int qualityOfLifeScale = Integer.parseInt(university.getQualityOfLife());
 		
-		Double[][] schoolMatches = new Double[this.universityList.length][2];
+		double[][] schoolMatches = new double[this.universityList.length][2];
 		//finding closest schools to provided school
 		for(int i = 0; i < this.universityList.length; i++)
 		{
@@ -112,13 +112,25 @@ public class SearchController {
 			schoolMatches[i][0] = score;//i};
 			schoolMatches[i][1] = Double.parseDouble(""+i);
 		}
-		Arrays.sort(schoolMatches);
 		
-		for (int i =1; i<5; i++)
+		java.util.Arrays.sort(schoolMatches, new java.util.Comparator<double[]>() {
+		    public int compare(double[] a, double[] b) {
+		        return Double.compare(a[0], b[0]);
+		    }
+		});
+		
+		
+		for (int i =0; i<5; i++)
 		{
-			int position = Integer.parseInt("" + schoolMatches[i][1]);
+			int position = (int)schoolMatches[i+1][1];
 			returnUniversity.add(universityList[position]);
 		}
+		
+//		for(int i = 0; i<schoolMatches.length;i++)
+//		{
+//			System.out.println("Score: " + schoolMatches[i][0] + " Position: " + schoolMatches[i][1]);
+//		}
+		
 		return returnUniversity;
 	}
 
@@ -132,8 +144,8 @@ public class SearchController {
 			)
 	{
 		double[][] schoolMatches = new double[this.universityList.length][2];
-		int schoolNumStudentMin = 0;
-		int schoolNumStudentMax = 1000000;
+		int schoolNumStudentMin = 10000000;
+		int schoolNumStudentMax = 0;
 		float schoolPerFemaleMin = (float) 1.0;
 		float schoolPerFemaleMax = (float) 0.0;
 		int schoolSATVMin = 800;
@@ -156,8 +168,10 @@ public class SearchController {
 		int schoolSocialScaleMax = 0;
 		int schoolQualityofLifeMin = 6;
 		int schoolQualityofLifeMax = 0;
+		int schoolsChecked = 0;
 		for(University testSchool: universityList)
-		{
+		{	
+//			System.out.println(testSchool.getPercentFemale());
 			if(Integer.parseInt(testSchool.getEnrollment()) < (schoolNumStudentMin))
 			{
 				schoolNumStudentMin = Integer.parseInt(testSchool.getEnrollment());
@@ -172,7 +186,7 @@ public class SearchController {
 			}
 			if(Float.parseFloat(testSchool.getPercentFemale()) > schoolPerFemaleMax)
 			{
-				schoolPerFemaleMax = Float.parseFloat(testSchool.getEnrollment());
+				schoolPerFemaleMax = Float.parseFloat(testSchool.getPercentFemale());
 			}
 			if(Integer.parseInt(testSchool.getSatVerbal()) < schoolSATVMin)
 			{
@@ -255,6 +269,13 @@ public class SearchController {
 				schoolQualityofLifeMax = Integer.parseInt(testSchool.getQualityOfLife());
 			}
 		}
+//		System.out.println(schoolPerFemaleMax);
+//		System.out.println(schoolsChecked);
+//		System.out.println("Min in all schools "+ schoolNumStudentMin 
+//				+ "\n max students in all schools" + schoolNumStudentMax 
+//				+"\n min percentFemale " + schoolPerFemaleMin
+//				+ "\n max percentFemale: " + schoolPerFemaleMax );
+
 		for(int i = 0; i < this.universityList.length; i++)
 		{
 			double score = 0.0;
@@ -277,173 +298,173 @@ public class SearchController {
 			{
 				score = score + (Math.abs((Double.parseDouble(universityList[i].getPercentFemale()) - percentFemaleMin)) / (schoolPerFemaleMax-schoolPerFemaleMin)) + ( Math.abs((percentFemaleMax - (Double.parseDouble(universityList[i].getPercentFemale())))) / (schoolPerFemaleMax-schoolPerFemaleMin));
 			}
-			else if(percentFemaleMin == -1)
+			else if(percentFemaleMin != -1)
 			{
 				score = score + (Math.abs((Double.parseDouble(universityList[i].getPercentFemale()) - percentFemaleMax)) / (schoolPerFemaleMax-schoolPerFemaleMin));// + ( Math.abs((percentFemaleMax - (Double.parseDouble(universityList[i].getPercentFemale())))) / (schoolPerFemaleMax-schoolPerFemaleMin));
 			}
-			else if(percentFemaleMax == -1)
+			else if(percentFemaleMax != -1)
 			{
 				score = score + (Math.abs((Double.parseDouble(universityList[i].getPercentFemale()) - percentFemaleMin)) / (schoolPerFemaleMax-schoolPerFemaleMin));// + ( Math.abs((percentFemaleMin - (Double.parseDouble(universityList[i].getPercentFemale())))) / (schoolPerFemaleMax-schoolPerFemaleMin));
 			}
 			
-			//testing distance based on SATVerbal
+//			//testing distance based on SATVerbal
 			if(SATVerbalMin != -1 && SATVerbalMax != -1)
 			{
 				score = score + (Math.abs((Double.parseDouble(universityList[i].getSatVerbal()) - SATVerbalMin)) / (schoolSATVMax-schoolSATVMin)) + ( Math.abs((numStudentsMax - (Double.parseDouble(universityList[i].getSatVerbal())))) / (schoolSATVMax-schoolSATVMin));
 			}
-			else if(SATVerbalMin == -1)
+			else if(SATVerbalMin != -1)
 			{
 				score = score + (Math.abs((Double.parseDouble(universityList[i].getSatVerbal()) - SATVerbalMax)) / (schoolSATVMax-schoolSATVMin));// + ( Math.abs((SATVerbalMax - (Double.parseDouble(universityList[i].getSatVerbal())))) / (schoolSATVMax-schoolSATVMin));
 			}
-			else if(SATVerbalMax == -1)
+			else if(SATVerbalMax != -1)
 			{
-				score = score + (Math.abs((Double.parseDouble(universityList[i].getSatVerbal()) - SATVerbalMin)) / (schoolSATVMax-schoolSATVMin));// + ( Math.abs((SATVerbalMin - (Double.parseDouble(universityList[i].getSatVerbal())))) / (schoolSATVMax-schoolSATVMin));
-			}
+				score = score + (Math.abs((Double.parseDouble(universityList[i].getSatVerbal()) - SATVerbalMin)) / (schoolSATVMax-schoolSATVMin));// + ( Math.abs((SATVerbalMin - (Double.parseDouble(universityList[i].getSatVerbal())))) / (schoolSATVMax-schoolSATVMin));/			
+				}
 			
-			//testing distance based on SATMath
+//			//testing distance based on SATMath
 			if(SATMathMin != -1 && SATMathMax != -1)
 			{
 				score = score + (Math.abs((Double.parseDouble(universityList[i].getSatMath()) - SATMathMin)) / (schoolSATMMax-schoolSATMMin)) + ( Math.abs((SATMathMin - (Double.parseDouble(universityList[i].getSatMath())))) / (schoolSATMMax-schoolSATMMin));
 			}
-			else if(SATVerbalMin == -1)
+			else if(SATVerbalMin != -1)
 			{
 				score = score + (Math.abs((Double.parseDouble(universityList[i].getSatMath()) - SATMathMax)) / (schoolSATMMax-schoolSATMMin));// + ( Math.abs((SATMathMax - (Double.parseDouble(universityList[i].getSatMath())))) / (schoolSATMMax-schoolSATMMin));
 			}
-			else if(SATVerbalMax == -1)
+			else if(SATVerbalMax != -1)
 			{
 				score = score + (Math.abs((Double.parseDouble(universityList[i].getSatMath()) - SATMathMin)) / (schoolSATMMax-schoolSATMMin));// + ( Math.abs((SATMathMin - (Double.parseDouble(universityList[i].getSatMath())))) / (schoolSATMMax-schoolSATMMin));
 			}
 			
-			//testing distance based on expenses
+//			//testing distance based on expenses
 			if(expensesMin != -1 && expensesMax != -1)
 			{
 				score = score + (Math.abs((Double.parseDouble(universityList[i].getCost()) - expensesMin)) / (schoolExpensesMax - schoolExpensesMin)) + ( Math.abs((expensesMax - (Double.parseDouble(universityList[i].getCost())))) / (schoolExpensesMax - schoolExpensesMin));
 			}
-			else if(expensesMin == -1)
+			else if(expensesMin != -1)
 			{
 				score = score + (Math.abs((Double.parseDouble(universityList[i].getCost()) - expensesMax)) / (schoolExpensesMax - schoolExpensesMin));//+ ( Math.abs((expensesMax - (Double.parseDouble(universityList[i].getSatMath())))) / (schoolExpensesMax - schoolExpensesMin));
 			}
-			else if(expensesMax == -1)
+			else if(expensesMax != -1)
 			{
 				score = score + (Math.abs((Double.parseDouble(universityList[i].getCost()) - expensesMin)) / (schoolExpensesMax - schoolExpensesMin));// + ( Math.abs((expensesMin - (Double.parseDouble(universityList[i].getSatMath())))) / (schoolExpensesMax - schoolExpensesMin));
 			}
 			
-			//testing distance based on FinancialAid
+//			//testing distance based on FinancialAid
 			if(PercentFinancialAidMin != -1 && percenetFinancialAidMax != -1)
 			{
 				score = score + (Math.abs((Double.parseDouble(universityList[i].getPercentFinAid()) - PercentFinancialAidMin)) / (schoolFinAidMax - schoolFinAidMin)) + ( Math.abs((percenetFinancialAidMax - (Double.parseDouble(universityList[i].getPercentFinAid())))) / (schoolFinAidMax - schoolFinAidMin));
 			}
-			else if(PercentFinancialAidMin == -1)
+			else if(PercentFinancialAidMin != -1)
 			{
 				score = score + (Math.abs((Double.parseDouble(universityList[i].getPercentFinAid()) - percenetFinancialAidMax)) / (schoolFinAidMax - schoolFinAidMin));//+ ( Math.abs((expensesMax - (Double.parseDouble(universityList[i].getSatMath())))) / (schoolExpensesMax - schoolExpensesMin));
 			}
-			else if(percenetFinancialAidMax == -1)
+			else if(percenetFinancialAidMax != -1)
 			{
 				score = score + (Math.abs((Double.parseDouble(universityList[i].getPercentFinAid()) - PercentFinancialAidMin)) / (schoolFinAidMax - schoolFinAidMin));// + ( Math.abs((expensesMin - (Double.parseDouble(universityList[i].getSatMath())))) / (schoolExpensesMax - schoolExpensesMin));
 			}
 			
-			//testing distance based on numberApplicants
+//			//testing distance based on numberApplicants
 			if(numberApplicantsMin != -1 && numberApplicatnsMax != -1)
 			{
 				score = score + (Math.abs((Double.parseDouble(universityList[i].getApplicants()) - numberApplicantsMin)) / (schoolApplicantsMin - schoolApplicantsMax)) + ( Math.abs((numberApplicatnsMax - (Double.parseDouble(universityList[i].getApplicants())))) / (schoolApplicantsMin - schoolApplicantsMax));
 			}
-			else if(numberApplicantsMin == -1)
+			else if(numberApplicantsMin != -1)
 			{
 				score = score + (Math.abs((Double.parseDouble(universityList[i].getApplicants()) - numberApplicatnsMax)) / (schoolApplicantsMin - schoolApplicantsMax));//+ ( Math.abs((expensesMax - (Double.parseDouble(universityList[i].getSatMath())))) / (schoolExpensesMax - schoolExpensesMin));
 			}
-			else if(numberApplicatnsMax == -1)
+			else if(numberApplicatnsMax != -1)
 			{
 				score = score + (Math.abs((Double.parseDouble(universityList[i].getApplicants()) - numberApplicantsMin)) / (schoolApplicantsMin - schoolApplicantsMax));// + ( Math.abs((expensesMin - (Double.parseDouble(universityList[i].getSatMath())))) / (schoolExpensesMax - schoolExpensesMin));
 			}
 			
-			//testing distance based on percentAdmitted
+//			//testing distance based on percentAdmitted
 			if(percentAddmittedMin != -1 && percentAdmittedMax != -1)
 			{
 				score = score + (Math.abs((Double.parseDouble(universityList[i].getPercentAdmitted()) - percentAddmittedMin)) / (schoolAdmittedMax - schoolAdmittedMin)) + ( Math.abs((percentAdmittedMax - (Double.parseDouble(universityList[i].getPercentAdmitted())))) / (schoolApplicantsMin - schoolApplicantsMax));
 			}
-			else if(numberApplicantsMin == -1)
+			else if(numberApplicantsMin != -1)
 			{
 				score = score + (Math.abs((Double.parseDouble(universityList[i].getPercentAdmitted()) - percentAdmittedMax)) / (schoolAdmittedMax - schoolAdmittedMin));//+ ( Math.abs((expensesMax - (Double.parseDouble(universityList[i].getSatMath())))) / (schoolExpensesMax - schoolExpensesMin));
 			}
-			else if(numberApplicatnsMax == -1)
+			else if(numberApplicatnsMax != -1)
 			{
 				score = score + (Math.abs((Double.parseDouble(universityList[i].getPercentAdmitted()) - percentAddmittedMin)) / (schoolAdmittedMax - schoolAdmittedMin));// + ( Math.abs((expensesMin - (Double.parseDouble(universityList[i].getSatMath())))) / (schoolExpensesMax - schoolExpensesMin));
 			}
 			
-			//testing distance based on percentEnrolled
+//			//testing distance based on percentEnrolled
 			if(percentEnrolledMin != -1 && percentEnrolledMax != -1)
 			{
 				score = score + (Math.abs((Double.parseDouble(universityList[i].getPercentEnrolled()) - percentEnrolledMin)) / (schoolEnrolledMin - schoolEnrolledMax)) + ( Math.abs((percentEnrolledMax - (Double.parseDouble(universityList[i].getPercentEnrolled())))) / (schoolEnrolledMin - schoolEnrolledMax));
 			}
-			else if(percentEnrolledMin == -1)
+			else if(percentEnrolledMin != -1)
 			{
 				score = score + (Math.abs((Double.parseDouble(universityList[i].getPercentEnrolled()) - percentEnrolledMax)) / (schoolEnrolledMin - schoolEnrolledMax));//+ ( Math.abs((expensesMax - (Double.parseDouble(universityList[i].getSatMath())))) / (schoolExpensesMax - schoolExpensesMin));
 			}
-			else if(percentEnrolledMax == -1)
+			else if(percentEnrolledMax != -1)
 			{
 				score = score + (Math.abs((Double.parseDouble(universityList[i].getPercentEnrolled()) - percentAddmittedMin)) / (schoolEnrolledMin - schoolEnrolledMax));// + ( Math.abs((expensesMin - (Double.parseDouble(universityList[i].getSatMath())))) / (schoolExpensesMax - schoolExpensesMin));
 			}
 			
-			//testing distance based on academicSclae
+//			//testing distance based on academicSclae
 			if(academicScaleMin != -1 && academicScaleMax != -1)
 			{
 				score = score + (Math.abs((Double.parseDouble(universityList[i].getAcademicScale()) - academicScaleMin)) / (schoolAcademicScaleMax - schoolAcademicScaleMin)) + ( Math.abs((academicScaleMax - (Double.parseDouble(universityList[i].getAcademicScale())))) / (schoolAcademicScaleMax - schoolAcademicScaleMin));
 			}
-			else if(percentEnrolledMin == -1)
+			else if(percentEnrolledMin != -1)
 			{
 				score = score + (Math.abs((Double.parseDouble(universityList[i].getAcademicScale()) - academicScaleMax)) / (schoolAcademicScaleMax - schoolAcademicScaleMin));//+ ( Math.abs((expensesMax - (Double.parseDouble(universityList[i].getSatMath())))) / (schoolExpensesMax - schoolExpensesMin));
 			}
-			else if(percentEnrolledMax == -1)
+			else if(percentEnrolledMax != -1)
 			{
 				score = score + (Math.abs((Double.parseDouble(universityList[i].getAcademicScale()) - academicScaleMin)) / (schoolAcademicScaleMax - schoolAcademicScaleMin));// + ( Math.abs((expensesMin - (Double.parseDouble(universityList[i].getSatMath())))) / (schoolExpensesMax - schoolExpensesMin));
 			}
 			
-			//testing distance based on socialScale
+//			//testing distance based on socialScale
 			if(socialScalemin != -1 && socialScaleMax != -1)
 			{
 				score = score + (Math.abs((Double.parseDouble(universityList[i].getSocialScale()) - socialScalemin)) / (schoolSocialScaleMax - schoolSocialScaleMin)) + ( Math.abs((socialScaleMax - (Double.parseDouble(universityList[i].getSocialScale())))) / (schoolSocialScaleMax - schoolSocialScaleMin));
 			}
-			else if(socialScalemin == -1)
+			else if(socialScalemin != -1)
 			{
 				score = score + (Math.abs((Double.parseDouble(universityList[i].getSocialScale()) - socialScaleMax)) / (schoolSocialScaleMax - schoolSocialScaleMin));//+ ( Math.abs((expensesMax - (Double.parseDouble(universityList[i].getSatMath())))) / (schoolExpensesMax - schoolExpensesMin));
 			}
-			else if(socialScaleMax == -1)
+			else if(socialScaleMax != -1)
 			{
 				score = score + (Math.abs((Double.parseDouble(universityList[i].getSocialScale()) - socialScalemin)) / (schoolSocialScaleMax - schoolSocialScaleMin));// + ( Math.abs((expensesMin - (Double.parseDouble(universityList[i].getSatMath())))) / (schoolExpensesMax - schoolExpensesMin));
 			}
 			
-			//testing distance based on qualityOfLife
+//			//testing distance based on qualityOfLife
 			if(qualityOfLifeMin != -1 && qualityOfLifeMax != -1)
 			{
 				score = score + (Math.abs((Double.parseDouble(universityList[i].getQualityOfLife()) - qualityOfLifeMin)) / (schoolQualityofLifeMax - schoolQualityofLifeMax)) + ( Math.abs((qualityOfLifeMax - (Double.parseDouble(universityList[i].getQualityOfLife())))) / (schoolQualityofLifeMax - schoolQualityofLifeMax));
 			}
-			else if(qualityOfLifeMin == -1)
+			else if(qualityOfLifeMin != -1)
 			{
 				score = score + (Math.abs((Double.parseDouble(universityList[i].getQualityOfLife()) - qualityOfLifeMax)) / (schoolQualityofLifeMax - schoolQualityofLifeMax));//+ ( Math.abs((expensesMax - (Double.parseDouble(universityList[i].getSatMath())))) / (schoolExpensesMax - schoolExpensesMin));
 			}
-			else if(qualityOfLifeMax == -1)
+			else if(qualityOfLifeMax != -1)
 			{
 				score = score + (Math.abs((Double.parseDouble(universityList[i].getQualityOfLife()) - qualityOfLifeMin)) / (schoolQualityofLifeMax - schoolQualityofLifeMax));// + ( Math.abs((expensesMin - (Double.parseDouble(universityList[i].getSatMath())))) / (schoolExpensesMax - schoolExpensesMin));
 			}
 			
 			//testing distance based on schoolName
-			if(!universityList[i].getName().toLowerCase().trim().contains(schoolName.toLowerCase().trim()))
+			if(!universityList[i].getName().toLowerCase().trim().contains(schoolName.toLowerCase().trim()) && !schoolName.equals(""))
 			{
 				score = score  + 1;
 			}
 			
 			//testing distance based on location
-			if(!universityList[i].getLocation().toLowerCase().trim().equals(location.toLowerCase().trim()))
+			if(!universityList[i].getLocation().toLowerCase().trim().equals(location.toLowerCase().trim()) && !location.equals(""))
 			{
 				score = score  + 1;
 			}
 			
 			//testing distance based on state
-			if(!universityList[i].getState().toLowerCase().trim().equals(state.toLowerCase().trim()))
+			if(!universityList[i].getState().toLowerCase().trim().equals(state.toLowerCase().trim()) && !state.equals(""))
 			{
 				score = score  + 1;
 			}
-			
+	
 			//setting final score of university
 			schoolMatches[i][0] = score;//i};
 			schoolMatches[i][1] = Double.parseDouble(""+i);

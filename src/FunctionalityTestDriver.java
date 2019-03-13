@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import cmc.*;
 import cmc.entity.*;
+import cmc.functionality.DBController;
 import cmc.interaction.*;
 /**
  * @author kmendel001
@@ -101,6 +102,8 @@ public class FunctionalityTestDriver {
 		//Search for schools - state, # of students (user)
 		student.login(userUsername, userPassword);
 
+		System.out.println("\nSearching and Matching on Fields:");
+		System.out.println("-------------------------");
 		String state = "Texas";
 		int numStudentsLower = 10000;
 		int numStudentsUpper = 12000;
@@ -114,10 +117,14 @@ public class FunctionalityTestDriver {
 				-1, -1, -1, -1, emphases
 				);
 //		print(results);
-//		
-//		//find top 5 recommended schools (user)
-//		University university = new University(/*info for a school*/);
-//		String recommended = findRecommended(university);
+		
+		//find top 5 recommended schools (user)
+		System.out.println("\n5 Closest Matches From Selected University:");
+		System.out.println("-------------------------");
+		DBController db = new DBController();
+		ArrayList<University> uniSchools = db.getUniversityList();
+		University university = uniSchools.get(9);
+		student.findRecommended(university);
 //		print(recommended);
 //		
 //		user.logout();

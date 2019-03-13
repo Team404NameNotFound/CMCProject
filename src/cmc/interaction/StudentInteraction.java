@@ -58,7 +58,7 @@ public class StudentInteraction extends AccountInteraction{
 						);
 		 for(int i = 0; i<10;i++)
 		 {
-			 System.out.println(matchSchools.get(i));
+			 System.out.println(matchSchools.get(i).getName());
 		 }
 		}
 		else {
@@ -67,6 +67,14 @@ public class StudentInteraction extends AccountInteraction{
 		
 	}
 	
+	public void findRecommended(University schoolToCompare)
+	{
+		ArrayList<University> closeMatch = sfCon.rankUniversity(schoolToCompare.getName());
+		for(int i = 0; i<5; i++)
+		{
+			System.out.println(closeMatch.get(i).getName());
+		}
+	}
 	public void viewSavedSchools() {
 		
 	}
