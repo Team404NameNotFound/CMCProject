@@ -14,13 +14,17 @@ public class AccountInteraction {
 		UFCon = new UserFunctionalityController();
 	}
 	/**
-	 * @param username
-	 * @param password
+	 * Student or Admin log in. 
+	 * @param String username
+	 * @param String password
 	 */
 	public void login(String username, String password){
-		this.UFCon.login(username, password);
+		if(this.UFCon.login(username, password)) {
+			System.out.println("Login Successfully");
+		}
 		
 	}
+	
 	public void logout(){
 		this.UFCon.logout();
 	}
