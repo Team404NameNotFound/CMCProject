@@ -6,14 +6,25 @@ import cmc.entity.University;
 import dblibrary.project.csci230.UniversityDBLibrary;
 
 
+/**
+ * @author pdoyle001
+ *
+ */
 public class DBController 
 {
 	private UniversityDBLibrary dbLibrary;
 
+	/**
+	 * 
+	 */
 	public DBController() {
 		dbLibrary = new UniversityDBLibrary("error404", "csci230");
 	}
 	
+	/**
+	 * @param inputString
+	 * @return
+	 */
 	public Boolean checkUser(String inputString)
 	{
 		String[][] userList = dbLibrary.user_getUsers();
@@ -32,16 +43,26 @@ public class DBController
 		return false;
 	}
 	
+	/**
+	 * @param schoolName
+	 */
 	public void removeUniversity(String schoolName)
 	{
 		dbLibrary.university_deleteUniversity(schoolName);
 	}
 	
+	/**
+	 * @param school
+	 */
 	public void addUniversity(University school)
 	{
 		dbLibrary.university_addUniversity(school.getName(), school.getState(), school.getLocation(), school.getControl(), Integer.parseInt(school.getEnrollment()), Double.parseDouble(school.getPercentFemale()), Double.parseDouble(school.getSatVerbal()), Double.parseDouble(school.getSatMath()), Double.parseDouble(school.getCost()), Double.parseDouble(school.getPercentFinAid()), Integer.parseInt(school.getApplicants()), Double.parseDouble(school.getPercentAdmitted()), Double.parseDouble(school.getPercentEnrolled()), Integer.parseInt(school.getAcademicScale()), Integer.parseInt(school.getSocialScale()), Integer.parseInt(school.getQualityOfLife()));
 	}
 	
+	/**
+	 * @param school
+	 * @return
+	 */
 	public University getUniversity(String school)
 	{
 		String[][] schoolList = dbLibrary.university_getUniversities();
@@ -91,11 +112,18 @@ public class DBController
 		
 	}
 	
+	/**
+	 * @param school
+	 */
 	public void setUniversity(University school)
 	{
 		dbLibrary.university_editUniversity(school.getName(), school.getState(), school.getLocation(), school.getControl(), Integer.parseInt(school.getEnrollment()), Double.parseDouble(school.getPercentFemale()), Double.parseDouble(school.getSatVerbal()), Double.parseDouble(school.getSatMath()), Double.parseDouble(school.getCost()), Double.parseDouble(school.getPercentFinAid()), Integer.parseInt(school.getApplicants()), Double.parseDouble(school.getPercentAdmitted()), Double.parseDouble(school.getPercentEnrolled()), Integer.parseInt(school.getAcademicScale()), Integer.parseInt(school.getSocialScale()), Integer.parseInt(school.getQualityOfLife()));
 	}
 	
+	/**
+	 * @param accountName
+	 * @return
+	 */
 	public Account getAccount(String accountName)
 	{
 		String[][] accountList = dbLibrary.user_getUsers();
@@ -117,16 +145,26 @@ public class DBController
 		return null;
 	}
 	
+	/**
+	 * @param account
+	 */
 	public void setAccount(Account account)
 	{
 		dbLibrary.user_editUser(account.getUsername(), account.getFirstName(), account.getLastName(), account.getPassword(), account.getUserType().charAt(0), account.getUserStatus().charAt(0));
 	}
 	
+	/**
+	 * @param account
+	 */
 	public void addUser(Account account)
 	{
 		dbLibrary.user_addUser(account.getUsername(), account.getFirstName(), account.getLastName(), account.getPassword(), account.getUserType().charAt(0));
 	}
 	
+	/**
+	 * @param school
+	 * @return
+	 */
 	public boolean findUniversity(String school)
 	{
 		String[][] schoolList = dbLibrary.university_getUniversities();
@@ -140,6 +178,9 @@ public class DBController
 		return false;
 	}
 	
+	/**
+	 * @return
+	 */
 	public ArrayList<University> getUniversityList()
 	{
 		String[][] schoolList = dbLibrary.university_getUniversities();
@@ -153,6 +194,9 @@ public class DBController
 		
 	}
 	
+	/**
+	 * @return
+	 */
 	public ArrayList<Account> getAccountList()
 	{
 		String[][] accountList = dbLibrary.user_getUsers();
@@ -165,6 +209,10 @@ public class DBController
 		
 	}
 	
+	/**
+	 * @param account
+	 * @return
+	 */
 	public ArrayList<University> getSchoolList(Account account)
 	{
 		String[][] savedSchools = dbLibrary.user_getUsernamesWithSavedSchools();
@@ -193,6 +241,10 @@ public class DBController
 		return null;
 	}
 	
+	/**
+	 * @param school
+	 * @param emphasis
+	 */
 	public void addEmphasis(String school, String emphasis)
 	{
 		dbLibrary.university_addUniversityEmphasis(school, emphasis);
