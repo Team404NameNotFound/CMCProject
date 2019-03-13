@@ -2,7 +2,6 @@ package cmc.functionality;
 import java.util.ArrayList;
 
 import cmc.entity.Account;
-import cmc.entity.Student;
 import cmc.entity.University;
 import cmc.entity.UserSavedSchool;
 import dblibrary.project.csci230.UniversityDBLibrary;
@@ -239,5 +238,10 @@ public class DBController
 		}
 		
 		return returnArray;
+	}
+	
+	public void addEmphasis(String school, String emphasis)
+	{
+		dbLibrary.university_addUniversityEmphasis(school, emphasis);
 	}
 }
