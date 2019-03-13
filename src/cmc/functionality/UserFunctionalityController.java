@@ -13,7 +13,7 @@ public class UserFunctionalityController {
 	AccountController account;
 	DBController DBCon;
 	UniversityController universityCon;
-	Boolean loggedIn;
+	public Boolean loggedIn;
 	//class constructor
 	public UserFunctionalityController() {
 		super();
@@ -35,7 +35,7 @@ public class UserFunctionalityController {
 				if (this.DBCon.getAccount(userName).getUserStatus().equals('Y')) {
 					AccountController userAcc = new AccountController(this.DBCon.getAccount(userName));
 					if (userAcc.checkPassword(password)) {
-						System.out.println("Login Successful");
+						//System.out.println("Login Successful");
 						this.account = userAcc;
 						this.loggedIn = true;
 						return true;

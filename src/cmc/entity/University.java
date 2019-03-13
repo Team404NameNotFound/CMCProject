@@ -12,6 +12,7 @@ public class University {
 	/**
 	 * 
 	 */
+<<<<<<< HEAD
 	private String name;
 	private String state;
 	private String location;
@@ -30,6 +31,26 @@ public class University {
 	private String qualityOfLife;
 	private String[] emphases;
 	private ArrayList<Student> savedSchool;
+=======
+	protected String name;
+	protected String state;
+	protected String location;
+	protected String control;
+	protected String enrollment;
+	protected String percentFemale;
+	protected String satVerbal;
+	protected String satMath;
+	protected String cost;
+	protected String percentFinAid;
+	protected String percentEnrolled;
+	protected String applicants;
+	protected String percentAdmitted;
+	protected String academicScale;
+	protected String socialScale;
+	protected String qualityOfLife;
+	protected String[] emphases;
+	protected ArrayList<Account> savedSchool;
+>>>>>>> d43fa77fa9c3dbf467070bce4e2a99a06e2b697c
 
 
 
@@ -56,7 +77,7 @@ public class University {
 	public University(String name, String state, String location, String control, String enrollment, String percentFemale,
 			String satVerbal, String satMath, String cost, String percentFinAid, String percentEnrolled, String applicants,
 			String percentAdmitted, String academicScale, String socialScale, String qualityOfLife, String[] emphases,
-			ArrayList<Student> savedSchool) {
+			ArrayList<Account> savedSchool) {
 		super();
 		this.name = name;
 		this.state = state;
@@ -317,6 +338,7 @@ public class University {
 		this.emphases = emphases;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * @return list of students that saved the school
 	 */
@@ -328,6 +350,13 @@ public class University {
 	 * @param savedSchool list of students that saved the school
 	 */
 	public void setSavedSchool(ArrayList<Student> savedSchool) {
+=======
+	public ArrayList<Account> getSavedSchool() {
+		return savedSchool;
+	}
+
+	public void setSavedSchool(ArrayList<Account> savedSchool) {
+>>>>>>> d43fa77fa9c3dbf467070bce4e2a99a06e2b697c
 		this.savedSchool = savedSchool;
 	}
 

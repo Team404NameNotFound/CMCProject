@@ -20,24 +20,28 @@ public class FunctionalityTestDriver {
 		String userUsername = "John";
 		String userPassword = "User";
 		user.login(userUsername, userPassword);
+		user.logout();
 		
 		//successful login (admin)
 		String adminUsername = "Noreen";
 		String adminPassword = "Admin";
-		user = login(adminUsername, adminPassword);
+		user.login(adminUsername, adminPassword);
+		user.logout();
 		
 		//failed login - invalid credentials (admin and user)
 		String username = "Team";
 		String password = "404";
-		user = login(username, password);
+		user.login(username, password);
+		user.logout();
 		
 		//failed login - inactive status (admin and user)
 		String username = "Lynn";
 		String password = "User";
-		user = login(username, password);
+		user.login(username, password);
+		user.logout();
 		
 		//view profile (user)
-		user = login(userUsername, userPassword);
+		user.login(userUsername, userPassword);
 		
 		user.viewProfile();
 		
@@ -46,8 +50,10 @@ public class FunctionalityTestDriver {
 		user.editProfile("","","","");
 		user.viewProfile();
 		
+		user.logout();
+		
 		//view profile (admin)
-		user = login(adminUsername, adminPassword);
+		user.login(adminUsername, adminPassword);
 		
 		user.viewProfile();
 		
@@ -55,8 +61,10 @@ public class FunctionalityTestDriver {
 		user.editProfile("","","","", "", "");
 		user.viewProfile();
 		
+		user.logout();
+		
 		//Search for schools - state, # of students (user)
-		user = login(userUsername, userPassword);
+		user.login(userUsername, userPassword);
 
 		String state = "Texas";
 		int numStudentsLower = 10000;
@@ -69,9 +77,13 @@ public class FunctionalityTestDriver {
 		String recommended = findRecommended(university);
 		print(recommended);
 		
+		user.logout();
+		
 		//view list of universities (admin)
-		user = login(adminUsername, adminPassword);
+		user.login(adminUsername, adminPassword);
 		viewUniversityList(/*parameters*/);
+		
+		user.logout();
 
 	}
 

@@ -19,10 +19,10 @@ public class AdminInteraction extends AccountInteraction{
 	/**
 	 * 
 	 */
-	AdminFunctionalityController AFCon;
+	AdminFunctionalityController afCon;
 	
 	public AdminInteraction() {
-		this.AFCon = new AdminFunctionalityController();
+		this.afCon = new AdminFunctionalityController();
 	}
 	
 	public void addUser(String firstname, String lastname, String username, 
@@ -47,16 +47,36 @@ public class AdminInteraction extends AccountInteraction{
 	String qualityOfLife, String[] emphases, ArrayList<Student> savedSchool) {
 		
 	}
-	public List<String > getUniversityInfo(University university){
+	public void getUniversityInfo(University university){
 		
 	}
 	
 	public void editUniversityInfo(University university , List<String> changes){
 		
 	}
-	
-	public List<Student> viewUsers(){
+	/**
+	 * Admin view a list of users, if no logged in print error message
+	 */
+	public void viewUsers(){
+		if(afCon.loggedIn) {
+			System.out.println(this.afCon.viewUsers().toString());
+		}
+		else {
+			System.out.println("You have not logged in yet, cannot view universities");
+		}
 		
+	}
+	
+	/**
+	 * Admin view a list of users, if no logged in print error message
+	 */
+	public void viewUniversities() {
+		if(afCon.loggedIn) {
+			System.out.println(this.afCon.viewUniversities().toString());
+		}
+		else {
+			System.out.println("You have not logged in yet, cannot view universities");
+		}
 	}
 	
 	public void cancelChanges() {
