@@ -53,7 +53,6 @@ public class University {
 >>>>>>> d43fa77fa9c3dbf467070bce4e2a99a06e2b697c
 
 
-
 	/**
 	 * @param name name of the university
 	 * @param state state where the university is located
@@ -77,7 +76,7 @@ public class University {
 	public University(String name, String state, String location, String control, String enrollment, String percentFemale,
 			String satVerbal, String satMath, String cost, String percentFinAid, String percentEnrolled, String applicants,
 			String percentAdmitted, String academicScale, String socialScale, String qualityOfLife, String[] emphases,
-			ArrayList<Account> savedSchool) {
+			ArrayList<Student> savedSchool) {
 		super();
 		this.name = name;
 		this.state = state;
@@ -339,6 +338,9 @@ public class University {
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> a33ee6e8a35577190b5b7b27538987374cc8dd68
 	/**
 	 * @return list of students that saved the school
 	 */
