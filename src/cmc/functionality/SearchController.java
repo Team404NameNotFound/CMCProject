@@ -27,8 +27,12 @@ public class SearchController {
 	/**
 	 * 
 	 */
-	public SearchController(University[] allSchools) {
-		this.universityList = allSchools;
+	public SearchController(ArrayList<University> allSchools) {
+		for(int i = 0; i < allSchools.size(); i++)
+		{
+			this.universityList[i] = allSchools.get(i);
+		}
+		
 	}
 	
 	public String[] getQuizQuestions()
@@ -463,5 +467,6 @@ public class SearchController {
 
 		DBController db = new DBController();
 		SearchController sc = new SearchController(db.getUniversityList());
+		University testUniversity = new University();
 	}
 }
