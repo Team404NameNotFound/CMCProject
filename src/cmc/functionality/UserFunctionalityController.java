@@ -70,15 +70,16 @@ public class UserFunctionalityController {
 	 * @param userName
 	 */
 	public ArrayList<String> viewUserProfile(String userName) {
-		if (this.DBCon.checkUser(userName)) {
-			Account userAcc = this.DBCon.getAccount(userName);
-			ArrayList<String> profile = new ArrayList<String>();
-			profile.add(userAcc.getFirstName());
-			profile.add(userAcc.getLastName());
-			profile.add(userAcc.getUsername());
-			profile.add(userAcc.getPassword());
-			profile.add(userAcc.getUserType());
-			return profile;
+		if
+			if (this.DBCon.checkUser(userName)) {
+				Account userAcc = this.DBCon.getAccount(userName);
+				ArrayList<String> profile = new ArrayList<String>();
+				profile.add(userAcc.getFirstName());
+				profile.add(userAcc.getLastName());
+				profile.add(userAcc.getUsername());
+				profile.add(userAcc.getPassword());
+				profile.add(userAcc.getUserType());
+				return profile;
 			}
 		else {
 			throw new IllegalArgumentException(userName + " does not exist in the database!");
