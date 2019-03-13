@@ -19,14 +19,14 @@ public class FunctionalityTestDriver {
 	 */
 	public static void main(String[] args) {
 		//successful login (user)
-		String userUsername = "John";
-		String userPassword = "User";
+		String userUsername = "juser";
+		String userPassword = "user";
 		user.login(userUsername, userPassword);
 		user.logout();
 		
 		//successful login (admin)
-		String adminUsername = "Noreen";
-		String adminPassword = "Admin";
+		String adminUsername = "luser";
+		String adminPassword = "user";
 		user.login(adminUsername, adminPassword);
 		user.logout();
 		
@@ -37,8 +37,8 @@ public class FunctionalityTestDriver {
 		user.logout();
 		
 		//failed login - inactive status (admin and user)
-		String username2 = "Lynn";
-		String password2 = "User";
+		String username2 = "luser";
+		String password2 = "user";
 		user.login(username2, password2);
 		user.logout();
 		
