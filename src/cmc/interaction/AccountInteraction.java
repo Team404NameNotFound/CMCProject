@@ -41,6 +41,11 @@ public class AccountInteraction {
 		}
 	}
 	
+	public void editProfile(String userName, String firstName, String lastName, String password)
+	{
+		UFCon.editUserProfile(userName, firstName, lastName, password);
+	}
+	
 	public void logout(){
 		this.UFCon.logout();
 	}

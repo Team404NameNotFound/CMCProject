@@ -26,7 +26,7 @@ public class FunctionalityTestDriver {
 		
 		//successful login (admin)
 		String adminUsername = "nadmin";
-		String adminPassword = "admin";
+		String adminPassword = "a";
 		user.login(adminUsername, adminPassword);
 		user.logout();
 		
@@ -43,14 +43,16 @@ public class FunctionalityTestDriver {
 		user.logout();
 		
 		//view profile (user)
-		user.login(userUsername, userPassword);
+		String username3 = "cuser";
+		String password3 = "user";
+		user.login(username3, password3);
 		
-		user.viewProfile(userUsername);
-//		
-//		
-//		//edit profile (user)
-//		user.editProfile("","","","");
-//		user.viewProfile();
+		user.viewProfile(username3);
+		
+		
+		//edit profile (user)
+		user.editProfile("cuser", "Tired", "Person", "sleep");
+		user.viewProfile(username3);
 //		
 //		user.logout();
 //		
