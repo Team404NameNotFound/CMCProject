@@ -32,6 +32,7 @@ public class University {
 	private ArrayList<Student> savedSchool;
 
 
+
 	/**
 	 * @param name name of the university
 	 * @param state state where the university is located
