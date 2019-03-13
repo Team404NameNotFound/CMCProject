@@ -49,14 +49,14 @@ public class DBController
 			 
 			if (schoolList[n][0].equals(school))
 			{
-<<<<<<< HEAD
+
 				
 				returnUniversity = new University(schoolList[n][0], schoolList[n][1], schoolList[n][2], schoolList[n][3], schoolList[n][4], schoolList[n][5], schoolList[n][6], schoolList[n][7], schoolList[n][8], schoolList[n][9], schoolList[n][10], schoolList[n][11], schoolList[n][12], schoolList[n][13], schoolList[n][14], schoolList[n][15]);
 			}
 			else
 			{
 				n++;
-=======
+
 				//finds users that have saved the school
 				String[][] accountList = dbLibrary.user_getUsernamesWithSavedSchools();
 				ArrayList<Account> savedStudents= new ArrayList<Account>();
@@ -89,7 +89,7 @@ public class DBController
 				}
 				
 				return new University(schoolList[n][0], schoolList[n][1], schoolList[n][2], schoolList[n][3], schoolList[n][4], schoolList[n][5], schoolList[n][6], schoolList[n][7], schoolList[n][8], schoolList[n][9], schoolList[n][10], schoolList[n][11], schoolList[n][12], schoolList[n][13], schoolList[n][14], schoolList[n][15], returnEmphases, savedStudents);
->>>>>>> a418fa72c4a31ffe2202b41ff17d77025e5a4147
+
 			}
 		}
 		
@@ -152,18 +152,18 @@ public class DBController
 	public ArrayList<University> getUniversityList()
 	{
 		String[][] schoolList = dbLibrary.university_getUniversities();
-<<<<<<< HEAD
+
 		ArrayList<University> returnList;
 		for (int i = 0; i < schoolList.length; i++)
 		{
 				returnList.add(new University(schoolList[n][0], schoolList[n][1], schoolList[n][2], schoolList[n][3], schoolList[n][4], schoolList[n][5], schoolList[n][6], schoolList[n][7], schoolList[n][8], schoolList[n][9], schoolList[n][10], schoolList[n][11], schoolList[n][12], schoolList[n][13], schoolList[n][14], schoolList[n][15]));
-=======
+
 		University[] returnArray = new University[schoolList.length];
 		
 		for (int i = 0; i < schoolList.length; i++)
 		{
 				returnArray[i] = getUniversity(schoolList[i][0]);
->>>>>>> a418fa72c4a31ffe2202b41ff17d77025e5a4147
+
 		}
 		return returnList;
 		
@@ -188,16 +188,16 @@ public class DBController
 		
 		for(int n = 0; n < savedSchools.length; n++)
 		{
-<<<<<<< HEAD
+
 			
-=======
+
 			if(savedSchools[n][0].equals(account.getUsername()))
 			{
 				returnArray[placer][0] = savedSchools[n][1];
 				returnArray[placer][1] = savedSchools[n][2];
 				placer++;
 			}
->>>>>>> a418fa72c4a31ffe2202b41ff17d77025e5a4147
+
 		}
 		
 		return null;
