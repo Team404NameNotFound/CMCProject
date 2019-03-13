@@ -461,7 +461,7 @@ public class SearchController {
 		ArrayList<University>  returnUniversity = new ArrayList<University>();
 		for (int i =0; i<universityList.length; i++)
 		{
-			int position = Integer.parseInt("" + schoolMatches[i][1]);
+			int position = (int)schoolMatches[i][1];
 			returnUniversity.add(universityList[position]);
 		}
 		for(int i = 0; i<schoolMatches.length;i++)
