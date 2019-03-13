@@ -1,6 +1,8 @@
 /**
  * 
  */
+import java.util.ArrayList;
+
 import cmc.*;
 import cmc.entity.*;
 import cmc.interaction.*;
@@ -70,13 +72,21 @@ public class FunctionalityTestDriver {
 //		
 //		user.logout();
 //		
-//		//Search for schools - state, # of students (user)
-//		user.login(userUsername, userPassword);
-//
-//		String state = "Texas";
-//		int numStudentsLower = 10000;
-//		int numStudentsUpper = 12000;
-//		String results = search(state, numStudentsLower, numStudentsUpper);
+		//Search for schools - state, # of students (user)
+		user.login(userUsername, userPassword);
+
+		String state = "Texas";
+		int numStudentsLower = 10000;
+		int numStudentsUpper = 12000;
+		String[] emphases = {};
+		ArrayList<University> results = search( "", state, "", numStudentsLower,
+				numStudentsUpper, (float)-1.0,(float)-1.0, -1, 
+				-1, -1, -1, -1, -1, 
+				(float)-1.0, (float)-1.0, -1, 
+				-1, (float)-1.0, (float)-1.0,
+				(float)-1.0, (float)-1.0, -1, -1,
+				-1, -1, -1, -1, emphases
+				);
 //		print(results);
 //		
 //		//find top 5 recommended schools (user)
