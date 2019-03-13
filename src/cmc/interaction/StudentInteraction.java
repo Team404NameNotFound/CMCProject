@@ -19,6 +19,7 @@ public class StudentInteraction extends AccountInteraction{
 	StudentFunctionalityController sfCon;
 	
 	public StudentInteraction() {
+		super();
 		sfCon = new StudentFunctionalityController();
 	}
 	
@@ -35,16 +36,30 @@ public class StudentInteraction extends AccountInteraction{
 	 * @param int numStduentsMax, maximal number of students
 	 */
 	
-	public void fieldSearch(String state, int numStudentsMin, int numStudentsMax) {
-		if(sfCon.loggedIn) {
+	public void fieldSearch(String schoolName, String state, String location, int numStudentsMin,
+			int numStudentsMax, float percentFemaleMin, float percentFemaleMax, int SATVerbalMin, 
+			int SATVerbalMax, int SATMathMin, int SATMathMax, int expensesMin, int expensesMax, 
+			float PercentFinancialAidMin, float percenetFinancialAidMax, int numberApplicantsMin, 
+			int numberApplicatnsMax, float percentAddmittedMin, float percentAdmittedMax,
+			float percentEnrolledMin, float percentEnrolledMax, int academicScaleMin, int academicScaleMax,
+			int socialScalemin, int socialScaleMax, int qualityOfLifeMin, int qualityOfLifeMax, String[] emphases
+			) {
+		if(!sfCon.loggedIn) {
 	    //sfCon.searchCon = new SearchController();
 	    // do I need to make a new SearchController using DBController.getUniversityList() as a param?
 		ArrayList<University> matchSchools =  
-				sfCon.searchCon.search("", state, "", numStudentsMin, numStudentsMax, 
-				(float)0.0, (float)1.0, 0,1000,0,1000,0,1000000000,
-				(float)0.0,(float)1.0,0,1000000000,(float)0.0,(float)1.0,
-				(float)0.0,(float)1.0,0,10000,0,1000000,0,10000000, new String[] {"",""});
-		 System.out.println(matchSchools.toString()); 
+				sfCon.searchCon.search( schoolName,  state,  location,  numStudentsMin,
+						 numStudentsMax,  percentFemaleMin,  percentFemaleMax,  SATVerbalMin, 
+						 SATVerbalMax,  SATMathMin,  SATMathMax,  expensesMin,  expensesMax, 
+						 PercentFinancialAidMin,  percenetFinancialAidMax,  numberApplicantsMin, 
+						 numberApplicatnsMax,  percentAddmittedMin,  percentAdmittedMax,
+						 percentEnrolledMin,  percentEnrolledMax,  academicScaleMin,  academicScaleMax,
+						 socialScalemin,  socialScaleMax,  qualityOfLifeMin,  qualityOfLifeMax,  emphases
+						);
+		 for(int i = 0; i<10;i++)
+		 {
+			 System.out.println(matchSchools.get(i));
+		 }
 		}
 		else {
 			System.out.println("You have not logged in yet, cannot use the search field function");
