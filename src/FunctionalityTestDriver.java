@@ -58,6 +58,8 @@ public class FunctionalityTestDriver {
 		user.editProfile("cuser", "Cool", "User", "user");
 		
 		user.logout();
+		
+		user.viewSchoolList();
 //		
 //		//view profile (admin)
 //		user.login(adminUsername, adminPassword);
