@@ -68,7 +68,7 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 			int socialScalemin, int socialScaleMax, int qualityOfLifeMin, int qualityOfLifeMax, String[] emphases) {
 		
 		
-		Double[][] searchResults = this.searchCon.search(schoolName, state, location, numStudentsMin, 
+		ArrayList<University> searchResults = this.searchCon.search(schoolName, state, location, numStudentsMin, 
 				numStudentsMax, percentFemaleMin, percentFemaleMax, SATVerbalMin, 
 				SATVerbalMax, SATMatMin, SATMathMax, expensesMin, expensesMax, 
 				PercentFinancialAidMin, percenetFinancialAidMax, numberApplicantsMin, 
