@@ -449,7 +449,15 @@ public class SearchController {
 			schoolMatches[i][1] = Double.parseDouble(""+i);
 		}
 		
-		Arrays.sort(schoolMatches);
+		//Arrays.sort(schoolMatches);
+		
+		java.util.Arrays.sort(schoolMatches, new java.util.Comparator<double[]>() {
+		    public int compare(double[] a, double[] b) {
+		        return Double.compare(a[0], b[0]);
+		    }
+		});
+		
+		
 		ArrayList<University>  returnUniversity = new ArrayList<University>();
 		for (int i =0; i<universityList.length; i++)
 		{
