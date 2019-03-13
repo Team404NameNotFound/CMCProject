@@ -17,8 +17,8 @@ public class AccountInteraction {
 	 * @param username
 	 * @param password
 	 */
-	public void logon(String username, String password){
-		this.UFCon.logon(username, password);
+	public void login(String username, String password){
+		this.UFCon.login(username, password);
 		
 	}
 	public void logout(){

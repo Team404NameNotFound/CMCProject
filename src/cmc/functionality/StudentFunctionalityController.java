@@ -78,10 +78,6 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 		return null;
 	}
 	
-	//incomplete
-	public ArrayList<University> viewSearchResults(){
-		return null;
-	}
 	
 	
 	

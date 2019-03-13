@@ -1,5 +1,5 @@
 package cmc.functionality;
-import java.util.List;
+import java.util.ArrayList;
 
 import cmc.entity.Account;
 import cmc.entity.University;
@@ -17,21 +17,12 @@ public class DBController
 	public Boolean checkUser(String inputString)
 	{
 		String[][] userList = dbLibrary.user_getUsers();
-		int n = 0;
-		String username = "";
-		while (userList[n][2] != null)
+		for (int n = 0; n < userList.length; n++)
 		{
 			 
 			if (userList[n][2].equals(inputString))
 			{
-				if (userList[n][5] == "Y")
-				{
-					return true;
-				}
-			}
-			else
-			{
-				n++;
+				return true;
 			}
 		}
 		return false;
@@ -51,10 +42,9 @@ public class DBController
 	{
 		String[][] schoolList = dbLibrary.university_getUniversities();
 		//String[][] emphasis = dbLibrary.university_getEmphases();
-		int n = 0;
 		University returnUniversity;
 		//while (emphasis[])
-		while (schoolList[n][0] != null)
+		for (int n = 0; n < schoolList.length; n++)
 		{
 			 
 			if (schoolList[n][0].equals(school))
@@ -79,9 +69,8 @@ public class DBController
 	public Account getAccount(String accountName)
 	{
 		String[][] accountList = dbLibrary.user_getUsers();
-		int n = 0;
 		Account returnAccount;
-		while (accountList[n][2] != null)
+		for (int n = 0; n < accountList.length; n++)
 		{
 			 
 			if (accountList[n][2].equals(accountName))
@@ -95,7 +84,7 @@ public class DBController
 				n++;
 			}
 		}
-		return new Account("","","","","","");
+		return null;
 	}
 	
 	public void setAccount(Account account)
@@ -111,9 +100,7 @@ public class DBController
 	public boolean findUniversity(String school)
 	{
 		String[][] schoolList = dbLibrary.university_getUniversities();
-		int n = 0;
 		
-		while (schoolList[n][0] != null)
 		{
 			if (schoolList[n][0].equals(school))
 			{
@@ -127,53 +114,40 @@ public class DBController
 		return false;
 	}
 	
-	public List<University> getUniversityList()
+	public ArrayList<University> getUniversityList()
 	{
 		String[][] schoolList = dbLibrary.university_getUniversities();
-		int n = 0;
-		List<University> returnList;
-		while (schoolList[n][0] != null)
+		ArrayList<University> returnList;
+		for (int i = 0; i < schoolList.length; i++)
 		{
-			try
-			{
 				returnList.add(new University(schoolList[n][0], schoolList[n][1], schoolList[n][2], schoolList[n][3], schoolList[n][4], schoolList[n][5], schoolList[n][6], schoolList[n][7], schoolList[n][8], schoolList[n][9], schoolList[n][10], schoolList[n][11], schoolList[n][12], schoolList[n][13], schoolList[n][14], schoolList[n][15]));
-			}
-			catch(Exception e)
-			{
-				return returnList;
-			}
-			n++;
-			
 		}
 		return returnList;
 		
 	}
 	
-	public List<Account> getAccountList()
+	public ArrayList<Account> getAccountList()
 	{
 		String[][] accountList = dbLibrary.user_getUsers();
-		int n = 0;
-		List<Account> returnList;
-		while (accountList[n][0] != null)
+		ArrayList<Account> returnList = new ArrayList<Account>();
+		for (int n = 0; n < accountList.length; n++)
 		{
-			try
-			{
 				returnList.add(new Account(accountList[n][0], accountList[n][1],accountList[n][2],accountList[n][3],accountList[n][4],accountList[n][5]));
-			}
-			catch(Exception e)
-			{
-				return returnList;
-			}
-			n++;
-			
 		}
 		return returnList;
 		
 	}
 	
-	public List<University> getSchoolList(Account account)
+	public ArrayList<University> getSchoolList(Account account)
 	{
-		String[][] accountList = dbLibrary.user_getUsers();
-
+		String[][] schoolList = dbLibrary.university_getUniversities();
+		String[][] savedSchools = dbLibrary.user_getUsernamesWithSavedSchools();
+		
+		for(int n = 0; n < savedSchools.length; n++)
+		{
+			
+		}
+		
+		return null;
 	}
 }

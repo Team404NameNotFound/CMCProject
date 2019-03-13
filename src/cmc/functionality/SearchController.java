@@ -397,6 +397,7 @@ public class SearchController {
 //	String[] emphases = {"Math", "Science"};
 	
 	//theoretical values for a school
+
 //	University testSchool = new University("name", "state", "location", "control", "5000", ".4",
 //			"satVerbal", "satMath", "cost", "percentFinAid", "percentEnrolled", "applicants",
 //			"percentAdmitted", "academicScale", "socialScale", "qualityOfLife", emphases,
@@ -418,10 +419,9 @@ public class SearchController {
 //
 //		}
 //	}
-	
 
 //	System.out.println(score);
-		DB
+//		DB
 		SearchController sc = new SearchController();
 	}
 }

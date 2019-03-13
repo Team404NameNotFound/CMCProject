@@ -2,34 +2,38 @@
  * 
  */
 import cmc.*;
+import cmc.entity.*;
+import cmc.interaction.*;
 /**
  * @author kmendel001
  *
  */
 public class FunctionalityTestDriver {
-
+	
+	AccountInteraction user = new AccountInteraction();
+	
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		//successful login (user)
-		String userUsername = "";
-		String userPassword = "";
-		user = login(userUsername, userPassword);
+		String userUsername = "John";
+		String userPassword = "User";
+		user.login(userUsername, userPassword);
 		
 		//successful login (admin)
-		String adminUsername = "";
-		String adminPassword = "";
+		String adminUsername = "Noreen";
+		String adminPassword = "Admin";
 		user = login(adminUsername, adminPassword);
 		
 		//failed login - invalid credentials (admin and user)
-		String username = "";
-		String password = "";
+		String username = "Team";
+		String password = "404";
 		user = login(username, password);
 		
 		//failed login - inactive status (admin and user)
-		String username = "";
-		String password = "";
+		String username = "Lynn";
+		String password = "User";
 		user = login(username, password);
 		
 		//view profile (user)
@@ -54,9 +58,10 @@ public class FunctionalityTestDriver {
 		//Search for schools - state, # of students (user)
 		user = login(userUsername, userPassword);
 
-		String state = "";
-		String numStudents = "";
-		String results = search(/*search criteria*/);
+		String state = "Texas";
+		int numStudentsLower = 10000;
+		int numStudentsUpper = 12000;
+		String results = search(state, numStudentsLower, numStudentsUpper);
 		print(results);
 		
 		//find top 5 recommended schools (user)
