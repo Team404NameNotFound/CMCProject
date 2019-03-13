@@ -83,8 +83,8 @@ public class FunctionalityTestDriver {
 		user.editProfile("cuser", "Cool", "User", "user");
 		
 		user.logout();
-		
-//		user.viewSchoolList();
+		System.out.println();
+		user.viewSchoolList();
 		System.out.println("-------------------------");
 		System.out.println();
 //		

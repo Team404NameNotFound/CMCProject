@@ -485,10 +485,10 @@ public class SearchController {
 			int position = (int)schoolMatches[i][1];
 			returnUniversity.add(universityList[position]);
 		}
-		for(int i = 0; i<schoolMatches.length;i++)
-		{
-			System.out.println("Score: " + schoolMatches[i][0] + " Position: " + schoolMatches[i][1]);
-		}
+//		for(int i = 0; i<schoolMatches.length;i++)
+//		{
+//			System.out.println("Score: " + schoolMatches[i][0] + " Position: " + schoolMatches[i][1]);
+//		}
 		return returnUniversity;
 	}
 	
