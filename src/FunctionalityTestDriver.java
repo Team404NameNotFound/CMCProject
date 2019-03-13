@@ -52,9 +52,12 @@ public class FunctionalityTestDriver {
 		
 		//edit profile (user)
 		user.editProfile("cuser", "Tired", "Person", "sleep");
+		
 		user.viewProfile(username3);
-//		
-//		user.logout();
+		
+		user.editProfile("cuser", "Cool", "User", "user");
+		
+		user.logout();
 //		
 //		//view profile (admin)
 //		user.login(adminUsername, adminPassword);
