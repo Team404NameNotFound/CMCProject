@@ -28,9 +28,10 @@ public class SearchController {
 	 * 
 	 */
 	public SearchController(ArrayList<University> allSchools) {
+		this.universityList = new University[allSchools.size()];
 		for(int i = 0; i < allSchools.size(); i++)
 		{
-			universityList = new University[allSchools.size()];
+			
 			this.universityList[i] = allSchools.get(i);
 		}
 		
@@ -130,7 +131,7 @@ public class SearchController {
 			int socialScalemin, int socialScaleMax, int qualityOfLifeMin, int qualityOfLifeMax, String[] emphases
 			)
 	{
-		Double[][] schoolMatches = new Double[this.universityList.length][2];
+		double[][] schoolMatches = new double[this.universityList.length][2];
 		int schoolNumStudentMin = 0;
 		int schoolNumStudentMax = 1000000;
 		float schoolPerFemaleMin = (float) 1.0;
@@ -157,7 +158,7 @@ public class SearchController {
 		int schoolQualityofLifeMax = 0;
 		for(University testSchool: universityList)
 		{
-			if(Integer.parseInt("" + testSchool.getEnrollment()) < (schoolNumStudentMin))
+			if(Integer.parseInt(testSchool.getEnrollment()) < (schoolNumStudentMin))
 			{
 				schoolNumStudentMin = Integer.parseInt(testSchool.getEnrollment());
 			}
@@ -256,7 +257,7 @@ public class SearchController {
 		}
 		for(int i = 0; i < this.universityList.length; i++)
 		{
-			Double score = 0.0;
+			double score = 0.0;
 			//testing distance based on enrollment
 			if(numStudentsMin != -1 && numStudentsMax != -1)
 			{

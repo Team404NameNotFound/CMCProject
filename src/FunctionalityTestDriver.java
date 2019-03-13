@@ -83,7 +83,7 @@ public class FunctionalityTestDriver {
 		
 		user.logout();
 		
-		user.viewSchoolList();
+//		user.viewSchoolList();
 		System.out.println("-------------------------");
 		System.out.println();
 //		
