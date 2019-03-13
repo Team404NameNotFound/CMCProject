@@ -29,7 +29,7 @@ public class University {
 	private String socialScale;
 	private String qualityOfLife;
 	private String[] emphases;
-	private ArrayList<Student> savedSchool;
+	private ArrayList<Account> savedSchool;
 
 
 	/**
@@ -55,7 +55,7 @@ public class University {
 	public University(String name, String state, String location, String control, String enrollment, String percentFemale,
 			String satVerbal, String satMath, String cost, String percentFinAid, String percentEnrolled, String applicants,
 			String percentAdmitted, String academicScale, String socialScale, String qualityOfLife, String[] emphases,
-			ArrayList<Student> savedSchool) {
+			ArrayList<Account> savedSchool) {
 		super();
 		this.name = name;
 		this.state = state;
