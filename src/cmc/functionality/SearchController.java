@@ -30,6 +30,8 @@ public class SearchController {
 	public SearchController(ArrayList<University> allSchools) {
 		for(int i = 0; i < allSchools.size(); i++)
 		{
+			System.out.println("test");
+			System.out.println(allSchools.get(i).toString());
 			this.universityList[i] = allSchools.get(i);
 		}
 		
