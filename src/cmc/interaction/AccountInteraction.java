@@ -32,6 +32,10 @@ public class AccountInteraction {
 		
 	}
 	
+	/**
+	 * Displays the profile of the specified user
+	 * @param userName
+	 */
 	public void viewProfile(String userName)
 	{
 		ArrayList<String> userInfo = UFCon.viewUserProfile(userName);
@@ -42,16 +46,30 @@ public class AccountInteraction {
 		}
 	}
 	
+	/**
+	 * Updates the first name, last name, and password for the specified user 
+	 * @param userName
+	 * @param firstName
+	 * @param lastName
+	 * @param password
+	 */
 	public void editProfile(String userName, String firstName, String lastName, String password)
 	{
 		UFCon.editUserProfile(userName, firstName, lastName, password);
 	}
 	
+	/**
+	 * Logs out the currently logged in user
+	 */
 	public void logout(){
 		this.UFCon.logout();
 	}
 	
-	public void forgetPsw(String username){
+	/**
+	 * Generates a random password then sets it as the specified user and sends it to the email address of that user
+	 * @param username
+	 */
+	public void forgotPsw(String username){
 		this.UFCon.forgotPassword(username);
 	}
 	

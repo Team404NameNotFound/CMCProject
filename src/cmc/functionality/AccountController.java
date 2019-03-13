@@ -22,19 +22,32 @@ public class AccountController {
 		this.account = account;
 	}
 
+	//Constructor
 	public AccountController()
 	{
+		
 	}
+	
+	/**
+	 * Returns list of all schools
+	 * @return schoolList
+	 */
 	public ArrayList<UserSavedSchool> getSchoolList()
 	{
 		return ((Student) account).getSavedSchools();
 	}
 	
+	/**
+	 * Checks to see if any student has saved the specified school
+	 */
 	public boolean checkIfShoolSaved(University school)
 	{
 		return ((Student)account).isSchoolSaved(school.getName());
 	}
 	
+	/**
+	 * Toggles the status of the current user
+	 */
 	public void toggleActivationStatus()
 	{
 		if(account.getUserStatus().equals("N"))
@@ -47,6 +60,11 @@ public class AccountController {
 		}
 	}
 	
+	/**
+	 * Checks if the password matches for the current user
+	 * @param password
+	 * @return
+	 */
 	public boolean checkPassword(String password)
 	{
 		//check to see if passwords match, if they do not then returns false
@@ -65,6 +83,10 @@ public class AccountController {
 		}
 	}
 	
+	/**
+	 * Randomly generates a password
+	 * @return randomPassword
+	 */
 	public String makeRandomPassword()
 	{
 		String newPass = "";
@@ -82,6 +104,10 @@ public class AccountController {
 		return newPass;
 	}
 	
+	/**
+	 * Updates the password of the current user
+	 * @param newPassword
+	 */
 	public void updatePassword(String newPassword)
 	{
 		if(newPassword.equals(null) || newPassword.equals(""))
@@ -95,11 +121,24 @@ public class AccountController {
 		}
 	}
 	
+	/**
+	 * Sends an email to the current user
+	 * @param message
+	 */
 	public void sendEmail(String message)
 	{
 		String email = account.getUsername();
 	}
 	
+	/**
+	 * Updates the first name, last name, password, type, and status of the current user
+	 * @param fName
+	 * @param lName
+	 * @param password
+	 * @param type
+	 * @param status
+	 * @return
+	 */
 	public Account updateUserInfo(String fName, String lName, String password, String type, String status)
 	{
 		if(!fName.equals(null) && !fName.equals(""))
@@ -139,17 +178,35 @@ public class AccountController {
 		return account;
 	}
 	
+	/**
+	 * Saves the specified school to the current users saved school list
+	 * @param schoolToSave
+	 */
 	public void saveSchool(University schoolToSave)
 	{
 		Date time = new Date();
 		 ((Student)account).saveSchool(schoolToSave, time.toString());
 	}
 	
+	/**
+	 * Removes school from the current student saved school list
+	 * @param schoolToRemove
+	 */
 	public void removeUniversity(University schoolToRemove)
 	{
 		 ((Student) account).removeSchool(schoolToRemove.getName());
 	}
 	
+	/**
+	 * Creates a new account with the specified parameters
+	 * @param fName
+	 * @param lName
+	 * @param userName
+	 * @param password
+	 * @param type
+	 * @param savedSchools
+	 * @return
+	 */
 	public Account createNewAccount(String fName, String lName, String userName, String password, String type,
 			ArrayList<UserSavedSchool> savedSchools)
 	{

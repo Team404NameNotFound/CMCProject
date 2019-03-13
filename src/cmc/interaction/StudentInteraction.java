@@ -67,6 +67,10 @@ public class StudentInteraction extends AccountInteraction{
 		
 	}
 	
+	/**
+	 * Returns the five most similar schools to the specified school
+	 * @param schoolToCompare
+	 */
 	public void findRecommended(University schoolToCompare)
 	{
 		ArrayList<University> closeMatch = sfCon.rankUniversity(schoolToCompare.getName());

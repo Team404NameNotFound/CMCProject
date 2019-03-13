@@ -21,25 +21,71 @@ public class AdminInteraction extends AccountInteraction{
 	 */
 	AdminFunctionalityController afCon;
 	
+	//constructer
 	public AdminInteraction() {
 		this.afCon = new AdminFunctionalityController();
 	}
 	
+	/**
+	 * Adds a new user to the database
+	 * @param firstname
+	 * @param lastname
+	 * @param username
+	 * @param password
+	 * @param userType
+	 * @param userStatus
+	 */
 	public void addUser(String firstname, String lastname, String username, 
 			String password, String userType, String userStatus) {
 		
 	}
+	
+	/**
+	 * Edits the specified user with the list of changes
+	 * @param student
+	 * @param changes
+	 */
 	public void editUser(Student student, List<String> changes) {
 		
 	}
-	public void toggleActivationStatus() {
+	
+	/**
+	 * Changes the status of the specified user
+	 * @param account
+	 */
+	public void toggleActivationStatus(String account) {
 		
 	}
 	
+	/**
+	 * Removes the specified user form the database
+	 * @param university
+	 */
 	public void removeUniversity(University university) {
 		
 	}
 	
+	/**
+	 * Adds a new university to the database with the given parameters
+	 * @param name
+	 * @param state
+	 * @param location
+	 * @param control
+	 * @param enrollment
+	 * @param percentFemale
+	 * @param satVerbal
+	 * @param satMath
+	 * @param cost
+	 * @param percentFinAid
+	 * @param percentEnrolled
+	 * @param applicants
+	 * @param percentAdmitted
+	 * @param academicScale
+	 * @param socialScale
+	 * @param qualityOfLife
+	 * @param emphases
+	 * @param savedSchool
+	 */
 	public void addUniversity(
     String name, String state, String location, String control, String enrollment, String percentFemale,
 	String satVerbal, String satMath, String cost, String percentFinAid, String percentEnrolled,
@@ -47,13 +93,24 @@ public class AdminInteraction extends AccountInteraction{
 	String qualityOfLife, String[] emphases, ArrayList<Student> savedSchool) {
 		
 	}
+	
+	/**
+	 * Gets complete information for the specified university
+	 * @param university
+	 */
 	public void getUniversityInfo(University university){
 		
 	}
 	
+	/**
+	 * Edits the specified university with the list of changes
+	 * @param university
+	 * @param changes
+	 */
 	public void editUniversityInfo(University university , List<String> changes){
 		
 	}
+	
 	/**
 	 * Admin view a list of users, if no logged in print error message
 	 */
@@ -79,6 +136,9 @@ public class AdminInteraction extends AccountInteraction{
 		}
 	}
 	
+	/**
+	 * Cancels changes to be made a university
+	 */
 	public void cancelChanges() {
 		
 	}
