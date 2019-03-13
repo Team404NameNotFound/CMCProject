@@ -19,6 +19,7 @@ public class StudentInteraction extends AccountInteraction{
 	StudentFunctionalityController sfCon;
 	
 	public StudentInteraction() {
+		super();
 		sfCon = new StudentFunctionalityController();
 	}
 	
@@ -43,7 +44,7 @@ public class StudentInteraction extends AccountInteraction{
 			float percentEnrolledMin, float percentEnrolledMax, int academicScaleMin, int academicScaleMax,
 			int socialScalemin, int socialScaleMax, int qualityOfLifeMin, int qualityOfLifeMax, String[] emphases
 			) {
-		if(sfCon.loggedIn) {
+		if(!sfCon.loggedIn) {
 	    //sfCon.searchCon = new SearchController();
 	    // do I need to make a new SearchController using DBController.getUniversityList() as a param?
 		ArrayList<University> matchSchools =  

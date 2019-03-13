@@ -13,6 +13,7 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 	public SearchController searchCon;
 	//constructer
 	public StudentFunctionalityController() {
+		super();
 		this.searchCon = new SearchController(this.DBCon.getUniversityList());
 	}
 	

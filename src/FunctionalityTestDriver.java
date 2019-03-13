@@ -73,7 +73,7 @@ public class FunctionalityTestDriver {
 //		user.logout();
 //		
 		//Search for schools - state, # of students (user)
-		user.login(userUsername, userPassword);
+		student.login(userUsername, userPassword);
 
 		String state = "Texas";
 		int numStudentsLower = 10000;
