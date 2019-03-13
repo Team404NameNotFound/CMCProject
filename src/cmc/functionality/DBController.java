@@ -2,34 +2,18 @@ package cmc.functionality;
 import java.util.ArrayList;
 
 import cmc.entity.Account;
-import cmc.entity.Student;
 import cmc.entity.University;
-import cmc.entity.UserSavedSchool;
 import dblibrary.project.csci230.UniversityDBLibrary;
 
 
-/**
- * @author pdoyle001
- *
- */
 public class DBController 
 {
-	/**
-	 * 
-	 */
 	private UniversityDBLibrary dbLibrary;
 
-	/**
-	 * 
-	 */
 	public DBController() {
 		dbLibrary = new UniversityDBLibrary("error404", "csci230");
 	}
 	
-	/**
-	 * @param inputString
-	 * @return
-	 */
 	public Boolean checkUser(String inputString)
 	{
 		String[][] userList = dbLibrary.user_getUsers();
@@ -44,69 +28,44 @@ public class DBController
 		return false;
 	}
 	
-	/**
-	 * @param schoolName
-	 */
 	public void removeUniversity(String schoolName)
 	{
 		dbLibrary.university_deleteUniversity(schoolName);
 	}
 	
-	/**
-	 * @param school
-	 */
 	public void addUniversity(University school)
 	{
 		dbLibrary.university_addUniversity(school.getName(), school.getState(), school.getLocation(), school.getControl(), Integer.parseInt(school.getEnrollment()), Double.parseDouble(school.getPercentFemale()), Double.parseDouble(school.getSatVerbal()), Double.parseDouble(school.getSatMath()), Double.parseDouble(school.getCost()), Double.parseDouble(school.getPercentFinAid()), Integer.parseInt(school.getApplicants()), Double.parseDouble(school.getPercentAdmitted()), Double.parseDouble(school.getPercentEnrolled()), Integer.parseInt(school.getAcademicScale()), Integer.parseInt(school.getSocialScale()), Integer.parseInt(school.getQualityOfLife()));
 	}
 	
-	/**
-	 * @param school
-	 * @return
-	 */
 	public University getUniversity(String school)
 	{
 		String[][] schoolList = dbLibrary.university_getUniversities();
+		//String[][] emphasis = dbLibrary.university_getEmphases();
+		University returnUniversity;
+		//while (emphasis[])
 		for (int n = 0; n < schoolList.length; n++)
 		{
 			 
 			if (schoolList[n][0].equals(school))
 			{
-				String[][] accountList = dbLibrary.user_getUsernamesWithSavedSchools();
-				ArrayList<Student> savedStudents= new ArrayList<Student>();
-				for(int i = 0; i < accountList.length;i++)
-				{
-					if(accountList[i][1].equals(school))
-					{
-						ArrayList<UserSavedSchool> savedSchools = new ArrayList<UserSavedSchool>();
-						for(int j = 0; j < accountList.length; j++)
-						{
-							if(accountList[j][])
-						}
-						Student student = new Student(getAccount(accountList[i][0]), savedSchools);
-						savedStudents.add(student);
-					}
-				}
 				
-				return new University(schoolList[n][0], schoolList[n][1], schoolList[n][2], schoolList[n][3], schoolList[n][4], schoolList[n][5], schoolList[n][6], schoolList[n][7], schoolList[n][8], schoolList[n][9], schoolList[n][10], schoolList[n][11], schoolList[n][12], schoolList[n][13], schoolList[n][14], schoolList[n][15], null, savedStudents);
+				returnUniversity = new University(schoolList[n][0], schoolList[n][1], schoolList[n][2], schoolList[n][3], schoolList[n][4], schoolList[n][5], schoolList[n][6], schoolList[n][7], schoolList[n][8], schoolList[n][9], schoolList[n][10], schoolList[n][11], schoolList[n][12], schoolList[n][13], schoolList[n][14], schoolList[n][15]);
+			}
+			else
+			{
+				n++;
 			}
 		}
-		return null;
+		
 		
 	}
 	
-	/**
-	 * @param school
-	 */
 	public void setUniversity(University school)
 	{
 		dbLibrary.university_editUniversity(school.getName(), school.getState(), school.getLocation(), school.getControl(), Integer.parseInt(school.getEnrollment()), Double.parseDouble(school.getPercentFemale()), Double.parseDouble(school.getSatVerbal()), Double.parseDouble(school.getSatMath()), Double.parseDouble(school.getCost()), Double.parseDouble(school.getPercentFinAid()), Integer.parseInt(school.getApplicants()), Double.parseDouble(school.getPercentAdmitted()), Double.parseDouble(school.getPercentEnrolled()), Integer.parseInt(school.getAcademicScale()), Integer.parseInt(school.getSocialScale()), Integer.parseInt(school.getQualityOfLife()));
 	}
 	
-	/**
-	 * @param accountName
-	 * @return
-	 */
 	public Account getAccount(String accountName)
 	{
 		String[][] accountList = dbLibrary.user_getUsers();
@@ -128,30 +87,20 @@ public class DBController
 		return null;
 	}
 	
-	/**
-	 * @param account
-	 */
 	public void setAccount(Account account)
 	{
 		dbLibrary.user_editUser(account.getUsername(), account.getFirstName(), account.getLastName(), account.getPassword(), account.getUserType().charAt(0), account.getUserStatus().charAt(0));
 	}
 	
-	/**
-	 * @param account
-	 */
 	public void addUser(Account account)
 	{
 		dbLibrary.user_addUser(account.getUsername(), account.getFirstName(), account.getLastName(), account.getPassword(), account.getUserType().charAt(0));
 	}
 	
-	/**
-	 * @param school
-	 * @return
-	 */
 	public boolean findUniversity(String school)
 	{
 		String[][] schoolList = dbLibrary.university_getUniversities();
-		for(int n = 0; n < schoolList.length;n++)
+		
 		{
 			if (schoolList[n][0].equals(school))
 			{
@@ -165,26 +114,18 @@ public class DBController
 		return false;
 	}
 	
-	/**
-	 * @return
-	 */
-	public University[] getUniversityList()
+	public ArrayList<University> getUniversityList()
 	{
 		String[][] schoolList = dbLibrary.university_getUniversities();
-		University[] returnArray = new University[schoolList.length];
-		ArrayList<Account> savedAccounts;
-		
+		ArrayList<University> returnList;
 		for (int i = 0; i < schoolList.length; i++)
 		{
-				returnArray[i] = (new University(schoolList[n][0], schoolList[n][1], schoolList[n][2], schoolList[n][3], schoolList[n][4], schoolList[n][5], schoolList[n][6], schoolList[n][7], schoolList[n][8], schoolList[n][9], schoolList[n][10], schoolList[n][11], schoolList[n][12], schoolList[n][13], schoolList[n][14], schoolList[n][15]));
+				returnList.add(new University(schoolList[n][0], schoolList[n][1], schoolList[n][2], schoolList[n][3], schoolList[n][4], schoolList[n][5], schoolList[n][6], schoolList[n][7], schoolList[n][8], schoolList[n][9], schoolList[n][10], schoolList[n][11], schoolList[n][12], schoolList[n][13], schoolList[n][14], schoolList[n][15]));
 		}
-		return returnArray;
+		return returnList;
 		
 	}
 	
-	/**
-	 * @return
-	 */
 	public ArrayList<Account> getAccountList()
 	{
 		String[][] accountList = dbLibrary.user_getUsers();
@@ -197,33 +138,16 @@ public class DBController
 		
 	}
 	
-	/**
-	 * @param account
-	 * @return
-	 */
-	public String[][] getSchoolList(Account account)
+	public ArrayList<University> getSchoolList(Account account)
 	{
+		String[][] schoolList = dbLibrary.university_getUniversities();
 		String[][] savedSchools = dbLibrary.user_getUsernamesWithSavedSchools();
-		int counter = 0;
+		
 		for(int n = 0; n < savedSchools.length; n++)
 		{
-			if(savedSchools[n][0].equals(account.getUsername()))
-			{
-				counter++;
-			}
-		}
-		String[][] returnArray = new String[counter-1][1];
-		int placer = 0;
-		for(int n = 0; n < savedSchools.length; n++)
-		{
-			if(savedSchools[n][0].equals(account.getUsername()))
-			{
-				returnArray[placer][0] = savedSchools[n][0];
-				returnArray[placer][1] = savedSchools[n][1];
-				placer++;
-			}
+			
 		}
 		
-		return returnArray;
+		return null;
 	}
 }
