@@ -19,7 +19,7 @@ import cmc.entity.University;
 public class SearchController {
 
 	String[] quizQuestions = {"How would you describe the location of your ideal college?", 
-			"Which characteristics are most imporatnt to you when looking for a colelge", 
+			"Which characteristics are most imporatnt to you when looking for a college", 
 			"I prefer large lectures where I can observe and be anonymous, rather than small discussions with participation and my professors know my name ",
 			"Do you know what you would like to study?"};
 	University[] universityList;

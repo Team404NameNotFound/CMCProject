@@ -47,7 +47,7 @@ public class DBController
 			if (schoolList[n][0].equals(school))
 			{		
 
-				//finds users that have saved the school
+				/**
 				String[][] accountList = dbLibrary.user_getUsernamesWithSavedSchools();
 				ArrayList<Account> savedStudents= new ArrayList<Account>();
 				for(int i = 0; i < accountList.length;i++)
@@ -58,6 +58,7 @@ public class DBController
 						savedStudents.add(student);
 					}
 				}
+				*/
 				
 				String[][] emphases = dbLibrary.university_getEmphases();
 				int emphCounter = 0;
