@@ -130,16 +130,10 @@ public class DBController
 		Account returnAccount;
 		for (int n = 0; n < accountList.length; n++)
 		{
-			 
 			if (accountList[n][2].equals(accountName))
-			{
-				
+			{				
 				returnAccount = new Account(accountList[n][0], accountList[n][1],accountList[n][2],accountList[n][3],accountList[n][4],accountList[n][5]);
 				return returnAccount;
-			}
-			else
-			{
-				n++;
 			}
 		}
 		return null;
