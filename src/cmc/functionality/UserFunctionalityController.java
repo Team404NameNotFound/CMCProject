@@ -62,6 +62,7 @@ public class UserFunctionalityController {
 		if (loggedIn) {
 			this.account = null;
 			System.out.println("Logout successful");
+			this.loggedIn = false;
 		}
 	}
 	
