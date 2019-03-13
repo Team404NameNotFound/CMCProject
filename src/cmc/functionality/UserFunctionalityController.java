@@ -70,7 +70,7 @@ public class UserFunctionalityController {
 	 * @param userName
 	 */
 	public ArrayList<String> viewUserProfile(String userName) {
-		if
+		//get rid of  A IF
 			if (this.DBCon.checkUser(userName)) {
 				Account userAcc = this.DBCon.getAccount(userName);
 				ArrayList<String> profile = new ArrayList<String>();
@@ -109,7 +109,7 @@ public class UserFunctionalityController {
 	 * the information displayed is different for admins and students
 	 */
 	public void viewSchoolList() {
-		University[] universityList = this.DBCon.getUniversityList();
+		ArrayList<University> universityList = this.DBCon.getUniversityList();
 		if (this.account.account instanceof Admin) {
 			// display list info for admins
 		}
@@ -124,7 +124,7 @@ public class UserFunctionalityController {
 	 */
 	public void forgotPassword(String userName) {
 		if (!loggedIn ) {
-			if (this.DBCon.checkUser()) {
+			if (this.DBCon.checkUser(userName)) {
 			AccountController userAcc = new AccountController(this.DBCon.getAccount(userName));
 			String rndPassword = userAcc.makeRandomPassword();
 			userAcc.updatePassword(rndPassword);
@@ -153,7 +153,7 @@ public class UserFunctionalityController {
 		universityList.add(university.getPercentFemale());
 		universityList.add(university.getSatVerbal());
 		universityList.add(university.getSatMath());
-		universityList.add(university.getEmphases());
+		//universityList.add(university.getEmphases());
 		universityList.add(university.getPercentFinAid());
 		universityList.add(university.getApplicants());
 		universityList.add(university.getPercentAdmitted());
