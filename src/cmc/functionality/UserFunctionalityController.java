@@ -109,14 +109,9 @@ public class UserFunctionalityController {
 	 * Displays information for all schools in the database
 	 * the information displayed is different for admins and students
 	 */
-	public void viewSchoolList() {
+	public ArrayList<University> viewSchoolList() {
 		ArrayList<University> universityList = this.DBCon.getUniversityList();
-		if (this.account.account instanceof Admin) {
-			// display list info for admins
-		}
-		else if (account.account instanceof Student) {
-			// display school list for students
-		}
+		return universityList;
 	}
 	
 	/**
