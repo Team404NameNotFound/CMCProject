@@ -157,7 +157,7 @@ public class SearchController {
 		int schoolQualityofLifeMax = 0;
 		for(University testSchool: universityList)
 		{
-			if(Integer.parseInt(testSchool.getEnrollment()) < schoolNumStudentMin)
+			if(Integer.parseInt("" + testSchool.getEnrollment()) < (schoolNumStudentMin))
 			{
 				schoolNumStudentMin = Integer.parseInt(testSchool.getEnrollment());
 			}

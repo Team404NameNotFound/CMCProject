@@ -82,13 +82,10 @@ public class FunctionalityTestDriver {
 		user.editProfile("cuser", "Cool", "User", "user");
 		
 		user.logout();
-<<<<<<< HEAD
 		
 		user.viewSchoolList();
-=======
 		System.out.println("-------------------------");
 		System.out.println();
->>>>>>> 6b148b0c4c6e17371ffc73942fba789135eb3b86
 //		
 //		//view profile (admin)
 //		user.login(adminUsername, adminPassword);
