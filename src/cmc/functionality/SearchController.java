@@ -42,12 +42,81 @@ public class SearchController {
 		return closeSchools;
 	}
 	
-	public ArrayList<University> rankUniversity(String university)
+	public ArrayList<University> rankUniversity(University university)
 	{
-		return null;
+		ArrayList<University> returnUniversity = new ArrayList<University>();
+		int numStudents = Integer.parseInt(university.getEnrollment());
+		float percentFemale = Float.parseFloat(university.getPercentFemale());
+		int SatVerbal = Integer.parseInt(university.getSatVerbal());
+		int SatMath = Integer.parseInt(university.getSatMath());
+		int expenses = Integer.parseInt(university.getCost());
+		float percentFinAid = Float.parseFloat(university.getPercentFinAid());
+		int numApplicants = Integer.parseInt(university.getApplicants());
+		float percentAdmitted = Float.parseFloat(university.getPercentAdmitted());
+		float percentEnrolled = Float.parseFloat(university.getPercentEnrolled());
+		int academicScale = Integer.parseInt(university.getAcademicScale());
+		int socialScale = Integer.parseInt(university.getSocialScale());
+		int qualityOfLifeScale = Integer.parseInt(university.getQualityOfLife());
+		
+		Double[][] schoolMatches = new Double[this.universityList.length][2];
+		//finding closest schools to provided school
+		for(int i = 0; i < this.universityList.length; i++)
+		{
+			Double score = 0.0;
+			
+			//testing distance based on enrollment
+			score = score + (Math.abs((Double.parseDouble(universityList[i].getEnrollment()) - numStudents)) / (numStudents)) ;
+			
+			//testing distance based on percent female
+			score = score + (Math.abs((Double.parseDouble(universityList[i].getPercentFemale()) - percentFemale)) / (percentFemale));
+			
+			//testing distance based on SATVerbal
+			score = score + (Math.abs((Double.parseDouble(universityList[i].getSatVerbal()) - SatVerbal)) / (SatVerbal));
+			
+			//testing distance based on SATMath
+			score = score + (Math.abs((Double.parseDouble(universityList[i].getSatMath()) - SatMath)) / (SatMath));
+			
+			//calculating score based on epenses
+				score = score + (Math.abs((Double.parseDouble(universityList[i].getCost()) - expenses)) / (expenses));
+			
+			//testing distance based on FinancialAid
+				score = score + (Math.abs((Double.parseDouble(universityList[i].getPercentFinAid()) - percentFinAid)) / (percentFinAid));
+				
+			//testing distance based on numberApplicants
+
+				score = score + (Math.abs((Double.parseDouble(universityList[i].getApplicants()) - numApplicants)) / (numApplicants));
+			
+			//testing distance based on percentAdmitted
+				score = score + (Math.abs((Double.parseDouble(universityList[i].getPercentAdmitted()) - percentAdmitted)) / (percentAdmitted));
+			
+			//testing distance based on percentEnrolled
+				score = score + (Math.abs((Double.parseDouble(universityList[i].getPercentEnrolled()) - percentEnrolled)) / (percentEnrolled));
+			
+			//testing distance based on academicSclae
+			score = score + (Math.abs((Double.parseDouble(universityList[i].getAcademicScale()) - academicScale)) / (academicScale));
+			
+			//testing distance based on socialScale
+			score = score + (Math.abs((Double.parseDouble(universityList[i].getSocialScale()) - socialScale)) / (socialScale));
+			
+			//tesing distance distance based on qualityoflife
+			score = score + (Math.abs((Double.parseDouble(universityList[i].getQualityOfLife()) - qualityOfLifeScale)) / (qualityOfLifeScale));
+
+			
+			//setting final score of university
+			schoolMatches[i][0] = score;//i};
+			schoolMatches[i][1] = Double.parseDouble(""+i);
+		}
+		Arrays.sort(schoolMatches);
+		
+		for (int i =1; i<5; i++)
+		{
+			int position = Integer.parseInt("" + schoolMatches[i][1]);
+			returnUniversity.add(universityList[position]);
+		}
+		return returnUniversity;
 	}
 
-	public Double[][] search(String schoolName, String state, String location, int numStudentsMin,
+	public ArrayList<University> search(String schoolName, String state, String location, int numStudentsMin,
 			int numStudentsMax, float percentFemaleMin, float percentFemaleMax, int SATVerbalMin, 
 			int SATVerbalMax, int SATMathMin, int SATMathMax, int expensesMin, int expensesMax, 
 			float PercentFinancialAidMin, float percenetFinancialAidMax, int numberApplicantsMin, 
@@ -375,53 +444,24 @@ public class SearchController {
 		}
 		
 		Arrays.sort(schoolMatches);
+		ArrayList<University>  returnUniversity = new ArrayList<University>();
+		for (int i =0; i<universityList.length; i++)
+		{
+			int position = Integer.parseInt("" + schoolMatches[i][1]);
+			returnUniversity.add(universityList[position]);
+		}
 		for(int i = 0; i<schoolMatches.length;i++)
 		{
 			System.out.println("Score: " + schoolMatches[i][0] + " Position: " + schoolMatches[i][1]);
 		}
-		return schoolMatches;
+		return returnUniversity;
 	}
 	
 	
 	public static void main(String[] args)
 	{
-//		ArrayList<Integer> test = new ArrayList<Integer>();
-//		test.add(5);
-//		test.add(9);
-//		test.add(2);
-//		test.add(50);
-//		for(int i = 0; i < 4; i++)
-//		{
-//			System.out.println(test.get(i));
-//		}
-//	String[] emphases = {"Math", "Science"};
-	
-	//theoretical values for a school
 
-//	University testSchool = new University("name", "state", "location", "control", "5000", ".4",
-//			"satVerbal", "satMath", "cost", "percentFinAid", "percentEnrolled", "applicants",
-//			"percentAdmitted", "academicScale", "socialScale", "qualityOfLife", emphases,
-//			null);
-//	Double score = 0.0;
-//	
-//	//theoretical max/min enrollment values
-//	int max = 60000; //max found between all schools
-//	int min = 500; //min ofund between all schools
-//	for(int i = 0; i < 1; i++)
-//	{
-//		if( Integer.parseInt( testSchool.getEnrollment() ) > 0 || Integer.parseInt( testSchool.getEnrollment() ) < 100000)
-//		{
-//			score = score + ((Double.parseDouble(testSchool.getEnrollment()) - 1000) / (max-min)) + ( (20000 - (Double.parseDouble(testSchool.getEnrollment()))) / (max-min));
-//		}
-//		if( Double.parseDouble( testSchool.getPercentFemale() ) > 0.0 || Double.parseDouble( testSchool.getPercentFemale() ) < 1.0)
-//		{
-//			score = score + ((Double.parseDouble(testSchool.getPercentFemale()) - .4) / (1)) + ( ( .4 - (Double.parseDouble(testSchool.getPercentFemale()))) / (1));
-//
-//		}
-//	}
-
-//	System.out.println(score);
-//		DB
-		SearchController sc = new SearchController();
+		DBController db = new DBController();
+		SearchController sc = new SearchController(db.getUniversityList());
 	}
 }
