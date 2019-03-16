@@ -29,7 +29,6 @@ public class University {
 	private String socialScale;
 	private String qualityOfLife;
 	private String[] emphases;
-	private ArrayList<Student> savedSchool;
 
 
 	/**
@@ -316,8 +315,8 @@ public class University {
 	/**
 	 * @return list of students that saved the school
 	 */
-	public ArrayList<Student> getSavedSchool() {
-		return savedSchool;
+	public int getSaveCount() {
+		return 0;
 	}
 
 	/**

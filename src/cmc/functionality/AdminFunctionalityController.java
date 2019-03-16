@@ -45,5 +45,14 @@ public class AdminFunctionalityController extends UserFunctionalityController {
 			}
 		
 	}
+	
+	
+	/**
+	 * 
+	 * @param name
+	 */
+	public void removeUniversity(String name) {
+		this.DBCon.removeUniversity(name);
+	}
 
 }

@@ -152,5 +152,9 @@ public class AdminInteraction extends AccountInteraction{
 				 percentAdmitted, academicScale, socialScale, qualityOfLife, emphases);
 	}
 	
+	public void removeUniversity(String name) {
+		this.afCon.removeUniversity(name);
+	}
+	
 
 }
