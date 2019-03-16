@@ -104,7 +104,7 @@ public class FunctionalityTestDriver {
 
 		System.out.println("\nSearching and Matching on Fields:");
 		System.out.println("-------------------------");
-		String state = "Texas";
+		String state = "Minnesota";
 		int numStudentsLower = 10000;
 		int numStudentsUpper = 12000;
 		String[] emphases = {};
