@@ -143,5 +143,18 @@ public class AdminInteraction extends AccountInteraction{
 		
 	}
 	
+	
+	public void addNewUniversity(String name, String state, String location, String control, String enrollment, String percentFemale,
+			String satVerbal, String satMath, String cost, String percentFinAid, String percentEnrolled, String applicants,
+			String percentAdmitted, String academicScale, String socialScale, String qualityOfLife, String[] emphases) {
+		this.afCon.addNewUniversity(name, state, location, control, enrollment, percentFemale,
+				satVerbal, satMath, cost, percentFinAid, percentEnrolled, applicants,
+				 percentAdmitted, academicScale, socialScale, qualityOfLife, emphases);
+	}
+	
+	public void removeUniversity(String name) {
+		this.afCon.removeUniversity(name);
+	}
+	
 
 }
