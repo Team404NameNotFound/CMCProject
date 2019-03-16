@@ -84,7 +84,7 @@ public class StudentInteraction extends AccountInteraction{
 	}
 
 	public void viewSchoolDetails(String universityName) {
-		
+		this.sfCon.viewSchoolDetails(universityName);
 	}
 	
 	public void viewProfile(String username) {

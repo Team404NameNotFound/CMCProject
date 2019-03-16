@@ -78,6 +78,13 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 				socialScalemin, socialScaleMax, qualityOfLifeMin, qualityOfLifeMax, emphases);
 		return null;
 	}
+
+	public void viewSchoolDetails(String universityName) {
+		
+		this.universityCon = new UniversityController(this.DBCon.getUniversity(universityName));
+		System.out.println(this.universityCon.getSchoolDetails());
+		
+	}
 	
 	
 	

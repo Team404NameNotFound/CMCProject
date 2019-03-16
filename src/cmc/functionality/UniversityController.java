@@ -43,71 +43,71 @@ public class UniversityController {
 			ArrayList<Student> savedSchool)
 	{
 		//goes through and tests every parameter to see if it has a value so that only the parameters with new values are updated
-		if(!name.equals(null))
+		if(!name.equals(null) && !name.equals(""))
 		{
 			school.setName(name);
 		}
-		if(!state.equals(null))
+		if(!state.equals(null) && !state.equals(""))
 		{
 			school.setState(state);
 		}
-		if(!location.equals(null))
+		if(!location.equals(null) && !location.equals(""))
 		{
 			school.setLocation(location);
 		}
-		if(!control.equals(null))
+		if(!control.equals(null) && !control.equals(""))
 		{
 			school.setControl(null);
 		}
-		if(!enrollment.equals(null))
+		if(!enrollment.equals(null) && !enrollment.equals(""))
 		{
 			school.setEnrollment(enrollment);
 		}
-		if(!percentFemale.equals(null))
+		if(!percentFemale.equals(null) && !percentFemale.equals(""))
 		{
 			school.setPercentFemale(percentFemale);
 		}
-		if(!satVerbal.equals(null))
+		if(!satVerbal.equals(null) && !satVerbal.equals(""))
 		{
 			school.setSatVerbal(satVerbal);
 		}
-		if(!satMath.equals(null))
+		if(!satMath.equals(null) && !satMath.equals(""))
 		{
 			school.setSatMath(satMath);
 		}
-		if(!cost.equals(null))
+		if(!cost.equals(null) && !cost.equals(""))
 		{
 			school.setCost(cost);
 		}
-		if(!percentFinAid.equals(null))
+		if(!percentFinAid.equals(null) && !percentFinAid.equals(""))
 		{
 			school.setPercentFinAid(percentFinAid);
 		}
-		if(!applicants.equals(null))
+		if(!applicants.equals(null) && !applicants.equals(""))
 		{
 			school.setApplicants(applicants);
 		}
-		if(!percentAdmitted.equals(null))
+		if(!percentAdmitted.equals(null) && !percentAdmitted.equals(""))
 		{
 			school.setPercentAdmitted(percentAdmitted);
 		}
-		if(!percentEnrolled.equals(null))
+		if(!percentEnrolled.equals(null) && !percentEnrolled.equals(""))
 		{
 			school.setPercentEnrolled(percentEnrolled);
 		}
-		if(!academicScale.equals(null))
+		if(!academicScale.equals(null) && !academicScale.equals(""))
 		{
 			school.setAcademicScale(academicScale);
 		}
-		if(!socialScale.equals(null))
+		if(!socialScale.equals(null) && !socialScale.equals(""))
 		{
 			school.setSocialScale(socialScale);
 		}
-		if(!qualityOfLife.equals(null))
+		if(!qualityOfLife.equals(null) && !qualityOfLife.equals(""))
 		{
 			school.setQualityOfLife(qualityOfLife);
 		}
-		if(!emphases.equals(null))
+		if(!emphases.equals(null) && !emphases.equals(""))
 		{
 			school.setEmphases(emphases);
 		}
