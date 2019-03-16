@@ -5,8 +5,6 @@ package cmc.functionality;
 import cmc.entity.*;
 import java.util.ArrayList;
 
-import cmc.entity.*;
-
 /**
  * @author kmendel001
  *
