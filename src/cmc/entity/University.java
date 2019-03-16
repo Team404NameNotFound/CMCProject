@@ -29,6 +29,7 @@ public class University {
 	private String socialScale;
 	private String qualityOfLife;
 	private String[] emphases;
+	private ArrayList<Student> students;
 
 
 	/**
@@ -321,10 +322,14 @@ public class University {
 
 	/**
 	 * @param savedSchool list of students that saved the school
-	 
-	public void setSavedSchool(ArrayList<Student> savedSchool) {
-		this.savedSchool = savedSchool;
+	 */
+	public void setSavedSchool(ArrayList<Student> students) {
+		this.students = students;
 	}
-	*/
+	
+	public ArrayList<Student> getSavedSchool() {
+		return this.students;
+	}
+	
 
 }
