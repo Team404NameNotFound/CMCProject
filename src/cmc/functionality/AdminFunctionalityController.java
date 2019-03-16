@@ -47,6 +47,16 @@ public class AdminFunctionalityController extends UserFunctionalityController {
 	}
 	
 	
+	public void editUniversity(String name, String state, String location, String control, String enrollment,
+			String percentFemale, String satVerbal, String satMath, String cost, String percentFinAid,
+			String percentEnrolled, String applicants, String percentAdmitted, String academicScale, String socialScale,
+			String qualityOfLife, String[] emphases) {
+		this.DBCon.setUniversity(universityCon.createNewUniversity(name, state, location, control, enrollment, percentFemale, satVerbal, 
+				satMath, cost, percentFinAid, percentEnrolled, applicants, percentAdmitted, academicScale, socialScale, qualityOfLife, emphases));
+		
+	}
+	
+	
 	/**
 	 * 
 	 * @param name
