@@ -51,16 +51,17 @@ public class DoyleHerouxVirgenTestDriver {
 		System.out.println("Testing Adding a university");
 		admin.addNewUniversity("Dummy", "State", "location", "private", "5000", "1", "800", "800", "100000", "20", "1", "5", "1", 
 				"3", "4", "5", emphases);
-		System.out.println("Printing Dummy school added details: ");
+		System.out.println("\nPrinting Dummy school added details: \n");
 		user.viewSchoolDetails("Dummy");
 		
 		//editing a univeristy information
-		admin.editUniversityInfo("Dummy", "State2", "location2", "", "", "", "", "", "10000000", "", "", "", "", "", "", "", emphases);
-		
+		admin.editUniversityInfo("Dummy", "State2", "location2", "-1", "-1", "-1", "-1", "-1", "10000000", "-1", "-1", "-1", "-1",
+				"-1", "-1", "-1", emphases);
+		System.out.println("\n");
 		//printing new university details
-		user.viewSchoolDetails("\nDummy");
-		
-		System.out.println("Testing removing a school");
+		user.viewSchoolDetails("Dummy");
+		System.out.println("\n");
+		System.out.println("\n Testing removing a school");
 		admin.removeUniversity("Dummy");
 		
 		
