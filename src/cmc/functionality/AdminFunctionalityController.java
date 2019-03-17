@@ -79,8 +79,9 @@ public class AdminFunctionalityController extends UserFunctionalityController {
 	}
 	
 	public void toggleActivationStatus(String accountName) {
-		Account account = DBCon.getAccount(accountName);
-		this.account.setAccount(account);
+		this.account = new AccountController( DBCon.getAccount(accountName));
+		
+//		this.account.setAccount(account);
 		this.account.toggleActivationStatus();
 	}
 	

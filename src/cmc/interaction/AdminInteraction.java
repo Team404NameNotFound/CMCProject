@@ -67,8 +67,8 @@ public class AdminInteraction extends AccountInteraction{
 	 * @param account
 	 */
 	public void toggleActivationStatus(String accountName) {
-		AdminFunctionalityController adCont = new AdminFunctionalityController();
-		adCont.toggleActivationStatus(accountName);
+//		AdminFunctionalityController adCont = new AdminFunctionalityController();
+		afCon.toggleActivationStatus(accountName);
 		System.out.print("Status for "+accountName+" changed.");
 	}
 	

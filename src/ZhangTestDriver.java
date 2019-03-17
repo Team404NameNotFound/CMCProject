@@ -64,7 +64,7 @@ public class ZhangTestDriver {
 
 		
 		adInt.addUser("Carrie", "Zhang", "cz001", "password", "u");
-		adInt.toggleActivationStatus("cz001");
+		adInt.toggleActivationStatus("Zhang");
 		
 	    
 	}

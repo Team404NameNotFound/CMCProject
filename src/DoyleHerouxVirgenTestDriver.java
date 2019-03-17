@@ -31,7 +31,7 @@ public class DoyleHerouxVirgenTestDriver {
 
 		System.out.println("\nSearching and Matching on Fields:");
 		System.out.println("-------------------------");
-		String state = "California";
+		String state = "Minnesota";
 		int numStudentsLower = 2000;
 		int numStudentsUpper = 30000;
 		String[] emphases = {};
