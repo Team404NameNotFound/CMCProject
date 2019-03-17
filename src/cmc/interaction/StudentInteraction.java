@@ -23,8 +23,8 @@ public class StudentInteraction extends AccountInteraction{
 		sfCon = new StudentFunctionalityController();
 	}
 	
-	public void takeQuiz() {
-		
+	public void takeQuiz(String location, String characteristic ,String control ,String emphasis) {
+	
 		
 	}
 	/**
