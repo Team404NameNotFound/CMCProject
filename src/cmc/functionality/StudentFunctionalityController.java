@@ -86,6 +86,33 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 		
 	}
 	
+	public ArrayList<UserSavedSchool> viewSavedSchools() {
+		Account currentAccount = this.getAccount().account;
+		if(currentAccount instanceof Student) {
+			return ((Student) currentAccount).getSavedSchools();
+		}else {
+			System.out.println("Current account is not a Student");
+			return null;
+		}
+	}
+	
+	public void removeSavedSchool(String school) {
+		University university = this.DBCon.getUniversity2(school);
+		if(university ==  null) System.out.println("The school to remove is not in the Database Liabrary");
+		else {
+			if(this.getAccount().account instanceof Student) {
+				Student currentStudent = (Student) this.getAccount().account;
+				if(currentStudent.isSchoolSaved(school)) {
+					currentStudent.removeSchool(school);
+				}else {
+					System.out.println("This school is not on current Student's saved schools list");
+				}	
+			}else {
+				System.out.println("This account is not a Student");
+			}
+		}
+	}
+	
 	
 	
 	

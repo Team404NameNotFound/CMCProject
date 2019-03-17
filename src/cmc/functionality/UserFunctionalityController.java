@@ -179,4 +179,13 @@ public class UserFunctionalityController {
 			return false;
 		}
 	}
+	//pass in the account for this Controller
+	public AccountController getAccount() {
+		return this.account ;
+	}
+	
+	public void setAccount(AccountController account) {
+		 this.account = account ;
+	}
+	
 }

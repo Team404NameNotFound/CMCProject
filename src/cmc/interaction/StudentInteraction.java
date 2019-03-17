@@ -79,8 +79,31 @@ public class StudentInteraction extends AccountInteraction{
 			System.out.println(closeMatch.get(i).getName());
 		}
 	}
+	
 	public void viewSavedSchools() {
-		
+		if(this.sfCon.viewSavedSchools() == null) System.out.println("This user has not saved any school yet");
+		else {
+			System.out.println("This user saved schools: ");
+			for(University savedUni: this.sfCon.viewSavedSchools()) {
+				System.out.println(savedUni.getName());
+			}
+		}
+	}
+	
+	
+
+	/**
+	 * @return the sfCon
+	 */
+	public StudentFunctionalityController getSfCon() {
+		return sfCon;
+	}
+
+	/**
+	 * @param sfCon the sfCon to set
+	 */
+	public void setSfCon(StudentFunctionalityController sfCon) {
+		this.sfCon = sfCon;
 	}
 
 	public void viewSchoolDetails(String universityName) {
@@ -103,8 +126,8 @@ public class StudentInteraction extends AccountInteraction{
 		
 	}
 	
-	public void removeSavedSchool(University removedSchool) {
-		
+	public void removeSavedSchool(String school) {
+		this.sfCon.removeSavedSchool(school);
 	}
 	//what does this function do???????
 	public void passRespnses(String password) {

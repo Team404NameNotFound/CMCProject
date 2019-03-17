@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import cmc.entity.Student;
 import cmc.entity.UserSavedSchool;
 import cmc.functionality.AccountController;
+import cmc.interaction.AccountInteraction;
+import cmc.interaction.StudentInteraction;
 import dblibrary.project.csci230.UniversityDBLibrary;
 
 public class ZhangTestDriver {
@@ -15,6 +17,7 @@ public class ZhangTestDriver {
 	ArrayList<UserSavedSchool> studentSavedSchools = new ArrayList<>();
 	Student account = new Student("Cool", "User", "cuser", "user" ,"u", "Y", studentSavedSchools);
 	AccountController accountController = new AccountController(account);
+    static StudentInteraction studentInteraction = new StudentInteraction();
 	
 	public static void main(String[] args) {
 		
@@ -29,5 +32,17 @@ public class ZhangTestDriver {
 	    for(UserSavedSchool ss: student.getSavedSchools()) {
 	    	System.out.println(ss.getName());
 	    }
+	    
+	    System.out.println("----------------");
+	    //test viewSavedSchool()
+	    studentInteraction.getSfCon().setAccount(new AccountController(student));
+	    studentInteraction.viewSavedSchools();
+	    
+	    System.out.println("----------------");
+	    //test removeSavedSchool(String school)
+	    System.out.println("After removing YALE ");
+	    studentInteraction.removeSavedSchool("YALE");
+	    studentInteraction.viewSavedSchools();
+	    
 	}
 }
