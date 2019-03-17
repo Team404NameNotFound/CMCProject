@@ -41,7 +41,7 @@ public class DoyleHerouxVirgenTestDriver {
 				(float)-1.0, (float)-1.0, -1, 
 				-1, (float)-1.0, (float)-1.0,
 				(float)-1.0, (float)-1.0, -1, -1,
-				-1, -1, -1, -1, emphases
+				-1, -1, -1, -1, emphases, ""
 				);
 		
 		//printing a school's details
@@ -58,7 +58,7 @@ public class DoyleHerouxVirgenTestDriver {
 		admin.editUniversityInfo("Dummy", "State2", "location2", "", "", "", "", "", "10000000", "", "", "", "", "", "", "", emphases);
 		
 		//printing new university details
-		user.viewSchoolDetails("\nDummy");
+		user.viewSchoolDetails("Dummy");
 		
 		System.out.println("Testing removing a school");
 		admin.removeUniversity("Dummy");

@@ -58,6 +58,7 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 	 * @param qualityOfLifeMin
 	 * @param qualityOfLifeMax
 	 * @param emphases
+	 * @param control
 	 * @return
 	 */
 	public ArrayList<University> search(String schoolName, String state, String location, int numStudentsMin,
@@ -66,7 +67,7 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 			float PercentFinancialAidMin, float percenetFinancialAidMax, int numberApplicantsMin, 
 			int numberApplicatnsMax, float percentAddmittedMin, float percentAdmittedMax,
 			float percentEnrolledMin, float percentEnrolledMax, int academicScaleMin, int academicScaleMax,
-			int socialScalemin, int socialScaleMax, int qualityOfLifeMin, int qualityOfLifeMax, String[] emphases) {
+			int socialScalemin, int socialScaleMax, int qualityOfLifeMin, int qualityOfLifeMax, String[] emphases, String control) {
 		
 		
 		ArrayList<University> searchResults = this.searchCon.search(schoolName, state, location, numStudentsMin, 
@@ -75,7 +76,7 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 				PercentFinancialAidMin, percenetFinancialAidMax, numberApplicantsMin, 
 				numberApplicatnsMax, percentAddmittedMin, percentAdmittedMax, 
 				percentEnrolledMin, percentEnrolledMax, academicScaleMin, academicScaleMax, 
-				socialScalemin, socialScaleMax, qualityOfLifeMin, qualityOfLifeMax, emphases);
+				socialScalemin, socialScaleMax, qualityOfLifeMin, qualityOfLifeMax, emphases, control);
 		return null;
 	}
 
