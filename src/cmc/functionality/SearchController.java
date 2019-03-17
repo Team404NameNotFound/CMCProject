@@ -140,7 +140,7 @@ public class SearchController {
 			float PercentFinancialAidMin, float percenetFinancialAidMax, int numberApplicantsMin, 
 			int numberApplicatnsMax, float percentAddmittedMin, float percentAdmittedMax,
 			float percentEnrolledMin, float percentEnrolledMax, int academicScaleMin, int academicScaleMax,
-			int socialScalemin, int socialScaleMax, int qualityOfLifeMin, int qualityOfLifeMax, String[] emphases
+			int socialScalemin, int socialScaleMax, int qualityOfLifeMin, int qualityOfLifeMax, String[] emphases, String control
 			)
 	{
 		double[][] schoolMatches = new double[this.universityList.length][2];
@@ -461,6 +461,12 @@ public class SearchController {
 			
 			//testing distance based on state
 			if(!universityList[i].getState().toLowerCase().trim().equals(state.toLowerCase().trim()) && !state.equals(""))
+			{
+				score = score  + 1;
+			}
+			
+			//testing distance based on control
+			if(!universityList[i].getControl().toLowerCase().trim().equals(control.toLowerCase().trim()) && !control.equals(""))
 			{
 				score = score  + 1;
 			}

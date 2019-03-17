@@ -102,20 +102,7 @@ public class FunctionalityTestDriver {
 		//Search for schools - state, # of students (user)
 		student.login(userUsername, userPassword);
 
-		System.out.println("\nSearching and Matching on Fields:");
-		System.out.println("-------------------------");
-		String state = "Minnesota";
-		int numStudentsLower = 10000;
-		int numStudentsUpper = 12000;
-		String[] emphases = {};
-		student.fieldSearch( "", state, "", numStudentsLower,
-				numStudentsUpper, (float)-1.0,(float)-1.0, -1, 
-				-1, -1, -1, -1, -1, 
-				(float)-1.0, (float)-1.0, -1, 
-				-1, (float)-1.0, (float)-1.0,
-				(float)-1.0, (float)-1.0, -1, -1,
-				-1, -1, -1, -1, emphases
-				);
+
 //		print(results);
 		
 		//find top 5 recommended schools (user)

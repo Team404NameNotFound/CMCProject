@@ -23,9 +23,40 @@ public class StudentInteraction extends AccountInteraction{
 		sfCon = new StudentFunctionalityController();
 	}
 	
-	public void takeQuiz() {
-		
-		
+	public void takeQuiz(String location, String characteristic ,String control ,String[] emphasis) {
+		if (characteristic.equals("academic"))
+		{
+			fieldSearch("", "", location, -1,
+					-1, -1, -1, -1, 
+					-1, -1, -1, -1, -1, 
+					-1, -1, -1, 
+					1, -1, -1,
+					-1, -1, 4, -1,
+					-1, -1, -1, -1, emphasis,
+					control);
+		}
+		else if (characteristic.equals("social"))
+		{
+			fieldSearch("", "", location, -1,
+					-1, -1, -1, -1, 
+					-1, -1, -1, -1, -1, 
+					-1, -1, -1, 
+					1, -1, -1,
+					-1, -1, -1, -1,
+					4, -1, -1, -1, emphasis,
+					control);
+		}
+		else if (characteristic.equals("qualityOfLife"))
+		{
+			fieldSearch("", "", location, -1,
+					-1, -1, -1, -1, 
+					-1, -1, -1, -1, -1, 
+					-1, -1, -1, 
+					1, -1, -1,
+					-1, -1, -1, -1,
+					-1, -1, 4, -1, emphasis,
+					control);
+		}
 	}
 	/**
 	 * Only test search for schools by the combination of state and number of students right now, 
@@ -42,8 +73,8 @@ public class StudentInteraction extends AccountInteraction{
 			float PercentFinancialAidMin, float percenetFinancialAidMax, int numberApplicantsMin, 
 			int numberApplicatnsMax, float percentAddmittedMin, float percentAdmittedMax,
 			float percentEnrolledMin, float percentEnrolledMax, int academicScaleMin, int academicScaleMax,
-			int socialScalemin, int socialScaleMax, int qualityOfLifeMin, int qualityOfLifeMax, String[] emphases
-			) {
+			int socialScalemin, int socialScaleMax, int qualityOfLifeMin, int qualityOfLifeMax, String[] emphases,
+			String control) {
 		if(!sfCon.loggedIn) {
 	    //sfCon.searchCon = new SearchController();
 	    // do I need to make a new SearchController using DBController.getUniversityList() as a param?
@@ -54,7 +85,7 @@ public class StudentInteraction extends AccountInteraction{
 						 PercentFinancialAidMin,  percenetFinancialAidMax,  numberApplicantsMin, 
 						 numberApplicatnsMax,  percentAddmittedMin,  percentAdmittedMax,
 						 percentEnrolledMin,  percentEnrolledMax,  academicScaleMin,  academicScaleMax,
-						 socialScalemin,  socialScaleMax,  qualityOfLifeMin,  qualityOfLifeMax,  emphases
+						 socialScalemin,  socialScaleMax,  qualityOfLifeMin,  qualityOfLifeMax,  emphases, control
 						);
 		 for(int i = 0; i<10;i++)
 		 {

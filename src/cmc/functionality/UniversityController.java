@@ -50,71 +50,71 @@ public class UniversityController {
 			ArrayList<Student> savedSchool)
 	{
 		//goes through and tests every parameter to see if it has a value so that only the parameters with new values are updated
-		if(!name.equals(null) && !name.equals(""))
+		if(!name.equals("-1") && !name.equals(""))
 		{
 			school.setName(name);
 		}
-		if(!state.equals(null) && !state.equals(""))
+		if(!state.equals("-1") && !state.equals(""))
 		{
 			school.setState(state);
 		}
-		if(!location.equals(null) && !location.equals(""))
+		if(!location.equals("-1") && !location.equals(""))
 		{
 			school.setLocation(location);
 		}
-		if(!control.equals(null) && !control.equals(""))
+		if(!control.equals("-1") && !control.equals(""))
 		{
-			school.setControl(null);
+			school.setControl(control);
 		}
-		if(!enrollment.equals(null) && !enrollment.equals(""))
+		if(!enrollment.equals("-1") && !enrollment.equals(""))
 		{
 			school.setEnrollment(enrollment);
 		}
-		if(!percentFemale.equals(null) && !percentFemale.equals(""))
+		if(!percentFemale.equals("-1") && !percentFemale.equals(""))
 		{
 			school.setPercentFemale(percentFemale);
 		}
-		if(!satVerbal.equals(null) && !satVerbal.equals(""))
+		if(!satVerbal.equals("-1") && !satVerbal.equals(""))
 		{
 			school.setSatVerbal(satVerbal);
 		}
-		if(!satMath.equals(null) && !satMath.equals(""))
+		if(!satMath.equals("-1") && !satMath.equals(""))
 		{
 			school.setSatMath(satMath);
 		}
-		if(!cost.equals(null) && !cost.equals(""))
+		if(!cost.equals("-1") && !cost.equals(""))
 		{
 			school.setCost(cost);
 		}
-		if(!percentFinAid.equals(null) && !percentFinAid.equals(""))
+		if(!percentFinAid.equals("-1") && !percentFinAid.equals(""))
 		{
 			school.setPercentFinAid(percentFinAid);
 		}
-		if(!applicants.equals(null) && !applicants.equals(""))
+		if(!applicants.equals("-1") && !applicants.equals(""))
 		{
 			school.setApplicants(applicants);
 		}
-		if(!percentAdmitted.equals(null) && !percentAdmitted.equals(""))
+		if(!percentAdmitted.equals("-1") && !percentAdmitted.equals(""))
 		{
 			school.setPercentAdmitted(percentAdmitted);
 		}
-		if(!percentEnrolled.equals(null) && !percentEnrolled.equals(""))
+		if(!percentEnrolled.equals("-1") && !percentEnrolled.equals(""))
 		{
 			school.setPercentEnrolled(percentEnrolled);
 		}
-		if(!academicScale.equals(null) && !academicScale.equals(""))
+		if(!academicScale.equals("-1") && !academicScale.equals(""))
 		{
 			school.setAcademicScale(academicScale);
 		}
-		if(!socialScale.equals(null) && !socialScale.equals(""))
+		if(!socialScale.equals("-1") && !socialScale.equals(""))
 		{
 			school.setSocialScale(socialScale);
 		}
-		if(!qualityOfLife.equals(null) && !qualityOfLife.equals(""))
+		if(!qualityOfLife.equals("-1") && !qualityOfLife.equals(""))
 		{
 			school.setQualityOfLife(qualityOfLife);
 		}
-		if(!emphases.equals(null) && !emphases.equals(""))
+		if(!emphases.equals("-1") && !emphases.equals(""))
 		{
 			school.setEmphases(emphases);
 		}

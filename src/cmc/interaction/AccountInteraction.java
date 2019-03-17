@@ -39,6 +39,12 @@ public class AccountInteraction {
 		
 	}
 	
+	public void viewSchoolDetails(String univeristyName)
+	{
+		String school = UFCon.viewUniversityDetials(univeristyName);
+		System.out.print(school);
+	}
+	
 	/**
 	 * Displays the profile of the specified user
 	 * @param userName

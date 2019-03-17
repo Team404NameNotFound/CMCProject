@@ -138,27 +138,27 @@ public class UserFunctionalityController {
 	 * @param universityName
 	 * @return
 	 */
-	public ArrayList<String> viewUniversityDetials(String universityName) {
+	public String viewUniversityDetials(String universityName) {
 		University university = this.DBCon.getUniversity(universityName);
-		ArrayList<String> universityList = new ArrayList<String>();
-		universityList.add(university.getName());
-		universityList.add(university.getState());
-		universityList.add(university.getLocation());
-		universityList.add(university.getControl());
-		universityList.add(university.getEnrollment());
-		universityList.add(university.getPercentFemale());
-		universityList.add(university.getSatVerbal());
-		universityList.add(university.getSatMath());
-		//universityList.add(university.getEmphases());
-		universityList.add(university.getPercentFinAid());
-		universityList.add(university.getApplicants());
-		universityList.add(university.getPercentAdmitted());
-		universityList.add(university.getPercentEnrolled());
-		universityList.add(university.getAcademicScale());
-		universityList.add(university.getSocialScale());
-		universityList.add(university.getQualityOfLife());
-		
-		return universityList;
+//		ArrayList<String> universityList = new ArrayList<String>();
+//		universityList.add(university.getName());
+//		universityList.add(university.getState());
+//		universityList.add(university.getLocation());
+//		universityList.add(university.getControl());
+//		universityList.add(university.getEnrollment());
+//		universityList.add(university.getPercentFemale());
+//		universityList.add(university.getSatVerbal());
+//		universityList.add(university.getSatMath());
+//		//universityList.add(university.getEmphases());
+//		universityList.add(university.getPercentFinAid());
+//		universityList.add(university.getApplicants());
+//		universityList.add(university.getPercentAdmitted());
+//		universityList.add(university.getPercentEnrolled());
+//		universityList.add(university.getAcademicScale());
+//		universityList.add(university.getSocialScale());
+//		universityList.add(university.getQualityOfLife());
+		universityCon = new UniversityController(university);
+		return universityCon.getSchoolDetails();
 	}
 	
 	/**
