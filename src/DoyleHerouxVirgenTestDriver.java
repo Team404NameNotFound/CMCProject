@@ -32,8 +32,8 @@ public class DoyleHerouxVirgenTestDriver {
 		System.out.println("\nSearching and Matching on Fields:");
 		System.out.println("-------------------------");
 		String state = "Minnesota";
-		int numStudentsLower = 10000;
-		int numStudentsUpper = 12000;
+		int numStudentsLower = 2000;
+		int numStudentsUpper = 30000;
 		String[] emphases = {};
 		student.fieldSearch( "", state, "", numStudentsLower,
 				numStudentsUpper, (float)-1.0,(float)-1.0, -1, 
@@ -43,5 +43,10 @@ public class DoyleHerouxVirgenTestDriver {
 				(float)-1.0, (float)-1.0, -1, -1,
 				-1, -1, -1, -1, emphases
 				);
+		
+		//printing a school's details
+		System.out.println("Testing printing  a school's details");
+		user.viewSchoolDetails("UNIVERSITY OF MINNESOTA");
+		
 	}
 }
