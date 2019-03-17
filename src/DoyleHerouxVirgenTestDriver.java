@@ -31,7 +31,7 @@ public class DoyleHerouxVirgenTestDriver {
 
 		System.out.println("\nSearching and Matching on Fields:");
 		System.out.println("-------------------------");
-		String state = "Minnesota";
+		String state = "California";
 		int numStudentsLower = 2000;
 		int numStudentsUpper = 30000;
 		String[] emphases = {};
@@ -45,8 +45,17 @@ public class DoyleHerouxVirgenTestDriver {
 				);
 		
 		//printing a school's details
-		System.out.println("Testing printing  a school's details");
+		System.out.println("\n Testing printing  a school's details\n");
 		user.viewSchoolDetails("UNIVERSITY OF MINNESOTA");
+		
+		System.out.println("Testing Adding a university");
+		admin.addNewUniversity("Dummy", "State", "location", "private", "5000", "1", "800", "800", "100000", "20", "1", "5", "1", 
+				"3", "4", "5", emphases);
+		System.out.println("Printing Dummy school added details: ");
+		user.viewSchoolDetails("Dummy");
+		
+		System.out.println("Testing removing a school");
+		admin.removeUniversity("Dummy");
 		
 	}
 }
