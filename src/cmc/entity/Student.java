@@ -81,6 +81,7 @@ public class Student extends Account {
 	public void saveSchool(University university, String dateAdded) {
 		UserSavedSchool schoolToSave = new UserSavedSchool(university, dateAdded);
 		savedSchools.add(schoolToSave);
+		schoolToSave.getStudents().add(this.getUsername());
 	}
 	
 

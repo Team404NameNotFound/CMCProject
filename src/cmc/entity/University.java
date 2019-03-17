@@ -29,8 +29,9 @@ public class University {
 	private String socialScale;
 	private String qualityOfLife;
 	private String[] emphases;
-	private ArrayList<Student> students;
-
+	//private ArrayList<Student> students;
+	//Changing to ArrayList<String> so that it would be easier to use, <Stirng> should be username because of it is unique
+	private ArrayList<String> students = new ArrayList<>();
 
 	/**
 	 * @param name name of the university
@@ -323,11 +324,11 @@ public class University {
 	/**
 	 * @param savedSchool list of students that saved the school
 	 */
-	public void setSavedSchool(ArrayList<Student> students) {
+	public void setSavedSchool(ArrayList<String> students) {
 		this.students = students;
 	}
 	
-	public ArrayList<Student> getSavedSchool() {
+	public ArrayList<String> getStudents() {
 		return this.students;
 	}
 	

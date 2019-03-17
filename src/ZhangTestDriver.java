@@ -40,8 +40,8 @@ public class ZhangTestDriver {
 	    
 	    System.out.println("----------------");
 	    //test removeSavedSchool(String school)
-	    System.out.println("After removing YALE ");
 	    studentInteraction.removeSavedSchool("YALE");
+	    System.out.println("After removing YALE ");
 	    studentInteraction.viewSavedSchools();
 	    
 	}

@@ -74,7 +74,7 @@ public class UserSavedSchool extends University{
 	 */
 	public int getSavedStatistics(University university) {
 		int count = 0;
-		for(@SuppressWarnings("unused") Student student: university.getSavedSchool()) {
+		for(@SuppressWarnings("unused") String student: university.getStudents()) {
 				count += 1;
 		}
 		return count;

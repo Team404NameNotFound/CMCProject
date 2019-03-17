@@ -191,11 +191,11 @@ public class AccountController {
 		//if the shool name is not valid, print message
 		
 		if(schoolToSave == null) {
-			System.out.println("The school to save is null");
+			System.out.println("The school to save is not in the Database Library");
 		}
 		
 		if(account == null) {
-			System.out.println("The account is null");
+			System.out.println("The current account is null");
 		}
 		 ((Student)account).saveSchool(schoolToSave, time.toString());
 	}
