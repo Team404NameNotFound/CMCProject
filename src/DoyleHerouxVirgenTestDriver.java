@@ -60,13 +60,8 @@ public class DoyleHerouxVirgenTestDriver {
 		System.out.println("\n");
 		//printing new university details
 		user.viewSchoolDetails("Dummy");
-<<<<<<< HEAD
-		
-		System.out.println("Testing removing a school");
-=======
 		System.out.println("\n");
 		System.out.println("\n Testing removing a school");
->>>>>>> 48d6eb9de981d4e80ccd9b24b841f1b35fca7996
 		admin.removeUniversity("Dummy");
 		
 		

@@ -23,7 +23,7 @@ public class StudentInteraction extends AccountInteraction{
 		sfCon = new StudentFunctionalityController();
 	}
 	
-	public void takeQuiz(String location, String characteristic ,String control ,String emphasis) {
+	public void takeQuiz(String location, String characteristic ,String control ,String[] emphasis) {
 		if (characteristic.equals("academic"))
 		{
 			fieldSearch("", "", location, -1,
@@ -33,7 +33,7 @@ public class StudentInteraction extends AccountInteraction{
 					1, -1, -1,
 					-1, -1, 4, -1,
 					-1, -1, -1, -1, emphasis,
-					control)
+					control);
 		}
 		else if (characteristic.equals("social"))
 		{
@@ -44,7 +44,7 @@ public class StudentInteraction extends AccountInteraction{
 					1, -1, -1,
 					-1, -1, -1, -1,
 					4, -1, -1, -1, emphasis,
-					control)
+					control);
 		}
 		else if (characteristic.equals("qualityOfLife"))
 		{
@@ -55,7 +55,7 @@ public class StudentInteraction extends AccountInteraction{
 					1, -1, -1,
 					-1, -1, -1, -1,
 					-1, -1, 4, -1, emphasis,
-					control)
+					control);
 		}
 	}
 	/**
