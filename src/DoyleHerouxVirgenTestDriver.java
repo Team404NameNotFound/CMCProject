@@ -54,8 +54,15 @@ public class DoyleHerouxVirgenTestDriver {
 		System.out.println("Printing Dummy school added details: ");
 		user.viewSchoolDetails("Dummy");
 		
+		//editing a univeristy information
+		admin.editUniversityInfo("Dummy", "State2", "location2", "", "", "", "", "", "10000000", "", "", "", "", "", "", "", emphases);
+		
+		//printing new university details
+		user.viewSchoolDetails("\nDummy");
+		
 		System.out.println("Testing removing a school");
 		admin.removeUniversity("Dummy");
+		
 		
 	}
 }
