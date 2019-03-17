@@ -112,6 +112,41 @@ public class DBController
 		
 	}
 	
+	public University getUniversity2(String school)
+	{
+		String[][] schoolList = dbLibrary.university_getUniversities();
+		String[][] namesWithEmphases = dbLibrary.university_getNamesWithEmphases();
+		University returnUniversity = null;
+		//Making a ArrayList first, because we cannot sure the length of the emphases array
+		ArrayList<String> empha = new ArrayList<>();
+		for (int i = 0; i < namesWithEmphases.length; i++)
+		{
+			if(namesWithEmphases[i][0].equals(school))
+			{	
+				empha.add(namesWithEmphases[i][1]); 
+			}
+		}
+		//Filling the emphases array here
+		String[] emphases = new String[empha.size()];
+		for(int i=0; i<empha.size(); i++) {
+			emphases[i] = empha.get(i);
+		}
+		//Making a new instance of University then return it
+		for (int n = 0; n < schoolList.length; n++)
+		{
+			if (schoolList[n][0].equals(school)){
+				 returnUniversity = new University(schoolList[n][0], schoolList[n][1], schoolList[n][2], schoolList[n][3], schoolList[n][4], 
+						schoolList[n][5], schoolList[n][6], schoolList[n][7], schoolList[n][8], 
+						schoolList[n][9], schoolList[n][10], schoolList[n][11], schoolList[n][12],
+						schoolList[n][13], schoolList[n][14], schoolList[n][15], emphases);
+			}
+		}
+		return returnUniversity;
+	}
+			
+
+	
+	
 	/**
 	 * @param school
 	 */

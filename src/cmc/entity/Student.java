@@ -79,12 +79,8 @@ public class Student extends Account {
 	 * @param dateAdded date the school was saved
 	 */
 	public void saveSchool(University university, String dateAdded) {
-		UserSavedSchool savedUniversity = new UserSavedSchool(university.getName(), university.getState(), university.getLocation(), 
-				university.getControl(), university.getEnrollment(), university.getPercentFemale(), university.getSatVerbal(), 
-				university.getSatMath(), university.getCost(), university.getPercentFinAid(), university.getPercentEnrolled(), 
-				university.getApplicants(), university.getPercentAdmitted(), university.getAcademicScale(), university.getSocialScale(),
-				university.getQualityOfLife(), university.getEmphases(), university.getSavedSchool(), dateAdded);
-		savedSchools.add(savedUniversity);
+		UserSavedSchool schoolToSave = new UserSavedSchool(university, dateAdded);
+		savedSchools.add(schoolToSave);
 	}
 	
 

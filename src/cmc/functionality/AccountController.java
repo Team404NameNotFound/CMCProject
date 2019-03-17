@@ -7,13 +7,14 @@ import java.util.Date;
 import java.util.ArrayList;
 
 import cmc.entity.*;
+import dblibrary.project.csci230.UniversityDBLibrary;
 
 /**
  * @author kmendel001
  *
  */
 public class AccountController {
-
+    DBController dbController = new DBController();
 	Account account;
 	/**
 	 * creates new AccountController for student being accessed
@@ -182,9 +183,20 @@ public class AccountController {
 	 * Saves the specified school to the current users saved school list
 	 * @param schoolToSave
 	 */
-	public void saveSchool(University schoolToSave)
+	public void saveSchool(String schoolName)
 	{
 		Date time = new Date();
+		University schoolToSave = dbController.getUniversity2(schoolName);
+		
+		//if the shool name is not valid, print message
+		
+		if(schoolToSave == null) {
+			System.out.println("The school to save is null");
+		}
+		
+		if(account == null) {
+			System.out.println("The account is null");
+		}
 		 ((Student)account).saveSchool(schoolToSave, time.toString());
 	}
 	
