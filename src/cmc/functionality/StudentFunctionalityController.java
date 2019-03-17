@@ -80,8 +80,7 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 	}
 
 	public void viewSchoolDetails(String universityName) {
-		
-		this.universityCon = new UniversityController(this.DBCon.getUniversity(universityName));
+		this.universityCon = new UniversityController(this.DBCon.getUniversity2(universityName));
 		System.out.println(this.universityCon.getSchoolDetails());
 		
 	}

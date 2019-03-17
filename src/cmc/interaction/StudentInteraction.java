@@ -80,6 +80,22 @@ public class StudentInteraction extends AccountInteraction{
 		}
 	}
 	
+	public void viewSchoolDetails(String universityName) {
+		this.sfCon.viewSchoolDetails(universityName);
+	}
+	
+	public void viewSavedSchoolDetails(String school) {
+		Boolean found = false;
+		for(University savedUni : this.sfCon.viewSavedSchools()) {
+			if(savedUni.getName().equals(school)) {
+				found = true;
+				this.sfCon.viewSchoolDetails(school);
+			}
+		}
+		if(!found) System.out.println("Cannot found " + school +  " in saved school list");
+		
+	}
+	
 	public void viewSavedSchools() {
 		if(this.sfCon.viewSavedSchools() == null) System.out.println("This user has not saved any school yet");
 		else {
@@ -106,39 +122,12 @@ public class StudentInteraction extends AccountInteraction{
 		this.sfCon = sfCon;
 	}
 
-	public void viewSchoolDetails(String universityName) {
-		this.sfCon.viewSchoolDetails(universityName);
-	}
 	
-	public void viewProfile(String username) {
-		
-	}
-	
-	public void editProfile(List<String> changes) {
-		
-	}
-	
-	public void saveSchool(University university) {
-		
-	}
-	
-	public void compareSchools(List<University> schoolList){
-		
-	}
 	
 	public void removeSavedSchool(String school) {
 		this.sfCon.removeSavedSchool(school);
 	}
-	//what does this function do???????
-	public void passRespnses(String password) {
-		
-	}
-	
-	public void viewUserSaveStatistics(University university) {
-		
-	}
-	
-	
+
 	
 	
 

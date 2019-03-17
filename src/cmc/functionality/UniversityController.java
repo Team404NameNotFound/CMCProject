@@ -31,7 +31,14 @@ public class UniversityController {
 	 */
 	public String getSchoolDetails()
 	{
-		return school.toString();
+		String schoolDetails = " Name: "+  school.getName() + " State: " + school.getState() + " Location: " + school.getLocation() + "\n" +
+	   " Control: " + school.getControl()+ " Entrollment: " +school.getEnrollment()+ " FemalePercent: " + school.getPercentFemale() + " \n" 
+	   + " SatVerbal: " + school.getSatVerbal() + " SatMath: " + school.getSatMath() + " Cost: "  + school.getCost() + " \n " +
+	   " PercentFinAid: " + school.getPercentFinAid()+ " Applicants: "
+		+ school.getApplicants() + " PercentAdmitted: "+ school.getPercentAdmitted() + "\n" + " PercentEnrolled: " 
+	    + school.getPercentEnrolled() + " AcademicScale: " + school.getAcademicScale() + " SocialScale: " + school.getSocialScale() + " QualityOfLife: " + school.getQualityOfLife();
+		return schoolDetails;
+		
 	}
 	
 	/*

@@ -44,5 +44,10 @@ public class ZhangTestDriver {
 	    System.out.println("After removing YALE ");
 	    studentInteraction.viewSavedSchools();
 	    
+	    System.out.println("----------------");
+	    //test viewSavedSchoolDetails(String school)
+	    studentInteraction.viewSavedSchoolDetails("AMERICAN UNIVERSITY OF BEIRUT");
+	    studentInteraction.viewSavedSchoolDetails("YALE");
+	    
 	}
 }
