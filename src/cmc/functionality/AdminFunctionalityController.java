@@ -64,5 +64,25 @@ public class AdminFunctionalityController extends UserFunctionalityController {
 	public void removeUniversity(String name) {
 		this.DBCon.removeUniversity(name);
 	}
+	
+	public boolean addUser(String firstname, String lastname, String username, 
+			String password, String userType) {
+		boolean added = false;
+		ArrayList<UserSavedSchool> savedSchoolList = new ArrayList<UserSavedSchool>();
+		
+		AccountController acCon = new AccountController();
+		Account account = acCon.createNewAccount(firstname, lastname, username, password, userType, savedSchoolList);
+		if (account != null) {
+			added = true;
+		}
+		return added;
+	}
+	
+	public void toggleActivationStatus(String accountName) {
+		Account account = DBCon.getAccount(accountName);
+		this.account.setAccount(account);
+		this.account.toggleActivationStatus();
+	}
+	
 
 }

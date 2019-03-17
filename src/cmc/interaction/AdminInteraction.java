@@ -6,9 +6,11 @@ package cmc.interaction;
 import java.util.ArrayList;
 import java.util.List;
 
+import cmc.entity.Account;
 import cmc.entity.Student;
 import cmc.entity.University;
 import cmc.functionality.AdminFunctionalityController;
+import cmc.functionality.DBController;
 
 /**
  * @author tzhang001
@@ -22,8 +24,12 @@ public class AdminInteraction extends AccountInteraction{
 	AdminFunctionalityController afCon;
 	
 	//constructer
-	public AdminInteraction() {
+	public AdminInteraction(){
 		this.afCon = new AdminFunctionalityController();
+	}
+	
+	public AdminInteraction(AdminFunctionalityController afCon){
+		this.afCon = afCon;
 	}
 	
 	/**
@@ -36,7 +42,14 @@ public class AdminInteraction extends AccountInteraction{
 	 * @param userStatus
 	 */
 	public void addUser(String firstname, String lastname, String username, 
-			String password, String userType, String userStatus) {
+			String password, String userType) {
+		
+		if (afCon.addUser(firstname, lastname, username, password, userType)) {
+			System.out.print("User " + username +" added successfully ");
+		}
+		else {
+			System.out.print("User " + username +" could not be added");
+		}
 		
 	}
 	
@@ -53,8 +66,10 @@ public class AdminInteraction extends AccountInteraction{
 	 * Changes the status of the specified user
 	 * @param account
 	 */
-	public void toggleActivationStatus(String account) {
-		
+	public void toggleActivationStatus(String accountName) {
+		AdminFunctionalityController adCont = new AdminFunctionalityController();
+		adCont.toggleActivationStatus(accountName);
+		System.out.print("Status for "+accountName+" changed.");
 	}
 	
 	/**

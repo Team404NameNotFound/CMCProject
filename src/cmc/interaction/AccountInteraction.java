@@ -16,6 +16,13 @@ public class AccountInteraction {
 	public AccountInteraction(){
 		UFCon = new UserFunctionalityController();
 	}
+	
+	public AccountInteraction(UserFunctionalityController UFCon){
+		this.UFCon = UFCon;
+	}
+	
+	
+	
 	/**
 	 * Student or Admin log in. 
 	 * @param String username
