@@ -14,7 +14,10 @@ public class UserFunctionalityController {
 	DBController DBCon;
 	UniversityController universityCon;
 	public Boolean loggedIn;
-	//class constructor
+
+	/**
+	 * class constructor
+	 */
 	public UserFunctionalityController() {
 		super();
 		this.DBCon = new DBController();
@@ -180,10 +183,16 @@ public class UserFunctionalityController {
 		}
 	}
 	//pass in the account for this Controller
+	/**
+	 * @return
+	 */
 	public AccountController getAccount() {
 		return this.account ;
 	}
 	
+	/**
+	 * @param account
+	 */
 	public void setAccount(AccountController account) {
 		 this.account = account ;
 	}

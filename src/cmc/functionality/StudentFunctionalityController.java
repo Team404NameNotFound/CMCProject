@@ -80,12 +80,18 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 		return null;
 	}
 
+	/**
+	 * @param universityName
+	 */
 	public void viewSchoolDetails(String universityName) {
 		this.universityCon = new UniversityController(this.DBCon.getUniversity2(universityName));
 		System.out.println(this.universityCon.getSchoolDetails());
 		
 	}
 	
+	/**
+	 * @return
+	 */
 	public ArrayList<UserSavedSchool> viewSavedSchools() {
 		Account currentAccount = this.getAccount().account;
 		if(currentAccount instanceof Student) {
@@ -96,6 +102,9 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 		}
 	}
 	
+	/**
+	 * @param school
+	 */
 	public void removeSavedSchool(String school) {
 		University university = this.DBCon.getUniversity2(school);
 		if(university ==  null) System.out.println("The school to remove is not in the Database Liabrary");
