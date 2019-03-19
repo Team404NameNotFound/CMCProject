@@ -266,4 +266,8 @@ public class DBController
 	{
 		dbLibrary.university_addUniversityEmphasis(school, emphasis);
 	}
+	
+	public void saveShool(String user, String school) {
+		dbLibrary.user_saveSchool(user, school);
+	}
 }

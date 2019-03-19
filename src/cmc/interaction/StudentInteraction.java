@@ -110,31 +110,32 @@ public class StudentInteraction extends AccountInteraction{
 			System.out.println(closeMatch.get(i).getName());
 		}
 	}
+	public void saveSchool(String school) { 
+		this.sfCon.saveSchool(school);
+	}
 	
 	public void viewSchoolDetails(String universityName) {
 		this.sfCon.viewSchoolDetails(universityName);
 	}
 	
-	public void viewSavedSchoolDetails(String school) {
-		Boolean found = false;
-		for(University savedUni : this.sfCon.viewSavedSchools()) {
-			if(savedUni.getName().equals(school)) {
-				found = true;
-				this.sfCon.viewSchoolDetails(school);
-			}
-		}
-		if(!found) System.out.println("Cannot found " + school +  " in saved school list");
-		
-	}
+//	public void viewSavedSchoolDetails(String school) {
+//		Boolean found = false;
+//		for(University savedUni : this.sfCon.viewSavedSchools()) {
+//			if(savedUni.getName().equals(school)) {
+//				found = true;
+//				this.sfCon.viewSchoolDetails(school);
+//			}
+//		}
+//		if(!found) System.out.println("Cannot found " + school +  " in saved school list");
+//		
+//	}
 	
 	public void viewSavedSchools() {
-		if(this.sfCon.viewSavedSchools() == null) System.out.println("This user has not saved any school yet");
-		else {
-			System.out.println("This user saved schools: ");
-			for(University savedUni: this.sfCon.viewSavedSchools()) {
-				System.out.println(savedUni.getName());
-			}
-		}
+		this.sfCon.viewSavedSchools();
+	}
+	
+	public void viewUserSavedStatistics(String school) {
+		this.sfCon.viewUserSavedStatistics(school);
 	}
 	
 	

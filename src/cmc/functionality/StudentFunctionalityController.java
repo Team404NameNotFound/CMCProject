@@ -86,13 +86,17 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 		
 	}
 	
-	public ArrayList<UserSavedSchool> viewSavedSchools() {
-		Account currentAccount = this.getAccount().account;
-		if(currentAccount instanceof Student) {
-			return ((Student) currentAccount).getSavedSchools();
+	public void saveSchool(String school) {
+		this.account.saveSchool(school);
+	}
+	
+	public void viewSavedSchools() {
+		if(this.account.account.getUserType().equals("a")) {
+			System.out.println("Current account cannot view saved schools because it is an admin");
 		}else {
-			System.out.println("Current account is not a Student");
-			return null;
+		    for(University savedSchool: ((Student) this.account.account).getSavedSchools()) {
+		    	System.out.println(savedSchool.getName());
+		    }
 		}
 	}
 	
@@ -113,11 +117,9 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 		}
 	}
 	
-	
-	
-	
-	
-	
-	
-
+	public void viewUserSavedStatistics(String school){
+		University savedUni = this.DBCon.getUniversity2(school);
+		int savedTimes = savedUni.getStudents().size();
+		System.out.println(school + " is being saved for " + savedTimes + " times");
+	}
 }
