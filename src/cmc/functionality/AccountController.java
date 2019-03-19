@@ -59,7 +59,7 @@ public class AccountController {
 	/**
 	 * Toggles the status of the current user
 	 */
-	public void toggleActivationStatus()
+	public Account toggleActivationStatus()
 	{
 		if(account == null) System.out.println("account is still null //line64 AccountController");
 		if(account.getUserStatus().equals("N"))
@@ -70,6 +70,7 @@ public class AccountController {
 		{
 			account.setUserStatus("N");
 		}
+		return account;
 	}
 	
 	/**
@@ -230,27 +231,22 @@ public class AccountController {
 	 * @param savedSchools
 	 * @return
 	 */
-	// need to check if the user name is unique
 	public Account createNewAccount(String fName, String lName, String userName, String password, String type,
 			ArrayList<UserSavedSchool> savedSchools)
 	{
-		DBController dbCont = new DBController();
-		
 		if(type.equals("a"))
 		{
 			account = new Admin(fName, lName, userName, password, type, "Y");
-			dbCont.addUser(account);
 			return account;
 		}
 		else if(type.equals("u"))
 		{
 			account = new Student(fName, lName, userName, password, type, "Y", savedSchools);
-			dbCont.addUser(account);
 			return account;
 		}
 		else 
 		{
-			throw new IllegalArgumentException("Sorry you need to specify the type of user ");
+			throw new IllegalArgumentException("Sorry you need to specify the type of user.");
 		}
 	}
 //	public static void main(String[] args)

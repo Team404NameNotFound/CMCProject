@@ -70,10 +70,23 @@ public class AdminFunctionalityController extends UserFunctionalityController {
 		boolean added = false;
 		ArrayList<UserSavedSchool> savedSchoolList = new ArrayList<UserSavedSchool>();
 		
-		AccountController acCon = new AccountController();
-		Account account = acCon.createNewAccount(firstname, lastname, username, password, userType, savedSchoolList);
-		if (account != null) {
-			added = true;
+		
+		if(firstname == "" || lastname == "" || username == "" || password == "" || userType == "") {
+			System.out.println("Sorry, you need to specify all fields.");
+		}
+		else if(!(userType.equals("u") || userType.equals("u"))){
+			System.out.println("Sorry, you need to specify a valid user type.");
+		}
+		else if(DBCon.checkUser(lastname)) {
+			System.out.println("Sorry, this username is already taken.");
+		}
+		else {
+			AccountController acCon = new AccountController();
+			Account account = acCon.createNewAccount(firstname, lastname, username, password, userType, savedSchoolList);
+			if (account != null) {
+				DBCon.addUser(account);
+				added = true;
+			}
 		}
 		return added;
 	}
@@ -82,7 +95,7 @@ public class AdminFunctionalityController extends UserFunctionalityController {
 		this.account = new AccountController( DBCon.getAccount(accountName));
 		
 //		this.account.setAccount(account);
-		this.account.toggleActivationStatus();
+		DBCon.setAccount(this.account.toggleActivationStatus());
 	}
 	
 

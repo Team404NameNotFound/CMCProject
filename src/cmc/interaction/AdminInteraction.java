@@ -45,10 +45,10 @@ public class AdminInteraction extends AccountInteraction{
 			String password, String userType) {
 		
 		if (afCon.addUser(firstname, lastname, username, password, userType)) {
-			System.out.print("User " + username +" added successfully ");
+			System.out.println("User " + username +" added successfully ");
 		}
 		else {
-			System.out.print("User " + username +" could not be added");
+			System.out.println("User " + username +" could not be added");
 		}
 		
 	}
@@ -69,7 +69,7 @@ public class AdminInteraction extends AccountInteraction{
 	public void toggleActivationStatus(String accountName) {
 //		AdminFunctionalityController adCont = new AdminFunctionalityController();
 		afCon.toggleActivationStatus(accountName);
-		System.out.print("Status for "+accountName+" changed.");
+		System.out.println("Status for "+accountName+" changed.");
 	}
 	
 	/**
