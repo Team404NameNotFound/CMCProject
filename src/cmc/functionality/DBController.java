@@ -188,7 +188,7 @@ public class DBController
 	 */
 	public void addUser(Account account)
 	{
-		dbLibrary.user_addUser(account.getUsername(), account.getFirstName(), account.getLastName(), account.getPassword(), account.getUserType().charAt(0));
+		dbLibrary.user_addUser(account.getFirstName(), account.getLastName(), account.getUsername(), account.getPassword(), account.getUserType().charAt(0));
 	}
 	
 	/**
@@ -283,5 +283,9 @@ public class DBController
 	public void addEmphasis(String school, String emphasis)
 	{
 		dbLibrary.university_addUniversityEmphasis(school, emphasis);
+	}
+	
+	public void saveShool(String user, String school) {
+		dbLibrary.user_saveSchool(user, school);
 	}
 }

@@ -192,21 +192,25 @@ public class AccountController {
 	 * Saves the specified school to the current users saved school list
 	 * @param schoolToSave school user would like to add to saved school list
 	 */
-	public void saveSchool(String schoolName)
+	public void saveSchool(String school)
 	{
-		Date time = new Date();
-		University schoolToSave = dbController.getUniversity2(schoolName);
-		
-		//if the shool name is not valid, print message
-		
+		University schoolToSave = dbController.getUniversity2(school);
+
 		if(schoolToSave == null) {
 			System.out.println("The school to save is not in the Database Library");
 		}
 		
-		if(account == null) {
-			System.out.println("The current account is null");
+		if(account == null){
+			System.out.println("The current account is invalid.");
 		}
-		 ((Student)account).saveSchool(schoolToSave, time.toString());
+	   else if(account.getUserType().equals("a")){
+		   System.out.println("The current account is an admin ");
+	   }
+		else {
+			System.out.println(account.getUsername() + " just saved school: " + school);
+			this.dbController.saveShool(account.getUsername(), school);
+		}
+		 
 	}
 	
 	/**
@@ -245,6 +249,15 @@ public class AccountController {
 		{
 			throw new IllegalArgumentException("Sorry you need to specify the type of user.");
 		}
+	}
+	
+	public void compareSchoolsByScore(Student student) {
+		ArrayList<UserSavedSchool> savedSchools = student.getSavedSchools();
+		String list = "Saved Schools: ";
+		for(int i = 0; i < savedSchools.size(); i++) {
+			list += "/n "+savedSchools.get(i);
+		}
+		System.out.println(list);
 	}
 //	public static void main(String[] args)
 //	{

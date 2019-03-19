@@ -119,6 +119,9 @@ public class StudentInteraction extends AccountInteraction{
 			System.out.println(closeMatch.get(i).getName());
 		}
 	}
+	public void saveSchool(String school) { 
+		this.sfCon.saveSchool(school);
+	}
 	
 	/* (non-Javadoc)
 	 * @see cmc.interaction.AccountInteraction#viewSchoolDetails(java.lang.String)
@@ -127,6 +130,19 @@ public class StudentInteraction extends AccountInteraction{
 		this.sfCon.viewSchoolDetails(universityName);
 	}
 	
+<<<<<<< HEAD
+//	public void viewSavedSchoolDetails(String school) {
+//		Boolean found = false;
+//		for(University savedUni : this.sfCon.viewSavedSchools()) {
+//			if(savedUni.getName().equals(school)) {
+//				found = true;
+//				this.sfCon.viewSchoolDetails(school);
+//			}
+//		}
+//		if(!found) System.out.println("Cannot found " + school +  " in saved school list");
+//		
+//	}
+=======
 	/**
 	 * @param school
 	 */
@@ -141,18 +157,17 @@ public class StudentInteraction extends AccountInteraction{
 		if(!found) System.out.println("Cannot found " + school +  " in saved school list");
 		
 	}
+>>>>>>> d6dd5d56471dc1c7d3e85fb92a29e9f4bf360d86
 	
 	/**
 	 * 
 	 */
 	public void viewSavedSchools() {
-		if(this.sfCon.viewSavedSchools() == null) System.out.println("This user has not saved any school yet");
-		else {
-			System.out.println("This user saved schools: ");
-			for(University savedUni: this.sfCon.viewSavedSchools()) {
-				System.out.println(savedUni.getName());
-			}
-		}
+		this.sfCon.viewSavedSchools();
+	}
+	
+	public void viewUserSavedStatistics(String school) {
+		this.sfCon.viewUserSavedStatistics(school);
 	}
 	
 	
@@ -170,14 +185,17 @@ public class StudentInteraction extends AccountInteraction{
 	public void setSfCon(StudentFunctionalityController sfCon) {
 		this.sfCon = sfCon;
 	}
-
-	
 	
 	/**
 	 * @param school
 	 */
 	public void removeSavedSchool(String school) {
 		this.sfCon.removeSavedSchool(school);
+	}
+	
+	public void compareSchoolsByScore(String username) {
+		sfCon.compareSchoolsByScore(username);
+		
 	}
 
 	
