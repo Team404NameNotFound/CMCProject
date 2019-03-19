@@ -1,5 +1,5 @@
 /**
- * 
+ * This class allows for the creation of University objects
  */
 package cmc.entity;
 import java.util.*;
@@ -29,11 +29,10 @@ public class University {
 	private String socialScale;
 	private String qualityOfLife;
 	private String[] emphases;
-	//private ArrayList<Student> students;
-	//Changing to ArrayList<String> so that it would be easier to use, <Stirng> should be username because of it is unique
 	private ArrayList<String> students = new ArrayList<>();
 
 	/**
+	 * Creates a new university object with the following attributes
 	 * @param name name of the university
 	 * @param state state where the university is located
 	 * @param location setting where the university is located
@@ -83,7 +82,6 @@ public class University {
 	}
 
 	/**
-	 * 
 	 * @param name university name
 	 */
 	public void setName(String name) {
@@ -315,19 +313,22 @@ public class University {
 	}
 
 	/**
-	 * @return list of students that saved the school
+	 * @return list of students that saved a particular university
 	 */
 	public int getSaveCount() {
 		return 0;
 	}
 
 	/**
-	 * @param savedSchool list of students that saved the school
+	 * @param savedSchool list of students that saved a particular university
 	 */
 	public void setSavedSchool(ArrayList<String> students) {
 		this.students = students;
 	}
 	
+	/**
+	 * @return list of students that have saved a particular university
+	 */
 	public ArrayList<String> getStudents() {
 		return this.students;
 	}

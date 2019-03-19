@@ -1,5 +1,5 @@
 /**
- * 
+ * This class allows for the creation of Student objects
  */
 package cmc.entity;
 import java.util.*;
@@ -16,6 +16,7 @@ public class Student extends Account {
 	private ArrayList<UserSavedSchool> savedSchools;
 
 	/**
+	 * This method creates a Student object with the following attributes
 	 * @param firstName first name of the Account
 	 * @param lasName last name of the Account
 	 * @param username username of the Account
@@ -50,6 +51,7 @@ public class Student extends Account {
 	}
 	
 	/**
+	 * Checks if a university that the user is trying to save is already in the list of saved schools
 	 * @param universityName name of the university
 	 * @return if the student has saved that particular university
 	 */
@@ -64,6 +66,7 @@ public class Student extends Account {
 	}
 	
 	/**
+	 * Removes a university from the saved school list
 	 * @param universityName name of a university
 	 */
 	public void removeSchool(String universityName) {
@@ -75,6 +78,7 @@ public class Student extends Account {
 	}
 	
 	/**
+	 * Adds a university to the saved school list
 	 * @param university university object
 	 * @param dateAdded date the school was saved
 	 */
