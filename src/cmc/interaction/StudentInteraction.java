@@ -170,14 +170,17 @@ public class StudentInteraction extends AccountInteraction{
 	public void setSfCon(StudentFunctionalityController sfCon) {
 		this.sfCon = sfCon;
 	}
-
-	
 	
 	/**
 	 * @param school
 	 */
 	public void removeSavedSchool(String school) {
 		this.sfCon.removeSavedSchool(school);
+	}
+	
+	public void compareSchoolsByScore(String username) {
+		sfCon.compareSchoolsByScore(username);
+		
 	}
 
 	

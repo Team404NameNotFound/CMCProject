@@ -246,6 +246,15 @@ public class AccountController {
 			throw new IllegalArgumentException("Sorry you need to specify the type of user.");
 		}
 	}
+	
+	public void compareSchoolsByScore(Student student) {
+		ArrayList<UserSavedSchool> savedSchools = student.getSavedSchools();
+		String list = "Saved Schools: ";
+		for(int i = 0; i < savedSchools.size(); i++) {
+			list += "/n "+savedSchools.get(i);
+		}
+		System.out.println(list);
+	}
 //	public static void main(String[] args)
 //	{
 //		System.out.println(makeRandomPassword());

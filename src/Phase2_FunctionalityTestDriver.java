@@ -105,6 +105,10 @@ public class Phase2_FunctionalityTestDriver {
 	//U14 View user saved statistics
 		
 	//U15 Compare schools by score
+		userUsername = "juser";
+		userPassword = "user";
+		user.login(userUsername, userPassword);
+		student.compareSchoolsByScore(userUsername);
 		
 	//U16 View user profile
 		user.login(adminUsername, adminPassword);		

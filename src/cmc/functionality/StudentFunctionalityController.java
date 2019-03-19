@@ -122,6 +122,10 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 		}
 	}
 	
+	public void compareSchoolsByScore(String username) {
+		account.compareSchoolsByScore((Student) DBCon.getAccount(username));
+		
+	}
 	
 	
 	
