@@ -17,6 +17,7 @@ public class DoyleHerouxVirgenTestDriver {
 	static AccountInteraction user = new AccountInteraction();
 	static StudentInteraction student =  new StudentInteraction();
 	static AdminInteraction admin = new AdminInteraction();
+	static AdminInteraction adInt = new AdminInteraction();
 	
 	public static void main(String[] args) {
 		
@@ -31,7 +32,7 @@ public class DoyleHerouxVirgenTestDriver {
 
 		System.out.println("\nSearching and Matching on Fields:");
 		System.out.println("-------------------------");
-		String state = "California";
+		String state = "Minnesota";
 		int numStudentsLower = 2000;
 		int numStudentsUpper = 30000;
 		String[] emphases = {};
@@ -65,5 +66,10 @@ public class DoyleHerouxVirgenTestDriver {
 		admin.removeUniversity("Dummy");
 		
 		
+		adInt.addUser("Carrie", "Zhang", "cz001", "password", "u");
+		adInt.toggleActivationStatus("Zhang");
+		
+		adInt.addUser("Carrie", "Zhang", "cz001", "password", "u");
+		adInt.addUser("Carrie", "Zhang", "cz001", "", "u");
 	}
 }

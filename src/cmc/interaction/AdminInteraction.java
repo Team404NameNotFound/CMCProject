@@ -6,9 +6,11 @@ package cmc.interaction;
 import java.util.ArrayList;
 import java.util.List;
 
+import cmc.entity.Account;
 import cmc.entity.Student;
 import cmc.entity.University;
 import cmc.functionality.AdminFunctionalityController;
+import cmc.functionality.DBController;
 
 /**
  * @author tzhang001
@@ -22,8 +24,18 @@ public class AdminInteraction extends AccountInteraction{
 	AdminFunctionalityController afCon;
 	
 	//constructer
-	public AdminInteraction() {
+	/**
+	 * 
+	 */
+	public AdminInteraction(){
 		this.afCon = new AdminFunctionalityController();
+	}
+	
+	/**
+	 * @param afCon
+	 */
+	public AdminInteraction(AdminFunctionalityController afCon){
+		this.afCon = afCon;
 	}
 	
 	/**
@@ -36,7 +48,14 @@ public class AdminInteraction extends AccountInteraction{
 	 * @param userStatus
 	 */
 	public void addUser(String firstname, String lastname, String username, 
-			String password, String userType, String userStatus) {
+			String password, String userType) {
+		
+		if (afCon.addUser(firstname, lastname, username, password, userType)) {
+			System.out.println("User " + username +" added successfully ");
+		}
+		else {
+			System.out.println("User " + username +" could not be added");
+		}
 		
 	}
 	
@@ -53,8 +72,10 @@ public class AdminInteraction extends AccountInteraction{
 	 * Changes the status of the specified user
 	 * @param account
 	 */
-	public void toggleActivationStatus(String account) {
-		
+	public void toggleActivationStatus(String accountName) {
+//		AdminFunctionalityController adCont = new AdminFunctionalityController();
+		afCon.toggleActivationStatus(accountName);
+		System.out.println("Status for "+accountName+" changed.");
 	}
 	
 	/**
@@ -147,6 +168,25 @@ public class AdminInteraction extends AccountInteraction{
 	}
 	
 	
+	/**
+	 * @param name
+	 * @param state
+	 * @param location
+	 * @param control
+	 * @param enrollment
+	 * @param percentFemale
+	 * @param satVerbal
+	 * @param satMath
+	 * @param cost
+	 * @param percentFinAid
+	 * @param percentEnrolled
+	 * @param applicants
+	 * @param percentAdmitted
+	 * @param academicScale
+	 * @param socialScale
+	 * @param qualityOfLife
+	 * @param emphases
+	 */
 	public void addNewUniversity(String name, String state, String location, String control, String enrollment, String percentFemale,
 			String satVerbal, String satMath, String cost, String percentFinAid, String percentEnrolled, String applicants,
 			String percentAdmitted, String academicScale, String socialScale, String qualityOfLife, String[] emphases) {
@@ -155,6 +195,9 @@ public class AdminInteraction extends AccountInteraction{
 				 percentAdmitted, academicScale, socialScale, qualityOfLife, emphases);
 	}
 	
+	/**
+	 * @param name
+	 */
 	public void removeUniversity(String name) {
 		this.afCon.removeUniversity(name);
 	}

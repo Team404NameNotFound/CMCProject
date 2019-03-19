@@ -15,15 +15,16 @@ public class DBController
 	private UniversityDBLibrary dbLibrary;
 
 	/**
-	 * 
+	 * Creates new instance of Database controller
 	 */
 	public DBController() {
 		dbLibrary = new UniversityDBLibrary("error404", "csci230");
 	}
 	
 	/**
+	 * Checks to see if user exists
 	 * @param inputString
-	 * @return
+	 * @return boolean true if user already exists in database, else false
 	 */
 	public Boolean checkUser(String inputString)
 	{
@@ -44,7 +45,8 @@ public class DBController
 	}
 	
 	/**
-	 * @param schoolName
+	 * Removes university from database
+	 * @param schoolName school to be deleted from database
 	 */
 	public void removeUniversity(String schoolName)
 	{
@@ -52,7 +54,8 @@ public class DBController
 	}
 	
 	/**
-	 * @param school
+	 * Adds university to database
+	 * @param school university to be added to the database
 	 */
 	public void addUniversity(University school)
 	{
@@ -60,8 +63,9 @@ public class DBController
 	}
 	
 	/**
-	 * @param school
-	 * @return
+	 * Retrieve information for a specified university
+	 * @param school name of university to access
+	 * @return University object with corresponding information
 	 */
 	public University getUniversity(String school)
 	{
@@ -100,6 +104,11 @@ public class DBController
 		
 	}
 	
+	/**
+	 * Retrieve information for a specified university
+	 * @param school name of university to access
+	 * @return University object with corresponding information
+	 */
 	public University getUniversity2(String school)
 	{
 		String[][] schoolList = dbLibrary.university_getUniversities();
@@ -136,7 +145,8 @@ public class DBController
 	
 	
 	/**
-	 * @param school
+	 * Update information in database for a specified university
+	 * @param school name of school to be updated in database
 	 */
 	public void setUniversity(University school)
 	{
@@ -144,8 +154,9 @@ public class DBController
 	}
 	
 	/**
-	 * @param accountName
-	 * @return
+	 * Retrieve information for a specified account
+	 * @param accountName user name of account to retrieve
+	 * @return Account object with corresponding information
 	 */
 	public Account getAccount(String accountName)
 	{
@@ -163,7 +174,8 @@ public class DBController
 	}
 	
 	/**
-	 * @param account
+	 * Update information for a specified account
+	 * @param account Account object to update in database
 	 */
 	public void setAccount(Account account)
 	{
@@ -171,7 +183,8 @@ public class DBController
 	}
 	
 	/**
-	 * @param account
+	 * Add new user to database
+	 * @param account Account object containing all account information fields
 	 */
 	public void addUser(Account account)
 	{
@@ -179,8 +192,9 @@ public class DBController
 	}
 	
 	/**
-	 * @param school
-	 * @return
+	 * Check to see if university exists in database
+	 * @param school name of university to search for in database
+	 * @return boolean true if university exists in database, else false
 	 */
 	public boolean findUniversity(String school)
 	{
@@ -196,7 +210,8 @@ public class DBController
 	}
 	
 	/**
-	 * @return
+	 * Retrieve list of all universities in database
+	 * @return ArrayList<University> list of all universities in database
 	 */
 	public ArrayList<University> getUniversityList()
 	{
@@ -212,7 +227,8 @@ public class DBController
 	}
 	
 	/**
-	 * @return
+	 * Retrieve information for all users in database
+	 * @return ArrayList<Account> list of all users in database
 	 */
 	public ArrayList<Account> getAccountList()
 	{
@@ -227,8 +243,9 @@ public class DBController
 	}
 	
 	/**
-	 * @param account
-	 * @return
+	 * Retrieve list of a specified users saved schools
+	 * @param account student to retrieve saved school list
+	 * @return ArrayList<University> get saved school list for a specified student
 	 */
 	public ArrayList<University> getSchoolList(Account account)
 	{
@@ -259,8 +276,9 @@ public class DBController
 	}
 	
 	/**
-	 * @param school
-	 * @param emphasis
+	 * Updated emphases for a specified university
+	 * @param school name of university to update
+	 * @param emphasis emphasis to add to univeristy
 	 */
 	public void addEmphasis(String school, String emphasis)
 	{

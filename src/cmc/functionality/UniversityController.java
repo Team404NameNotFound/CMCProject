@@ -13,6 +13,9 @@ public class UniversityController {
 
 	University school;
 	
+	/**
+	 * 
+	 */
 	public UniversityController()
 	{
 		this.school = null;
@@ -25,7 +28,7 @@ public class UniversityController {
 		this.school = schoolToChange;
 	}
 	
-	/*
+	/**
 	 * returns a string of all the school's attributes
 	 * @return String the string for the school
 	 */
@@ -41,8 +44,27 @@ public class UniversityController {
 		
 	}
 	
-	/*
+	/**
 	 * updates the information for a school from what the admin provided
+	 * @param name
+	 * @param state
+	 * @param location
+	 * @param control
+	 * @param enrollment
+	 * @param percentFemale
+	 * @param satVerbal
+	 * @param satMath
+	 * @param cost
+	 * @param percentFinAid
+	 * @param percentEnrolled
+	 * @param applicants
+	 * @param percentAdmitted
+	 * @param academicScale
+	 * @param socialScale
+	 * @param qualityOfLife
+	 * @param emphases
+	 * @param savedSchool
+	 * @return
 	 */
 	public University updateUniversityInfo(String name, String state, String location, String control, String enrollment, String percentFemale,
 			String satVerbal, String satMath, String cost, String percentFinAid, String percentEnrolled, String applicants,
@@ -121,6 +143,26 @@ public class UniversityController {
 		return school;
 	}
 	
+	/**
+	 * @param name
+	 * @param state
+	 * @param location
+	 * @param control
+	 * @param enrollment
+	 * @param percentFemale
+	 * @param satVerbal
+	 * @param satMath
+	 * @param cost
+	 * @param percentFinAid
+	 * @param percentEnrolled
+	 * @param applicants
+	 * @param percentAdmitted
+	 * @param academicScale
+	 * @param socialScale
+	 * @param qualityOfLife
+	 * @param emphases
+	 * @return
+	 */
 	public University createNewUniversity(String name, String state, String location, String control, String enrollment, String percentFemale,
 			String satVerbal, String satMath, String cost, String percentFinAid, String percentEnrolled, String applicants,
 			String percentAdmitted, String academicScale, String socialScale, String qualityOfLife, String[] emphases)

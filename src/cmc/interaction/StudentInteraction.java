@@ -18,11 +18,20 @@ public class StudentInteraction extends AccountInteraction{
 
 	StudentFunctionalityController sfCon;
 	
+	/**
+	 * 
+	 */
 	public StudentInteraction() {
 		super();
 		sfCon = new StudentFunctionalityController();
 	}
 	
+	/**
+	 * @param location
+	 * @param characteristic
+	 * @param control
+	 * @param emphasis
+	 */
 	public void takeQuiz(String location, String characteristic ,String control ,String[] emphasis) {
 		if (characteristic.equals("academic"))
 		{
@@ -114,10 +123,14 @@ public class StudentInteraction extends AccountInteraction{
 		this.sfCon.saveSchool(school);
 	}
 	
+	/* (non-Javadoc)
+	 * @see cmc.interaction.AccountInteraction#viewSchoolDetails(java.lang.String)
+	 */
 	public void viewSchoolDetails(String universityName) {
 		this.sfCon.viewSchoolDetails(universityName);
 	}
 	
+<<<<<<< HEAD
 //	public void viewSavedSchoolDetails(String school) {
 //		Boolean found = false;
 //		for(University savedUni : this.sfCon.viewSavedSchools()) {
@@ -129,7 +142,26 @@ public class StudentInteraction extends AccountInteraction{
 //		if(!found) System.out.println("Cannot found " + school +  " in saved school list");
 //		
 //	}
+=======
+	/**
+	 * @param school
+	 */
+	public void viewSavedSchoolDetails(String school) {
+		Boolean found = false;
+		for(University savedUni : this.sfCon.viewSavedSchools()) {
+			if(savedUni.getName().equals(school)) {
+				found = true;
+				this.sfCon.viewSchoolDetails(school);
+			}
+		}
+		if(!found) System.out.println("Cannot found " + school +  " in saved school list");
+		
+	}
+>>>>>>> d6dd5d56471dc1c7d3e85fb92a29e9f4bf360d86
 	
+	/**
+	 * 
+	 */
 	public void viewSavedSchools() {
 		this.sfCon.viewSavedSchools();
 	}
@@ -153,11 +185,17 @@ public class StudentInteraction extends AccountInteraction{
 	public void setSfCon(StudentFunctionalityController sfCon) {
 		this.sfCon = sfCon;
 	}
-
 	
-	
+	/**
+	 * @param school
+	 */
 	public void removeSavedSchool(String school) {
 		this.sfCon.removeSavedSchool(school);
+	}
+	
+	public void compareSchoolsByScore(String username) {
+		sfCon.compareSchoolsByScore(username);
+		
 	}
 
 	

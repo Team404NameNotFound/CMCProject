@@ -24,8 +24,9 @@ public class SearchController {
 			"Do you know what you would like to study?"};
 	University[] universityList;
 	
+
 	/**
-	 * 
+	 * @param allSchools
 	 */
 	public SearchController(ArrayList<University> allSchools) {
 		this.universityList = new University[allSchools.size()];
@@ -37,17 +38,27 @@ public class SearchController {
 		
 	}
 	
+	/**
+	 * @return
+	 */
 	public String[] getQuizQuestions()
 	{
 		return quizQuestions;
 	}
 	
+	/**
+	 * @return
+	 */
 	public ArrayList<University> doQuizSearch()
 	{
 		ArrayList<University> closeSchools = new  ArrayList<University>();
 		return closeSchools;
 	}
 	
+	/**
+	 * @param university
+	 * @return
+	 */
 	public ArrayList<University> rankUniversity(University university)
 	{
 		ArrayList<University> returnUniversity = new ArrayList<University>();
@@ -134,6 +145,38 @@ public class SearchController {
 		return returnUniversity;
 	}
 
+	/**
+	 * @param schoolName
+	 * @param state
+	 * @param location
+	 * @param numStudentsMin
+	 * @param numStudentsMax
+	 * @param percentFemaleMin
+	 * @param percentFemaleMax
+	 * @param SATVerbalMin
+	 * @param SATVerbalMax
+	 * @param SATMathMin
+	 * @param SATMathMax
+	 * @param expensesMin
+	 * @param expensesMax
+	 * @param PercentFinancialAidMin
+	 * @param percenetFinancialAidMax
+	 * @param numberApplicantsMin
+	 * @param numberApplicatnsMax
+	 * @param percentAddmittedMin
+	 * @param percentAdmittedMax
+	 * @param percentEnrolledMin
+	 * @param percentEnrolledMax
+	 * @param academicScaleMin
+	 * @param academicScaleMax
+	 * @param socialScalemin
+	 * @param socialScaleMax
+	 * @param qualityOfLifeMin
+	 * @param qualityOfLifeMax
+	 * @param emphases
+	 * @param control
+	 * @return
+	 */
 	public ArrayList<University> search(String schoolName, String state, String location, int numStudentsMin,
 			int numStudentsMax, float percentFemaleMin, float percentFemaleMax, int SATVerbalMin, 
 			int SATVerbalMax, int SATMathMin, int SATMathMax, int expensesMin, int expensesMax, 

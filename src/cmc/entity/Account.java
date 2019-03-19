@@ -1,5 +1,5 @@
 /**
- * 
+ * This class allows for the creation of Account objects
  */
 package cmc.entity;
 
@@ -25,6 +25,7 @@ public class Account {
 	private String userStatus;
 	
 	/**
+	 * Creates a new Account object with the following attributes
 	 * @param firstName first name of the Account
 	 * @param lasName last name of the Account
 	 * @param username username of the Account
@@ -44,13 +45,14 @@ public class Account {
 	}
 
 	/**
+	 * Allows user with the correspoding username and password to access the system
 	 * @param firstName first name of the Account
 	 * @param lasName last name of the Account
 	 * @param username username of the Account
 	 * @param password password of the Account
 	 * @param userType type of account admin or student
 	 * @param userStatus whether account is active or inactive
-	 * @return Account object
+	 * @return Account the account object of the user who will be logged on
 	 */
 	public Account logon(String firstName, String lastName, String username, String password, String userType,
 			String userStatus) {

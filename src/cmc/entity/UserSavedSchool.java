@@ -1,5 +1,5 @@
 /**
- * 
+ * Allows for the creation of UserSavedSchool objects (a type of University)
  */
 package cmc.entity;
 
@@ -16,6 +16,7 @@ public class UserSavedSchool extends University{
 	
 	
 	/**
+	 * Creates a UserSavedSchool object with the following attributes
 	 * @param name name of the university
 	 * @param state state where the university is located
 	 * @param location setting where the university is located
@@ -45,6 +46,7 @@ public class UserSavedSchool extends University{
 		this.dateAdded = dateAdded;
 	}
 	/**
+	 * Creates a UserSaved school object with the following attributes
 	 * @param school university object that users wants to add
 	 * @param dateAdded the date when a student saves the school
 	 */
@@ -69,6 +71,7 @@ public class UserSavedSchool extends University{
 	}
 
 	/**
+	 * Allows user to view the number of students who have saved a particular university
 	 * @param university university object
 	 * @return the number of students that have saved the school
 	 */

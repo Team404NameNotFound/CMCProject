@@ -80,12 +80,16 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 		return null;
 	}
 
+	/**
+	 * @param universityName
+	 */
 	public void viewSchoolDetails(String universityName) {
 		this.universityCon = new UniversityController(this.DBCon.getUniversity2(universityName));
 		System.out.println(this.universityCon.getSchoolDetails());
 		
 	}
 	
+<<<<<<< HEAD
 	public void saveSchool(String school) {
 		this.account.saveSchool(school);
 	}
@@ -93,6 +97,15 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 	public void viewSavedSchools() {
 		if(this.account.account.getUserType().equals("a")) {
 			System.out.println("Current account cannot view saved schools because it is an admin");
+=======
+	/**
+	 * @return
+	 */
+	public ArrayList<UserSavedSchool> viewSavedSchools() {
+		Account currentAccount = this.getAccount().account;
+		if(currentAccount instanceof Student) {
+			return ((Student) currentAccount).getSavedSchools();
+>>>>>>> d6dd5d56471dc1c7d3e85fb92a29e9f4bf360d86
 		}else {
 		    for(University savedSchool: ((Student) this.account.account).getSavedSchools()) {
 		    	System.out.println(savedSchool.getName());
@@ -100,6 +113,9 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 		}
 	}
 	
+	/**
+	 * @param school
+	 */
 	public void removeSavedSchool(String school) {
 		University university = this.DBCon.getUniversity2(school);
 		if(university ==  null) System.out.println("The school to remove is not in the Database Liabrary");
@@ -117,9 +133,23 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 		}
 	}
 	
+<<<<<<< HEAD
 	public void viewUserSavedStatistics(String school){
 		University savedUni = this.DBCon.getUniversity2(school);
 		int savedTimes = savedUni.getStudents().size();
 		System.out.println(school + " is being saved for " + savedTimes + " times");
 	}
+=======
+	public void compareSchoolsByScore(String username) {
+		account.compareSchoolsByScore((Student) DBCon.getAccount(username));
+		
+	}
+	
+	
+	
+	
+	
+	
+
+>>>>>>> d6dd5d56471dc1c7d3e85fb92a29e9f4bf360d86
 }

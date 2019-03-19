@@ -17,13 +17,16 @@ public class AccountController {
     DBController dbController = new DBController();
 	Account account;
 	/**
-	 * creates new AccountController for student being accessed
+	 * creates new AccountController object
+	 * @param Account student being accessed
 	 */
 	public AccountController(Account account) {
 		this.account = account;
 	}
 
-	//Constructor
+	/**
+	 * creates new AccountController object
+	 */
 	public AccountController()
 	{
 		
@@ -31,7 +34,7 @@ public class AccountController {
 	
 	/**
 	 * Returns list of all schools
-	 * @return schoolList
+	 * @return schoolList list of schools the student has on saved school list
 	 */
 	public ArrayList<UserSavedSchool> getSchoolList()
 	{
@@ -40,17 +43,22 @@ public class AccountController {
 	
 	/**
 	 * Checks to see if any student has saved the specified school
+	 * @param University university user is trying to save
+	 * @return boolean true if school already saved, else false
 	 */
 	public boolean checkIfShoolSaved(University school)
 	{
 		return ((Student)account).isSchoolSaved(school.getName());
 	}
 	
+
 	/**
 	 * Toggles the status of the current user
+	 * @return Account account with activation status changed
 	 */
-	public void toggleActivationStatus()
+	public Account toggleActivationStatus()
 	{
+		if(account == null) System.out.println("account is still null //line64 AccountController");
 		if(account.getUserStatus().equals("N"))
 		{
 			account.setUserStatus("Y");
@@ -59,12 +67,13 @@ public class AccountController {
 		{
 			account.setUserStatus("N");
 		}
+		return account;
 	}
 	
 	/**
 	 * Checks if the password matches for the current user
-	 * @param password
-	 * @return
+	 * @param password password for the account trying to log in
+	 * @return boolean true if password matches, else false
 	 */
 	public boolean checkPassword(String password)
 	{
@@ -86,7 +95,7 @@ public class AccountController {
 	
 	/**
 	 * Randomly generates a password
-	 * @return randomPassword
+	 * @return randomPassword password generated to be sent to user and added to profile
 	 */
 	public String makeRandomPassword()
 	{
@@ -107,7 +116,7 @@ public class AccountController {
 	
 	/**
 	 * Updates the password of the current user
-	 * @param newPassword
+	 * @param newPassword new password to be put in to account
 	 */
 	public void updatePassword(String newPassword)
 	{
@@ -124,7 +133,7 @@ public class AccountController {
 	
 	/**
 	 * Sends an email to the current user
-	 * @param message
+	 * @param message content of email to send to user containing randomly generated password
 	 */
 	public void sendEmail(String message)
 	{
@@ -133,12 +142,12 @@ public class AccountController {
 	
 	/**
 	 * Updates the first name, last name, password, type, and status of the current user
-	 * @param fName
-	 * @param lName
-	 * @param password
-	 * @param type
-	 * @param status
-	 * @return
+	 * @param fName first name associated with account
+	 * @param lName last name associated with account
+	 * @param password password associated with account
+	 * @param type whether account is admin or user
+	 * @param status active status of user
+	 * @return Account account with information edited
 	 */
 	public Account updateUserInfo(String fName, String lName, String password, String type, String status)
 	{
@@ -181,7 +190,7 @@ public class AccountController {
 	
 	/**
 	 * Saves the specified school to the current users saved school list
-	 * @param schoolToSave
+	 * @param schoolToSave school user would like to add to saved school list
 	 */
 	public void saveSchool(String school)
 	{
@@ -206,7 +215,7 @@ public class AccountController {
 	
 	/**
 	 * Removes school from the current student saved school list
-	 * @param schoolToRemove
+	 * @param schoolToRemove school user would like to remove from saved school list
 	 */
 	public void removeUniversity(University schoolToRemove)
 	{
@@ -215,12 +224,12 @@ public class AccountController {
 	
 	/**
 	 * Creates a new account with the specified parameters
-	 * @param fName
-	 * @param lName
-	 * @param userName
-	 * @param password
-	 * @param type
-	 * @param savedSchools
+	 * @param fName first name associated with account
+	 * @param lName last name associated with account
+	 * @param userName user name associated with account
+	 * @param password password associated with account
+	 * @param type whether account is admin or user
+	 * @param savedSchools list of schools user has saved
 	 * @return
 	 */
 	public Account createNewAccount(String fName, String lName, String userName, String password, String type,
@@ -238,8 +247,17 @@ public class AccountController {
 		}
 		else 
 		{
-			throw new IllegalArgumentException("sorry you need to specify the type of user ");
+			throw new IllegalArgumentException("Sorry you need to specify the type of user.");
 		}
+	}
+	
+	public void compareSchoolsByScore(Student student) {
+		ArrayList<UserSavedSchool> savedSchools = student.getSavedSchools();
+		String list = "Saved Schools: ";
+		for(int i = 0; i < savedSchools.size(); i++) {
+			list += "/n "+savedSchools.get(i);
+		}
+		System.out.println(list);
 	}
 //	public static void main(String[] args)
 //	{
