@@ -39,6 +39,9 @@ public class AccountInteraction {
 		
 	}
 	
+	/**
+	 * @param univeristyName
+	 */
 	public void viewSchoolDetails(String univeristyName)
 	{
 		String school = UFCon.viewUniversityDetials(univeristyName);

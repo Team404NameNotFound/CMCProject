@@ -24,10 +24,16 @@ public class AdminInteraction extends AccountInteraction{
 	AdminFunctionalityController afCon;
 	
 	//constructer
+	/**
+	 * 
+	 */
 	public AdminInteraction(){
 		this.afCon = new AdminFunctionalityController();
 	}
 	
+	/**
+	 * @param afCon
+	 */
 	public AdminInteraction(AdminFunctionalityController afCon){
 		this.afCon = afCon;
 	}
@@ -162,6 +168,25 @@ public class AdminInteraction extends AccountInteraction{
 	}
 	
 	
+	/**
+	 * @param name
+	 * @param state
+	 * @param location
+	 * @param control
+	 * @param enrollment
+	 * @param percentFemale
+	 * @param satVerbal
+	 * @param satMath
+	 * @param cost
+	 * @param percentFinAid
+	 * @param percentEnrolled
+	 * @param applicants
+	 * @param percentAdmitted
+	 * @param academicScale
+	 * @param socialScale
+	 * @param qualityOfLife
+	 * @param emphases
+	 */
 	public void addNewUniversity(String name, String state, String location, String control, String enrollment, String percentFemale,
 			String satVerbal, String satMath, String cost, String percentFinAid, String percentEnrolled, String applicants,
 			String percentAdmitted, String academicScale, String socialScale, String qualityOfLife, String[] emphases) {
@@ -170,6 +195,9 @@ public class AdminInteraction extends AccountInteraction{
 				 percentAdmitted, academicScale, socialScale, qualityOfLife, emphases);
 	}
 	
+	/**
+	 * @param name
+	 */
 	public void removeUniversity(String name) {
 		this.afCon.removeUniversity(name);
 	}

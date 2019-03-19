@@ -18,11 +18,20 @@ public class StudentInteraction extends AccountInteraction{
 
 	StudentFunctionalityController sfCon;
 	
+	/**
+	 * 
+	 */
 	public StudentInteraction() {
 		super();
 		sfCon = new StudentFunctionalityController();
 	}
 	
+	/**
+	 * @param location
+	 * @param characteristic
+	 * @param control
+	 * @param emphasis
+	 */
 	public void takeQuiz(String location, String characteristic ,String control ,String[] emphasis) {
 		if (characteristic.equals("academic"))
 		{
@@ -111,10 +120,16 @@ public class StudentInteraction extends AccountInteraction{
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see cmc.interaction.AccountInteraction#viewSchoolDetails(java.lang.String)
+	 */
 	public void viewSchoolDetails(String universityName) {
 		this.sfCon.viewSchoolDetails(universityName);
 	}
 	
+	/**
+	 * @param school
+	 */
 	public void viewSavedSchoolDetails(String school) {
 		Boolean found = false;
 		for(University savedUni : this.sfCon.viewSavedSchools()) {
@@ -127,6 +142,9 @@ public class StudentInteraction extends AccountInteraction{
 		
 	}
 	
+	/**
+	 * 
+	 */
 	public void viewSavedSchools() {
 		if(this.sfCon.viewSavedSchools() == null) System.out.println("This user has not saved any school yet");
 		else {
@@ -155,6 +173,9 @@ public class StudentInteraction extends AccountInteraction{
 
 	
 	
+	/**
+	 * @param school
+	 */
 	public void removeSavedSchool(String school) {
 		this.sfCon.removeSavedSchool(school);
 	}
