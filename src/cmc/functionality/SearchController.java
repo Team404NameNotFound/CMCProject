@@ -534,19 +534,6 @@ public class SearchController {
 			int position = (int)schoolMatches[i][1];
 			returnUniversity.add(universityList[position]);
 		}
-//		for(int i = 0; i<schoolMatches.length;i++)
-//		{
-//			System.out.println("Score: " + schoolMatches[i][0] + " Position: " + schoolMatches[i][1]);
-//		}
 		return returnUniversity;
 	}
-	
-	
-//	public static void main(String[] args)
-//	{
-//
-//		DBController db = new DBController();
-//		SearchController sc = new SearchController(db.getUniversityList());
-//		University testUniversity = new University();
-//	}
 }
