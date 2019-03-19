@@ -1,7 +1,9 @@
 	import cmc.*;
 	import cmc.entity.*;
-	import cmc.functionality.DBController;
-	import cmc.interaction.*;
+import cmc.functionality.AccountController;
+import cmc.functionality.DBController;
+import cmc.functionality.StudentFunctionalityController;
+import cmc.interaction.*;
 	import java.util.ArrayList;
 	
 public class Phase2_FunctionalityTestDriver {
@@ -10,6 +12,12 @@ public class Phase2_FunctionalityTestDriver {
 	static StudentInteraction student =  new StudentInteraction();
 	static AdminInteraction admin = new AdminInteraction();
 	static AdminInteraction adInt = new AdminInteraction();
+	
+	static ArrayList<UserSavedSchool> studentSavedSchools = new ArrayList<>();
+	static Student student1 = new Student("Cool", "User", "cuser", "user" ,"u", "Y", studentSavedSchools);
+	static AccountController accountController = new AccountController(student1);
+    static StudentInteraction studentInteraction = new StudentInteraction();
+    static StudentFunctionalityController sfCon = new StudentFunctionalityController();
 	
 	public static void main(String[] args) {
 	//UC 1 Login
@@ -95,6 +103,16 @@ public class Phase2_FunctionalityTestDriver {
 		student.findRecommended(university);
 		
 	//U10 Save school
+		sfCon.setAccount(accountController);
+		studentInteraction.setSfCon(sfCon);
+		
+		//test saveSchool()
+		studentInteraction.saveSchool("AMERICAN UNIVERSITY OF BEIRUT");
+		studentInteraction.saveSchool("YALE");
+		studentInteraction.saveSchool("AUGSBURG"); 
+		studentInteraction.saveSchool("GEORGE WASHINGTON");
+		System.out.println("Schools being saved are: ");
+	    studentInteraction.viewSavedSchools();
 		
 	//U11 View saved schools
 		

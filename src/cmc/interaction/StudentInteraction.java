@@ -130,7 +130,9 @@ public class StudentInteraction extends AccountInteraction{
 		this.sfCon.viewSchoolDetails(universityName);
 	}
 	
-<<<<<<< HEAD
+	/**
+	 * @param school
+	 */
 //	public void viewSavedSchoolDetails(String school) {
 //		Boolean found = false;
 //		for(University savedUni : this.sfCon.viewSavedSchools()) {
@@ -142,22 +144,6 @@ public class StudentInteraction extends AccountInteraction{
 //		if(!found) System.out.println("Cannot found " + school +  " in saved school list");
 //		
 //	}
-=======
-	/**
-	 * @param school
-	 */
-	public void viewSavedSchoolDetails(String school) {
-		Boolean found = false;
-		for(University savedUni : this.sfCon.viewSavedSchools()) {
-			if(savedUni.getName().equals(school)) {
-				found = true;
-				this.sfCon.viewSchoolDetails(school);
-			}
-		}
-		if(!found) System.out.println("Cannot found " + school +  " in saved school list");
-		
-	}
->>>>>>> d6dd5d56471dc1c7d3e85fb92a29e9f4bf360d86
 	
 	/**
 	 * 
