@@ -68,9 +68,9 @@ public class Phase2_FunctionalityTestDriver {
 		//UC 3 Request new password
 		System.out.println("UC 3: Request New Password");
 		System.out.println("-------------------------");
-		adInt.addUser("Andrew", "Heroux", "ajheroux@csbsju.edu", "password", "u");
+		adInt.addUser("Imad", "Rahal", "irahal@csbsju.edu", "password", "u");
 		System.out.println("UC 3: Forgot Password");
-		adInt.forgotPsw("ajheroux@csbsju.edu");
+		adInt.forgotPsw("irahal@csbsju.edu");
 		System.out.println("-------------------------\n\n\n");
 		
 		//Login to test the rest of the functionalities
