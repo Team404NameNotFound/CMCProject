@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 import cmc.entity.Account;
 import cmc.entity.University;
+import cmc.entity.UserSavedSchool;
 import dblibrary.project.csci230.UniversityDBLibrary;
 
 
@@ -242,6 +243,21 @@ public class DBController
 		
 	}
 	
+	public ArrayList<UserSavedSchool> getSchoolList2(Account account)
+	{
+		String[][] savedSchools = dbLibrary.user_getUsernamesWithSavedSchools();
+		ArrayList<UserSavedSchool> returnSchools = new ArrayList<>();
+		for(int i = 0; i < savedSchools.length; i++) {
+			if(savedSchools[i][0].equals(account.getUsername())) {
+				University currentSchool = this.getUniversity2(savedSchools[i][1]);
+				String dateAdded = savedSchools[i][2];
+				UserSavedSchool savedSchool = new UserSavedSchool(currentSchool,dateAdded);
+				returnSchools.add(savedSchool);
+			}
+		}
+		return returnSchools;
+}
+	
 	/**
 	 * Retrieve list of a specified users saved schools
 	 * @param account student to retrieve saved school list
@@ -260,8 +276,9 @@ public class DBController
 					
 				}
 			}
-	
 
+	
+		
 //	int placer = 0;
 //		for(int n = 0; n < savedSchools.length; n++)
 //		{
@@ -271,7 +288,7 @@ public class DBController
 //					savedSchools[n][13], savedSchools[n][14], savedSchools[n][15], null);
 //			returnArray.add(uni);
 //		}
-		
+//		
 		return returnArray;
 	}
 	
@@ -288,4 +305,7 @@ public class DBController
 	public void saveShool(String user, String school) {
 		dbLibrary.user_saveSchool(user, school);
 	}
+	public void removeSavedSchool(String user, String school) {
+		dbLibrary.user_removeSchool(user, school);
+}
 }

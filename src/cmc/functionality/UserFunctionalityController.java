@@ -26,6 +26,20 @@ public class UserFunctionalityController {
 	}
 	
 	/**
+	 * @return the universityCon
+	 */
+	public UniversityController getUniversityCon() {
+		return universityCon;
+	}
+
+	/**
+	 * @param universityCon the universityCon to set
+	 */
+	public void setUniversityCon(UniversityController universityCon) {
+		this.universityCon = universityCon;
+	}
+
+	/**
 	 * Log on checks to see if the the user is logged in and is an active user. If both are true, 
 	 * the password and user name are verified and the user is logged in.
 	 * @param userName

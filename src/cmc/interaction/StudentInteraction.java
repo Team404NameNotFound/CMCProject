@@ -88,7 +88,7 @@ public class StudentInteraction extends AccountInteraction{
 	    //sfCon.searchCon = new SearchController();
 	    // do I need to make a new SearchController using DBController.getUniversityList() as a param?
 		ArrayList<University> matchSchools =  
-				sfCon.searchCon.search( schoolName,  state,  location,  numStudentsMin,
+				sfCon.searchCon.fieldSearch( schoolName,  state,  location,  numStudentsMin,
 						 numStudentsMax,  percentFemaleMin,  percentFemaleMax,  SATVerbalMin, 
 						 SATVerbalMax,  SATMathMin,  SATMathMax,  expensesMin,  expensesMax, 
 						 PercentFinancialAidMin,  percenetFinancialAidMax,  numberApplicantsMin, 
@@ -96,7 +96,7 @@ public class StudentInteraction extends AccountInteraction{
 						 percentEnrolledMin,  percentEnrolledMax,  academicScaleMin,  academicScaleMax,
 						 socialScalemin,  socialScaleMax,  qualityOfLifeMin,  qualityOfLifeMax,  emphases, control
 						);
-		 for(int i = 0; i<10;i++)
+		 for(int i = 0; i<matchSchools.size();i++)
 		 {
 			 System.out.println(matchSchools.get(i).getName());
 		 }
@@ -122,6 +122,7 @@ public class StudentInteraction extends AccountInteraction{
 	public void saveSchool(String school) { 
 		this.sfCon.saveSchool(school);
 	}
+
 	
 	/* (non-Javadoc)
 	 * @see cmc.interaction.AccountInteraction#viewSchoolDetails(java.lang.String)
@@ -133,17 +134,9 @@ public class StudentInteraction extends AccountInteraction{
 	/**
 	 * @param school
 	 */
-//	public void viewSavedSchoolDetails(String school) {
-//		Boolean found = false;
-//		for(University savedUni : this.sfCon.viewSavedSchools()) {
-//			if(savedUni.getName().equals(school)) {
-//				found = true;
-//				this.sfCon.viewSchoolDetails(school);
-//			}
-//		}
-//		if(!found) System.out.println("Cannot found " + school +  " in saved school list");
-//		
-//	}
+	public void viewSavedSchoolDetails(String school) {
+		this.sfCon.viewSavedSchoolDetails(school);
+	}
 	
 	/**
 	 * 
@@ -153,6 +146,7 @@ public class StudentInteraction extends AccountInteraction{
 	}
 	
 	public void viewUserSavedStatistics(String school) {
+		System.out.println("view stats interaction");
 		this.sfCon.viewUserSavedStatistics(school);
 	}
 	
@@ -171,7 +165,7 @@ public class StudentInteraction extends AccountInteraction{
 	public void setSfCon(StudentFunctionalityController sfCon) {
 		this.sfCon = sfCon;
 	}
-	
+
 	/**
 	 * @param school
 	 */

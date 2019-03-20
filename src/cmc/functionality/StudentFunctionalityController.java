@@ -92,11 +92,14 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 
 	public void saveSchool(String school) {
 		this.account.saveSchool(school);
+		this.DBCon.getUniversity2(school).addStudent(this.account.account.getUsername());
 	}
 	
 	public void viewSavedSchools() {
 		if(this.account.account.getUserType().equals("a")) {
 			System.out.println("Current account cannot view saved schools because it is an admin");
+		}else {
+			this.account.viewSavedSchools();
 		}
 	}
 
@@ -109,25 +112,26 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 	 * @param school
 	 */
 	public void removeSavedSchool(String school) {
-		University university = this.DBCon.getUniversity2(school);
-		if(university ==  null) System.out.println("The school to remove is not in the Database Liabrary");
-		else {
-			if(this.getAccount().account instanceof Student) {
-				Student currentStudent = (Student) this.getAccount().account;
-				if(currentStudent.isSchoolSaved(school)) {
-					currentStudent.removeSchool(school);
-				}else {
-					System.out.println("This school is not on current Student's saved schools list");
-				}	
-			}else {
-				System.out.println("This account is not a Student");
-			}
-		}
+		this.account.removeSavedSchool(school);
 	}
 	
+	public void viewSavedSchoolDetails(String school) {
+		Boolean schoolSaved = this.account.checkIfSchoolSaved(school);
+		if(schoolSaved) {
+		   this.setUniversityCon(new UniversityController(this.DBCon.getUniversity2(school)));
+		   System.out.println(this.universityCon.getSchoolDetails());
+		}else {
+			System.out.println("This school is not saved");
+		}
+	}
 
 	public void viewUserSavedStatistics(String school){
+		System.out.println("line 129 in sfCon");
 		University savedUni = this.DBCon.getUniversity2(school);
+		for(String student: savedUni.getStudents()) {
+		    System.out.println(student + "StudentFunCon line 131");
+		}
+		System.out.println("line 134 in sfCon");
 		int savedTimes = savedUni.getStudents().size();
 		System.out.println(school + " is being saved for " + savedTimes + " times");
 	}

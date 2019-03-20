@@ -64,6 +64,8 @@ public class Phase2_FunctionalityTestDriver {
 		
 		
 	//UC 4 Search
+	
+		
 	//UC 5 Take personality quiz
 		
 		
@@ -71,17 +73,17 @@ public class Phase2_FunctionalityTestDriver {
 	//U7 View Search results
 		System.out.println("\nSearching and Matching on Fields:");
 		System.out.println("-------------------------");
-		String state = "Minnesota";
+		String state = "Texas";
 		int numStudentsLower = 2000;
-		int numStudentsUpper = 30000;
+		int numStudentsUpper = 50000;
 		String[] emphases = {};
-		student.fieldSearch( "", state, "", numStudentsLower,
+		student.fieldSearch( "-1", state, "-1", numStudentsLower,
 				numStudentsUpper, (float)-1.0,(float)-1.0, -1, 
 				-1, -1, -1, -1, -1, 
 				(float)-1.0, (float)-1.0, -1, 
 				-1, (float)-1.0, (float)-1.0,
 				(float)-1.0, (float)-1.0, -1, -1,
-				-1, -1, -1, -1, emphases, ""
+				-1, -1, -1, -1, emphases, "-1"
 				);
 		System.out.println();
 		
@@ -112,22 +114,43 @@ public class Phase2_FunctionalityTestDriver {
 		
 		//test saveSchool()
 		System.out.println("-------------------------");
-		System.out.println("Testing save schools");
+		System.out.println("Testing save schools: ");
+		sfCon.setAccount(accountController);
+		studentInteraction.setSfCon(sfCon);
+
 		studentInteraction.saveSchool("AMERICAN UNIVERSITY OF BEIRUT");
 		studentInteraction.saveSchool("YALE");
 		studentInteraction.saveSchool("AUGSBURG"); 
 		studentInteraction.saveSchool("GEORGE WASHINGTON");
+
 		System.out.println("Schools being saved are: ");
 	    studentInteraction.viewSavedSchools();
 	    System.out.println();
+
 		
 	//U11 View saved schools
-		
+	    System.out.println("-------------------------");
+	    System.out.println("Testing view saved schools: ");
+	    studentInteraction.viewSavedSchools();
+	    
 	//U12 Remove a saved school
-		
+	    System.out.println("-------------------------");
+	    System.out.println("Testing remove a saved school, remove: GEORGE WASHINGTON\"");
+	    studentInteraction.removeSavedSchool("GEORGE WASHINGTON");
+	    System.out.println("After removing, the new saved school list for current user is");
+	    studentInteraction.viewSavedSchools();
+	    
 	//U13 View saved school details
-		
+	    System.out.println("-------------------------");
+	    System.out.println("Testing view a saved school details: ");
+	    studentInteraction.viewSavedSchoolDetails("YALE");
+	    
 	//U14 View user saved statistics
+	    System.out.println("-------------------------");
+	    System.out.println("Testing view userSavedStatistisc: ");
+	    studentInteraction.viewUserSavedStatistics("YALE");
+	    studentInteraction.viewUserSavedStatistics("GEORGE WASHINGTON");;
+	    
 		
 	//U15 Compare schools by score
 	    System.out.println("UC 15 Compare Schools by SAT Math Score");
@@ -135,7 +158,7 @@ public class Phase2_FunctionalityTestDriver {
 	    System.out.println("Testing compare scores");
 	    studentInteraction.compareSchoolsByScore();
 	    System.out.println();
-		
+	
 	//U16 View user profile
 	    System.out.println("UC 16 View User Profile");
 		user.login(adminUsername, adminPassword);		

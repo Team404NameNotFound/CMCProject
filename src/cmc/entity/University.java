@@ -326,6 +326,10 @@ public class University {
 		this.students = students;
 	}
 	
+	public void addStudent(String student) {
+		this.students.add(student);
+	}
+	
 	/**
 	 * @return list of students that have saved a particular university
 	 */
