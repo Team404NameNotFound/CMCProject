@@ -30,6 +30,10 @@ public class Student extends Account {
 		super(firstName, lastName, username, password, userType, userStatus);
 		this.savedSchools = savedSchools;
 	}
+	/**This constructor generated a new Student by using an Account and that account's savedSchools
+	 * @param account
+	 * @param savedSchools
+	 */
 	public Student(Account account, ArrayList<UserSavedSchool> savedSchools) {
 		super(account.getFirstName(), account.getLastName(), account.getUsername(), 
 				account.getPassword(), account.getUserType(), account.getUserStatus());

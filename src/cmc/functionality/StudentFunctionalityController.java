@@ -12,6 +12,10 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 	
 	public SearchController searchCon;
 	//constructer
+	
+	/**
+	 * Creating a new StudentFunctionalityController
+	 */
 	public StudentFunctionalityController() {
 		super();
 		this.searchCon = new SearchController(this.DBCon.getUniversityList());
@@ -20,7 +24,7 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 	/**
 	 * returns the five most similar universities to the specified university
 	 * @param universityName
-	 * @return
+	 * @return rankedUniversities
 	 */
 	public ArrayList<University> rankUniversity(String universityName) {
 		University uni = this.DBCon.getUniversity(universityName);
@@ -81,6 +85,7 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 	}
 
 	/**
+	 * View a school's detail information
 	 * @param universityName
 	 */
 	public void viewSchoolDetails(String universityName) {
@@ -89,12 +94,18 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 		
 	}
 	
-
+	/**
+	 * Save a school for current user
+	 * @param school
+	 */
 	public void saveSchool(String school) {
 		this.account.saveSchool(school);
 		this.DBCon.getUniversity2(school).addStudent(this.account.account.getUsername());
 	}
 	
+	/**
+	 * View current user's saved schools list
+	 */
 	public void viewSavedSchools() {
 		if(this.account.account.getUserType().equals("a")) {
 			System.out.println("Current account cannot view saved schools because it is an admin");
@@ -102,19 +113,19 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 			this.account.viewSavedSchools();
 		}
 	}
-
-	/**
-	 * @return
-	 */
-	
 	
 	/**
-	 * @param school
+	 * Remove a school from the saved schools list
+	 * @param school String, the name of school to remove
 	 */
 	public void removeSavedSchool(String school) {
 		this.account.removeSavedSchool(school);
 	}
 	
+	/**
+	 * View a saved school's detail information
+	 * @param school String, saved school name to view details
+	 */
 	public void viewSavedSchoolDetails(String school) {
 		Boolean schoolSaved = this.account.checkIfSchoolSaved(school);
 		if(schoolSaved) {
@@ -125,11 +136,18 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 		}
 	}
 
+	/**
+	 * View how many times a school being saved by users
+	 * @param school
+	 */
 	public void viewUserSavedStatistics(String school){
 		int savedTimes = this.DBCon.getUserSavedStatistics(school);
 		System.out.println(school + " has been saved for " + savedTimes + " times");
 	}
 
+	/**
+	 * Compare saved schools with their required SatMath scores
+	 */
 	public void compareSchoolsByScore( ) {
 		this.account.compareSchoolsByScore();
 	}

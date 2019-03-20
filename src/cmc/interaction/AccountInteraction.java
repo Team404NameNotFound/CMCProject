@@ -13,15 +13,20 @@ public class AccountInteraction {
 	
 	UserFunctionalityController UFCon;
 
+	/**
+	 * Create a new AccountInteraction
+	 */
 	public AccountInteraction(){
 		UFCon = new UserFunctionalityController();
 	}
 	
+	/**
+	 * Create a new AccountInteraction with a given UserFunctionalityController
+	 * @param UFCon
+	 */
 	public AccountInteraction(UserFunctionalityController UFCon){
 		this.UFCon = UFCon;
 	}
-	
-	
 	
 	/**
 	 * Student or Admin log in. 
@@ -40,6 +45,7 @@ public class AccountInteraction {
 	}
 	
 	/**
+	 * View a school's detail information
 	 * @param univeristyName
 	 */
 	public void viewSchoolDetails(String univeristyName)

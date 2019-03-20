@@ -26,6 +26,7 @@ public class SearchController {
 	
 
 	/**
+	 * This constructor will create a new SearchController with a list of all University
 	 * @param allSchools
 	 */
 	public SearchController(ArrayList<University> allSchools) {
@@ -39,7 +40,8 @@ public class SearchController {
 	}
 	
 	/**
-	 * @return
+	 * Retrieve all the quiz questions in SearchController
+	 * @return quizQuestions
 	 */
 	public String[] getQuizQuestions()
 	{
@@ -47,7 +49,8 @@ public class SearchController {
 	}
 	
 	/**
-	 * @return
+	 * Do the quiz search
+	 * @return closeSchools
 	 */
 	public ArrayList<University> doQuizSearch()
 	{
@@ -55,7 +58,39 @@ public class SearchController {
 		return closeSchools;
 	}
 	
-	
+	/**
+	 * Searching a school use some fields
+	 * @param schoolName
+	 * @param state
+	 * @param location
+	 * @param numStudentsMin
+	 * @param numStudentsMax
+	 * @param percentFemaleMin
+	 * @param percentFemaleMax
+	 * @param SATVerbalMin
+	 * @param SATVerbalMax
+	 * @param SATMathMin
+	 * @param SATMathMax
+	 * @param expensesMin
+	 * @param expensesMax
+	 * @param PercentFinancialAidMin
+	 * @param percenetFinancialAidMax
+	 * @param numberApplicantsMin
+	 * @param numberApplicatnsMax
+	 * @param percentAddmittedMin
+	 * @param percentAdmittedMax
+	 * @param percentEnrolledMin
+	 * @param percentEnrolledMax
+	 * @param academicScaleMin
+	 * @param academicScaleMax
+	 * @param socialScalemin
+	 * @param socialScaleMax
+	 * @param qualityOfLifeMin
+	 * @param qualityOfLifeMax
+	 * @param emphases
+	 * @param control
+	 * @return returnSchools
+	 */
 	public ArrayList<University> fieldSearch(String schoolName, String state, String location, int numStudentsMin,
 			int numStudentsMax, float percentFemaleMin, float percentFemaleMax, int SATVerbalMin, 
 			int SATVerbalMax, int SATMathMin, int SATMathMax, int expensesMin, int expensesMax, 
@@ -158,8 +193,9 @@ public class SearchController {
 		return returnSchools;
 	}
 	/**
+	 * Rank the university
 	 * @param university
-	 * @return
+	 * @return returnUniversity
 	 */
 	public ArrayList<University> rankUniversity(University university)
 	{

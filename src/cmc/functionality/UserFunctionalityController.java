@@ -26,6 +26,7 @@ public class UserFunctionalityController {
 	}
 	
 	/**
+	 * Get the current UniversityController
 	 * @return the universityCon
 	 */
 	public UniversityController getUniversityCon() {
@@ -33,6 +34,7 @@ public class UserFunctionalityController {
 	}
 
 	/**
+	 * Set the current UniversityController
 	 * @param universityCon the universityCon to set
 	 */
 	public void setUniversityCon(UniversityController universityCon) {
@@ -198,8 +200,10 @@ public class UserFunctionalityController {
 			return false;
 		}
 	}
-	//pass in the account for this Controller
+	
+
 	/**
+	 * Get the current AccountController
 	 * @return
 	 */
 	public AccountController getAccount() {
@@ -207,6 +211,7 @@ public class UserFunctionalityController {
 	}
 	
 	/**
+	 * Set the current AccountController
 	 * @param account
 	 */
 	public void setAccount(AccountController account) {

@@ -264,6 +264,10 @@ public class AccountController {
 		 
 	}
 	
+	/**
+	 * Remove a saved school
+	 * @param school
+	 */
 	public void removeSavedSchool(String school)
 	{
 		Boolean found = false;
@@ -330,6 +334,9 @@ public class AccountController {
 		}
 	}
 	//comparing SAT math for now
+	/**
+	 * Compare saved schools with their satMath scores
+	 */
 	public void compareSchoolsByScore() {	
 		Account student = dbController.getAccount(account.getUsername());
 		ArrayList<University> savedSchools = dbController.getSchoolList(student);
