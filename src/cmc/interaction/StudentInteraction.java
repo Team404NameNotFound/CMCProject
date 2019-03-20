@@ -149,7 +149,6 @@ public class StudentInteraction extends AccountInteraction{
 	}
 	
 	public void viewUserSavedStatistics(String school) {
-		System.out.println("view stats interaction");
 		this.sfCon.viewUserSavedStatistics(school);
 	}
 	

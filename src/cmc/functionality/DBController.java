@@ -308,4 +308,15 @@ public class DBController
 	public void removeSavedSchool(String user, String school) {
 		dbLibrary.user_removeSchool(user, school);
 	}
+	
+	public int getUserSavedStatistics(String school) {
+		String[][] namesWithSavedSchools= this.dbLibrary.user_getUsernamesWithSavedSchools();
+		int count = 0;
+		for(int i = 0 ; i < namesWithSavedSchools.length ; i++) {
+			if(namesWithSavedSchools[i][1].equals(school)) {
+				count++;
+			}
+		}
+		return count;
+	}
 }

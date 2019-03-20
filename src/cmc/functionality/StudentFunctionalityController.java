@@ -126,14 +126,8 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 	}
 
 	public void viewUserSavedStatistics(String school){
-		System.out.println("line 129 in sfCon");
-		University savedUni = this.DBCon.getUniversity2(school);
-		for(String student: savedUni.getStudents()) {
-		    System.out.println(student + "StudentFunCon line 131");
-		}
-		System.out.println("line 134 in sfCon");
-		int savedTimes = savedUni.getStudents().size();
-		System.out.println(school + " is being saved for " + savedTimes + " times");
+		int savedTimes = this.DBCon.getUserSavedStatistics(school);
+		System.out.println(school + " has been saved for " + savedTimes + " times");
 	}
 
 	public void compareSchoolsByScore(String username) {
