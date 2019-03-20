@@ -103,24 +103,38 @@ public class Phase2_FunctionalityTestDriver {
 		student.findRecommended(university);
 		
 	//U10 Save school
+		System.out.println("-------------------------");
+		System.out.println("Testing save schools: ");
 		sfCon.setAccount(accountController);
 		studentInteraction.setSfCon(sfCon);
-		
-		//test saveSchool()
 		studentInteraction.saveSchool("AMERICAN UNIVERSITY OF BEIRUT");
 		studentInteraction.saveSchool("YALE");
 		studentInteraction.saveSchool("AUGSBURG"); 
 		studentInteraction.saveSchool("GEORGE WASHINGTON");
-		System.out.println("Schools being saved are: ");
-	    studentInteraction.viewSavedSchools();
 		
 	//U11 View saved schools
-		
+	    System.out.println("-------------------------");
+	    System.out.println("Testing view saved schools: ");
+	    studentInteraction.viewSavedSchools();
+	    
 	//U12 Remove a saved school
-		
+	    System.out.println("-------------------------");
+	    System.out.println("Testing remove a saved school, remove: GEORGE WASHINGTON\"");
+	    studentInteraction.removeSavedSchool("GEORGE WASHINGTON");
+	    System.out.println("After removing, the new saved school list for current user is");
+	    studentInteraction.viewSavedSchools();
+	    
 	//U13 View saved school details
-		
+	    System.out.println("-------------------------");
+	    System.out.println("Testing view a saved school details: ");
+	    studentInteraction.viewSavedSchoolDetails("YALE");
+	    
 	//U14 View user saved statistics
+	    System.out.println("-------------------------");
+	    System.out.println("Testing view userSavedStatistisc: ");
+	    studentInteraction.viewUserSavedStatistics("YALE");
+	    studentInteraction.viewUserSavedStatistics("GEORGE WASHINGTON");;
+	    
 		
 	//U15 Compare schools by score
 		userUsername = "juser";

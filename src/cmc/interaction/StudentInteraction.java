@@ -123,6 +123,10 @@ public class StudentInteraction extends AccountInteraction{
 		this.sfCon.saveSchool(school);
 	}
 	
+	public void removeSavedSchool(String school) {
+		this.sfCon.removeSavedSchool(school);
+	}
+	
 	/* (non-Javadoc)
 	 * @see cmc.interaction.AccountInteraction#viewSchoolDetails(java.lang.String)
 	 */
@@ -133,17 +137,9 @@ public class StudentInteraction extends AccountInteraction{
 	/**
 	 * @param school
 	 */
-//	public void viewSavedSchoolDetails(String school) {
-//		Boolean found = false;
-//		for(University savedUni : this.sfCon.viewSavedSchools()) {
-//			if(savedUni.getName().equals(school)) {
-//				found = true;
-//				this.sfCon.viewSchoolDetails(school);
-//			}
-//		}
-//		if(!found) System.out.println("Cannot found " + school +  " in saved school list");
-//		
-//	}
+	public void viewSavedSchoolDetails(String school) {
+		this.sfCon.viewSavedSchoolDetails(school);
+	}
 	
 	/**
 	 * 
@@ -153,6 +149,7 @@ public class StudentInteraction extends AccountInteraction{
 	}
 	
 	public void viewUserSavedStatistics(String school) {
+		System.out.println("view stats interaction");
 		this.sfCon.viewUserSavedStatistics(school);
 	}
 	
@@ -170,13 +167,6 @@ public class StudentInteraction extends AccountInteraction{
 	 */
 	public void setSfCon(StudentFunctionalityController sfCon) {
 		this.sfCon = sfCon;
-	}
-	
-	/**
-	 * @param school
-	 */
-	public void removeSavedSchool(String school) {
-		this.sfCon.removeSavedSchool(school);
 	}
 	
 	public void compareSchoolsByScore(String username) {
