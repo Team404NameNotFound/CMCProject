@@ -85,8 +85,8 @@ public class AccountInteraction {
 	 * Generates a random password then sets it as the specified user and sends it to the email address of that user
 	 * @param username
 	 */
-	public void forgotPsw(String username){
-		this.UFCon.forgotPassword(username);
+	public void forgotPsw(String usrName){
+		this.UFCon.forgotPassword(usrName);
 	}
 	
 	/**

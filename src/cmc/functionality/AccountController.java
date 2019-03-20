@@ -3,8 +3,16 @@
  */
 package cmc.functionality;
 
-import java.util.Date;
+import java.util.Date; 
 import java.util.ArrayList;
+import java.util.Collections;
+
+import java.util.*; 
+import javax.mail.*; 
+import javax.mail.internet.*; 
+import javax.activation.*; 
+import javax.mail.Session; 
+import javax.mail.Transport; 
 
 import cmc.entity.*;
 import dblibrary.project.csci230.UniversityDBLibrary;
@@ -147,10 +155,41 @@ public class AccountController {
 	 * Sends an email to the current user
 	 * @param message content of email to send to user containing randomly generated password
 	 */
-	public void sendEmail(String message)
+	public void sendEmail(String emailMessage, String emailAddress)
 	{
-		String email = account.getUsername();
-	}
+		String host="127.0.0.1";  
+		  final String user = "csbsju.cmc@gmail.com";
+		  final String password = "jumpingfrog12";
+		    
+		  String to = emailAddress;
+		  
+		   //Get the session object  
+		   Properties props = new Properties();  
+		   props.put("mail.smtp.host",host);  
+		   props.put("mail.smtp.auth", "true");  
+		     
+		   Session session = Session.getDefaultInstance(props,  
+		    new javax.mail.Authenticator() {  
+		      protected PasswordAuthentication getPasswordAuthentication() {  
+		    return new PasswordAuthentication(user,password);  
+		      }  
+		    });  
+		  
+		   //Compose the message  
+		    try {  
+		     MimeMessage message = new MimeMessage(session);  
+		     message.setFrom(new InternetAddress(user));  
+		     message.addRecipient(Message.RecipientType.TO,new InternetAddress(to));  
+		     message.setSubject("CMC Password Reset");  
+		     message.setText(emailMessage);  
+		       
+		    //send the message  
+		     Transport.send(message);  
+		  
+		   
+		     } catch (MessagingException e) {e.printStackTrace();} 
+	   }  
+		
 	
 	/**
 	 * Updates the first name, last name, password, type, and status of the current user
@@ -290,19 +329,28 @@ public class AccountController {
 			throw new IllegalArgumentException("Sorry you need to specify the type of user.");
 		}
 	}
-	
-	public void compareSchoolsByScore(Student student) {
-		ArrayList<UserSavedSchool> savedSchools = student.getSavedSchools();
-		String list = "Saved Schools: ";
-		for(int i = 0; i < savedSchools.size(); i++) {
-			list += "/n "+savedSchools.get(i);
+	//comparing SAT math for now
+	public void compareSchoolsByScore() {	
+		Account student = dbController.getAccount(account.getUsername());
+		ArrayList<University> savedSchools = dbController.getSchoolList(student);
+		
+		double[][] scores = new double[savedSchools.size()][2];
+		
+		for (int i = 0; i<savedSchools.size(); i++) {
+			scores[i][0] = Double.parseDouble(savedSchools.get(i).getSatMath());
+			scores[i][1] = Double.parseDouble(""+i);
 		}
-		System.out.println(list);
+		
+		java.util.Arrays.sort(scores, new java.util.Comparator<double[]>() {
+		    public int compare(double[] a, double[] b) {
+		        return Double.compare(a[0], b[0]);
+		    }
+		});
+		
+		    
+		for(int j = 0; j < scores.length; j++) {
+			System.out.println("University: "+savedSchools.get(j).getName()+" Math score: "+ scores[j][0]);
+		}
 	}
-//	public static void main(String[] args)
-//	{
-//		System.out.println(makeRandomPassword());
-//		Date date = new Date();
-//		System.out.println(date.toString());
-//	}
 }
+	

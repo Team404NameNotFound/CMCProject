@@ -130,8 +130,7 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 		System.out.println(school + " has been saved for " + savedTimes + " times");
 	}
 
-	public void compareSchoolsByScore(String username) {
-		account.compareSchoolsByScore((Student) DBCon.getAccount(username));
-		
+	public void compareSchoolsByScore( ) {
+		this.account.compareSchoolsByScore();
 	}
 }
