@@ -64,6 +64,8 @@ public class Phase2_FunctionalityTestDriver {
 		
 		
 	//UC 4 Search
+	
+		
 	//UC 5 Take personality quiz
 		
 		
@@ -71,17 +73,17 @@ public class Phase2_FunctionalityTestDriver {
 	//U7 View Search results
 		System.out.println("\nSearching and Matching on Fields:");
 		System.out.println("-------------------------");
-		String state = "Minnesota";
+		String state = "Texas";
 		int numStudentsLower = 2000;
-		int numStudentsUpper = 30000;
+		int numStudentsUpper = 50000;
 		String[] emphases = {};
-		student.fieldSearch( "", state, "", numStudentsLower,
+		student.fieldSearch( "-1", state, "-1", numStudentsLower,
 				numStudentsUpper, (float)-1.0,(float)-1.0, -1, 
 				-1, -1, -1, -1, -1, 
 				(float)-1.0, (float)-1.0, -1, 
 				-1, (float)-1.0, (float)-1.0,
 				(float)-1.0, (float)-1.0, -1, -1,
-				-1, -1, -1, -1, emphases, ""
+				-1, -1, -1, -1, emphases, "-1"
 				);
 		
 	//U8 View searched school details
@@ -123,11 +125,11 @@ public class Phase2_FunctionalityTestDriver {
 	//U14 View user saved statistics
 		
 	//U15 Compare schools by score
-		userUsername = "juser";
-		userPassword = "user";
-		user.login(userUsername, userPassword);
-		student.compareSchoolsByScore(userUsername);
-		
+//		userUsername = "juser";
+//		userPassword = "user";
+//		user.login(userUsername, userPassword);
+//		student.compareSchoolsByScore(userUsername);
+//		
 	//U16 View user profile
 		user.login(adminUsername, adminPassword);		
 		user.viewProfile(adminUsername);

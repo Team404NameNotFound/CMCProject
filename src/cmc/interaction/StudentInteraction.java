@@ -88,7 +88,7 @@ public class StudentInteraction extends AccountInteraction{
 	    //sfCon.searchCon = new SearchController();
 	    // do I need to make a new SearchController using DBController.getUniversityList() as a param?
 		ArrayList<University> matchSchools =  
-				sfCon.searchCon.search( schoolName,  state,  location,  numStudentsMin,
+				sfCon.searchCon.fieldSearch( schoolName,  state,  location,  numStudentsMin,
 						 numStudentsMax,  percentFemaleMin,  percentFemaleMax,  SATVerbalMin, 
 						 SATVerbalMax,  SATMathMin,  SATMathMax,  expensesMin,  expensesMax, 
 						 PercentFinancialAidMin,  percenetFinancialAidMax,  numberApplicantsMin, 
@@ -96,7 +96,7 @@ public class StudentInteraction extends AccountInteraction{
 						 percentEnrolledMin,  percentEnrolledMax,  academicScaleMin,  academicScaleMax,
 						 socialScalemin,  socialScaleMax,  qualityOfLifeMin,  qualityOfLifeMax,  emphases, control
 						);
-		 for(int i = 0; i<10;i++)
+		 for(int i = 0; i<matchSchools.size();i++)
 		 {
 			 System.out.println(matchSchools.get(i).getName());
 		 }

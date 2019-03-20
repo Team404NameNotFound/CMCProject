@@ -55,6 +55,108 @@ public class SearchController {
 		return closeSchools;
 	}
 	
+	
+	public ArrayList<University> fieldSearch(String schoolName, String state, String location, int numStudentsMin,
+			int numStudentsMax, float percentFemaleMin, float percentFemaleMax, int SATVerbalMin, 
+			int SATVerbalMax, int SATMathMin, int SATMathMax, int expensesMin, int expensesMax, 
+			float PercentFinancialAidMin, float percenetFinancialAidMax, int numberApplicantsMin, 
+			int numberApplicatnsMax, float percentAddmittedMin, float percentAdmittedMax,
+			float percentEnrolledMin, float percentEnrolledMax, int academicScaleMin, int academicScaleMax,
+			int socialScalemin, int socialScaleMax, int qualityOfLifeMin, int qualityOfLifeMax, String[] emphases, String control
+			)
+	{
+		ArrayList<University> returnSchools = new ArrayList<University>();
+		for(int i = 0; i < this.universityList.length; i++)
+		{
+			if((Integer.parseInt(this.universityList[i].getEnrollment()) > numStudentsMin && Integer.parseInt(this.universityList[i].getEnrollment()) < numStudentsMax)
+					|| (Integer.parseInt(this.universityList[i].getEnrollment()) > numStudentsMin && numStudentsMax == -1)
+					|| (Integer.parseInt(this.universityList[i].getEnrollment()) < numStudentsMax && numStudentsMax == -1)
+					)
+			{
+				if((Float.parseFloat(this.universityList[i].getPercentFemale()) > percentFemaleMin && (Float.parseFloat(this.universityList[i].getPercentFemale()) < percentFemaleMax)
+						|| (Float.parseFloat(this.universityList[i].getEnrollment()) > percentFemaleMin && percentFemaleMax == -1)
+						|| (Float.parseFloat(this.universityList[i].getEnrollment()) < percentFemaleMax && percentFemaleMin == -1)
+						))
+				{
+					if((Integer.parseInt(this.universityList[i].getSatVerbal()) > SATVerbalMin && Integer.parseInt(this.universityList[i].getSatVerbal()) < SATVerbalMax)
+							|| (Integer.parseInt(this.universityList[i].getSatVerbal()) > SATVerbalMin && SATVerbalMin == -1)
+							|| (Integer.parseInt(this.universityList[i].getSatVerbal()) < SATVerbalMax && SATVerbalMax == -1)
+							)
+					{
+						if((Integer.parseInt(this.universityList[i].getSatMath()) > SATMathMin && Integer.parseInt(this.universityList[i].getSatMath()) < SATMathMax)
+								|| (Integer.parseInt(this.universityList[i].getSatMath()) > SATMathMin && SATMathMin == -1)
+								|| (Integer.parseInt(this.universityList[i].getSatVerbal()) < SATMathMax && SATMathMax == -1)
+								)
+						{
+							if((Integer.parseInt(this.universityList[i].getCost()) > expensesMin && Integer.parseInt(this.universityList[i].getCost()) < expensesMax)
+									|| (Integer.parseInt(this.universityList[i].getCost()) > expensesMin && expensesMax == -1)
+									|| (Integer.parseInt(this.universityList[i].getCost()) < expensesMax && expensesMin == -1)
+									)
+							{
+								if((Float.parseFloat(this.universityList[i].getPercentFinAid()) > PercentFinancialAidMin && (Float.parseFloat(this.universityList[i].getPercentFinAid()) < percenetFinancialAidMax)
+										|| (Float.parseFloat(this.universityList[i].getPercentFinAid()) > PercentFinancialAidMin && percenetFinancialAidMax == -1)
+										|| (Float.parseFloat(this.universityList[i].getPercentFinAid()) < percenetFinancialAidMax && PercentFinancialAidMin == -1)
+										))
+								{
+									if((Integer.parseInt(this.universityList[i].getApplicants()) > numberApplicantsMin && Integer.parseInt(this.universityList[i].getApplicants()) < numberApplicatnsMax)
+											|| (Integer.parseInt(this.universityList[i].getApplicants()) > numberApplicantsMin && numberApplicatnsMax == -1)
+											|| (Integer.parseInt(this.universityList[i].getApplicants()) < numberApplicatnsMax && numberApplicantsMin == -1)
+											)
+									{
+										if((Float.parseFloat(this.universityList[i].getPercentAdmitted()) > percentAddmittedMin && (Float.parseFloat(this.universityList[i].getPercentFinAid()) < percentAddmittedMin)
+												|| (Float.parseFloat(this.universityList[i].getPercentAdmitted()) > percentAddmittedMin && percentAdmittedMax == -1)
+												|| (Float.parseFloat(this.universityList[i].getPercentAdmitted()) < percentAdmittedMax && percentAddmittedMin == -1)
+												))
+										{
+											if((Float.parseFloat(this.universityList[i].getPercentEnrolled()) > percentEnrolledMin && (Float.parseFloat(this.universityList[i].getPercentEnrolled()) < percentEnrolledMin)
+													|| (Float.parseFloat(this.universityList[i].getPercentEnrolled()) > percentEnrolledMin && percentEnrolledMax == -1)
+													|| (Float.parseFloat(this.universityList[i].getPercentEnrolled()) < percentEnrolledMax && percentEnrolledMin == -1)
+													))
+											{
+												if((Integer.parseInt(this.universityList[i].getAcademicScale()) > academicScaleMin && Integer.parseInt(this.universityList[i].getAcademicScale()) < academicScaleMax)
+														|| (Integer.parseInt(this.universityList[i].getAcademicScale()) > academicScaleMin && academicScaleMax == -1)
+														|| (Integer.parseInt(this.universityList[i].getAcademicScale()) < academicScaleMax && academicScaleMin == -1)
+														)
+												{
+													if((Integer.parseInt(this.universityList[i].getSocialScale()) > socialScalemin && Integer.parseInt(this.universityList[i].getSocialScale()) < socialScaleMax)
+															|| (Integer.parseInt(this.universityList[i].getSocialScale()) > socialScalemin && academicScaleMax == -1)
+															|| (Integer.parseInt(this.universityList[i].getSocialScale()) < socialScaleMax && socialScalemin == -1)
+															)
+													{
+														if((Integer.parseInt(this.universityList[i].getQualityOfLife()) > qualityOfLifeMin && Integer.parseInt(this.universityList[i].getQualityOfLife()) < qualityOfLifeMax)
+																|| (Integer.parseInt(this.universityList[i].getQualityOfLife()) > qualityOfLifeMin && qualityOfLifeMax == -1)
+																|| (Integer.parseInt(this.universityList[i].getQualityOfLife()) < qualityOfLifeMax && qualityOfLifeMin == -1)
+																)
+														{
+															if(state.toLowerCase().trim().equals(this.universityList[i].getState().toLowerCase().trim()) || state.equals("-1"))
+															{
+																if(this.universityList[i].getName().toLowerCase().trim().contains(schoolName.toLowerCase().trim()) || schoolName.equals("-1"))
+																{
+																	if(location.toLowerCase().trim().equals(this.universityList[i].getLocation().toLowerCase().trim()) || location.equals("-1"))
+																	{
+																		if(control.toLowerCase().trim().equals(this.universityList[i].getControl().toLowerCase().trim()) || control.equals("-1"))
+																		{
+																			returnSchools.add(this.universityList[i]);
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		return returnSchools;
+	}
 	/**
 	 * @param university
 	 * @return
@@ -137,10 +239,6 @@ public class SearchController {
 			returnUniversity.add(universityList[position]);
 		}
 		
-//		for(int i = 0; i<schoolMatches.length;i++)
-//		{
-//			System.out.println("Score: " + schoolMatches[i][0] + " Position: " + schoolMatches[i][1]);
-//		}
 		
 		return returnUniversity;
 	}
@@ -211,7 +309,6 @@ public class SearchController {
 		int schoolSocialScaleMax = 0;
 		int schoolQualityofLifeMin = 6;
 		int schoolQualityofLifeMax = 0;
-		int schoolsChecked = 0;
 		for(University testSchool: universityList)
 		{	
 //			System.out.println(testSchool.getPercentFemale());
@@ -312,12 +409,7 @@ public class SearchController {
 				schoolQualityofLifeMax = Integer.parseInt(testSchool.getQualityOfLife());
 			}
 		}
-//		System.out.println(schoolPerFemaleMax);
-//		System.out.println(schoolsChecked);
-//		System.out.println("Min in all schools "+ schoolNumStudentMin 
-//				+ "\n max students in all schools" + schoolNumStudentMax 
-//				+"\n min percentFemale " + schoolPerFemaleMin
-//				+ "\n max percentFemale: " + schoolPerFemaleMax );
+
 
 		for(int i = 0; i < this.universityList.length; i++)
 		{
