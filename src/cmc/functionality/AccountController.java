@@ -36,19 +36,31 @@ public class AccountController {
 	 * Returns list of all schools
 	 * @return schoolList list of schools the student has on saved school list
 	 */
-	public ArrayList<UserSavedSchool> getSchoolList()
+	public void viewSavedSchools()
 	{
-		return ((Student) account).getSavedSchools();
+		if(this.account.getUserType().equals("a")) System.out.println("Current account is an admin ");
+		else {
+			for(University savedSchool: this.dbController.getSchoolList2(this.account)) {
+				System.out.println(savedSchool.getName());
+			}
+		}
 	}
+	
 	
 	/**
 	 * Checks to see if any student has saved the specified school
 	 * @param University university user is trying to save
 	 * @return boolean true if school already saved, else false
 	 */
-	public boolean checkIfShoolSaved(University school)
+	public boolean checkIfSchoolSaved(String school)
 	{
-		return ((Student)account).isSchoolSaved(school.getName());
+		boolean saved = false;
+		for(University savedSchool: this.dbController.getSchoolList2(this.account)) {
+			if(savedSchool.getName().equals(school)) {
+				saved = true;
+			}
+		}
+		return saved;
 	}
 	
 
@@ -211,6 +223,34 @@ public class AccountController {
 			this.dbController.saveShool(account.getUsername(), school);
 		}
 		 
+	}
+	
+	public void removeSavedSchool(String school)
+	{
+		Boolean found = false;
+		ArrayList<UserSavedSchool> saveSchools = this.dbController.getSchoolList2(this.account);
+		
+		if(saveSchools == null){
+			System.out.println("The user have not saved any school yet");
+			}
+		if(account == null){
+			System.out.println("The current account is invalid.");
+			}
+	    else if(account.getUserType().equals("a")){
+		   System.out.println("The current account is an admin ");
+		   }
+	    else {
+	    	for(University savedSchool: saveSchools) {
+	    		if(savedSchool.getName().equals(school)) {
+	    			found = true;
+	    			System.out.println(account.getUsername() + " is removing school: " + school);
+	    			this.dbController.removeSavedSchool(account.getUsername(), school);
+	    		}
+	    	}
+	    }
+		if(!found) {
+			System.out.println("Cannot find " + school + " in the saved school list");
+		}
 	}
 	
 	/**
