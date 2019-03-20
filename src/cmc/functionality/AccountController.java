@@ -3,9 +3,16 @@
  */
 package cmc.functionality;
 
-import java.util.Date;
+import java.util.Date; 
 import java.util.ArrayList;
 import java.util.Collections;
+
+import java.util.*; 
+import javax.mail.*; 
+import javax.mail.internet.*; 
+import javax.activation.*; 
+import javax.mail.Session; 
+import javax.mail.Transport; 
 
 import cmc.entity.*;
 import dblibrary.project.csci230.UniversityDBLibrary;
@@ -148,10 +155,41 @@ public class AccountController {
 	 * Sends an email to the current user
 	 * @param message content of email to send to user containing randomly generated password
 	 */
-	public void sendEmail(String message)
+	public void sendEmail(String emailMessage, String emailAddress)
 	{
-		String email = account.getUsername();
-	}
+		String host="127.0.0.1";  
+		  final String user = "csbsju.cmc@gmail.com";
+		  final String password = "jumpingfrog12";
+		    
+		  String to = emailAddress;
+		  
+		   //Get the session object  
+		   Properties props = new Properties();  
+		   props.put("mail.smtp.host",host);  
+		   props.put("mail.smtp.auth", "true");  
+		     
+		   Session session = Session.getDefaultInstance(props,  
+		    new javax.mail.Authenticator() {  
+		      protected PasswordAuthentication getPasswordAuthentication() {  
+		    return new PasswordAuthentication(user,password);  
+		      }  
+		    });  
+		  
+		   //Compose the message  
+		    try {  
+		     MimeMessage message = new MimeMessage(session);  
+		     message.setFrom(new InternetAddress(user));  
+		     message.addRecipient(Message.RecipientType.TO,new InternetAddress(to));  
+		     message.setSubject("CMC Password Reset");  
+		     message.setText(emailMessage);  
+		       
+		    //send the message  
+		     Transport.send(message);  
+		  
+		   
+		     } catch (MessagingException e) {e.printStackTrace();} 
+	   }  
+		
 	
 	/**
 	 * Updates the first name, last name, password, type, and status of the current user

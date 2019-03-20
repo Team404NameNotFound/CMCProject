@@ -140,9 +140,11 @@ public class UserFunctionalityController {
 			if (this.DBCon.checkUser(userName)) {
 			AccountController userAcc = new AccountController(this.DBCon.getAccount(userName));
 			String rndPassword = userAcc.makeRandomPassword();
-			userAcc.updatePassword(rndPassword);
-			String message = "Hello " + this.DBCon.getAccount(userName).getFirstName() + " . Your password has been updated to " + rndPassword + ".";
-			userAcc.sendEmail(message);
+			userAcc.account.setPassword(rndPassword);
+			this.DBCon.setAccount(userAcc.account);
+			String emailMessage = "Hello " + userAcc.account.getFirstName() + ",\n\nYour password has been updated to " + rndPassword + ".\n\nPlease update "
+					+ "your password using the provided temporary password.\n\nCMC.com";
+			userAcc.sendEmail(emailMessage, userAcc.account.getUsername());
 			}
 			else {
 				System.out.println("Invalid Username");
