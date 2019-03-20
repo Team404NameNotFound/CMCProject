@@ -139,8 +139,12 @@ public class AdminInteraction extends AccountInteraction{
 	 * Admin view a list of users, if no logged in print error message
 	 */
 	public void viewUsers(){
-		if(afCon.loggedIn) {
-			System.out.println(this.afCon.viewUsers().toString());
+		if(!afCon.loggedIn) {
+			ArrayList<Account> accounts = afCon.viewUsers();
+			for(int i = 0; i < accounts.size(); i++)
+			{
+				System.out.println("First Name: " + accounts.get(i).getFirstName() +" Last Name: " + accounts.get(i).getLastName());
+			}
 		}
 		else {
 			System.out.println("You have not logged in yet, cannot view universities");

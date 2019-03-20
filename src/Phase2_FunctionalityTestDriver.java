@@ -60,17 +60,18 @@ public class Phase2_FunctionalityTestDriver {
 		user.login(username2, password2);
 		System.out.println();
 		
+		//
+		adInt.login("nadmin", "a");
 	//UC 3 Request new password
 		
 		
-	//UC 4 Search
+	//UC 4 Search Abstract fulfilled by U5 & U6
 	
 		
 	//UC 5 Take personality quiz
 		
 		
-	//UC 6 Search by entering fields
-	//U7 View Search results
+	//UC 6&7  Search by entering fields
 		System.out.println("\nSearching and Matching on Fields:");
 		System.out.println("-------------------------");
 		String state = "Texas";
@@ -161,19 +162,19 @@ public class Phase2_FunctionalityTestDriver {
 	
 	//U16 View user profile
 	    System.out.println("UC 16 View User Profile");
-		user.login(adminUsername, adminPassword);		
+		user.login("nadmin", adminPassword);		
 		user.viewProfile(adminUsername);
 		System.out.println();
 		
 	//U17 Edit user information
 	    System.out.println("UC 17 Edit User Information");
-		user.editProfile("","","","");
-		user.viewProfile(adminUsername);
+		user.editProfile("newUser","Nor","A","fasd");
+		user.viewProfile("nadmin");
 		System.out.println();
-		
+		user.editProfile("Noreen", "nadmin", "Admin", "a");
 	//U18 View school list
 	    System.out.println("UC 18 View School list");
-		user.login(adminUsername, adminPassword);
+		//adInt.login(adminUsername, adminPassword);
 		adInt.viewUniversities();
 		System.out.println();
 		
@@ -186,13 +187,6 @@ public class Phase2_FunctionalityTestDriver {
 			user.viewSchoolDetails("Dummy");
 			System.out.println();
 		
-	//U19 Remove university
-		    System.out.println("UC 19 Remove university");
-			user.viewSchoolDetails("Dummy");
-			System.out.println("\n");	
-			System.out.println("\n Testing removing a school");
-			admin.removeUniversity("Dummy");
-			System.out.println();
 		
 		
 	//U20 Edit school information
@@ -201,6 +195,22 @@ public class Phase2_FunctionalityTestDriver {
 				"-1", "-1", "-1", emphases);
 		System.out.println("\n");
 		System.out.println();
+		
+		//Edited schoolInfo Information
+		System.out.println("UC 20 Results");
+		admin.viewSchoolDetails("Dummy");
+		System.out.println("\n");
+		System.out.println();
+		
+		
+		//U19 Remove university
+	    System.out.println("UC 19 Remove university");
+	//	user.viewSchoolDetails("Dummy");
+		System.out.println("\n");	
+		//System.out.println("\n Testing removing a school");
+		admin.removeUniversity("Dummy");
+		System.out.println("School Removed \n");
+		
 		
 	//U22 View users
 		System.out.println("UC 22 View Users");
@@ -214,10 +224,10 @@ public class Phase2_FunctionalityTestDriver {
 		System.out.println();
 		
 	//U24 Toggle activation status
-		System.out.println("UC 24 Toggle Activation Status");
-		adInt.addUser("Carrie", "Zhang", "cz001", "password", "u");
-		adInt.addUser("Carrie", "Zhang", "cz001", "", "u");
-		System.out.println();
+//		System.out.println("UC 24 Toggle Activation Status");
+//		adInt.addUser("Carrie", "Zhang", "cz001", "password", "u");
+//		adInt.addUser("Carrie", "Zhang", "cz001", "", "u");
+//		System.out.println();
 		
 		
 	}

@@ -68,11 +68,11 @@ public class UniversityController {
 	 */
 	public University updateUniversityInfo(String name, String state, String location, String control, String enrollment, String percentFemale,
 			String satVerbal, String satMath, String cost, String percentFinAid, String percentEnrolled, String applicants,
-			String percentAdmitted, String academicScale, String socialScale, String qualityOfLife, String[] emphases,
-			ArrayList<Student> savedSchool)
+			String percentAdmitted, String academicScale, String socialScale, String qualityOfLife, String[] emphases
+			)
 	{
 		//goes through and tests every parameter to see if it has a value so that only the parameters with new values are updated
-		if(!name.equals("-1") && !name.equals(""))
+		if(!name.equals("-1"))
 		{
 			school.setName(name);
 		}
@@ -84,7 +84,7 @@ public class UniversityController {
 		{
 			school.setLocation(location);
 		}
-		if(!control.equals("-1") && !control.equals(""))
+		if(!control.equals("-1"))
 		{
 			school.setControl(control);
 		}
