@@ -179,8 +179,8 @@ public class StudentInteraction extends AccountInteraction{
 		this.sfCon.removeSavedSchool(school);
 	}
 	
-	public void compareSchoolsByScore(String username) {
-		sfCon.compareSchoolsByScore(username);
+	public void compareSchoolsByScore() {
+		sfCon.compareSchoolsByScore();
 		
 	}
 

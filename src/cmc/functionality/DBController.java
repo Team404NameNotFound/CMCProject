@@ -249,30 +249,30 @@ public class DBController
 	 */
 	public ArrayList<University> getSchoolList(Account account)
 	{
+		ArrayList<University> returnArray = new ArrayList<University>();
 		String[][] savedSchools = dbLibrary.user_getUsernamesWithSavedSchools();
-		int counter = 0;
 		for(int n = 0; n < savedSchools.length; n++)
 			{
 				if(savedSchools[n][0].equals(account.getUsername()))
 				{
-					counter++;
+					returnArray.add(this.getUniversity2(savedSchools[n][1]));
+					
+					
 				}
 			}
 	
-	String[][] returnArray = new String[counter-1][1];
-	int placer = 0;
-		for(int n = 0; n < savedSchools.length; n++)
-		{
-			
-			if(savedSchools[n][0].equals(account.getUsername()))
-			{
-				returnArray[placer][0] = savedSchools[n][1];
-				returnArray[placer][1] = savedSchools[n][2];
-				placer++;
-			}
-		}
+
+//	int placer = 0;
+//		for(int n = 0; n < savedSchools.length; n++)
+//		{
+//			University uni = new University(savedSchools[n][0], savedSchools[n][1], savedSchools[n][2], savedSchools[n][3], savedSchools[n][4], 
+//					savedSchools[n][5], savedSchools[n][6], savedSchools[n][7], savedSchools[n][8], 
+//					savedSchools[n][9], savedSchools[n][10], savedSchools[n][11], savedSchools[n][12],
+//					savedSchools[n][13], savedSchools[n][14], savedSchools[n][15], null);
+//			returnArray.add(uni);
+//		}
 		
-		return null;
+		return returnArray;
 	}
 	
 	/**

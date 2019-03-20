@@ -5,6 +5,7 @@ package cmc.functionality;
 
 import java.util.Date;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import cmc.entity.*;
 import dblibrary.project.csci230.UniversityDBLibrary;
@@ -250,19 +251,28 @@ public class AccountController {
 			throw new IllegalArgumentException("Sorry you need to specify the type of user.");
 		}
 	}
-	
-	public void compareSchoolsByScore(Student student) {
-		ArrayList<UserSavedSchool> savedSchools = student.getSavedSchools();
-		String list = "Saved Schools: ";
-		for(int i = 0; i < savedSchools.size(); i++) {
-			list += "/n "+savedSchools.get(i);
+	//comparing SAT math for now
+	public void compareSchoolsByScore() {	
+		Account student = dbController.getAccount(account.getUsername());
+		ArrayList<University> savedSchools = dbController.getSchoolList(student);
+		
+		double[][] scores = new double[savedSchools.size()][2];
+		
+		for (int i = 0; i<savedSchools.size(); i++) {
+			scores[i][0] = Double.parseDouble(savedSchools.get(i).getSatMath());
+			scores[i][1] = Double.parseDouble(""+i);
 		}
-		System.out.println(list);
+		
+		java.util.Arrays.sort(scores, new java.util.Comparator<double[]>() {
+		    public int compare(double[] a, double[] b) {
+		        return Double.compare(a[0], b[0]);
+		    }
+		});
+		
+		    
+		for(int j = 0; j < scores.length; j++) {
+			System.out.println("University: "+savedSchools.get(j).getName()+" Math score: "+ scores[j][0]);
+		}
 	}
-//	public static void main(String[] args)
-//	{
-//		System.out.println(makeRandomPassword());
-//		Date date = new Date();
-//		System.out.println(date.toString());
-//	}
 }
+	
