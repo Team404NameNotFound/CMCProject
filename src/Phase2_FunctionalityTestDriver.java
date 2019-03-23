@@ -74,11 +74,11 @@ public class Phase2_FunctionalityTestDriver {
 	//UC 6&7  Search by entering fields
 		System.out.println("\nSearching and Matching on Fields:");
 		System.out.println("-------------------------");
-		String state = "Texas";
+		String state = "Minnesota";
 		int numStudentsLower = 2000;
 		int numStudentsUpper = 50000;
 		String[] emphases = {};
-		student.fieldSearch( "-1", state, "-1", numStudentsLower,
+		student.fieldSearch( "GS", state, "-1", numStudentsLower,
 				numStudentsUpper, (float)-1.0,(float)-1.0, -1, 
 				-1, -1, -1, -1, -1, 
 				(float)-1.0, (float)-1.0, -1, 
@@ -219,8 +219,8 @@ public class Phase2_FunctionalityTestDriver {
 		
 	//U23 Add a new user
 		System.out.println("UC 23 Add a new user");
-		adInt.addUser("Carrie", "Zhang", "cz001", "password", "u");
-		adInt.toggleActivationStatus("Zhang");
+	//	adInt.addUser("Carrie", "Zhang", "cz001", "password", "u");
+	//	adInt.toggleActivationStatus("Zhang");
 		System.out.println();
 		
 	//U24 Toggle activation status
