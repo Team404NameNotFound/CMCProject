@@ -13,15 +13,20 @@ public class AccountInteraction {
 	
 	UserFunctionalityController UFCon;
 
+	/**
+	 * Create a new AccountInteraction
+	 */
 	public AccountInteraction(){
 		UFCon = new UserFunctionalityController();
 	}
 	
+	/**
+	 * Create a new AccountInteraction with a given UserFunctionalityController
+	 * @param UFCon
+	 */
 	public AccountInteraction(UserFunctionalityController UFCon){
 		this.UFCon = UFCon;
 	}
-	
-	
 	
 	/**
 	 * Student or Admin log in. 
@@ -40,6 +45,7 @@ public class AccountInteraction {
 	}
 	
 	/**
+	 * View a school's detail information
 	 * @param univeristyName
 	 */
 	public void viewSchoolDetails(String univeristyName)
@@ -85,8 +91,8 @@ public class AccountInteraction {
 	 * Generates a random password then sets it as the specified user and sends it to the email address of that user
 	 * @param username
 	 */
-	public void forgotPsw(String username){
-		this.UFCon.forgotPassword(username);
+	public void forgotPsw(String usrName){
+		this.UFCon.forgotPassword(usrName);
 	}
 	
 	/**

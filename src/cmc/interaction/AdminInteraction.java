@@ -25,13 +25,14 @@ public class AdminInteraction extends AccountInteraction{
 	
 	//constructer
 	/**
-	 * 
+	 * Create a new AdminInteraction
 	 */
 	public AdminInteraction(){
 		this.afCon = new AdminFunctionalityController();
 	}
 	
 	/**
+	 * Create a new AdminInteraction with a given AdminFunctionalityController
 	 * @param afCon
 	 */
 	public AdminInteraction(AdminFunctionalityController afCon){
@@ -116,14 +117,6 @@ public class AdminInteraction extends AccountInteraction{
 	}
 	
 	/**
-	 * Gets complete information for the specified university
-	 * @param university
-	 */
-	public void getUniversityInfo(University university){
-		
-	}
-	
-	/**
 	 * Edits the specified university with the list of changes
 	 * @param university
 	 * @param changes
@@ -164,15 +157,9 @@ public class AdminInteraction extends AccountInteraction{
 		}
 	}
 	
-	/**
-	 * Cancels changes to be made a university
-	 */
-	public void cancelChanges() {
-		
-	}
-	
 	
 	/**
+	 * Add a new University to database
 	 * @param name
 	 * @param state
 	 * @param location
@@ -200,6 +187,7 @@ public class AdminInteraction extends AccountInteraction{
 	}
 	
 	/**
+	 * Remove a University from database
 	 * @param name
 	 */
 	public void removeUniversity(String name) {

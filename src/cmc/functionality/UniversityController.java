@@ -14,7 +14,7 @@ public class UniversityController {
 	University school;
 	
 	/**
-	 * 
+	 * Create a new UniversityController constructor
 	 */
 	public UniversityController()
 	{
@@ -143,7 +143,7 @@ public class UniversityController {
 		return school;
 	}
 	
-	/**
+	/**Create a new University
 	 * @param name
 	 * @param state
 	 * @param location

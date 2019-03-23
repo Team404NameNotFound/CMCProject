@@ -243,6 +243,12 @@ public class DBController
 		
 	}
 	
+
+	/**
+	 * Retrieve list of a specified users saved schools
+	 * @param account student to retrieve saved school list
+	 * @return ArrayList<University> get saved school list for a specified student
+	 */
 	public ArrayList<UserSavedSchool> getSchoolList2(Account account)
 	{
 		String[][] savedSchools = dbLibrary.user_getUsernamesWithSavedSchools();
@@ -302,10 +308,36 @@ public class DBController
 		dbLibrary.university_addUniversityEmphasis(school, emphasis);
 	}
 	
+	/**
+	 * Add a new school on user's saved school list
+	 * @param user 
+	 * @param school
+	 */
 	public void saveShool(String user, String school) {
 		dbLibrary.user_saveSchool(user, school);
 	}
+	/**
+	 * Remove a saved school from a user's saved school list
+	 * @param user
+	 * @param school
+	 */
 	public void removeSavedSchool(String user, String school) {
 		dbLibrary.user_removeSchool(user, school);
-}
+
+	}
+	/**
+	 * get a school's saved statistics
+	 * @param school
+	 * @return
+	 */
+	public int getUserSavedStatistics(String school) {
+		String[][] namesWithSavedSchools= this.dbLibrary.user_getUsernamesWithSavedSchools();
+		int count = 0;
+		for(int i = 0 ; i < namesWithSavedSchools.length ; i++) {
+			if(namesWithSavedSchools[i][1].equals(school)) {
+				count++;
+			}
+		}
+		return count;
+	}
 }

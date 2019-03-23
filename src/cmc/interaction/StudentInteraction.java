@@ -19,7 +19,7 @@ public class StudentInteraction extends AccountInteraction{
 	StudentFunctionalityController sfCon;
 	
 	/**
-	 * 
+	 * Create a new StudentInteraction
 	 */
 	public StudentInteraction() {
 		super();
@@ -27,6 +27,7 @@ public class StudentInteraction extends AccountInteraction{
 	}
 	
 	/**
+	 * Student take the personal quiz
 	 * @param location
 	 * @param characteristic
 	 * @param control
@@ -119,19 +120,25 @@ public class StudentInteraction extends AccountInteraction{
 			System.out.println(closeMatch.get(i).getName());
 		}
 	}
+	
+	/**
+	 * User save a school
+	 * @param school
+	 */
 	public void saveSchool(String school) { 
 		this.sfCon.saveSchool(school);
 	}
 
 	
-	/* (non-Javadoc)
-	 * @see cmc.interaction.AccountInteraction#viewSchoolDetails(java.lang.String)
+	/**
+	 * View a specific school's detail information
 	 */
 	public void viewSchoolDetails(String universityName) {
 		this.sfCon.viewSchoolDetails(universityName);
 	}
 	
 	/**
+	 * View a specific saved school's detail information
 	 * @param school
 	 */
 	public void viewSavedSchoolDetails(String school) {
@@ -139,20 +146,24 @@ public class StudentInteraction extends AccountInteraction{
 	}
 	
 	/**
-	 * 
+	 * View all the schools on current use's saved school list
 	 */
 	public void viewSavedSchools() {
 		this.sfCon.viewSavedSchools();
 	}
 	
+	/**
+	 * View how many times that a school is being saved by users
+	 * @param school
+	 */
 	public void viewUserSavedStatistics(String school) {
-		System.out.println("view stats interaction");
 		this.sfCon.viewUserSavedStatistics(school);
 	}
 	
 	
 
 	/**
+	 * Get the current StudentFunctionalityController
 	 * @return the sfCon
 	 */
 	public StudentFunctionalityController getSfCon() {
@@ -160,6 +171,7 @@ public class StudentInteraction extends AccountInteraction{
 	}
 
 	/**
+	 * Set the current StudentFunctionalityController
 	 * @param sfCon the sfCon to set
 	 */
 	public void setSfCon(StudentFunctionalityController sfCon) {
@@ -167,12 +179,16 @@ public class StudentInteraction extends AccountInteraction{
 	}
 
 	/**
+	 * Remove a school from user's saved schools list
 	 * @param school
 	 */
 	public void removeSavedSchool(String school) {
 		this.sfCon.removeSavedSchool(school);
 	}
 	
+	/**
+	 * Compare saved school with their Sat Math Scores
+	 */
 	public void compareSchoolsByScore() {
 		sfCon.compareSchoolsByScore();
 		

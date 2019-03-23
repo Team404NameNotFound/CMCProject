@@ -28,7 +28,27 @@ public class AdminFunctionalityController extends UserFunctionalityController {
 	public ArrayList<Account> viewUsers() {
 		return this.DBCon.getAccountList();
 	}
-
+	
+/**
+ * This method add a new University in the database
+ * @param name
+ * @param state
+ * @param location
+ * @param control
+ * @param enrollment
+ * @param percentFemale
+ * @param satVerbal
+ * @param satMath
+ * @param cost
+ * @param percentFinAid
+ * @param percentEnrolled
+ * @param applicants
+ * @param percentAdmitted
+ * @param academicScale
+ * @param socialScale
+ * @param qualityOfLife
+ * @param emphases
+ */
 	public void addNewUniversity(String name, String state, String location, String control, String enrollment,
 			String percentFemale, String satVerbal, String satMath, String cost, String percentFinAid,
 			String percentEnrolled, String applicants, String percentAdmitted, String academicScale, String socialScale,
@@ -87,6 +107,15 @@ public class AdminFunctionalityController extends UserFunctionalityController {
 		this.DBCon.removeUniversity(name);
 	}
 	
+	/**
+	 * Create a new user with given information and add it to database
+	 * @param firstname
+	 * @param lastname
+	 * @param username
+	 * @param password
+	 * @param userType
+	 * @return added
+	 */
 	public boolean addUser(String firstname, String lastname, String username, 
 			String password, String userType) {
 		boolean added = false;
