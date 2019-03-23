@@ -135,7 +135,8 @@ public class SearchController {
 								{
 									if((Integer.parseInt(this.universityList[i].getApplicants()) > numberApplicantsMin && Integer.parseInt(this.universityList[i].getApplicants()) < numberApplicatnsMax)
 											|| (Integer.parseInt(this.universityList[i].getApplicants()) > numberApplicantsMin && numberApplicatnsMax == -1)
-											|| (Integer.parseInt(this.universityList[i].getApplicants()) < numberApplicatnsMax && numberApplicantsMin == -1)
+											|| (Integer.parseInt(this.universityList[i].getApplicants()) < numberApplicatnsMax && numberApplicantsMin == -1
+											|| numberApplicantsMin == -1 && numberApplicatnsMax == -1)
 											)
 									{
 										if((Float.parseFloat(this.universityList[i].getPercentAdmitted()) > percentAddmittedMin && (Float.parseFloat(this.universityList[i].getPercentFinAid()) < percentAddmittedMin)

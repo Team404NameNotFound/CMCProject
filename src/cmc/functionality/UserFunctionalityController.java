@@ -11,7 +11,7 @@ public class UserFunctionalityController {
 	
 	//Making instance variables
 	AccountController account;
-	DBController DBCon;
+	DBController DBCon = new  DBController();
 	UniversityController universityCon;
 	public Boolean loggedIn;
 
@@ -19,8 +19,8 @@ public class UserFunctionalityController {
 	 * class constructor
 	 */
 	public UserFunctionalityController() {
-		super();
-		this.DBCon = new DBController();
+		
+		
 		this.universityCon = new UniversityController();
 		this.loggedIn = false;
 	}
@@ -55,7 +55,7 @@ public class UserFunctionalityController {
 					AccountController userAcc = new AccountController(this.DBCon.getAccount(userName));
 					if (userAcc.checkPassword(password)) {
 						//System.out.println("Login Successful");
-						this.account = userAcc;
+						this.account = new AccountController(this.DBCon.getAccount(userName));
 						this.loggedIn = true;
 						return true;
 					}
@@ -92,6 +92,7 @@ public class UserFunctionalityController {
 	public ArrayList<String> viewUserProfile(String userName) {
 		//get rid of  A IF
 			if (this.DBCon.checkUser(userName)) {
+				
 				Account userAcc = this.DBCon.getAccount(userName);
 				ArrayList<String> profile = new ArrayList<String>();
 				profile.add(userAcc.getFirstName());
@@ -99,6 +100,7 @@ public class UserFunctionalityController {
 				profile.add(userAcc.getUsername());
 				profile.add(userAcc.getPassword());
 				profile.add(userAcc.getUserType());
+				
 				return profile;
 			}
 		else {
@@ -115,13 +117,12 @@ public class UserFunctionalityController {
 	 */
 	public void editUserProfile(String userName, String firstName, String lastName, 
 			String password) {
-		if (this.DBCon.checkUser(userName)) {
-			Account userAcc = this.DBCon.getAccount(userName);
-			userAcc.setFirstName(firstName);
-			userAcc.setLastName(lastName);
-			userAcc.setPassword(password);
+
+			account = new AccountController( this.DBCon.getAccount(userName));
+			Account userAcc = account.updateUserInfo(firstName, lastName, password, "-1", "-1");
+			
 			this.DBCon.setAccount(userAcc);
-		}
+		
 	}
 	
 	/**

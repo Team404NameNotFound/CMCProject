@@ -162,15 +162,19 @@ public class DBController
 	public Account getAccount(String accountName)
 	{
 		String[][] accountList = dbLibrary.user_getUsers();
-		Account returnAccount;
+	
+		Account returnAccount = new Account("dumty", "asfd", "asdf", "asf", "asf", "asd");
 		for (int n = 0; n < accountList.length; n++)
 		{
+			System.out.println(accountList[n][2]);
 			if (accountList[n][2].equals(accountName))
-			{				
+			{		
+			
 				returnAccount = new Account(accountList[n][0], accountList[n][1],accountList[n][2],accountList[n][3],accountList[n][4],accountList[n][5]);
 				return returnAccount;
 			}
 		}
+		System.out.println(returnAccount.toString());
 		return null;
 	}
 	
@@ -181,6 +185,7 @@ public class DBController
 	public void setAccount(Account account)
 	{
 		dbLibrary.user_editUser(account.getUsername(), account.getFirstName(), account.getLastName(), account.getPassword(), account.getUserType().charAt(0), account.getUserStatus().charAt(0));
+		
 	}
 	
 	/**

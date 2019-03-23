@@ -29,7 +29,14 @@ public class AccountController {
 	 * @param Account student being accessed
 	 */
 	public AccountController(Account account) {
-		this.account = account;
+		if(account == null)
+		{
+			System.out.println("Sorry, account cannot be null");
+		}
+		else
+		{
+			this.account = account;
+		}
 	}
 
 	/**
@@ -202,19 +209,19 @@ public class AccountController {
 	 */
 	public Account updateUserInfo(String fName, String lName, String password, String type, String status)
 	{
-		if(!fName.equals(null) && !fName.equals(""))
+		if(!fName.equals("-1") )
 		{
 			account.setFirstName(fName);
 		}
-		if(!lName.equals(null) && !lName.equals(""))
+		if(!lName.equals("-1") )
 		{
 			account.setLastName(lName);
 		}
-		if(!password.equals(null) && !password.equals(""))
+		if(!password.equals("-1") )
 		{
 			account.setPassword(password);
 		}
-		if(!type.equals(null) && !type.equals(""))
+		if(!type.equals("-1") )
 		{
 			if(type.equals("u"))
 			{
@@ -225,7 +232,7 @@ public class AccountController {
 				account.setUserType("a");
 			}
 		}
-		if(!status.equals(null) && !status.equals(""))
+		if(!status.equals("-1"))
 		{
 			if(status.equals("Y"))
 			{

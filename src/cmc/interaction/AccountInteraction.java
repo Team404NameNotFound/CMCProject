@@ -101,13 +101,7 @@ public class AccountInteraction {
 	public void viewSchoolList(){
 		ArrayList<University> universityList = this.UFCon.viewSchoolList();
 		for (int index = 0; index < universityList.size(); index++) {
-			System.out.print("Name:" + universityList.get(index).getName() + ", State: " + universityList.get(index).getState() + ", Location: " + universityList.get(index).getLocation()
-					+ ", Control: " + universityList.get(index).getControl() + ", Enrollment: " + universityList.get(index).getEnrollment()
-					 + ", %Female" + universityList.get(index).getPercentFemale() + ", SAT Verbal: " + universityList.get(index).getSatVerbal() + ", SAT Math: " + universityList.get(index).getSatMath()
-					 + ", Cost: " + universityList.get(index).getCost() + ", %Finantial Aid: " + universityList.get(index).getPercentFinAid() + ", % Enrolled: " + universityList.get(index).getPercentEnrolled()
-					 + ", Applicants: " + universityList.get(index).getApplicants() + ", %Admitted: " + universityList.get(index).getPercentAdmitted()
-					 + ", Academic Scale(1-5): " + universityList.get(index).getAcademicScale() + ", Social Scale(1-5): " 
-					 + universityList.get(index).getSocialScale() + ", Quality of Lift(1-5): " + universityList.get(index).getQualityOfLife() + ", Emphases(es): ");
+			
 			String[] emphases = universityList.get(index).getEmphases();
 			for (int i = 0; i < emphases.length; i++) {
 				System.out.print(" " + emphases[i]);

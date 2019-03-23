@@ -11,13 +11,13 @@ public class Phase2_FunctionalityTestDriver {
 	static AccountInteraction user = new AccountInteraction();
 	static StudentInteraction student =  new StudentInteraction();
 	static AdminInteraction admin = new AdminInteraction();
-	static AdminInteraction adInt = new AdminInteraction();
+//	static AdminInteraction adInt = new AdminInteraction();
 	
-	static ArrayList<UserSavedSchool> studentSavedSchools = new ArrayList<>();
-	static Student student1 = new Student("Cool", "User", "cuser", "user" ,"u", "Y", studentSavedSchools);
-	static AccountController accountController = new AccountController(student1);
-    static StudentInteraction studentInteraction = new StudentInteraction();
-    static StudentFunctionalityController sfCon = new StudentFunctionalityController();
+//	static ArrayList<UserSavedSchool> studentSavedSchools = new ArrayList<>();
+//	static Student student1 = new Student("Cool", "User", "cuser", "user" ,"u", "Y", studentSavedSchools);
+//	static AccountController accountController = new AccountController(student1);
+//    static StudentInteraction studentInteraction = new StudentInteraction();
+//    static StudentFunctionalityController sfCon = new StudentFunctionalityController();
 	
 	public static void main(String[] args) {
 		//UC 1 Login
@@ -65,19 +65,24 @@ public class Phase2_FunctionalityTestDriver {
 		user.login(username2, password2);
 		System.out.println("-------------------------\n\n\n");
 		
-		//UC 3 Request new password
-		System.out.println("UC 3: Request New Password");
-		System.out.println("-------------------------");
-		adInt.addUser("Imad", "Rahal", "irahal@csbsju.edu", "password", "u");
-		System.out.println("UC 3: Forgot Password");
-		adInt.forgotPsw("irahal@csbsju.edu");
-		System.out.println("-------------------------\n\n\n");
-		
 		//Login to test the rest of the functionalities
 		System.out.println("Login to test the rest of the functionalities");
 		System.out.println("-------------------------");
-		adInt.login("nadmin", "a");
+		admin.login("nadmin", "a");
+		user.login("cuser", "user");
+		student.login("ajheroux@csbsju.edu", "gngjf");
 		System.out.println("-------------------------\n\n\n");
+		
+		
+		//UC 3 Request new password
+//		System.out.println("UC 3: Request New Password");
+//		System.out.println("-------------------------");
+//		admin.addUser("Imad", "Rahal", "irahal@csbsju.edu", "password", "u");
+//		System.out.println("UC 3: Forgot Password");
+//		admin.forgotPsw("irahal@csbsju.edu");
+//		System.out.println("-------------------------\n\n\n");
+		
+
 		
 
 		
@@ -85,6 +90,11 @@ public class Phase2_FunctionalityTestDriver {
 	
 		
 		//UC 5 Take personality quiz
+		System.out.println("UC 5: Personality Quiz:");
+		System.out.println("-------------------------");
+		String[] emphases = {};
+		student.takeQuiz("URBAN","qualityOfLife", "PRIVATE", emphases);
+		System.out.println("-------------------------\n\n\n");
 		
 		
 		//UC 6&7  Search by entering fields
@@ -93,13 +103,12 @@ public class Phase2_FunctionalityTestDriver {
 		String state = "Minnesota";
 		int numStudentsLower = 2000;
 		int numStudentsUpper = 50000;
-		String[] emphases = {};
-		student.fieldSearch( "GS", state, "-1", numStudentsLower,
+		student.fieldSearch( "", state, "-1", numStudentsLower,
 				numStudentsUpper, (float)-1.0,(float)-1.0, -1, 
 				-1, -1, -1, -1, -1, 
 				(float)-1.0, (float)-1.0, -1, 
 				-1, (float)-1.0, (float)-1.0,
-				(float)-1.0, (float)-1.0, -1, -1,
+				(float)-1.0, (float)-1.0,-1, -1,
 				-1, -1, -1, -1, emphases, "-1"
 				);
 		System.out.println("-------------------------\n\n\n");
@@ -109,104 +118,96 @@ public class Phase2_FunctionalityTestDriver {
 		System.out.println("-------------------------");
 		user.viewSchoolDetails("UNIVERSITY OF MINNESOTA");
 		
-		System.out.println("Testing Adding a university");
-		admin.addNewUniversity("Dummy", "State", "location", "private", "5000", "1", "800", "800", "100000", "20", "1", "5", "1", 
-				"3", "4", "5", emphases);
-		System.out.println("\nPrinting Dummy school added details: \n");
-		user.viewSchoolDetails("Dummy");
-		System.out.println("-------------------------\n\n\n");
+
 		
 	//U9 View additional recommended schools
 		System.out.println("UC 9 Closest Matches From Selected University:");
 		System.out.println("-------------------------");
-		DBController db = new DBController();
-		ArrayList<University> uniSchools = db.getUniversityList();
-		University university = uniSchools.get(9);
-		student.findRecommended(university);
+		student.findRecommended("AUGSBURG");
 		System.out.println("-------------------------\n\n\n");
 		
 	//U10 Save school
 		System.out.print("UC 10 Save School:");
 		System.out.println("-------------------------");
-		sfCon.setAccount(accountController);
-		studentInteraction.setSfCon(sfCon);
+		student.saveSchool("BROWN");
+		//sfCon.setAccount(accountController);
+		//studentInteraction.setSfCon(sfCon);
 		System.out.println("-------------------------\n\n\n");
-		
-		//test saveSchool()
-		System.out.println("-------------------------");
-		System.out.println("Testing save schools: ");
-		sfCon.setAccount(accountController);
-		studentInteraction.setSfCon(sfCon);
-
-		studentInteraction.saveSchool("AMERICAN UNIVERSITY OF BEIRUT");
-		studentInteraction.saveSchool("YALE");
-		studentInteraction.saveSchool("AUGSBURG"); 
-		studentInteraction.saveSchool("GEORGE WASHINGTON");
-
-		System.out.println("Schools being saved are:");
-	    studentInteraction.viewSavedSchools();
-	    System.out.println("-------------------------\n\n\n");
-
-		
-	//U11 View saved schools
-	    System.out.println("UC 11 View saved schools:");
-	    System.out.println("-------------------------");
-	    System.out.println("Testing view saved schools: ");
-	    studentInteraction.viewSavedSchools();
-	    System.out.println("-------------------------\n\n\n");
-	    
-	//U12 Remove a saved school
-	    System.out.println("Remove a saved school:");
-	    System.out.println("-------------------------");
-	    System.out.println("Testing remove a saved school, remove: GEORGE WASHINGTON\"");
-	    studentInteraction.removeSavedSchool("GEORGE WASHINGTON");
-	    System.out.println("After removing, the new saved school list for current user is");
-	    studentInteraction.viewSavedSchools();
-	    System.out.println("-------------------------\n\n\n");
-	    
-	//U13 View saved school details
-	    System.out.println("View saved school details:");
-	    System.out.println("-------------------------");
-	    System.out.println("Testing view a saved school details: ");
-	    studentInteraction.viewSavedSchoolDetails("YALE");
-	    System.out.println("-------------------------\n\n\n");
-	    
+//		
+//		//test saveSchool()
+//		System.out.println("-------------------------");
+//		System.out.println("Testing save schools: ");
+//		sfCon.setAccount(accountController);
+//		studentInteraction.setSfCon(sfCon);
+//
+//		studentInteraction.saveSchool("AMERICAN UNIVERSITY OF BEIRUT");
+//		studentInteraction.saveSchool("YALE");
+//		studentInteraction.saveSchool("AUGSBURG"); 
+//		studentInteraction.saveSchool("GEORGE WASHINGTON");
+//
+//		System.out.println("Schools being saved are:");
+//	    studentInteraction.viewSavedSchools();
+//	    System.out.println("-------------------------\n\n\n");
+//
+//		
+//	//U11 View saved schools
+//	    System.out.println("UC 11 View saved schools:");
+//	    System.out.println("-------------------------");
+//	    System.out.println("Testing view saved schools: ");
+//	    studentInteraction.viewSavedSchools();
+//	    System.out.println("-------------------------\n\n\n");
+//	    
+//	//U12 Remove a saved school
+//	    System.out.println("Remove a saved school:");
+//	    System.out.println("-------------------------");
+//	    System.out.println("Testing remove a saved school, remove: GEORGE WASHINGTON\"");
+//	    studentInteraction.removeSavedSchool("GEORGE WASHINGTON");
+//	    System.out.println("After removing, the new saved school list for current user is");
+//	    studentInteraction.viewSavedSchools();
+//	    System.out.println("-------------------------\n\n\n");
+//	    
+//	//U13 View saved school details
+//	    System.out.println("View saved school details:");
+//	    System.out.println("-------------------------");
+//	    System.out.println("Testing view a saved school details: ");
+//	    student.viewSavedSchoolDetails("YALE");
+//	    System.out.println("-------------------------\n\n\n");
+//	    
 	//U14 View user saved statistics
 	    System.out.println("View user saved statistics:");
 	    System.out.println("-------------------------");
 	    System.out.println("Testing view userSavedStatistisc: ");
-	    studentInteraction.viewUserSavedStatistics("YALE");
-	    studentInteraction.viewUserSavedStatistics("GEORGE WASHINGTON");;
+	    student.viewUserSavedStatistics("YALE");
+	    student.viewUserSavedStatistics("GEORGE WASHINGTON");;
 	    System.out.println("-------------------------\n\n\n");
-	    
-		
+//	    
+//		
 	//U15 Compare schools by score
-	    System.out.println("UC 15 Compare Schools by SAT Math Score:");
-	    System.out.println("-------------------------");
-	    System.out.println("Testing compare scores");
-	    studentInteraction.compareSchoolsByScore();
-	    System.out.println("-------------------------\n\n\n");
-	
+//	    System.out.println("UC 15 Compare Schools by SAT Math Score:");
+//	    System.out.println("-------------------------");
+//	    System.out.println("Testing compare scores");
+//	    student.compareSchoolsByScore();
+//	    System.out.println("-------------------------\n\n\n");
+//	
 	//U16 View user profile
 	    System.out.println("UC 16 View User Profile");
-	    System.out.println("-------------------------");
-		user.login("nadmin", adminPassword);		
+	    System.out.println("-------------------------");		
 		user.viewProfile(adminUsername);
 		System.out.println("-------------------------\n\n\n");
-		
+//		
 	//U17 Edit user information
 	    System.out.println("UC 17 Edit User Information:");
 	    System.out.println("-------------------------");
-		user.editProfile("newUser","Nor","A","fasd");
+		user.editProfile("nadmin","Nor","A","fasd");
 		user.viewProfile("nadmin");
 		System.out.println();
-		user.editProfile("Noreen", "nadmin", "Admin", "a");
+		user.editProfile("nadmin", "Noreen", "Admin", "a");
+		user.viewProfile("nadmin");
 		
 	//U18 View school list
-	    System.out.println("UC 18 View School list:");
-		//adInt.login(adminUsername, adminPassword);
-		adInt.viewUniversities();
-		System.out.println("-------------------------\n\n\n");
+//	    System.out.println("UC 18 View School list:");
+//		admin.viewUniversities();
+//		System.out.println("-------------------------\n\n\n");
 		
 	//U21 Add new university
 	    System.out.println("UC 21 Add new University:");
@@ -216,9 +217,8 @@ public class Phase2_FunctionalityTestDriver {
 					"3", "4", "5", emphases);
 		System.out.println("\nPrinting Dummy school added details: \n");
 			user.viewSchoolDetails("Dummy");
-		System.out.println("-------------------------\n\n\n");
-		
-		
+		System.out.println("\n-------------------------\n\n\n");
+
 		
 		//U20 Edit school information
 		System.out.println("UC 20 Edit school info:");
@@ -245,18 +245,15 @@ public class Phase2_FunctionalityTestDriver {
 	//U22 View users
 		System.out.println("UC 22 View Users:");
 		System.out.println("-------------------------");
-		adInt.viewUsers();
+		admin.viewUsers();
 		System.out.println("-------------------------\n\n\n");
-		
-
-		
-		
+	
 
 	//U23 Add a new user & U24 Toggle activation status
 		System.out.println("UC 23 Add a new user & UC 24 Toggle Activation Status:");
 		System.out.println("-------------------------");
-		adInt.addUser("Carrie", "Zhang", "cz001", "password", "u");
-		adInt.toggleActivationStatus("cz001");
+		admin.addUser("Carrie", "Zhang", "cz001", "password", "u");
+		admin.toggleActivationStatus("cz001");
 		System.out.println("-------------------------\n\n\n");
 		System.out.println("END OF DRIVER");
 

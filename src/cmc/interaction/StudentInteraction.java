@@ -34,38 +34,55 @@ public class StudentInteraction extends AccountInteraction{
 	 * @param emphasis
 	 */
 	public void takeQuiz(String location, String characteristic ,String control ,String[] emphasis) {
-		if (characteristic.equals("academic"))
+		ArrayList<University> personalMatches = new ArrayList<University>();
+		
+		if(location == null || control == null || characteristic == null )
 		{
-			fieldSearch("", "", location, -1,
-					-1, -1, -1, -1, 
+			System.out.println("Sorry, you must input all paramters");
+		}
+		else
+		{
+		 if(characteristic.equals("academic"))
+		{
+			
+			personalMatches = sfCon.search( "", "-1", location, -1,
+					-1, (float)-1.0,(float)-1.0, -1, 
 					-1, -1, -1, -1, -1, 
-					-1, -1, -1, 
-					1, -1, -1,
-					-1, -1, 4, -1,
-					-1, -1, -1, -1, emphasis,
-					control);
+					(float)-1.0, (float)-1.0, -1, 
+					-1, (float)-1.0, (float)-1.0,
+					(float)-1.0, (float)-1.0,3, -1,
+					-1, -1, -1, -1, emphasis, control
+					);
 		}
 		else if (characteristic.equals("social"))
 		{
-			fieldSearch("", "", location, -1,
-					-1, -1, -1, -1, 
+			personalMatches = sfCon.search( "", "-1", location, -1,
+					-1, (float)-1.0,(float)-1.0, -1, 
 					-1, -1, -1, -1, -1, 
-					-1, -1, -1, 
-					1, -1, -1,
-					-1, -1, -1, -1,
-					4, -1, -1, -1, emphasis,
-					control);
+					(float)-1.0, (float)-1.0, -1, 
+					-1, (float)-1.0, (float)-1.0,
+					(float)-1.0, (float)-1.0,-1, -1,
+					3, -1, -1, -1, emphasis, control
+					);
 		}
 		else if (characteristic.equals("qualityOfLife"))
 		{
-			fieldSearch("", "", location, -1,
-					-1, -1, -1, -1, 
+			personalMatches = sfCon.search("", "-1", location, -1,
+					-1, (float)-1.0,(float)-1.0, -1, 
 					-1, -1, -1, -1, -1, 
-					-1, -1, -1, 
-					1, -1, -1,
-					-1, -1, -1, -1,
-					-1, -1, 4, -1, emphasis,
-					control);
+					(float)-1.0, (float)-1.0, -1, 
+					-1, (float)-1.0, (float)-1.0,
+					(float)-1.0, (float)-1.0,-1, -1,
+					-1, -1, 3, -1, emphasis, control
+					);
+		}
+
+		}
+		
+		for(int i = 0; i < personalMatches.size(); i++)
+		{
+			System.out.println("Match: " + personalMatches.get(i).getName());
+			
 		}
 	}
 	/**
@@ -89,7 +106,7 @@ public class StudentInteraction extends AccountInteraction{
 	    //sfCon.searchCon = new SearchController();
 	    // do I need to make a new SearchController using DBController.getUniversityList() as a param?
 		ArrayList<University> matchSchools =  
-				sfCon.searchCon.fieldSearch( schoolName,  state,  location,  numStudentsMin,
+				sfCon.search( schoolName,  state,  location,  numStudentsMin,
 						 numStudentsMax,  percentFemaleMin,  percentFemaleMax,  SATVerbalMin, 
 						 SATVerbalMax,  SATMathMin,  SATMathMax,  expensesMin,  expensesMax, 
 						 PercentFinancialAidMin,  percenetFinancialAidMax,  numberApplicantsMin, 
@@ -112,9 +129,9 @@ public class StudentInteraction extends AccountInteraction{
 	 * Returns the five most similar schools to the specified school
 	 * @param schoolToCompare
 	 */
-	public void findRecommended(University schoolToCompare)
+	public void findRecommended(String schoolToCompare)
 	{
-		ArrayList<University> closeMatch = sfCon.rankUniversity(schoolToCompare.getName());
+		ArrayList<University> closeMatch = sfCon.rankUniversity(schoolToCompare);
 		for(int i = 0; i<5; i++)
 		{
 			System.out.println(closeMatch.get(i).getName());
