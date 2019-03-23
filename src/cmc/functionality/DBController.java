@@ -166,10 +166,10 @@ public class DBController
 		Account returnAccount = new Account("dumty", "asfd", "asdf", "asf", "asf", "asd");
 		for (int n = 0; n < accountList.length; n++)
 		{
-			System.out.println(accountList[n][2]);
+			
 			if (accountList[n][2].equals(accountName))
 			{		
-			
+				System.out.println("" + accountList[n][0]+ accountList[n][1]+accountList[n][2]+accountList[n][3]+accountList[n][4]+accountList[n][5]);
 				returnAccount = new Account(accountList[n][0], accountList[n][1],accountList[n][2],accountList[n][3],accountList[n][4],accountList[n][5]);
 				return returnAccount;
 			}

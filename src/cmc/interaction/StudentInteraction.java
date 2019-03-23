@@ -143,6 +143,7 @@ public class StudentInteraction extends AccountInteraction{
 	 * @param school
 	 */
 	public void saveSchool(String school) { 
+		this.sfCon.setAccount(this.UFCon.getAccount());
 		this.sfCon.saveSchool(school);
 	}
 

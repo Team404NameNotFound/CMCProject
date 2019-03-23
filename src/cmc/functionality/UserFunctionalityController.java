@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class UserFunctionalityController {
 	
 	//Making instance variables
-	AccountController account;
+	 AccountController account;
 	DBController DBCon = new  DBController();
 	UniversityController universityCon;
 	public Boolean loggedIn;
@@ -25,6 +25,10 @@ public class UserFunctionalityController {
 		this.loggedIn = false;
 	}
 	
+	public AccountController getAccountController()
+	{
+		return account;
+	}
 	/**
 	 * Get the current UniversityController
 	 * @return the universityCon
@@ -55,7 +59,7 @@ public class UserFunctionalityController {
 					AccountController userAcc = new AccountController(this.DBCon.getAccount(userName));
 					if (userAcc.checkPassword(password)) {
 						//System.out.println("Login Successful");
-						this.account = new AccountController(this.DBCon.getAccount(userName));
+						account = new AccountController(this.DBCon.getAccount(userName));
 						this.loggedIn = true;
 						return true;
 					}

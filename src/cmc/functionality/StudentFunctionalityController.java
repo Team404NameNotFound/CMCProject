@@ -17,7 +17,6 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 	 * Creating a new StudentFunctionalityController
 	 */
 	public StudentFunctionalityController() {
-		super();
 		this.searchCon = new SearchController(this.DBCon.getUniversityList());
 	}
 	
@@ -100,11 +99,16 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 	 */
 	public void saveSchool(String school) {
 //	this.account = new AccountrController(this.DBCon.getAccount());
-		this.account.saveSchool(school);
+		
+		account.saveSchool(school);
 		this.DBCon.getUniversity2(school).addStudent(this.account.account.getUsername());
 		
 	}
 	
+	public void setAccountController(Account account)
+	{
+		this.account = new AccountController(account);
+	}
 	/**
 	 * View current user's saved schools list
 	 */
