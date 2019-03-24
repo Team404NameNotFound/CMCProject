@@ -121,24 +121,28 @@ public class AdminFunctionalityController extends UserFunctionalityController {
 		boolean added = false;
 		ArrayList<UserSavedSchool> savedSchoolList = new ArrayList<UserSavedSchool>();
 		
-		
-		if(firstname == "" || lastname == "" || username == "" || password == "" || userType == "") {
-			System.out.println("Sorry, you need to specify all fields.");
-		}
-		else if(!(userType.equalsIgnoreCase("u") || userType.equalsIgnoreCase("a"))){
-			System.out.println("Sorry, you need to specify a valid user type.");
-		}
-		else if(DBCon.checkUser(username)) {
-			System.out.println("Sorry, this username is already taken.");
-		}
-		else {
-			AccountController acCon = new AccountController();
-			Account account = acCon.createNewAccount(firstname, lastname, username, password, userType, savedSchoolList);
-			if (account != null) {
-				DBCon.addUser(account);
-				added = true;
+		if (!DBCon.checkUser(username))
+		{
+			if(firstname == "" || lastname == "" || username == "" || password == "" || userType == "") {
+				System.out.println("Sorry, you need to specify all fields.");
+			}
+			else if(!(userType.equalsIgnoreCase("u") || userType.equalsIgnoreCase("a"))){
+				System.out.println("Sorry, you need to specify a valid user type.");
+			}
+			else {
+				AccountController acCon = new AccountController();
+				Account account = acCon.createNewAccount(firstname, lastname, username, password, userType, savedSchoolList);
+				if (account != null) {
+					DBCon.addUser(account);
+					added = true;
+				}
 			}
 		}
+		else
+		{
+			System.out.println("Sorry, this username is already taken.");
+		}
+		
 		return added;
 	}
 	
