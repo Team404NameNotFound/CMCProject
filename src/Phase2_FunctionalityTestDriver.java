@@ -20,76 +20,76 @@ public class Phase2_FunctionalityTestDriver {
     static StudentFunctionalityController sfCon = new StudentFunctionalityController();
 	
 	public static void main(String[] args) {
-		//UC 1 Login
-		//successful login (user)
-		System.out.println("UC 1: Successful login (user):");
-		System.out.println("-------------------------");
-		String userUsername = "juser";
-		String userPassword = "user";
-		user.login(userUsername, userPassword);
-		System.out.println("-------------------------\n\n\n");
-		
-		//UC 2 Logout
-		System.out.println("UC 2: Successful logout:");
-		System.out.println("-------------------------");
-		user.logout();
-		System.out.println("-------------------------\n\n\n");
-		
-		//successful login (admin)
-		System.out.println("UC 1: Successful login (admin):");
-		System.out.println("-------------------------");
-		String adminUsername = "nadmin";
-		String adminPassword = "a";
-		user.login(adminUsername, adminPassword);
-		System.out.println("-------------------------\n\n\n");
-		
-		//successful logout
-		System.out.println("UC 2: Successful logout:");
-		System.out.println("-------------------------");
-		user.logout();
-		System.out.println("-------------------------\n\n\n");
-		
-		//failed login - invalid credentials (admin and user)
-		System.out.println("UC 1: Failed login (invalid credentials):");
-		System.out.println("-------------------------");
-		String username1 = "Team";
-		String password1 = "404";
-		user.login(username1, password1);
-		System.out.println("-------------------------\n\n\n");
-		
-		//failed login - inactive status (admin and user)
-		System.out.println("UC 1: Failed login (inactive status):");
-		System.out.println("-------------------------");
-		String username2 = "luser";
-		String password2 = "user";
-		user.login(username2, password2);
-		System.out.println("-------------------------\n\n\n");
-		
-		//Login to test the rest of the functionalities
-		System.out.println("Login to test the rest of the functionalities");
-		System.out.println("-------------------------");
-		admin.login("nadmin", "a");
-		user.login("cuser", "user");
-		student.login("ajheroux@csbsju.edu", "c3ek7");
-		System.out.println("-------------------------\n\n\n");
-		
-		//UC 3 Request new password
-//  		System.out.println("UC 3: Request New Password");
-//  		System.out.println("-------------------------");
-////  	admin.addUser("Imad", "Rahal", "irahal@csbsju.edu", "password", "u");
-//  		System.out.println("UC 3: Forgot Password");
-//  		student.logout();
-//  		student.forgotPsw("ajheroux@csbsju.edu");
-//  		student.login("ajheroux@csbsju.edu", "gngjf");
-//  		System.out.println("-------------------------\n\n\n");
+//		//UC 1 Login
+//		//successful login (user)
+//		System.out.println("UC 1: Successful login (user):");
+//		System.out.println("-------------------------");
+//		String userUsername = "juser";
+//		String userPassword = "user";
+//		user.login(userUsername, userPassword);
+//		System.out.println("-------------------------\n\n\n");
 //		
-		//UC 3 Request New password and Invalid User
-		System.out.println("UC 3: Request New Password and Invalid User");
-		System.out.println("-------------------------");
-		student.logout();
-		student.forgotPsw("lkasdf@yahoo.com");
-		student.login("ajheroux@csbsju.edu", "c3ek7");
-		System.out.println("-------------------------\n\n\n");
+//		//UC 2 Logout
+//		System.out.println("UC 2: Successful logout:");
+//		System.out.println("-------------------------");
+//		user.logout();
+//		System.out.println("-------------------------\n\n\n");
+//		
+//		//successful login (admin)
+//		System.out.println("UC 1: Successful login (admin):");
+//		System.out.println("-------------------------");
+//		String adminUsername = "nadmin";
+//		String adminPassword = "a";
+//		user.login(adminUsername, adminPassword);
+//		System.out.println("-------------------------\n\n\n");
+//		
+//		//successful logout
+//		System.out.println("UC 2: Successful logout:");
+//		System.out.println("-------------------------");
+//		user.logout();
+//		System.out.println("-------------------------\n\n\n");
+//		
+//		//failed login - invalid credentials (admin and user)
+//		System.out.println("UC 1: Failed login (invalid credentials):");
+//		System.out.println("-------------------------");
+//		String username1 = "Team";
+//		String password1 = "404";
+//		user.login(username1, password1);
+//		System.out.println("-------------------------\n\n\n");
+//		
+//		//failed login - inactive status (admin and user)
+//		System.out.println("UC 1: Failed login (inactive status):");
+//		System.out.println("-------------------------");
+//		String username2 = "luser";
+//		String password2 = "user";
+//		user.login(username2, password2);
+//		System.out.println("-------------------------\n\n\n");
+//		
+//		//Login to test the rest of the functionalities
+//		System.out.println("Login to test the rest of the functionalities");
+//		System.out.println("-------------------------");
+//		admin.login("nadmin", "a");
+//		user.login("cuser", "user");
+//		student.login("ajheroux@csbsju.edu", "c3ek7");
+//		System.out.println("-------------------------\n\n\n");
+//		
+//		//UC 3 Request new password
+////  		System.out.println("UC 3: Request New Password");
+////  		System.out.println("-------------------------");
+//////  	admin.addUser("Imad", "Rahal", "irahal@csbsju.edu", "password", "u");
+////  		System.out.println("UC 3: Forgot Password");
+////  		student.logout();
+////  		student.forgotPsw("ajheroux@csbsju.edu");
+////  		student.login("ajheroux@csbsju.edu", "gngjf");
+////  		System.out.println("-------------------------\n\n\n");
+////		
+//		//UC 3 Request New password and Invalid User
+//		System.out.println("UC 3: Request New Password and Invalid User");
+//		System.out.println("-------------------------");
+//		student.logout();
+//		student.forgotPsw("lkasdf@yahoo.com");
+//		student.login("ajheroux@csbsju.edu", "c3ek7");
+//		System.out.println("-------------------------\n\n\n");
 //
 //		
 //
@@ -288,10 +288,12 @@ public class Phase2_FunctionalityTestDriver {
 //		System.out.println("-------------------------\n\n\n");
 //	
 //
-//	//U23 Add a new user & U24 Toggle activation status
-//		System.out.println("UC 23 Add a new user & UC 24 Toggle Activation Status:");
-//		System.out.println("-------------------------");
-//		admin.addUser("Carrie", "Zhang", "cz001", "password", "u");
+	//U23 Add a new user & U24 Toggle activation status
+		System.out.println("UC 23 Add a new user: ");
+		System.out.println("-------------------------");
+		admin.addUser("Carrie", "Zhang", "cz001", "password", "u");
+		System.out.println("-------------------------\n\n\n");
+		System.out.println("UC 24 Toggle Activation Status:");
 //		admin.toggleActivationStatus("cz001");
 //		System.out.println("-------------------------\n\n\n");
 //		System.out.println("END OF DRIVER");
