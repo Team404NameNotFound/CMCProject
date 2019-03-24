@@ -70,7 +70,7 @@ public class Phase2_FunctionalityTestDriver {
 		System.out.println("-------------------------");
 		admin.login("nadmin", "a");
 		user.login("cuser", "user");
-		student.login("ajheroux@csbsju.edu", "bnnrq");
+		student.login("ajheroux@csbsju.edu", "c3ek7");
 		System.out.println("-------------------------\n\n\n");
 		
 		//UC 3 Request new password
@@ -88,7 +88,7 @@ public class Phase2_FunctionalityTestDriver {
 		System.out.println("-------------------------");
 		student.logout();
 		student.forgotPsw("lkasdf@yahoo.com");
-		student.login("ajheroux@csbsju.edu", "bnnrq");
+		student.login("ajheroux@csbsju.edu", "c3ek7");
 		System.out.println("-------------------------\n\n\n");
 //
 //		
@@ -168,7 +168,7 @@ public class Phase2_FunctionalityTestDriver {
 //		student.findRecommended("AUGSBURG");
 //		System.out.println("-------------------------\n\n\n");
 //		
-//	//U10 Save school
+	//U10 Save school
 //		System.out.print("UC 10 Save School:");
 //		System.out.println("-------------------------");
 //		student.saveSchool("BROWN");

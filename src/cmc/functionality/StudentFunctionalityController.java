@@ -99,10 +99,24 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 	 */
 	public void saveSchool(String school) {
 //	this.account = new AccountrController(this.DBCon.getAccount());
-		
+		boolean found = false;
+		ArrayList<UserSavedSchool> savedSchols = DBCon.getSchoolList2(account.account);
+		for(UserSavedSchool sho: savedSchols)
+		{
+			if(sho.getName().equals(school))
+			{
+				found = true;
+			}
+		}
+		if(!found)
+		{
 		account.saveSchool(school);
 		this.DBCon.getUniversity2(school).addStudent(this.account.account.getUsername());
-		
+		}
+		else
+		System.out.println("Sorry, the school is already in your list");
+	
+
 	}
 	
 	public void setAccountController(Account account)
