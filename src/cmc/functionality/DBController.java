@@ -169,7 +169,7 @@ public class DBController
 			
 			if (accountList[n][2].equals(accountName))
 			{		
-				System.out.println("" + accountList[n][0]+ accountList[n][1]+accountList[n][2]+accountList[n][3]+accountList[n][4]+accountList[n][5]);
+				
 				returnAccount = new Account(accountList[n][0], accountList[n][1],accountList[n][2],accountList[n][3],accountList[n][4],accountList[n][5]);
 				return returnAccount;
 			}

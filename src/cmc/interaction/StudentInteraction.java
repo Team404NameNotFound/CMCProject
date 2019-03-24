@@ -36,7 +36,7 @@ public class StudentInteraction extends AccountInteraction{
 	public void takeQuiz(String location, String characteristic ,String control ,String[] emphasis) {
 		ArrayList<University> personalMatches = new ArrayList<University>();
 		
-		if(location == null || control == null || characteristic == null )
+		if(location.equals("") || control.equals("") || characteristic.equals("") )
 		{
 			System.out.println("Sorry, you must input all paramters");
 		}
@@ -103,8 +103,26 @@ public class StudentInteraction extends AccountInteraction{
 			int socialScalemin, int socialScaleMax, int qualityOfLifeMin, int qualityOfLifeMax, String[] emphases,
 			String control) {
 		if(!sfCon.loggedIn) {
-	    //sfCon.searchCon = new SearchController();
-	    // do I need to make a new SearchController using DBController.getUniversityList() as a param?
+	    
+			if(schoolName.equals("") && state.equals("") && location.equals("") && numStudentsMin == -1 &&
+					numStudentsMax == -1 && percentFemaleMin == -1 && percentFemaleMax == -1 && SATVerbalMin == -1 &&
+					SATVerbalMax == -1 && SATMathMin == -1 && SATMathMax == -1 && expensesMin == -1 && expensesMax == -1 &&
+					PercentFinancialAidMin == -1 && percenetFinancialAidMax == -1 && numberApplicantsMin == -1 &&
+					numberApplicatnsMax == -1 && percentAddmittedMin == -1 && percentAdmittedMax == -1 &&
+					percentEnrolledMin == -1 && percentEnrolledMax == -1 && academicScaleMin == -1 && academicScaleMax == -1 &&
+					socialScalemin == -1 && socialScaleMax == -1 && qualityOfLifeMin == -1 && qualityOfLifeMax == -1 && control.equals(""))
+			{
+				System.out.print("Sorry, you must input at least 1 parameter");
+			}
+			else if((numStudentsMax < numStudentsMin && numStudentsMax != -1) || (percentFemaleMax < percentFemaleMin && percentFemaleMax != -1) || (SATVerbalMax < SATVerbalMin && SATVerbalMax != -1) ||
+					(SATMathMax < SATMathMin && SATMathMax != -1) || (expensesMax < expensesMin && expensesMax != -1) || (percenetFinancialAidMax < PercentFinancialAidMin && percenetFinancialAidMax != -1) ||
+					(numberApplicatnsMax < numberApplicatnsMax && numberApplicatnsMax != -1) || (percentAdmittedMax < percentAddmittedMin && percentAdmittedMax != -1) || (percentEnrolledMax < percentEnrolledMin && percentEnrolledMax != -1) ||
+					(academicScaleMax < academicScaleMin && academicScaleMax != -1) || (socialScaleMax < socialScalemin && socialScaleMax != -1) || (qualityOfLifeMax < qualityOfLifeMin && qualityOfLifeMax != -1))
+			{
+				System.out.println("Sorry, your paramters for a minimum cannot be greater than the paramt");
+			}
+			else
+			{
 		ArrayList<University> matchSchools =  
 				sfCon.search( schoolName,  state,  location,  numStudentsMin,
 						 numStudentsMax,  percentFemaleMin,  percentFemaleMax,  SATVerbalMin, 
@@ -117,6 +135,7 @@ public class StudentInteraction extends AccountInteraction{
 		 for(int i = 0; i<matchSchools.size();i++)
 		 {
 			 System.out.println(matchSchools.get(i).getName());
+		 }
 		 }
 		}
 		else {
