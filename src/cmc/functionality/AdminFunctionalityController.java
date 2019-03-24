@@ -125,10 +125,10 @@ public class AdminFunctionalityController extends UserFunctionalityController {
 		if(firstname == "" || lastname == "" || username == "" || password == "" || userType == "") {
 			System.out.println("Sorry, you need to specify all fields.");
 		}
-		else if(!(userType.equals("u") || userType.equals("u"))){
+		else if(!(userType.equalsIgnoreCase("u") || userType.equalsIgnoreCase("a"))){
 			System.out.println("Sorry, you need to specify a valid user type.");
 		}
-		else if(DBCon.checkUser(lastname)) {
+		else if(DBCon.checkUser(username)) {
 			System.out.println("Sorry, this username is already taken.");
 		}
 		else {
