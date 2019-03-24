@@ -11,60 +11,60 @@ public class Phase2_FunctionalityTestDriver {
 	static AccountInteraction user = new AccountInteraction();
 	static StudentInteraction student =  new StudentInteraction();
 	static AdminInteraction admin = new AdminInteraction();
-//	static AdminInteraction adInt = new AdminInteraction();
+	static AdminInteraction adInt = new AdminInteraction();
 	
-//	static ArrayList<UserSavedSchool> studentSavedSchools = new ArrayList<>();
-//	static Student student1 = new Student("Cool", "User", "cuser", "user" ,"u", "Y", studentSavedSchools);
-//	static AccountController accountController = new AccountController(student1);
-//    static StudentInteraction studentInteraction = new StudentInteraction();
-//    static StudentFunctionalityController sfCon = new StudentFunctionalityController();
+	static ArrayList<UserSavedSchool> studentSavedSchools = new ArrayList<>();
+	static Student student1 = new Student("Cool", "User", "cuser", "user" ,"u", "Y", studentSavedSchools);
+	static AccountController accountController = new AccountController(student1);
+    static StudentInteraction studentInteraction = new StudentInteraction();
+    static StudentFunctionalityController sfCon = new StudentFunctionalityController();
 	
 	public static void main(String[] args) {
-		//UC 1 Login
-		//successful login (user)
-		System.out.println("UC 1: Successful login (user):");
-		System.out.println("-------------------------");
-		String userUsername = "juser";
-		String userPassword = "user";
-		user.login(userUsername, userPassword);
-		System.out.println("-------------------------\n\n\n");
-		
-		//UC 2 Logout
-		System.out.println("UC 2: Successful logout:");
-		System.out.println("-------------------------");
-		user.logout();
-		System.out.println("-------------------------\n\n\n");
-		
-		//successful login (admin)
-		System.out.println("UC 1: Successful login (admin):");
-		System.out.println("-------------------------");
-		String adminUsername = "nadmin";
-		String adminPassword = "a";
-		user.login(adminUsername, adminPassword);
-		System.out.println("-------------------------\n\n\n");
-		
-		//successful logout
-		System.out.println("UC 2: Successful logout:");
-		System.out.println("-------------------------");
-		user.logout();
-		System.out.println("-------------------------\n\n\n");
-		
-		//failed login - invalid credentials (admin and user)
-		System.out.println("UC 1: Failed login (invalid credentials):");
-		System.out.println("-------------------------");
-		String username1 = "Team";
-		String password1 = "404";
-		user.login(username1, password1);
-		System.out.println("-------------------------\n\n\n");
-		
-		//failed login - inactive status (admin and user)
-		System.out.println("UC 1: Failed login (inactive status):");
-		System.out.println("-------------------------");
-		String username2 = "luser";
-		String password2 = "user";
-		user.login(username2, password2);
-		System.out.println("-------------------------\n\n\n");
-		
+//		//UC 1 Login
+//		//successful login (user)
+//		System.out.println("UC 1: Successful login (user):");
+//		System.out.println("-------------------------");
+//		String userUsername = "juser";
+//		String userPassword = "user";
+//		user.login(userUsername, userPassword);
+//		System.out.println("-------------------------\n\n\n");
+//		
+//		//UC 2 Logout
+//		System.out.println("UC 2: Successful logout:");
+//		System.out.println("-------------------------");
+//		user.logout();
+//		System.out.println("-------------------------\n\n\n");
+//		
+//		//successful login (admin)
+//		System.out.println("UC 1: Successful login (admin):");
+//		System.out.println("-------------------------");
+//		String adminUsername = "nadmin";
+//		String adminPassword = "a";
+//		user.login(adminUsername, adminPassword);
+//		System.out.println("-------------------------\n\n\n");
+//		
+//		//successful logout
+//		System.out.println("UC 2: Successful logout:");
+//		System.out.println("-------------------------");
+//		user.logout();
+//		System.out.println("-------------------------\n\n\n");
+//		
+//		//failed login - invalid credentials (admin and user)
+//		System.out.println("UC 1: Failed login (invalid credentials):");
+//		System.out.println("-------------------------");
+//		String username1 = "Team";
+//		String password1 = "404";
+//		user.login(username1, password1);
+//		System.out.println("-------------------------\n\n\n");
+//		
+//		//failed login - inactive status (admin and user)
+//		System.out.println("UC 1: Failed login (inactive status):");
+//		System.out.println("-------------------------");
+//		String username2 = "luser";
+//		String password2 = "user";
+//		user.login(username2, password2);
+//		System.out.println("-------------------------\n\n\n");
+//		
 		//Login to test the rest of the functionalities
 		System.out.println("Login to test the rest of the functionalities");
 		System.out.println("-------------------------");
@@ -74,26 +74,28 @@ public class Phase2_FunctionalityTestDriver {
 		System.out.println("-------------------------\n\n\n");
 		
 		//UC 3 Request new password
-//		System.out.println("UC 3: Request New Password");
+  		System.out.println("UC 3: Request New Password");
+  		System.out.println("-------------------------");
+//  	admin.addUser("Imad", "Rahal", "irahal@csbsju.edu", "password", "u");
+  		System.out.println("UC 3: Forgot Password");
+  		student.logout();
+  		student.forgotPsw("ajheroux@csbsju.edu");
+  		student.login("ajheroux@csbsju.edu", "gngjf");
+  		System.out.println("-------------------------\n\n\n");
+//		
+//
+//		
+//
+//		
+//		//UC 4 Search Abstract fulfilled by U5 & U6
+//	
+//		
+//		//UC 5 Take personality quiz
+//		System.out.println("UC 5: Personality Quiz:");
 //		System.out.println("-------------------------");
-//		admin.addUser("Imad", "Rahal", "irahal@csbsju.edu", "password", "u");
-//		System.out.println("UC 3: Forgot Password");
-//		admin.forgotPsw("irahal@csbsju.edu");
+//		String[] emphases = {};
+//		student.takeQuiz("URBAN","qualityOfLife", "PRIVATE", emphases);
 //		System.out.println("-------------------------\n\n\n");
-		
-
-		
-
-		
-		//UC 4 Search Abstract fulfilled by U5 & U6
-	
-		
-		//UC 5 Take personality quiz
-		System.out.println("UC 5: Personality Quiz:");
-		System.out.println("-------------------------");
-		String[] emphases = {};
-		student.takeQuiz("URBAN","qualityOfLife", "PRIVATE", emphases);
-		System.out.println("-------------------------\n\n\n");
 		
 		
 		//UC 6&7  Search by entering fields
