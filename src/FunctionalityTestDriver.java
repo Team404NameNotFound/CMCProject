@@ -112,7 +112,7 @@ public class FunctionalityTestDriver {
 		DBController db = new DBController();
 		ArrayList<University> uniSchools = db.getUniversityList();
 		University university = uniSchools.get(9);
-		student.findRecommended(university);
+		student.findRecommended(university.getName());
 //		print(recommended);
 //		
 //		user.logout();
