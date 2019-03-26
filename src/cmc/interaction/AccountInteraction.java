@@ -75,9 +75,20 @@ public class AccountInteraction {
 	 * @param lastName
 	 * @param password
 	 */
-	public void editProfile(String userName, String firstName, String lastName, String password)
+	public void editProfile(String userName, String firstName, String lastName, String password, String userType)
 	{
-		UFCon.editUserProfile(userName, firstName, lastName, password);
+		if(firstName == "" || lastName == "" || password == "" || userType == "")
+		{
+			throw new IllegalArgumentException();
+		}
+		else if(!userType.equals("a") && !userType.equals("u"))
+		{
+			throw new IllegalArgumentException();
+		}	
+		else 
+		{
+			UFCon.editUserProfile(userName, firstName, lastName, password, userType);
+		}
 	}
 	
 	/**

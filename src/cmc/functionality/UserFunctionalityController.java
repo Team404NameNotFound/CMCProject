@@ -119,14 +119,13 @@ public class UserFunctionalityController {
 	 * @param lastName
 	 * @param password
 	 */
-	public void editUserProfile(String userName, String firstName, String lastName, 
-			String password) {
+	public void editUserProfile(String userName, String firstName, String password, String lastName, String userType) {
 
-			account = new AccountController( this.DBCon.getAccount(userName));
-			Account userAcc = account.updateUserInfo(firstName, lastName, password, "-1", "-1");
-			
-			this.DBCon.setAccount(userAcc);
+		account = new AccountController( this.DBCon.getAccount(userName));
+		Account userAcc = account.updateUserInfo(firstName, lastName, password, "-1", userType);
 		
+		this.DBCon.setAccount(userAcc);
+	
 	}
 	
 	/**

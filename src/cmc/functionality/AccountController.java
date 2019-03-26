@@ -207,7 +207,7 @@ public class AccountController {
 	 * @param status active status of user
 	 * @return Account account with information edited
 	 */
-	public Account updateUserInfo(String fName, String lName, String password, String type, String status)
+	public Account updateUserInfo(String fName, String lName, String password, String status, String type)
 	{
 		if(!fName.equals("-1") )
 		{

@@ -237,10 +237,10 @@ public class Phase2_FunctionalityTestDriver {
 	//U17 Edit user information
 	    System.out.println("UC 17 Edit User Information:");
 	    System.out.println("-------------------------");
-		user.editProfile("nadmin","Nor","A","fasd");
+		user.editProfile("nadmin","Nor","A","fasd", "a");
 		user.viewProfile("nadmin");
 		System.out.println();
-		user.editProfile("nadmin", "Noreen", "Admin", "a");
+		user.editProfile("nadmin", "Noreen", "Admin", "password", "a");
 		user.viewProfile("nadmin");
 		
 	//U18 View school list

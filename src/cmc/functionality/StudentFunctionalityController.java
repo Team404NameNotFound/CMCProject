@@ -171,4 +171,5 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 	public void compareSchoolsByScore( ) {
 		this.account.compareSchoolsByScore();
 	}
+
 }

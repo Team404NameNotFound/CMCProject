@@ -201,5 +201,21 @@ public class AdminInteraction extends AccountInteraction{
 		this.afCon.removeUniversity(name);
 	}
 	
+	public void editProfile(String userName, String firstName, String lastName, String password, String userType)
+	{
+		if(firstName == "" || lastName == "" || password == "" || userType == "")
+		{
+			throw new IllegalArgumentException();
+		}
+		else if(!userType.equals("a") || !userType.equals("u"))
+		{
+			throw new IllegalArgumentException();
+		}	
+		else 
+		{
+			UFCon.editUserProfile(userName, firstName, lastName, password, userType);
+		}
+	}
+	
 
 }

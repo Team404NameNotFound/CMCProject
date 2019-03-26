@@ -231,7 +231,17 @@ public class StudentInteraction extends AccountInteraction{
 		
 	}
 
-	
+	public void editProfile(String userName, String firstName, String lastName, String password)
+	{
+		if(firstName == "" || lastName == "" || password == "")
+		{
+			throw new IllegalArgumentException();
+		}
+		else 
+		{
+			UFCon.editUserProfile(userName, firstName, lastName, password, "-1");
+		}
+	}
 	
 
 }
