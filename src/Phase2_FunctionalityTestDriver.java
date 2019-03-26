@@ -292,7 +292,10 @@ public class Phase2_FunctionalityTestDriver {
 		System.out.println("UC 23 Add a new user: ");
 		System.out.println("-------------------------");
 		admin.addUser("Carrie", "Zhang", "cz001", "password", "u");
+		System.out.println("UC 23 Add a new user with not all fields filled");
+		admin.addUser("Carrie", "Zhang", "", "password", "u");
 		System.out.println("-------------------------\n\n\n");
+		
 		System.out.println("UC 24 Toggle Activation Status:");
 //		admin.toggleActivationStatus("cz001");
 //		System.out.println("-------------------------\n\n\n");
