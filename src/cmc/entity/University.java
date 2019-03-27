@@ -1,5 +1,5 @@
 /**
- * This class allows for the creation of University objects
+g * This class allows for the creation of University objects
  */
 package cmc.entity;
 import java.util.*;

@@ -77,11 +77,11 @@ public class FunctionalityTestDriver {
 		//edit profile (user)
 		System.out.println("Edit profile:");
 		System.out.println("-------------------------");
-		user.editProfile("cuser", "Tired", "Person", "sleep");
+//		user.editProfile("cuser", "Tired", "Person", "sleep");
 		
 		user.viewProfile(username3);
 		
-		user.editProfile("cuser", "Cool", "User", "user");
+//		user.editProfile("cuser", "Cool", "User", "user");
 		
 		user.logout();
 		System.out.println();

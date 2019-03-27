@@ -100,7 +100,8 @@ public class Phase2_FunctionalityTestDriver {
 		//UC 5 Take personality quiz
 		System.out.println("UC 5: Personality Quiz:");
 		System.out.println("-------------------------");
-		String[] emphases = {};
+		String[] emphases = new String[1];
+		emphases[0] = "BIOLOGY";
 		student.takeQuiz("URBAN","qualityOfLife", "PRIVATE", emphases);
 		System.out.println("-------------------------\n\n\n");
 		
@@ -114,7 +115,7 @@ public class Phase2_FunctionalityTestDriver {
 		//UC 6&7  Search by entering fields
 		System.out.println("UC 6 & 7 Searching and Matching on Fields:");
 		System.out.println("-------------------------");
-		String state = "Minnesota";
+		String state = "Massachusetts";
 		int numStudentsLower = 2000;
 		int numStudentsUpper = 50000;
 		student.fieldSearch( "", state, "-1", numStudentsLower,

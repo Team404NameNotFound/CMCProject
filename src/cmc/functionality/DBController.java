@@ -226,7 +226,7 @@ public class DBController
 		ArrayList<University> returnArray = new ArrayList<University>();
 		for (int i = 0; i < schoolList.length; i++)
 		{
-				returnArray.add(getUniversity(schoolList[i][0]));
+				returnArray.add(getUniversity2(schoolList[i][0]));
 		}
 		return returnArray;
 		
