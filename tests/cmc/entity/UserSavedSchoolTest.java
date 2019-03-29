@@ -15,17 +15,17 @@ public class UserSavedSchoolTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		uss = new UserSavedSchool("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", emphases, students, "");
+		uss = new UserSavedSchool("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", emphases, "");
 	}
 
-
+	@Test
 	public void testConstructorAllFields() {
-		UserSavedSchool result = new UserSavedSchool("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", emphases, students, "");
+		UserSavedSchool result = new UserSavedSchool("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", emphases, "");
 		UserSavedSchool expResult = uss;
 		assertEquals(result, expResult);
 	}
 	
-
+	@Test
 	public void testConstructorUniversityDate() {
 		UserSavedSchool result = new UserSavedSchool(uni, "");
 		UserSavedSchool expResult = uss;
@@ -44,13 +44,6 @@ public class UserSavedSchoolTest {
 		String expResult = "1";
 		uss.setDateAdded("1");
 		String result = uss.getDateAdded();
-		assertEquals(result, expResult);
-	}
-
-	@Test
-	public void testGetSavedStatistics() {
-		int expResult = 0;
-		int result = uss.getSavedStatistics(uni);
 		assertEquals(result, expResult);
 	}
 }
