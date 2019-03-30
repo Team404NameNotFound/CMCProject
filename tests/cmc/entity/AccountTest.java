@@ -7,13 +7,18 @@ import org.junit.Test;
 
 public class AccountTest {
 
+	private Account testacc;
+
 	@Before
 	public void setUp() throws Exception {
+		testacc = new Account("test", "account", "testacc", "password", "u", "Y");
 	}
 
 	@Test
 	public void testAccount() {
-		fail("Not yet implemented");
+		Account result = new Account("test", "account", "testacc", "password", "u", "Y");
+		Account expResult = testacc;
+		assertEquals(result, expResult);
 	}
 
 	@Test
@@ -23,62 +28,92 @@ public class AccountTest {
 
 	@Test
 	public void testGetFirstName() {
-		fail("Not yet implemented");
+		String result = testacc.getLastName();
+		String expResult = "test";
+		assertEquals(result, expResult);
 	}
 
 	@Test
 	public void testSetFirstName() {
-		fail("Not yet implemented");
+		testacc.setFirstName("test1");
+		String result = testacc.getName();
+		String expResult = "test1";
+		assertEquals(result, expResult);
 	}
 
 	@Test
 	public void testGetLastName() {
-		fail("Not yet implemented");
-	}
+		String result = testacc.getLastName();
+		String expResult = "test";
+		assertEquals(result, expResult);	
+		}
 
 	@Test
 	public void testSetLastName() {
-		fail("Not yet implemented");
-	}
+		testacc.setLastName("account2");
+		String result = testacc.getName();
+		String expResult = "test1";
+		assertEquals(result, expResult);	
+		}
 
 	@Test
 	public void testGetUsername() {
-		fail("Not yet implemented");
-	}
+		String result = testacc.getUsername();
+		String expResult = "testacc";
+		assertEquals(result, expResult);	
+		}
 
 	@Test
 	public void testSetUsername() {
-		fail("Not yet implemented");
-	}
+		testacc.setUsername("testacc1");
+		String result = testacc.getUsername();
+		String expResult = "testacc1";
+		assertEquals(result, expResult);	
+		}
 
 	@Test
 	public void testGetPassword() {
-		fail("Not yet implemented");
-	}
+		String result = testacc.getPassword();
+		String expResult = "password";
+		assertEquals(result, expResult);
+		}
 
 	@Test
 	public void testSetPassword() {
-		fail("Not yet implemented");
-	}
+		testacc.setPassword("password1");
+		String result = testacc.getPassword();
+		String expResult = "password1";
+		assertEquals(result, expResult);	
+		}
 
 	@Test
 	public void testGetUserType() {
-		fail("Not yet implemented");
-	}
+		String result = testacc.getUserType();
+		String expResult = "u";
+		assertEquals(result, expResult);	
+		}
 
 	@Test
 	public void testSetUserType() {
-		fail("Not yet implemented");
-	}
+		testacc.setUserType("a");
+		String result = testacc.getUserType();
+		String expResult = "a";
+		assertEquals(result, expResult);	
+		}
 
 	@Test
 	public void testGetUserStatus() {
-		fail("Not yet implemented");
-	}
+		String result = testacc.getUserStatus();
+		String expResult = "Y";
+		assertEquals(result, expResult);	
+		}
 
 	@Test
 	public void testSetUserStatus() {
-		fail("Not yet implemented");
-	}
+		testacc.setUserStatus("N");
+		String result = testacc.getUserStatus();
+		String expResult = "N";
+		assertEquals(result, expResult);	
+		}
 
 }
