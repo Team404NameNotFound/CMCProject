@@ -136,7 +136,7 @@ public class UniversityController {
 		{
 			school.setQualityOfLife(qualityOfLife);
 		}
-		if(!emphases.equals("-1") && !emphases.equals(""))
+		if(!emphases[0].equals("-1") && !emphases[0].equals(""))
 		{
 			school.setEmphases(emphases);
 		}
