@@ -38,7 +38,7 @@ public class StudentInteraction extends AccountInteraction{
 		
 		if(location.equals("") || control.equals("") || characteristic.equals("") )
 		{
-			throw new IllegalArgumentException("Sorry, you must answer all questions");
+			//throw new IllegalArgumentException("Sorry, you must answer all questions");
 		}
 		else
 		{

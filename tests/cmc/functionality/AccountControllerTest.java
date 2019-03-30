@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class AccountControllerTest {
 
-	@Before 
+	@Before
 	public void setUp() throws Exception {
 	}
 
@@ -22,12 +22,27 @@ public class AccountControllerTest {
 	}
 
 	@Test
+	public void testCheckIfSchoolSaved() {
+		fail("Not yet implemented");
+	}
+
+	@Test
 	public void testViewSavedSchools() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testCheckIfSchoolSaved() {
+	public void testSaveSchool() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testRemoveSavedSchool() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testCompareSchoolsByScore() {
 		fail("Not yet implemented");
 	}
 
@@ -62,27 +77,7 @@ public class AccountControllerTest {
 	}
 
 	@Test
-	public void testSaveSchool() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testRemoveSavedSchool() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testRemoveUniversity() {
-		fail("Not yet implemented");
-	}
-
-	@Test
 	public void testCreateNewAccount() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testCompareSchoolsByScore() {
 		fail("Not yet implemented");
 	}
 
