@@ -38,7 +38,7 @@ public class StudentInteraction extends AccountInteraction{
 		
 		if(location.equals("") || control.equals("") || characteristic.equals("") )
 		{
-			System.out.println("Sorry, you must input all paramters");
+			throw new IllegalArgumentException("Sorry, you must answer all questions");
 		}
 		else
 		{
@@ -112,14 +112,14 @@ public class StudentInteraction extends AccountInteraction{
 					percentEnrolledMin == -1 && percentEnrolledMax == -1 && academicScaleMin == -1 && academicScaleMax == -1 &&
 					socialScalemin == -1 && socialScaleMax == -1 && qualityOfLifeMin == -1 && qualityOfLifeMax == -1 && control.equals(""))
 			{
-				System.out.print("Sorry, you must input at least 1 parameter");
+				throw new IllegalArgumentException("Sorry, you must input at least one search field");
 			}
 			else if((numStudentsMax < numStudentsMin && numStudentsMax != -1) || (percentFemaleMax < percentFemaleMin && percentFemaleMax != -1) || (SATVerbalMax < SATVerbalMin && SATVerbalMax != -1) ||
 					(SATMathMax < SATMathMin && SATMathMax != -1) || (expensesMax < expensesMin && expensesMax != -1) || (percenetFinancialAidMax < PercentFinancialAidMin && percenetFinancialAidMax != -1) ||
 					(numberApplicatnsMax < numberApplicatnsMax && numberApplicatnsMax != -1) || (percentAdmittedMax < percentAddmittedMin && percentAdmittedMax != -1) || (percentEnrolledMax < percentEnrolledMin && percentEnrolledMax != -1) ||
 					(academicScaleMax < academicScaleMin && academicScaleMax != -1) || (socialScaleMax < socialScalemin && socialScaleMax != -1) || (qualityOfLifeMax < qualityOfLifeMin && qualityOfLifeMax != -1))
 			{
-				System.out.println("Sorry, your paramters for a minimum cannot be greater than the paramt");
+				throw new IllegalArgumentException("Sorry, your no minimum can be greater than a maximum");
 			}
 			else
 			{
@@ -136,10 +136,10 @@ public class StudentInteraction extends AccountInteraction{
 		 {
 			 System.out.println(matchSchools.get(i).getName());
 		 }
-		 }
+		}
 		}
 		else {
-			System.out.println("You have not logged in yet, cannot use the search field function");
+			throw new IllegalArgumentException("Sorry, you must be logged in to access this functionality");
 		}
 		
 	}

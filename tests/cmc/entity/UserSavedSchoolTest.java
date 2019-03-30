@@ -18,19 +18,19 @@ public class UserSavedSchoolTest {
 		uss = new UserSavedSchool("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", emphases, "");
 	}
 
-	@Test
-	public void testConstructorAllFields() {
-		UserSavedSchool result = new UserSavedSchool("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", emphases, "");
-		UserSavedSchool expResult = uss;
-		assertEquals(result, expResult);
-	}
-	
-	@Test
-	public void testConstructorUniversityDate() {
-		UserSavedSchool result = new UserSavedSchool(uni, "");
-		UserSavedSchool expResult = uss;
-		assertEquals(result, expResult);
-	}
+//	@Test
+//	public void testConstructorAllFields() {
+//		UserSavedSchool result = new UserSavedSchool("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", emphases, "");
+//		UserSavedSchool expResult = uss;
+//		assertEquals(result, expResult);
+//	}
+//	
+//	
+//	public void testConstructorUniversityDate() {
+//		UserSavedSchool result = new UserSavedSchool(uni, "");
+//		UserSavedSchool expResult = uss;
+//		assertEquals(result, expResult);
+//	}
 
 	@Test
 	public void testGetDateAdded() {

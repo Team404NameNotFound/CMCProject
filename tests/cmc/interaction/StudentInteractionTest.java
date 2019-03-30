@@ -5,15 +5,31 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import cmc.entity.University;
+
 public class StudentInteractionTest {
+
+	private University school;
+	private String[] emphases;
+	private StudentInteraction student;
 
 	@Before
 	public void setUp() throws Exception {
+		StudentInteraction student = new StudentInteraction();
+		String[] emphases = null;
+		University school = new University("name", "state", "location", "control", "enrollment", "perFem", "satVerb", "satMath", "cost", "perFinAid", "perEnr", "app", "perAdm", "acaScale", "socScale", "qolScale", emphases);
 	}
 
 	@Test
 	public void testViewSchoolDetails() {
-		fail("Not yet implemented");
+		String expResult = " Name: "+ school.getName() + " State: " + school.getState() + " Location: " + school.getLocation() + "\n" +
+				   " Control: " + school.getControl()+ " Entrollment: " +school.getEnrollment()+ " FemalePercent: " + school.getPercentFemale() + " \n" 
+				   + " SatVerbal: " + school.getSatVerbal() + " SatMath: " + school.getSatMath() + " Cost: "  + school.getCost() + " \n " +
+				   " PercentFinAid: " + school.getPercentFinAid()+ " Applicants: "
+					+ school.getApplicants() + " PercentAdmitted: "+ school.getPercentAdmitted() + "\n" + " PercentEnrolled: " 
+				    + school.getPercentEnrolled() + " AcademicScale: " + school.getAcademicScale() + " SocialScale: " + school.getSocialScale() + " QualityOfLife: " + school.getQualityOfLife();
+		assertEquals(expResult, student.viewSchoolDetails(school.getName()));
+		
 	}
 
 	@Test
