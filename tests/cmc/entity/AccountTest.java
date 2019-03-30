@@ -28,7 +28,7 @@ public class AccountTest {
 
 	@Test
 	public void testGetFirstName() {
-		String result = testacc.getLastName();
+		String result = testacc.getFirstName();
 		String expResult = "test";
 		assertEquals(result, expResult);
 	}
@@ -36,7 +36,7 @@ public class AccountTest {
 	@Test
 	public void testSetFirstName() {
 		testacc.setFirstName("test1");
-		String result = testacc.getName();
+		String result = testacc.getFirstName();
 		String expResult = "test1";
 		assertEquals(result, expResult);
 	}
@@ -51,7 +51,7 @@ public class AccountTest {
 	@Test
 	public void testSetLastName() {
 		testacc.setLastName("account2");
-		String result = testacc.getName();
+		String result = testacc.getLastName();
 		String expResult = "test1";
 		assertEquals(result, expResult);	
 		}

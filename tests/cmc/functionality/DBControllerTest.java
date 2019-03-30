@@ -7,14 +7,17 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
+import cmc.entity.Account;
+import cmc.entity.University;
+
 public class DBControllerTest {
 
 	private DBController dbcon;
 	private String[] emphases = null;
 	private University testuni;
 	private University testuni2;
-	private account testacc;
-	private account testacc2;
+	private Account testacc;
+	private Account testacc2;
 
 	
 	@Before
@@ -22,8 +25,8 @@ public class DBControllerTest {
 		dbcon = new DBController();
 		testuni = new University("testuni", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", emphases);
 		testuni2 = new University("testuni", "edit", "", "", "", "", "", "", "", "", "", "", "", "", "", "", emphases);
-		testacc = new Account("first", "last", "testacc", "password", "u", "Y")
-		testacc = new Account("first", "editedlast", "testacc", "password", "u", "Y")
+		testacc = new Account("first", "last", "testacc", "password", "u", "Y");
+		testacc = new Account("first", "editedlast", "testacc", "password", "u", "Y");
 	}
 
 	@Test
