@@ -100,7 +100,8 @@ public class Phase2_FunctionalityTestDriver {
 		//UC 5 Take personality quiz
 		System.out.println("UC 5: Personality Quiz:");
 		System.out.println("-------------------------");
-		String[] emphases = {};
+		String[] emphases = new String[1];
+		emphases[0] = "BIOLOGY";
 		student.takeQuiz("URBAN","qualityOfLife", "PRIVATE", emphases);
 		System.out.println("-------------------------\n\n\n");
 		
@@ -114,7 +115,7 @@ public class Phase2_FunctionalityTestDriver {
 		//UC 6&7  Search by entering fields
 		System.out.println("UC 6 & 7 Searching and Matching on Fields:");
 		System.out.println("-------------------------");
-		String state = "Minnesota";
+		String state = "Massachusetts";
 		int numStudentsLower = 2000;
 		int numStudentsUpper = 50000;
 		student.fieldSearch( "", state, "-1", numStudentsLower,
@@ -169,7 +170,7 @@ public class Phase2_FunctionalityTestDriver {
 		System.out.println("-------------------------\n\n\n");
 //		
 	//U10 Save school
-		System.out.print("UC 10 Save School:");
+		System.out.println("UC 10 Save School:");
 		System.out.println("-------------------------");
 		student.saveSchool("BROWN");
 		sfCon.setAccount(accountController);
@@ -270,7 +271,7 @@ public class Phase2_FunctionalityTestDriver {
 		//Edited schoolInfo Information
 		System.out.println("UC 20 Results");
 		admin.viewSchoolDetails("Dummy");
-		System.out.println("-------------------------\n\n\n");
+		System.out.println("\n-------------------------\n\n\n");
 		
 		
 		//U19 Remove university
@@ -297,9 +298,10 @@ public class Phase2_FunctionalityTestDriver {
 		System.out.println("-------------------------\n\n\n");
 		
 		System.out.println("UC 24 Toggle Activation Status:");
-//		admin.toggleActivationStatus("cz001");
-//		System.out.println("-------------------------\n\n\n");
-//		System.out.println("END OF DRIVER");
+		System.out.println("-------------------------");
+		admin.toggleActivationStatus("cz001");
+		System.out.println("-------------------------\n\n\n");
+		System.out.println("END OF DRIVER");
 
 	}
 }
