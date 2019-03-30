@@ -11,7 +11,6 @@ import cmc.entity.*;
 public class StudentFunctionalityController extends UserFunctionalityController {
 	
 	public SearchController searchCon;
-	//constructer
 	
 	/**
 	 * Creating a new StudentFunctionalityController

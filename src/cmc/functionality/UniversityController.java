@@ -12,14 +12,6 @@ import java.util.ArrayList;
 public class UniversityController {
 
 	University school;
-	
-	/**
-	 * Create a new UniversityController constructor
-	 */
-	public UniversityController()
-	{
-		this.school = null;
-	}
 	/**
 	 * constructs a new UniversityController with the school provided 
 	 * @param schooltoChange the University object that will be changed/updated
@@ -28,6 +20,10 @@ public class UniversityController {
 		this.school = schoolToChange;
 	}
 	
+	public UniversityController() {
+		this.school = new University();
+	}
+
 	/**
 	 * returns a string of all the school's attributes
 	 * @return String the string for the school

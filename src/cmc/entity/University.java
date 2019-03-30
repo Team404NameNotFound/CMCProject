@@ -51,6 +51,27 @@ public class University {
 	 * @param qualityOfLife integer value between 1 and 5 indicating quality of life at the university
 	 * @param emphases up to five areas of study that the university excels in
 	 */
+	
+	public University() {
+		this.name = "";
+		this.state = "";
+		this.location = "";
+		this.control = "";
+		this.enrollment = "";
+		this.percentFemale = "";
+		this.satVerbal = "";
+		this.satMath = "";
+		this.cost = "";
+		this.percentFinAid = "";
+		this.percentEnrolled = "";
+		this.applicants = "";
+		this.percentAdmitted = "";
+		this.academicScale = "";
+		this.socialScale = "";
+		this.qualityOfLife = "";
+		this.emphases = null;
+	}
+	
 	public University(String name, String state, String location, String control, String enrollment, String percentFemale,
 			String satVerbal, String satMath, String cost, String percentFinAid, String percentEnrolled, String applicants,
 			String percentAdmitted, String academicScale, String socialScale, String qualityOfLife, String[] emphases) {
@@ -73,7 +94,7 @@ public class University {
 		this.qualityOfLife = qualityOfLife;
 		this.emphases = emphases;
 	}
-	
+
 	/**
 	 * @return university name
 	 */
@@ -310,13 +331,6 @@ public class University {
 	 */
 	public void setEmphases(String[] emphases) {
 		this.emphases = emphases;
-	}
-
-	/**
-	 * @return list of students that saved a particular university
-	 */
-	public int getSaveCount() {
-		return 0;
 	}
 
 	/**

@@ -19,8 +19,6 @@ public class UserFunctionalityController {
 	 * class constructor
 	 */
 	public UserFunctionalityController() {
-		
-		
 		this.universityCon = new UniversityController();
 		this.loggedIn = false;
 	}
@@ -204,7 +202,6 @@ public class UserFunctionalityController {
 			return false;
 		}
 	}
-	
 
 	/**
 	 * Get the current AccountController

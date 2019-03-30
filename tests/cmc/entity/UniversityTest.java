@@ -6,9 +6,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class UniversityTest {
+	private University university;
 
 	@Before
 	public void setUp() throws Exception {
+		university = new University();
 	}
 
 	@Test
