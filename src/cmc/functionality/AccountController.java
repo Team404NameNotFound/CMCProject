@@ -304,15 +304,6 @@ public class AccountController {
 	}
 	
 	/**
-	 * Removes school from the current student saved school list
-	 * @param schoolToRemove school user would like to remove from saved school list
-	 */
-	public void removeUniversity(University schoolToRemove)
-	{
-		 ((Student) account).removeSchool(schoolToRemove.getName());
-	}
-	
-	/**
 	 * Creates a new account with the specified parameters
 	 * @param fName first name associated with account
 	 * @param lName last name associated with account

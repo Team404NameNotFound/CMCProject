@@ -110,7 +110,7 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 		if(!found)
 		{
 		account.saveSchool(school);
-		this.DBCon.getUniversity2(school).addStudent(this.account.account.getUsername());
+		//this.DBCon.getUniversity2(school).addStudent(this.account.account.getUsername());
 		}
 		else
 		System.out.println("Sorry, the school is already in your list");

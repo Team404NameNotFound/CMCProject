@@ -68,11 +68,11 @@ public class Student extends Account {
 		}
 		return found;
 	}
-	
-	/**
+/*	
+	*//**
 	 * Removes a university from the saved school list
 	 * @param universityName name of a university
-	 */
+	 *//*
 	public void removeSchool(String universityName) {
 		for(int i=0; i<savedSchools.size(); i++) {
 			if(savedSchools.get(i).getName().equals(universityName)) {
@@ -81,16 +81,16 @@ public class Student extends Account {
 		}
 	}
 	
-	/**
+	*//**
 	 * Adds a university to the saved school list
 	 * @param university university object
 	 * @param dateAdded date the school was saved
-	 */
+	 *//*
 	public void saveSchool(University university, String dateAdded) {
 		UserSavedSchool schoolToSave = new UserSavedSchool(university, dateAdded);
 		savedSchools.add(schoolToSave);
 		schoolToSave.getStudents().add(this.getUsername());
 	}
-	
+	*/
 
 }

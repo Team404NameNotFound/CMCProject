@@ -29,7 +29,7 @@ public class University {
 	private String socialScale;
 	private String qualityOfLife;
 	private String[] emphases;
-	private ArrayList<String> students = new ArrayList<>();
+	//private ArrayList<String> students = new ArrayList<>();
 
 	/**
 	 * Creates a new university object with the following attributes
@@ -285,7 +285,7 @@ public class University {
 	}
 
 	/**
-	 * @param academicScale academica scale of school
+	 * @param academicScale academic scale of school
 	 */
 	public void setAcademicScale(String academicScale) {
 		this.academicScale = academicScale;
@@ -332,24 +332,5 @@ public class University {
 	public void setEmphases(String[] emphases) {
 		this.emphases = emphases;
 	}
-
-	/**
-	 * @param savedSchool list of students that saved a particular university
-	 */
-	public void setSavedSchool(ArrayList<String> students) {
-		this.students = students;
-	}
-	
-	public void addStudent(String student) {
-		this.students.add(student);
-	}
-	
-	/**
-	 * @return list of students that have saved a particular university
-	 */
-	public ArrayList<String> getStudents() {
-		return this.students;
-	}
-	
 
 }
