@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class UserSavedSchoolTest {
+	
 	private UserSavedSchool uss;
 	private String[] emphases = null;
 	private ArrayList<Student> students = new ArrayList<Student>();
@@ -18,20 +19,7 @@ public class UserSavedSchoolTest {
 		uss = new UserSavedSchool("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", emphases, "");
 	}
 
-	/*@Test
-	public void testConstructorAllFields() {
-		UserSavedSchool result = new UserSavedSchool("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", emphases, "");
-		UserSavedSchool expResult = uss;
-		assertEquals(result, expResult);
-	}
-	
-	@Test
-	public void testConstructorUniversityDate() {
-		UserSavedSchool result = new UserSavedSchool(uni, "");
-		UserSavedSchool expResult = uss;
-		assertEquals(result, expResult);
-	}
-*/
+
 	@Test
 	public void testGetDateAdded() {
 		String expResult = "";
