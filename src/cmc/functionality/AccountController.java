@@ -53,7 +53,7 @@ public class AccountController {
 	 */
 	public void viewSavedSchools()
 	{
-		if(this.account.getUserType().equals("a")) System.out.println("Current account is an admin ");
+		if(this.account.getUserType().equals("a")) throw new UnsupportedOperationException("Current account is an admin");
 		else {
 			for(University savedSchool: this.dbController.getSchoolList2(this.account)) {
 				System.out.println(savedSchool.getName());
@@ -69,13 +69,19 @@ public class AccountController {
 	 */
 	public boolean checkIfSchoolSaved(String school)
 	{
-		boolean saved = false;
-		for(University savedSchool: this.dbController.getSchoolList2(this.account)) {
-			if(savedSchool.getName().equals(school)) {
-				saved = true;
-			}
+		if(this.account == null || this.account.getUserType().equals("a")) throw new UnsupportedOperationException("Current account is an admin");
+		else {
+		  if(this.dbController.getUniversity2(school)==null) {
+			  throw new UnsupportedOperationException("Invalid school name");
+		  }
+		  boolean saved = false;
+		  for(University savedSchool: this.dbController.getSchoolList2(this.account)) {
+			  if(savedSchool.getName().equals(school)) {
+				  saved = true;
+			  }
+		  }
+		  return saved;
 		}
-		return saved;
 	}
 	
 
@@ -255,19 +261,18 @@ public class AccountController {
 		University schoolToSave = dbController.getUniversity2(school);
 
 		if(schoolToSave == null) {
-			System.out.println("The school to save is not in the Database Library");
+			throw new UnsupportedOperationException("Invalid school to save");
 		}
-		
-		if(account == null){
-			System.out.println("The current account is invalid.");
+		if(this.account == null || this.account.getUserType().equals("a")){
+			throw new UnsupportedOperationException("Invalid account to save school");
 		}
-	   else if(account.getUserType().equals("a")){
-		   System.out.println("The current account is an admin ");
-	   }
-		else {
-			System.out.println(account.getUsername() + " just saved school: " + school);
-			this.dbController.saveShool(account.getUsername(), school);
+		for(University savedUni: this.dbController.getSchoolList2(this.account)) {
+			if(savedUni.getName().equals(school)) {
+				throw new UnsupportedOperationException("This school has already been saved");
+			}
 		}
+		System.out.println(account.getUsername() + " just saved school: " + school);
+		this.dbController.saveShool(account.getUsername(), school);
 		 
 	}
 	
@@ -277,30 +282,26 @@ public class AccountController {
 	 */
 	public void removeSavedSchool(String school)
 	{
-		Boolean found = false;
-		ArrayList<UserSavedSchool> saveSchools = this.dbController.getSchoolList2(this.account);
+		ArrayList<UserSavedSchool> savedSchools = this.dbController.getSchoolList2(this.account);
+		University schoolToRemove = dbController.getUniversity2(school);
+
+		if(schoolToRemove == null){
+			throw new UnsupportedOperationException("Invalid school to remove");
+		}
 		
-		if(saveSchools == null){
-			System.out.println("The user have not saved any school yet");
-			}
-		if(account == null){
-			System.out.println("The current account is invalid.");
-			}
-	    else if(account.getUserType().equals("a")){
-		   System.out.println("The current account is an admin ");
-		   }
-	    else {
-	    	for(University savedSchool: saveSchools) {
-	    		if(savedSchool.getName().equals(school)) {
-	    			found = true;
-	    			System.out.println(account.getUsername() + " is removing school: " + school);
-	    			this.dbController.removeSavedSchool(account.getUsername(), school);
-	    		}
+		if(account == null || account.getUserType().equals("a")){
+			throw new UnsupportedOperationException("Invalid account to remove a saved school");
+		}
+		
+		Boolean found = false;
+		for(University savedSchool: savedSchools) {
+			if(savedSchool.getName().equals(school)) {
+				found = true;
+				System.out.println(account.getUsername() + " is removing school: " + school);
+				this.dbController.removeSavedSchool(account.getUsername(), school);
 	    	}
 	    }
-		if(!found) {
-			System.out.println("Cannot find " + school + " in the saved school list");
-		}
+		if(!found) throw new UnsupportedOperationException("User cannot remove an unsaved school");
 	}
 	
 	/**
@@ -336,8 +337,16 @@ public class AccountController {
 	 * Compare saved schools with their satMath scores
 	 */
 	public void compareSchoolsByScore() {	
-		Account student = dbController.getAccount(account.getUsername());
-		ArrayList<University> savedSchools = dbController.getSchoolList(student);
+		
+		if(this.account == null || this.account.getUserType().equals("a")) {
+			throw new UnsupportedOperationException("Invalid account to compare scores");
+		}
+		
+		ArrayList<UserSavedSchool> savedSchools = dbController.getSchoolList2(this.account); //CHAN
+		
+		if(savedSchools.size() == 0) {
+			throw new UnsupportedOperationException("No saved school to compare scores");
+		}
 		
 		double[][] scores = new double[savedSchools.size()][2];
 		
@@ -357,5 +366,6 @@ public class AccountController {
 			System.out.println("University: "+savedSchools.get(j).getName()+" Math score: "+ scores[j][0]);
 		}
 	}
+	
 }
 	
