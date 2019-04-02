@@ -23,25 +23,21 @@ public class UserFunctionalityController {
 		this.loggedIn = false;
 	}
 	
-	public AccountController getAccountController()
-	{
-		return account;
-	}
-	/**
-	 * Get the current UniversityController
-	 * @return the universityCon
-	 */
-	public UniversityController getUniversityCon() {
-		return universityCon;
-	}
-
-	/**
-	 * Set the current UniversityController
-	 * @param universityCon the universityCon to set
-	 */
-	public void setUniversityCon(UniversityController universityCon) {
-		this.universityCon = universityCon;
-	}
+//	/**
+//	 * Get the current UniversityController
+//	 * @return the universityCon
+//	 */
+//	public UniversityController getUniversityCon() {
+//		return universityCon;
+//	}
+//
+//	/**
+//	 * Set the current UniversityController
+//	 * @param universityCon the universityCon to set
+//	 */
+//	public void setUniversityCon(UniversityController universityCon) {
+//		this.universityCon = universityCon;
+//	}
 
 	/**
 	 * Log on checks to see if the the user is logged in and is an active user. If both are true, 
@@ -56,7 +52,6 @@ public class UserFunctionalityController {
 				if (this.DBCon.getAccount(userName).getUserStatus().equals("Y")) {
 					AccountController userAcc = new AccountController(this.DBCon.getAccount(userName));
 					if (userAcc.checkPassword(password)) {
-						//System.out.println("Login Successful");
 						account = new AccountController(this.DBCon.getAccount(userName));
 						this.loggedIn = true;
 						return true;
@@ -68,8 +63,8 @@ public class UserFunctionalityController {
 				}
 			}
 			else {
-				System.out.println(userName + " is an invalid username");
-				return false;
+				throw new IllegalArgumentException("Sorry,username does not exist");
+				
 			}
 		}
 		return false;
@@ -79,12 +74,13 @@ public class UserFunctionalityController {
 	/**
 	 * Checks if the the user is logged in and if not logs out
 	 */
-	public void logout() {
+	public boolean logout() {
 		if (loggedIn) {
 			this.account = null;
-			System.out.println("Logout successful");
 			this.loggedIn = false;
+			
 		}
+		return true;
 	}
 	
 	/**
@@ -120,9 +116,16 @@ public class UserFunctionalityController {
 	public void editUserProfile(String userName, String firstName, String password, String lastName, String userType) {
 
 		account = new AccountController( this.DBCon.getAccount(userName));
+		if(this.DBCon.getAccount(userName) == null)
+		{
+			throw new IllegalArgumentException("Valid User needed");
+		}
+		else
+		{
 		Account userAcc = account.updateUserInfo(firstName, lastName, password, "-1", userType);
 		
 		this.DBCon.setAccount(userAcc);
+		}
 	
 	}
 	
@@ -151,7 +154,7 @@ public class UserFunctionalityController {
 			userAcc.sendEmail(emailMessage, userAcc.account.getUsername());
 			}
 			else {
-				System.out.println("Invalid Username");
+				throw new IllegalArgumentException("Invalid Username");
 			}
 		}
 	}
@@ -161,47 +164,38 @@ public class UserFunctionalityController {
 	 * @param universityName
 	 * @return
 	 */
-	public String viewUniversityDetials(String universityName) {
+	public ArrayList<String> viewUniversityDetials(String universityName) {
 		University university = this.DBCon.getUniversity(universityName);
-//		ArrayList<String> universityList = new ArrayList<String>();
-//		universityList.add(university.getName());
-//		universityList.add(university.getState());
-//		universityList.add(university.getLocation());
-//		universityList.add(university.getControl());
-//		universityList.add(university.getEnrollment());
-//		universityList.add(university.getPercentFemale());
-//		universityList.add(university.getSatVerbal());
-//		universityList.add(university.getSatMath());
-//		//universityList.add(university.getEmphases());
-//		universityList.add(university.getPercentFinAid());
-//		universityList.add(university.getApplicants());
-//		universityList.add(university.getPercentAdmitted());
-//		universityList.add(university.getPercentEnrolled());
-//		universityList.add(university.getAcademicScale());
-//		universityList.add(university.getSocialScale());
-//		universityList.add(university.getQualityOfLife());
+		if(university == null)
+		{
+			throw new IllegalArgumentException("University Does not exist");
+			
+		}
+		else
+		{
 		universityCon = new UniversityController(university);
 		return universityCon.getSchoolDetails();
+		}
 	}
 	
-	/**
-	 * Confirms that a password matches with the currently logged in user
-	 * @param password
-	 * @return
-	 */
-	public Boolean checkPassword(String password) {
-		if (this.loggedIn) {
-			if (this.account.checkPassword(password)) {
-				return true;
-			}
-			else {
-				return false;
-			}
-		}
-		else {
-			return false;
-		}
-	}
+//	/**
+//	 * Confirms that a password matches with the currently logged in user
+//	 * @param password
+//	 * @return
+//	 */
+//	public Boolean checkPassword(String password) {
+//		if (this.loggedIn) {
+//			if (this.account.checkPassword(password)) {
+//				return true;
+//			}
+//			else {
+//				return false;
+//			}
+//		}
+//		else {
+//			return false;
+//		}
+//	}
 
 	/**
 	 * Get the current AccountController

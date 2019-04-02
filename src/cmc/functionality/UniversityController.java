@@ -28,14 +28,25 @@ public class UniversityController {
 	 * returns a string of all the school's attributes
 	 * @return String the string for the school
 	 */
-	public String getSchoolDetails()
+	public ArrayList<String> getSchoolDetails()
 	{
-		String schoolDetails = " Name: "+  school.getName() + " State: " + school.getState() + " Location: " + school.getLocation() + "\n" +
-	   " Control: " + school.getControl()+ " Entrollment: " +school.getEnrollment()+ " FemalePercent: " + school.getPercentFemale() + " \n" 
-	   + " SatVerbal: " + school.getSatVerbal() + " SatMath: " + school.getSatMath() + " Cost: "  + school.getCost() + " \n " +
-	   " PercentFinAid: " + school.getPercentFinAid()+ " Applicants: "
-		+ school.getApplicants() + " PercentAdmitted: "+ school.getPercentAdmitted() + "\n" + " PercentEnrolled: " 
-	    + school.getPercentEnrolled() + " AcademicScale: " + school.getAcademicScale() + " SocialScale: " + school.getSocialScale() + " QualityOfLife: " + school.getQualityOfLife();
+		ArrayList<String> schoolDetails = new ArrayList<String>();
+		schoolDetails.add(school.getName());
+		schoolDetails.add(school.getState()); 
+		schoolDetails.add(school.getLocation());
+		schoolDetails.add(school.getControl());
+		schoolDetails.add(school.getEnrollment());
+		schoolDetails.add(school.getPercentFemale());
+		schoolDetails.add(school.getSatVerbal());
+		schoolDetails.add(school.getSatMath());
+		schoolDetails.add(school.getCost());
+		schoolDetails.add(school.getPercentFinAid());
+		schoolDetails.add(school.getApplicants());
+		schoolDetails.add(school.getPercentAdmitted());
+		schoolDetails.add(school.getPercentEnrolled());
+		schoolDetails.add(school.getAcademicScale());
+		schoolDetails.add(school.getSocialScale());
+		schoolDetails.add(school.getQualityOfLife());
 		return schoolDetails;
 		
 	}
