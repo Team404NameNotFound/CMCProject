@@ -49,9 +49,10 @@ public class AccountController {
 	
 	/**
 	 * Returns list of all schools
+	 * @return 
 	 * @return schoolList list of schools the student has on saved school list
 	 */
-	public void viewSavedSchools()
+	public ArrayList<UserSavedSchool> viewSavedSchools()
 	{
 		if(this.account.getUserType().equals("a")) throw new UnsupportedOperationException("Current account is an admin");
 		else {
@@ -59,6 +60,8 @@ public class AccountController {
 				System.out.println(savedSchool.getName());
 			}
 		}
+		
+		return this.dbController.getSchoolList2(this.account);
 	}
 	
 	
@@ -336,7 +339,7 @@ public class AccountController {
 	/**
 	 * Compare saved schools with their satMath scores
 	 */
-	public void compareSchoolsByScore() {	
+	public String[][] compareSchoolsByScore() {	
 		
 		if(this.account == null || this.account.getUserType().equals("a")) {
 			throw new UnsupportedOperationException("Invalid account to compare scores");
@@ -349,6 +352,7 @@ public class AccountController {
 		}
 		
 		double[][] scores = new double[savedSchools.size()][2];
+		String[][] returnList = new String[savedSchools.size()][2];
 		
 		for (int i = 0; i<savedSchools.size(); i++) {
 			scores[i][0] = Double.parseDouble(savedSchools.get(i).getSatMath());
@@ -364,7 +368,11 @@ public class AccountController {
 		    
 		for(int j = 0; j < scores.length; j++) {
 			System.out.println("University: "+savedSchools.get(j).getName()+" Math score: "+ scores[j][0]);
+			returnList[j][0] = savedSchools.get(j).getName();
+			returnList[j][1] = scores[j][0] + "";
 		}
+		
+		return returnList;
 	}
 	
 }

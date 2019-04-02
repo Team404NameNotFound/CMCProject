@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cmc.entity.University;
+import cmc.entity.UserSavedSchool;
 import cmc.functionality.SearchController;
 import cmc.functionality.StudentFunctionalityController;
 
@@ -33,12 +34,12 @@ public class StudentInteraction extends AccountInteraction{
 	 * @param control
 	 * @param emphasis
 	 */
-	public void takeQuiz(String location, String characteristic ,String control ,String[] emphasis) {
+	public ArrayList<University> takeQuiz(String location, String characteristic ,String control ,String[] emphasis) {
 		ArrayList<University> personalMatches = new ArrayList<University>();
 		
 		if(location.equals("") || control.equals("") || characteristic.equals("") )
 		{
-			//throw new IllegalArgumentException("Sorry, you must answer all questions");
+			throw new IllegalArgumentException("Sorry, you must answer all questions");
 		}
 		else
 		{
@@ -84,6 +85,7 @@ public class StudentInteraction extends AccountInteraction{
 			System.out.println("Match: " + personalMatches.get(i).getName());
 			
 		}
+		return personalMatches;
 	}
 	/**
 	 * Only test search for schools by the combination of state and number of students right now, 
@@ -94,14 +96,17 @@ public class StudentInteraction extends AccountInteraction{
 	 * @param int numStduentsMax, maximal number of students
 	 */
 	
-	public void fieldSearch(String schoolName, String state, String location, int numStudentsMin,
+	public ArrayList<University> fieldSearch(String schoolName, String state, String location, int numStudentsMin,
 			int numStudentsMax, float percentFemaleMin, float percentFemaleMax, int SATVerbalMin, 
 			int SATVerbalMax, int SATMathMin, int SATMathMax, int expensesMin, int expensesMax, 
 			float PercentFinancialAidMin, float percenetFinancialAidMax, int numberApplicantsMin, 
 			int numberApplicatnsMax, float percentAddmittedMin, float percentAdmittedMax,
 			float percentEnrolledMin, float percentEnrolledMax, int academicScaleMin, int academicScaleMax,
 			int socialScalemin, int socialScaleMax, int qualityOfLifeMin, int qualityOfLifeMax, String[] emphases,
-			String control) {
+			String control) 
+	{
+		ArrayList<University> matchSchools;
+		
 		if(!sfCon.loggedIn) {
 	    
 			if(schoolName.equals("") && state.equals("") && location.equals("") && numStudentsMin == -1 &&
@@ -114,6 +119,7 @@ public class StudentInteraction extends AccountInteraction{
 			{
 				throw new IllegalArgumentException("Sorry, you must input at least one search field");
 			}
+			
 			else if((numStudentsMax < numStudentsMin && numStudentsMax != -1) || (percentFemaleMax < percentFemaleMin && percentFemaleMax != -1) || (SATVerbalMax < SATVerbalMin && SATVerbalMax != -1) ||
 					(SATMathMax < SATMathMin && SATMathMax != -1) || (expensesMax < expensesMin && expensesMax != -1) || (percenetFinancialAidMax < PercentFinancialAidMin && percenetFinancialAidMax != -1) ||
 					(numberApplicatnsMax < numberApplicatnsMax && numberApplicatnsMax != -1) || (percentAdmittedMax < percentAddmittedMin && percentAdmittedMax != -1) || (percentEnrolledMax < percentEnrolledMin && percentEnrolledMax != -1) ||
@@ -121,49 +127,56 @@ public class StudentInteraction extends AccountInteraction{
 			{
 				throw new IllegalArgumentException("Sorry, your no minimum can be greater than a maximum");
 			}
+			
 			else
 			{
-		ArrayList<University> matchSchools =  
-				sfCon.search( schoolName,  state,  location,  numStudentsMin,
-						 numStudentsMax,  percentFemaleMin,  percentFemaleMax,  SATVerbalMin, 
-						 SATVerbalMax,  SATMathMin,  SATMathMax,  expensesMin,  expensesMax, 
-						 PercentFinancialAidMin,  percenetFinancialAidMax,  numberApplicantsMin, 
-						 numberApplicatnsMax,  percentAddmittedMin,  percentAdmittedMax,
-						 percentEnrolledMin,  percentEnrolledMax,  academicScaleMin,  academicScaleMax,
-						 socialScalemin,  socialScaleMax,  qualityOfLifeMin,  qualityOfLifeMax,  emphases, control
-						);
-		 for(int i = 0; i<matchSchools.size();i++)
-		 {
-			 System.out.println(matchSchools.get(i).getName());
-		 }
+				matchSchools =  
+						sfCon.search( schoolName,  state,  location,  numStudentsMin,
+								 numStudentsMax,  percentFemaleMin,  percentFemaleMax,  SATVerbalMin, 
+								 SATVerbalMax,  SATMathMin,  SATMathMax,  expensesMin,  expensesMax, 
+								 PercentFinancialAidMin,  percenetFinancialAidMax,  numberApplicantsMin, 
+								 numberApplicatnsMax,  percentAddmittedMin,  percentAdmittedMax,
+								 percentEnrolledMin,  percentEnrolledMax,  academicScaleMin,  academicScaleMax,
+								 socialScalemin,  socialScaleMax,  qualityOfLifeMin,  qualityOfLifeMax,  emphases, control
+								);
+				 for(int i = 0; i<matchSchools.size();i++)
+				 {
+					 System.out.println(matchSchools.get(i).getName());
+				 }
+			}
 		}
-		}
-		else {
+		
+		else 
+		{
 			throw new IllegalArgumentException("Sorry, you must be logged in to access this functionality");
 		}
 		
+		return matchSchools;
 	}
 	
 	/**
 	 * Returns the five most similar schools to the specified school
 	 * @param schoolToCompare
 	 */
-	public void findRecommended(String schoolToCompare)
+	public ArrayList<University> findRecommended(String schoolToCompare)
 	{
 		ArrayList<University> closeMatch = sfCon.rankUniversity(schoolToCompare);
 		for(int i = 0; i<5; i++)
 		{
 			System.out.println(closeMatch.get(i).getName());
 		}
+		
+		return closeMatch;
 	}
 	
 	/**
 	 * User save a school
 	 * @param school
 	 */
-	public void saveSchool(String school) { 
+	public ArrayList<UserSavedSchool> saveSchool(String school) { 
 		this.sfCon.setAccount(this.UFCon.getAccount());
 		this.sfCon.saveSchool(school);
+		return sfCon.viewSavedSchools();
 	}
 
 	
@@ -178,23 +191,26 @@ public class StudentInteraction extends AccountInteraction{
 	 * View a specific saved school's detail information
 	 * @param school
 	 */
-	public void viewSavedSchoolDetails(String school) {
+	public String viewSavedSchoolDetails(String school) {
 		this.sfCon.viewSavedSchoolDetails(school);
+		return this.sfCon.viewSavedSchoolDetails(school);
 	}
 	
 	/**
 	 * View all the schools on current use's saved school list
 	 */
-	public void viewSavedSchools() {
+	public ArrayList<UserSavedSchool> viewSavedSchools() {
 		this.sfCon.viewSavedSchools();
+		return this.sfCon.viewSavedSchools();
 	}
 	
 	/**
 	 * View how many times that a school is being saved by users
 	 * @param school
 	 */
-	public void viewUserSavedStatistics(String school) {
+	public String[] viewUserSavedStatistics(String school) {
 		this.sfCon.viewUserSavedStatistics(school);
+		return this.sfCon.viewUserSavedStatistics(school);
 	}
 	
 	
@@ -225,13 +241,14 @@ public class StudentInteraction extends AccountInteraction{
 	
 	/**
 	 * Compare saved school with their Sat Math Scores
+	 * @return 
 	 */
-	public void compareSchoolsByScore() {
+	public String[][] compareSchoolsByScore() {
 		sfCon.compareSchoolsByScore();
-		
+		return sfCon.compareSchoolsByScore();
 	}
 
-	public void editProfile(String userName, String firstName, String lastName, String password)
+	public ArrayList<String> editProfile(String userName, String firstName, String lastName, String password)
 	{
 		if(firstName == "" || lastName == "" || password == "")
 		{
@@ -241,6 +258,8 @@ public class StudentInteraction extends AccountInteraction{
 		{
 			UFCon.editUserProfile(userName, firstName, lastName, password, "-1");
 		}
+		
+		return UFCon.viewUserProfile(userName);
 	}
 	
 

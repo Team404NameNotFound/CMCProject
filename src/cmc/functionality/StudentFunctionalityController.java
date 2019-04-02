@@ -125,12 +125,13 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 	/**
 	 * View current user's saved schools list
 	 */
-	public void viewSavedSchools() {
+	public ArrayList<UserSavedSchool> viewSavedSchools() {
 		if(this.account.account.getUserType().equals("a")) {
 			System.out.println("Current account cannot view saved schools because it is an admin");
 		}else {
 			this.account.viewSavedSchools();
 		}
+		return this.account.viewSavedSchools();
 	}
 	
 	/**
@@ -145,30 +146,43 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 	 * View a saved school's detail information
 	 * @param school String, saved school name to view details
 	 */
-	public void viewSavedSchoolDetails(String school) {
+	public String viewSavedSchoolDetails(String school) {
 		Boolean schoolSaved = this.account.checkIfSchoolSaved(school);
-		if(schoolSaved) {
+		String message = "";
+		if(schoolSaved)
+		{
 		   this.setUniversityCon(new UniversityController(this.DBCon.getUniversity2(school)));
 		   System.out.println(this.universityCon.getSchoolDetails());
-		}else {
+		   message += " " + this.universityCon.getSchoolDetails();
+		   
+		}
+		else
+		{
 			System.out.println("This school is not saved");
 		}
+		return message;
 	}
 
 	/**
 	 * View how many times a school being saved by users
 	 * @param school
 	 */
-	public void viewUserSavedStatistics(String school){
+	public String[] viewUserSavedStatistics(String school){
+		String[] stats = {"", ""};
 		int savedTimes = this.DBCon.getUserSavedStatistics(school);
 		System.out.println(school + " has been saved for " + savedTimes + " times");
+		stats[0] = school;
+		stats[1] = savedTimes + "";
+		return stats;
 	}
 
 	/**
 	 * Compare saved schools with their required SatMath scores
+	 * @return 
 	 */
-	public void compareSchoolsByScore( ) {
+	public String[][] compareSchoolsByScore( ) {
 		this.account.compareSchoolsByScore();
+		return this.account.compareSchoolsByScore();
 	}
 
 }
