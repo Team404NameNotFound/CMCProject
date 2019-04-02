@@ -86,10 +86,10 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 	 * View a school's detail information
 	 * @param universityName
 	 */
-	public void viewSchoolDetails(String universityName) {
+	public String viewSchoolDetails(String universityName) {
 		this.universityCon = new UniversityController(this.DBCon.getUniversity2(universityName));
 		System.out.println(this.universityCon.getSchoolDetails());
-		
+		return this.universityCon.getSchoolDetails();
 	}
 	
 	/**

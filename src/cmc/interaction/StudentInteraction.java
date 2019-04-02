@@ -183,8 +183,9 @@ public class StudentInteraction extends AccountInteraction{
 	/**
 	 * View a specific school's detail information
 	 */
-	public void viewSchoolDetails(String universityName) {
+	public String viewSchoolDetails(String universityName) {
 		this.sfCon.viewSchoolDetails(universityName);
+		return this.sfCon.viewSchoolDetails(universityName);
 	}
 	
 	/**
