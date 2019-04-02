@@ -54,7 +54,7 @@ public class AdminFunctionalityController extends UserFunctionalityController {
 			String percentEnrolled, String applicants, String percentAdmitted, String academicScale, String socialScale,
 			String qualityOfLife, String[] emphases) {
 			if (this.DBCon.getUniversity(name) != null) {
-				System.out.println(name + " already exists");
+				throw new IllegalArgumentException("Sorry" + name + " already exists");
 			}
 			else {
 			University schoolToAdd = this.universityCon.createNewUniversity(name, state, location, control, enrollment, percentFemale, 
@@ -123,11 +123,11 @@ public class AdminFunctionalityController extends UserFunctionalityController {
 		
 		if (!DBCon.checkUser(username))
 		{
-			if(firstname == "" || lastname == "" || username == "" || password == "" || userType == "") {
-				System.out.println("Sorry, you need to specify all fields.");
+			if(firstname.equals("")|| lastname.equals("")|| username.equals("") || password.equals("") || userType.equals("")) {
+				throw new IllegalArgumentException("Sorry, you need to specify all fields.");
 			}
-			else if(!(userType.equalsIgnoreCase("u") || userType.equalsIgnoreCase("a"))){
-				System.out.println("Sorry, you need to specify a valid user type.");
+			else if(!(userType.equalsIgnoreCase("u") || !userType.equalsIgnoreCase("a"))){
+				throw new IllegalArgumentException("Sorry, you need to specify a valid user type.");
 			}
 			else {
 				AccountController acCon = new AccountController();
@@ -140,7 +140,7 @@ public class AdminFunctionalityController extends UserFunctionalityController {
 		}
 		else
 		{
-			System.out.println("Sorry, this username is already taken.");
+			throw new IllegalArgumentException("sorry, invalid username");
 		}
 		
 		return added;
