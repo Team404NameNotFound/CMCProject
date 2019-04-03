@@ -161,10 +161,6 @@ public class StudentInteractionTest {
 			results.add(uni.getName());
 		}
 		ArrayList<String> expResults = new ArrayList<String>();
-		expResults.add("BARNARD");
-		expResults.add("BROWN");
-		expResults.add("EMORY");
-		expResults.add("HARVARD");
 		assertEquals(expResults, results);
 	}
 //
