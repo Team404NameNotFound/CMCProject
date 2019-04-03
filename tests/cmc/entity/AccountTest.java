@@ -22,11 +22,6 @@ public class AccountTest {
 	}
 
 	@Test
-	public void testLogon() {
-		fail("Not yet implemented");
-	}
-
-	@Test
 	public void testGetFirstName() {
 		String result = testacc.getFirstName();
 		String expResult = "test";
@@ -44,15 +39,15 @@ public class AccountTest {
 	@Test
 	public void testGetLastName() {
 		String result = testacc.getLastName();
-		String expResult = "test";
+		String expResult = "account";
 		assertEquals(result, expResult);	
 		}
 
 	@Test
 	public void testSetLastName() {
-		testacc.setLastName("account2");
+		testacc.setLastName("last254");
 		String result = testacc.getLastName();
-		String expResult = "test1";
+		String expResult = "last254";
 		assertEquals(result, expResult);	
 		}
 

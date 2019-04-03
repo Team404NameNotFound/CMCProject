@@ -171,8 +171,9 @@ public class AccountController {
 	 * Sends an email to the current user
 	 * @param message content of email to send to user containing randomly generated password
 	 */
-	public void sendEmail(String emailMessage, String emailAddress)
+	public boolean sendEmail(String emailMessage, String emailAddress)
 	{
+		boolean sent = false;
 		String host="127.0.0.1";  
 		  final String user = "csbsju.cmc@gmail.com";
 		  final String password = "jumpingfrog12";
@@ -202,7 +203,9 @@ public class AccountController {
 		    //send the message  
 		     Transport.send(message);  
 		  
-		   
+		     sent = true;
+		     
+		     return sent;
 		     } catch (MessagingException e) {e.printStackTrace();} 
 	   }  
 		
