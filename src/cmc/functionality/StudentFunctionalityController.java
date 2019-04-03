@@ -86,7 +86,7 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 	 * View a school's detail information
 	 * @param universityName
 	 */
-	public String viewSchoolDetails(String universityName) {
+	public ArrayList<String> viewSchoolDetails(String universityName) {
 		this.universityCon = new UniversityController(this.DBCon.getUniversity2(universityName));
 		System.out.println(this.universityCon.getSchoolDetails());
 		return this.universityCon.getSchoolDetails();
@@ -146,19 +146,19 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 	 * View a saved school's detail information
 	 * @param school String, saved school name to view details
 	 */
-	public String viewSavedSchoolDetails(String school) {
+	public ArrayList<String> viewSavedSchoolDetails(String school) {
 		Boolean schoolSaved = this.account.checkIfSchoolSaved(school);
-		String message = "";
+		ArrayList<String> message;
 		if(schoolSaved)
 		{
 		   this.setUniversityCon(new UniversityController(this.DBCon.getUniversity2(school)));
 		   System.out.println(this.universityCon.getSchoolDetails());
-		   message += " " + this.universityCon.getSchoolDetails();
+		   message = this.universityCon.getSchoolDetails();
 		   
 		}
 		else
 		{
-			System.out.println("This school is not saved");
+			throw new NullPointerException();
 		}
 		return message;
 	}

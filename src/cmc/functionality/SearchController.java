@@ -338,7 +338,7 @@ public class SearchController {
 	 * @param academicScaleMax
 	 * @param socialScalemin
 	 * @param socialScaleMax
-	 * @param qualityOfLifeMin
+	 * @param qualityOfLifeMine
 	 * @param qualityOfLifeMax
 	 * @param emphases
 	 * @param control

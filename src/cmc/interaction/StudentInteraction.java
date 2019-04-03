@@ -37,46 +37,46 @@ public class StudentInteraction extends AccountInteraction{
 	public ArrayList<University> takeQuiz(String location, String characteristic ,String control ,String[] emphasis) {
 		ArrayList<University> personalMatches = new ArrayList<University>();
 		
-		if(location.equals("") || control.equals("") || characteristic.equals("") )
+		if(location.equals("") || control.equals("") || characteristic.equals(""))
 		{
 			throw new IllegalArgumentException("Sorry, you must answer all questions");
 		}
 		else
 		{
-		 if(characteristic.equals("academic"))
-		{
-			
-			personalMatches = sfCon.search( "", "-1", location, -1,
-					-1, (float)-1.0,(float)-1.0, -1, 
-					-1, -1, -1, -1, -1, 
-					(float)-1.0, (float)-1.0, -1, 
-					-1, (float)-1.0, (float)-1.0,
-					(float)-1.0, (float)-1.0,3, -1,
-					-1, -1, -1, -1, emphasis, control
-					);
-		}
-		else if (characteristic.equals("social"))
-		{
-			personalMatches = sfCon.search( "", "-1", location, -1,
-					-1, (float)-1.0,(float)-1.0, -1, 
-					-1, -1, -1, -1, -1, 
-					(float)-1.0, (float)-1.0, -1, 
-					-1, (float)-1.0, (float)-1.0,
-					(float)-1.0, (float)-1.0,-1, -1,
-					3, -1, -1, -1, emphasis, control
-					);
-		}
-		else if (characteristic.equals("qualityOfLife"))
-		{
-			personalMatches = sfCon.search("", "-1", location, -1,
-					-1, (float)-1.0,(float)-1.0, -1, 
-					-1, -1, -1, -1, -1, 
-					(float)-1.0, (float)-1.0, -1, 
-					-1, (float)-1.0, (float)-1.0,
-					(float)-1.0, (float)-1.0,-1, -1,
-					-1, -1, 3, -1, emphasis, control
-					);
-		}
+			 if(characteristic.equals("academic"))
+			{
+				
+				personalMatches = sfCon.search( "", "-1", location, -1,
+						-1, (float)-1.0,(float)-1.0, -1, 
+						-1, -1, -1, -1, -1, 
+						(float)-1.0, (float)-1.0, -1, 
+						-1, (float)-1.0, (float)-1.0,
+						(float)-1.0, (float)-1.0,3, -1,
+						-1, -1, -1, -1, emphasis, control
+						);
+			}
+			else if (characteristic.equals("social"))
+			{
+				personalMatches = sfCon.search( "", "-1", location, -1,
+						-1, (float)-1.0,(float)-1.0, -1, 
+						-1, -1, -1, -1, -1, 
+						(float)-1.0, (float)-1.0, -1, 
+						-1, (float)-1.0, (float)-1.0,
+						(float)-1.0, (float)-1.0,-1, -1,
+						3, -1, -1, -1, emphasis, control
+						);
+			}
+			else if (characteristic.equals("qualityOfLife"))
+			{
+				personalMatches = sfCon.search("", "-1", location, -1,
+						-1, (float)-1.0,(float)-1.0, -1, 
+						-1, -1, -1, -1, -1, 
+						(float)-1.0, (float)-1.0, -1, 
+						-1, (float)-1.0, (float)-1.0,
+						(float)-1.0, (float)-1.0,-1, -1,
+						-1, -1, 3, -1, emphasis, control
+						);
+			}
 
 		}
 		
@@ -183,7 +183,7 @@ public class StudentInteraction extends AccountInteraction{
 	/**
 	 * View a specific school's detail information
 	 */
-	public String viewSchoolDetails(String universityName) {
+	public ArrayList<String> viewSchoolDetails(String universityName) {
 		this.sfCon.viewSchoolDetails(universityName);
 		return this.sfCon.viewSchoolDetails(universityName);
 	}
@@ -192,7 +192,7 @@ public class StudentInteraction extends AccountInteraction{
 	 * View a specific saved school's detail information
 	 * @param school
 	 */
-	public String viewSavedSchoolDetails(String school) {
+	public ArrayList<String> viewSavedSchoolDetails(String school) {
 		this.sfCon.viewSavedSchoolDetails(school);
 		return this.sfCon.viewSavedSchoolDetails(school);
 	}

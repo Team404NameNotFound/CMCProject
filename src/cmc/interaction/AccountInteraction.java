@@ -49,11 +49,11 @@ public class AccountInteraction {
 	 * @param univeristyName
 	 * @return 
 	 */
-	public String viewSchoolDetails(String univeristyName)
+	public ArrayList<String> viewSchoolDetails(String univeristyName)
 	{
 		ArrayList<String> school = UFCon.viewUniversityDetials(univeristyName);
 		System.out.print(school);
-		return ""; //Need to add appropriate String to return
+		return school;
 	}
 	
 	/**
