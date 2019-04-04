@@ -11,6 +11,7 @@ import cmc.entity.Account;
 
 public class AccountControllerTest {
 	private AccountController user;
+	private AccountController user2;
 	private AccountController admin;
 	private AccountController noSavedSchoolUser;
 	private DBController dbController = new DBController();
@@ -18,6 +19,7 @@ public class AccountControllerTest {
 	@Before
 	public void setUp() throws Exception {
 		user = new AccountController(dbController.getAccount("cuser"));
+		user2 = new AccountController(dbController.getAccount("kmendel001@csbsju.edu"));
 		user.removeAllSavedSchools();
 		admin = new AccountController(dbController.getAccount("nadmin"));
 		noSavedSchoolUser = new AccountController(dbController.getAccount("juser"));
@@ -165,8 +167,8 @@ public class AccountControllerTest {
 	 @Test 
 	 public void testToggleActivationStatusNtoY() 
 	 { 
-		 user.toggleActivationStatus();
-		 String result = dbController.getAccount("cuser").getUserStatus();
+		 user2.toggleActivationStatus();
+		 String result = dbController.getAccount("kmendel001@csbsju.edu").getUserStatus();
 		 String expResult = "Y";
 		 assertEquals("User is now " + result, expResult, result);
 	 }
@@ -174,17 +176,50 @@ public class AccountControllerTest {
 	 @Test 
 	 public void testToggleActivationStatusYtoN() 
 	 { 
-		 user.toggleActivationStatus();
-		 String result = dbController.getAccount("cuser").getUserStatus();
+		 user2.toggleActivationStatus();
+		 String result = dbController.getAccount("kmendel001@csbsju.edu").getUserStatus();
 		 String expResult = "N";
 		 assertEquals("User is now " + result, expResult, result);
 	 }
 	 
-	 /* @Test public void testCheckPassword() { fail("Not yet implemented"); }
+	@Test(expected=NullPointerException.class)
+	public void testUpdatePasswordNullnewPassword() 
+	{ 
+		String newPassword = null;
+		user2.updatePassword(newPassword);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testUpdatePasswordEmptynewPassword() 
+	{ 
+		String newPassword = "";
+		user2.updatePassword(newPassword);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testUpdatePasswordSamenewPassword() 
+	{ 
+		String newPassword = dbController.getAccount("kmendel001@csbsju.edu").getPassword();
+		user2.updatePassword(newPassword);
+		
+	}
+	
+	@Test 
+	public void testUpdatePasswordValidnewPassword() 
+	{ 
+		String newPassword = "password";
+		String expResult = "password";
+		String oldPassword = dbController.getAccount("kmendel001@csbsju.edu").getPassword();
+		user2.updatePassword(newPassword);
+		String result = dbController.getAccount("kmendel001@csbsju.edu").getPassword();
+		user2.updatePassword(oldPassword);
+		assertEquals("Password is now " + result, expResult, result);
+	}
+	
+	 
+	 /* @Test public void testMakeRandomPassword() { fail("Not yet implemented"); }
 	 * 
-	 * @Test public void testMakeRandomPassword() { fail("Not yet implemented"); }
-	 * 
-	 * @Test public void testUpdatePassword() { fail("Not yet implemented"); }
+	 * @Test public void testCheckPassword() { fail("Not yet implemented"); }
 	 * 
 	 * @Test public void testSendEmail() { fail("Not yet implemented"); }
 	 * 

@@ -154,13 +154,21 @@ public class AccountController {
 	 * @param newPassword
 	 *            new password to be put in to account
 	 */
-	public void updatePassword(String newPassword) {
-		if (newPassword.equals(null) || newPassword.equals("")) {
-			throw new IllegalArgumentException("Sorry, new password has to have a password");
-		} else {
-			account.setPassword(newPassword);
-
+	public Account updatePassword(String newPassword) {
+		if (newPassword.equals(null) || newPassword.equals(""))
+		{
+			throw new IllegalArgumentException("Sorry, new password has to have characters");
+		} 
+		else if (newPassword.equals(dbController.getAccount(account.getUsername()).getPassword()))
+		{
+			throw new IllegalArgumentException("Sorry, new password has to be different from existing password");
 		}
+		else 
+		{
+			account.setPassword(newPassword);
+			dbController.setAccount(account);
+		}
+		return account;
 	}
 
 	/**
