@@ -92,12 +92,23 @@ public class AccountController {
 	 * Toggles the status of the current user
 	 * 
 	 * @return Account account with activation status changed
-	 *//*
-		 * public Account toggleActivationStatus() { if (account == null)
-		 * System.out.println("account is still null //line64 AccountController"); if
-		 * (account.getUserStatus().equals("N")) { account.setUserStatus("Y"); } else {
-		 * account.setUserStatus("N"); } return account; }
-		 */
+	 */
+		 public Account toggleActivationStatus() { 
+			if (account == null)
+				throw new NullPointerException(); 
+			
+			if(account.getUserStatus().equals("N")) 
+			{
+				account.setUserStatus("Y"); 
+			} 
+			else 
+			{
+				account.setUserStatus("N"); 
+			} 
+			dbController.setAccount(account);
+			return account;
+		}
+		 
 	/**
 	 * Checks if the password matches for the current user
 	 * 
