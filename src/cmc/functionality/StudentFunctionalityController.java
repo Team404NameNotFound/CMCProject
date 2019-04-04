@@ -163,6 +163,11 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 		return message;
 	}
 
+	private void setUniversityCon(UniversityController universityController) {
+		// TODO Auto-generated method stub
+		UniversityController universityCon = super.universityCon;
+	}
+
 	/**
 	 * View how many times a school being saved by users
 	 * @param school
@@ -180,7 +185,7 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 	 * Compare saved schools with their required SatMath scores
 	 * @return 
 	 */
-	public String[][] compareSchoolsByScore( ) {
+	public ArrayList<String> compareSchoolsByScore( ) {
 		this.account.compareSchoolsByScore();
 		return this.account.compareSchoolsByScore();
 	}

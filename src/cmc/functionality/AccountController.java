@@ -331,15 +331,26 @@ public class AccountController {
 	 *            list of schools user has saved
 	 * @return
 	 */
-	/*
-	 * public Account createNewAccount(String fName, String lName, String userName,
-	 * String password, String type, ArrayList<UserSavedSchool> savedSchools) { if
-	 * (type.equals("a")) { account = new Admin(fName, lName, userName, password,
-	 * type, "Y"); return account; } else if (type.equals("u")) { account = new
-	 * Student(fName, lName, userName, password, type, "Y", savedSchools); return
-	 * account; } else { throw new
-	 * IllegalArgumentException("Sorry you need to specify the type of user."); } }
-	 */
+	
+	public Account createNewAccount(String fName, String lName, String userName,
+	String password, String type, ArrayList<UserSavedSchool> savedSchools) 
+	{ 
+		if(type.equals("a"))
+		{ 
+			account = new Admin(fName, lName, userName, password,type, "Y"); 
+			return account;
+		}
+		else if (type.equals("u")) 
+		{
+			account = new Student(fName, lName, userName, password, type, "Y", savedSchools);
+			return account; 
+		} 
+		else 
+		{ 
+			throw new IllegalArgumentException("Sorry you need to specify the type of user.");
+		}
+	}
+	 
 
 	// comparing SAT math for now
 	/**

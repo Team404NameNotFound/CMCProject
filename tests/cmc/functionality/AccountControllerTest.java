@@ -23,6 +23,10 @@ public class AccountControllerTest {
 		user.removeAllSavedSchools();
 		admin = new AccountController(dbController.getAccount("nadmin"));
 		noSavedSchoolUser = new AccountController(dbController.getAccount("juser"));
+		
+		dbController.getAccount("kmendel001@csbsju.edu").setPassword("user");
+		dbController.getAccount("kmendel001@csbsju.edu").setUserStatus("N");
+		
 	}
 
 	/*

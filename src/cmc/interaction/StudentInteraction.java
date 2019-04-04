@@ -244,7 +244,7 @@ public class StudentInteraction extends AccountInteraction{
 	 * Compare saved school with their Sat Math Scores
 	 * @return 
 	 */
-	public String[][] compareSchoolsByScore() {
+	public ArrayList<String> compareSchoolsByScore() {
 		sfCon.compareSchoolsByScore();
 		return sfCon.compareSchoolsByScore();
 	}
