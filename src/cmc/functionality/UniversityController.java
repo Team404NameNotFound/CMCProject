@@ -1,4 +1,4 @@
-/**
+get/**
  * 
  */
 package cmc.functionality;

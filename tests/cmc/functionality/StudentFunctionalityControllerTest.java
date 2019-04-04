@@ -1,10 +1,9 @@
 package cmc.functionality;
 
 import static org.junit.Assert.*;
-
+import cmc.entity.*;
 import java.util.ArrayList;
-
-import org.junit.Assert;
+import org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -37,27 +36,42 @@ public class StudentFunctionalityControllerTest {
 	@Test
 	public void testViewSchoolDetails() {
 		DBController DBCon = new DBController();
-		String schoolDetials = this.studentConTest.viewSchoolDetails("Yale");
+		ArrayList<String> schoolDetials = this.studentConTest.viewSchoolDetails("Yale");
 		University school = DBCon.getUniversity("Yale");
-		String expected = "Name: "+  school.getName() + " State: " + school.getState() + " Location: " + school.getLocation() + "\n" +
-				   " Control: " + school.getControl()+ " Entrollment: " +school.getEnrollment()+ " FemalePercent: " + school.getPercentFemale() + " \n" 
-				   + " SatVerbal: " + school.getSatVerbal() + " SatMath: " + school.getSatMath() + " Cost: "  + school.getCost() + " \n " +
-				   " PercentFinAid: " + school.getPercentFinAid()+ " Applicants: "
-					+ school.getApplicants() + " PercentAdmitted: "+ school.getPercentAdmitted() + "\n" + " PercentEnrolled: " 
-				    + school.getPercentEnrolled() + " AcademicScale: " + school.getAcademicScale() + " SocialScale: " + school.getSocialScale() + " QualityOfLife: " + school.getQualityOfLife();
-		assertEqual(schoolDetials, school);
+		
+		ArrayList<String> expected = new ArrayList<String>();
+		expected.add(school.getName());
+		expected.add(school.getState()); 
+		expected.add(school.getLocation());
+		expected.add(school.getControl());
+		expected.add(school.getEnrollment());
+		expected.add(school.getPercentFemale());
+		expected.add(school.getSatVerbal());
+		expected.add(school.getSatMath());
+		expected.add(school.getCost());
+		expected.add(school.getPercentFinAid());
+		expected.add(school.getApplicants());
+		expected.add(school.getPercentAdmitted());
+		expected.add(school.getPercentEnrolled());
+		expected.add(school.getAcademicScale());
+		expected.add(school.getSocialScale());
+		expected.add(school.getQualityOfLife());
+		
+		assertEquals(schoolDetials, expected);
 	}
 	
 	@Test (expected = IllegalArgumentException.class)
 	public void testViewSchoolDetailsFailsForInvalidSchoolName() {
-		String schoolDetials = this.studentConTest.viewSchoolDetails("Lala Land");
+		ArrayList<String> schoolDetials = this.studentConTest.viewSchoolDetails("Lala Land");
 	}
 
 	@Test
 	public void testSaveSchool() {
 		this.studentConTest.saveSchool("Yale");
-		ArrayList<String> savedSchools = this.studentConTest.viewSavedSchools();
-		Assert.assertTrue(savedSchools.contains("Yale"));
+		ArrayList<UserSavedSchool> savedSchools = this.studentConTest.viewSavedSchools();
+		University school = new DBController().getUniversity("Yale");
+		UserSavedSchool saveSchool = new UserSavedSchool(school, null);
+		assertTrue(savedSchools.contains(saveSchool));
 	}
 
 	@Test (expected = IllegalArgumentException.class)
