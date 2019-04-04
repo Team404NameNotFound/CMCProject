@@ -8,7 +8,7 @@ import cmc.entity.*;
  * @author ajheroux
  *
  */
-public class StudentFunctionalityController extends UserFunctionalityController {
+public class StudentFunctionalityController extends UserFunctionalityController{
 	
 	public SearchController searchCon;
 	
@@ -112,8 +112,9 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 		account.saveSchool(school);
 		//this.DBCon.getUniversity2(school).addStudent(this.account.account.getUsername());
 		}
-		else
-		System.out.println("Sorry, the school is already in your list");
+		else {
+			throw new IllegalArgumentException();
+		}
 	
 
 	}
