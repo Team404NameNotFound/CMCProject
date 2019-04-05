@@ -81,15 +81,18 @@ public class StudentFunctionalityControllerTest {
 	
 	@Test
 	public void testSetAccountController() {
-		AccountController accCon = new AccountController();
-		this.studentConTest.setAccount(accCon);
-		AccountController result = this.studentConTest.getAccountController();
-		assertEquals(result, accCon);
+		Account account = new Account("Andrew", "-1", "-1", "-1", "-1", "-1");
+		this.studentConTest.setAccountController(account);
+		AccountController result = this.studentConTest.account;
+		AccountController expected = new AccountController(account);
+		assertEquals(result, expected);
 	}
 
 	@Test
 	public void testViewSavedSchools() {
-		fail("Not yet implemented");
+		ArrayList<UserSavedSchool> result = this.studentConTest.viewSavedSchools();
+		ArrayList<UserSavedSchool> expected = this.studentConTest.account.viewSavedSchools();
+		assertEquals(result, expected);
 	}
 
 	@Test

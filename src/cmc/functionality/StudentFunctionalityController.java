@@ -128,7 +128,7 @@ public class StudentFunctionalityController extends UserFunctionalityController{
 	 */
 	public ArrayList<UserSavedSchool> viewSavedSchools() {
 		if(this.account.account.getUserType().equals("a")) {
-			System.out.println("Current account cannot view saved schools because it is an admin");
+			throw new IllegalArgumentException("User cannot be an admin");
 		}else {
 			this.account.viewSavedSchools();
 		}
