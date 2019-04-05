@@ -1,13 +1,12 @@
 package cmc.functionality;
 
+import cmc.entity.*;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import cmc.entity.Account;
 
 public class AccountControllerTest {
 	private AccountController user;
@@ -218,6 +217,29 @@ public class AccountControllerTest {
 		String result = dbController.getAccount("kmendel001@csbsju.edu").getPassword();
 		user2.updatePassword(oldPassword);
 		assertEquals("Password is now " + result, expResult, result);
+	}
+	
+	@Test
+	public void testCreateNewAccountTypeUser() {
+		ArrayList<UserSavedSchool> savedSchools = new ArrayList<UserSavedSchool>();
+		Account result = admin.createNewAccount("Andrew", "Heroux", "ajheroux@csbsju.edu", "HappySunfish45", "u", savedSchools);
+		Account expected = new Student("Andrew", "Heroux", "ajheroux@csbsju.edu", "HappySunfish45", "u", "Y", savedSchools);
+		assertEquals(result, expected);
+	}
+	
+	@Test
+	public void testCreateNewAccountTypeAdmin() {
+		ArrayList<UserSavedSchool> savedSchools = new ArrayList<UserSavedSchool>();
+		Account result = admin.createNewAccount("Andrew", "Heroux", "ajheroux@csbsju.edu", "GoodPassword", "a", savedSchools);
+		Account expected = new Admin("Andrew", "Heroux", "ajheroux@csbsju.edu", "GoodPassword","a", "Y");
+		assertEquals(result, expected);
+	}
+	
+	
+	@Test (expected=IllegalArgumentException.class)
+	public void testCreateNewAccountInvalidUserType() {
+		ArrayList<UserSavedSchool> savedSchools = new ArrayList<UserSavedSchool>();
+		admin.createNewAccount("Andrew", "Heroux", "ajheroux@csbsju.edu", "GoodPassword", "HAha", savedSchools);
 	}
 	
 	 
