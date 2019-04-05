@@ -187,7 +187,6 @@ public class StudentFunctionalityController extends UserFunctionalityController{
 	 * @return 
 	 */
 	public ArrayList<String> compareSchoolsByScore( ) {
-		this.account.compareSchoolsByScore();
 		return this.account.compareSchoolsByScore();
 	}
 
