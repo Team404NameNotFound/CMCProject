@@ -36,10 +36,14 @@ public class DBController
 			if (userList[n][2].equals(inputString))
 			{
 				if(userList[n][5].equals("Y"))
-					{
-						return true;
-					}
-				return false;
+				{
+					return true;
+				}
+				else 
+				{
+					return false;
+				}
+				
 			}
 		}
 		return false;

@@ -72,9 +72,12 @@ public class AccountController {
 	 * @return boolean true if school already saved, else false
 	 */
 	public boolean checkIfSchoolSaved(String school) {
-		if (this.account == null || this.account.getUserType().equals("a"))
+		if (this.account == null)
+			throw new NullPointerException();	
+		else if(this.account.getUserType().equals("a"))
 			throw new UnsupportedOperationException("Current account is an admin");
-		else {
+		else 
+		{
 			if (this.dbController.getUniversity2(school) == null) {
 				throw new UnsupportedOperationException("Invalid school name");
 			}
@@ -378,9 +381,19 @@ public class AccountController {
 		ArrayList<String> returnList = new ArrayList<>();
 
 		for (int i = 0; i < savedSchools.size(); i++) {
-			scores[i][0] = Double.parseDouble(savedSchools.get(i).getSatMath());
-			scores[i][1] = Double.parseDouble("" + i);
+			if(0<= Double.parseDouble(savedSchools.get(i).getSatMath()))
+			{
+				scores[i][0] = Double.parseDouble(savedSchools.get(i).getSatMath());
+				scores[i][1] = Double.parseDouble("" + i);
+			}
+			if( -1 > Double.parseDouble(savedSchools.get(i).getSatMath()))
+			{
+				throw new UnsupportedOperationException("Score cannot be less than zero");
+			}
 		}
+		
+		if(scores.length == 0)
+			throw new UnsupportedOperationException("No schools to compare");
 
 		java.util.Arrays.sort(scores, new java.util.Comparator<double[]>() {
 			public int compare(double[] a, double[] b) {

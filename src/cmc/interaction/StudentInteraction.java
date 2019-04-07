@@ -245,7 +245,6 @@ public class StudentInteraction extends AccountInteraction{
 	 * @return 
 	 */
 	public ArrayList<String> compareSchoolsByScore() {
-		sfCon.compareSchoolsByScore();
 		return sfCon.compareSchoolsByScore();
 	}
 

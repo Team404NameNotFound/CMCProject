@@ -140,6 +140,7 @@ public class StudentFunctionalityController extends UserFunctionalityController{
 	 * @param school String, the name of school to remove
 	 */
 	public void removeSavedSchool(String school) {
+		this.setAccount(account);
 		this.account.removeSavedSchool(school);
 	}
 	
@@ -148,6 +149,7 @@ public class StudentFunctionalityController extends UserFunctionalityController{
 	 * @param school String, saved school name to view details
 	 */
 	public ArrayList<String> viewSavedSchoolDetails(String school) {
+		this.setAccount(account);
 		Boolean schoolSaved = this.account.checkIfSchoolSaved(school);
 		ArrayList<String> message;
 		if(schoolSaved)
@@ -159,7 +161,7 @@ public class StudentFunctionalityController extends UserFunctionalityController{
 		}
 		else
 		{
-			throw new NullPointerException();
+			throw new IllegalArgumentException();
 		}
 		return message;
 	}
@@ -187,7 +189,7 @@ public class StudentFunctionalityController extends UserFunctionalityController{
 	 * @return 
 	 */
 	public ArrayList<String> compareSchoolsByScore( ) {
-		return this.account.compareSchoolsByScore();
+		return super.account.compareSchoolsByScore();
 	}
 
 }
