@@ -14,6 +14,8 @@ public class StudentFunctionalityControllerTest {
 	@Before
 	public void setUp() throws Exception {
 		this.studentConTest = new StudentFunctionalityController();
+		this.studentConTest.login("ajheroux@csbsju.edu", "38dgf");
+		this.studentConTest.saveSchool("YALE");
 	}
 
 
@@ -38,6 +40,8 @@ public class StudentFunctionalityControllerTest {
 		DBController DBCon = new DBController();
 		ArrayList<String> schoolDetials = this.studentConTest.viewSchoolDetails("YALE");
 		University school = DBCon.getUniversity("YALE");
+		
+		System.out.println(school.getLocation());
 		
 		ArrayList<String> expected = new ArrayList<String>();
 		expected.add(school.getName());
@@ -97,11 +101,16 @@ public class StudentFunctionalityControllerTest {
 
 	@Test
 	public void testRemoveSavedSchool() {
-		this.studentConTest.saveSchool("YALE");
-		this.studentConTest.saveSchool("STANFORD");
-		this.studentConTest.removeSavedSchool("YALE");
+		boolean found = false;
+		//this.studentConTest.removeSavedSchool("YALE");
 		ArrayList<UserSavedSchool> savedSchools = this.studentConTest.viewSavedSchools();
-		assertTrue(savedSchools.size() == 1);
+		for (int i = 0; i < savedSchools.size(); i++) {
+			if (savedSchools.get(i).getName().equals("YALE"));{
+				found = true;
+				System.out.println("It's True");
+			}
+		}
+		assertFalse(found);
 	}
 	
 	@Test (expected = UnsupportedOperationException.class)

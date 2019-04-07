@@ -87,36 +87,30 @@ public class StudentFunctionalityController extends UserFunctionalityController{
 	 * @param universityName
 	 */
 	public ArrayList<String> viewSchoolDetails(String universityName) {
-		this.universityCon = new UniversityController(this.DBCon.getUniversity2(universityName));
-		System.out.println(this.universityCon.getSchoolDetails());
-		return this.universityCon.getSchoolDetails();
+		ArrayList<University> universityList = this.DBCon.getUniversityList();
+		for (int i = 0; i < universityList.size(); i++) {
+			if (universityList.get(i).getName().equals(universityName)) {
+				this.universityCon = new UniversityController(this.DBCon.getUniversity2(universityName));
+				return this.universityCon.getSchoolDetails();
+			}
+		}
+		throw new IllegalArgumentException(universityName + " is not a school in the database");
 	}
 	
 	/**
 	 * Save a school for current user
 	 * @param school
 	 */
-	public void saveSchool(String school) {
-//	this.account = new AccountrController(this.DBCon.getAccount());
-		boolean found = false;
+	public void saveSchool(String schoolName) {
 		ArrayList<UserSavedSchool> savedSchols = DBCon.getSchoolList2(account.account);
-		for(UserSavedSchool sho: savedSchols)
+		for(UserSavedSchool school: savedSchols)
 		{
-			if(sho.getName().equals(school))
+			if(school.getName().equals(schoolName))
 			{
-				found = true;
+				throw new IllegalArgumentException("School is already saved");
 			}
 		}
-		if(!found)
-		{
-		account.saveSchool(school);
-		//this.DBCon.getUniversity2(school).addStudent(this.account.account.getUsername());
-		}
-		else {
-			throw new IllegalArgumentException();
-		}
-	
-
+		account.saveSchool(schoolName);
 	}
 	
 	public void setAccountController(Account account)
