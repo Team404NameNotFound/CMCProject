@@ -97,7 +97,7 @@ public class AccountController {
 			if (account == null)
 				throw new NullPointerException(); 
 			
-			if(account.getUserStatus().equals("N")) 
+			else if(account.getUserStatus().equals("N")) 
 			{
 				account.setUserStatus("Y"); 
 			} 
