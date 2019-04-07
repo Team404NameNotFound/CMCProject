@@ -19,7 +19,7 @@ import cmc.entity.University;
 public class SearchController {
 
 	String[] quizQuestions = {"How would you describe the location of your ideal college?", 
-			"Which characteristics are most imporatnt to you when looking for a college", 
+			"Which characteristics are most important to you when looking for a college", 
 			"I prefer large lectures where I can observe and be anonymous, rather than small discussions with participation and my professors know my name ",
 	"Do you know what you would like to study?"};
 	University[] universityList;
@@ -52,11 +52,11 @@ public class SearchController {
 	 * Do the quiz search
 	 * @return closeSchools
 	 */
-	public ArrayList<University> doQuizSearch()
-	{
-		ArrayList<University> closeSchools = new  ArrayList<University>();
-		return closeSchools;
-	}
+//	public ArrayList<University> doQuizSearch()
+//	{
+//		ArrayList<University> closeSchools = new  ArrayList<University>();
+//		return closeSchools;
+//	}
 
 	/**
 	 * Searching a school use some fields
@@ -338,7 +338,7 @@ public class SearchController {
 	 * @param academicScaleMax
 	 * @param socialScalemin
 	 * @param socialScaleMax
-	 * @param qualityOfLifeMin
+	 * @param qualityOfLifeMine
 	 * @param qualityOfLifeMax
 	 * @param emphases
 	 * @param control

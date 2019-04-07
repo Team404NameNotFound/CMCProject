@@ -29,7 +29,7 @@ public class University {
 	private String socialScale;
 	private String qualityOfLife;
 	private String[] emphases;
-	private ArrayList<String> students = new ArrayList<>();
+	//private ArrayList<String> students = new ArrayList<>();
 
 	/**
 	 * Creates a new university object with the following attributes
@@ -51,6 +51,27 @@ public class University {
 	 * @param qualityOfLife integer value between 1 and 5 indicating quality of life at the university
 	 * @param emphases up to five areas of study that the university excels in
 	 */
+	
+	public University() {
+		this.name = "";
+		this.state = "";
+		this.location = "";
+		this.control = "";
+		this.enrollment = "";
+		this.percentFemale = "";
+		this.satVerbal = "";
+		this.satMath = "";
+		this.cost = "";
+		this.percentFinAid = "";
+		this.percentEnrolled = "";
+		this.applicants = "";
+		this.percentAdmitted = "";
+		this.academicScale = "";
+		this.socialScale = "";
+		this.qualityOfLife = "";
+		this.emphases = null;
+	}
+	
 	public University(String name, String state, String location, String control, String enrollment, String percentFemale,
 			String satVerbal, String satMath, String cost, String percentFinAid, String percentEnrolled, String applicants,
 			String percentAdmitted, String academicScale, String socialScale, String qualityOfLife, String[] emphases) {
@@ -73,7 +94,7 @@ public class University {
 		this.qualityOfLife = qualityOfLife;
 		this.emphases = emphases;
 	}
-	
+
 	/**
 	 * @return university name
 	 */
@@ -264,7 +285,7 @@ public class University {
 	}
 
 	/**
-	 * @param academicScale academica scale of school
+	 * @param academicScale academic scale of school
 	 */
 	public void setAcademicScale(String academicScale) {
 		this.academicScale = academicScale;
@@ -311,31 +332,5 @@ public class University {
 	public void setEmphases(String[] emphases) {
 		this.emphases = emphases;
 	}
-
-	/**
-	 * @return list of students that saved a particular university
-	 */
-	public int getSaveCount() {
-		return 0;
-	}
-
-	/**
-	 * @param savedSchool list of students that saved a particular university
-	 */
-	public void setSavedSchool(ArrayList<String> students) {
-		this.students = students;
-	}
-	
-	public void addStudent(String student) {
-		this.students.add(student);
-	}
-	
-	/**
-	 * @return list of students that have saved a particular university
-	 */
-	public ArrayList<String> getStudents() {
-		return this.students;
-	}
-	
 
 }

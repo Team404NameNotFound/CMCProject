@@ -44,21 +44,21 @@ public class Account {
 		this.userStatus = userStatus;
 	}
 
-	/**
-	 * Allows user with the correspoding username and password to access the system
-	 * @param firstName first name of the Account
-	 * @param lasName last name of the Account
-	 * @param username username of the Account
-	 * @param password password of the Account
-	 * @param userType type of account admin or student
-	 * @param userStatus whether account is active or inactive
-	 * @return Account the account object of the user who will be logged on
-	 */
-	public Account logon(String firstName, String lastName, String username, String password, String userType,
-			String userStatus) {
-		Account user = new Account(firstName, lastName, username, password, userType, userStatus);
-		return user;
-	}
+//	/**
+//	 * Allows user with the correspoding username and password to access the system
+//	 * @param firstName first name of the Account
+//	 * @param lasName last name of the Account
+//	 * @param username username of the Account
+//	 * @param password password of the Account
+//	 * @param userType type of account admin or student
+//	 * @param userStatus whether account is active or inactive
+//	 * @return Account the account object of the user who will be logged on
+//	 */
+//	public Account logon(String firstName, String lastName, String username, String password, String userType,
+//			String userStatus) {
+//		Account user = new Account(firstName, lastName, username, password, userType, userStatus);
+//		return user;
+//	}
 	
 	/**
 	 * @return first name of the Account

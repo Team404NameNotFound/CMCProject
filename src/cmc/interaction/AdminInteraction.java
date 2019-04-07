@@ -61,15 +61,6 @@ public class AdminInteraction extends AccountInteraction{
 	}
 	
 	/**
-	 * Edits the specified user with the list of changes
-	 * @param student
-	 * @param changes
-	 */
-	public void editUser(Student student, List<String> changes) {
-		
-	}
-	
-	/**
 	 * Changes the status of the specified user
 	 * @param account
 	 */
@@ -79,42 +70,6 @@ public class AdminInteraction extends AccountInteraction{
 		System.out.println("Status for "+accountName+" changed.");
 	}
 	
-	/**
-	 * Removes the specified user form the database
-	 * @param university
-	 */
-	public void removeUniversity(University university) {
-		
-	}
-	
-	/**
-	 * Adds a new university to the database with the given parameters
-	 * @param name
-	 * @param state
-	 * @param location
-	 * @param control
-	 * @param enrollment
-	 * @param percentFemale
-	 * @param satVerbal
-	 * @param satMath
-	 * @param cost
-	 * @param percentFinAid
-	 * @param percentEnrolled
-	 * @param applicants
-	 * @param percentAdmitted
-	 * @param academicScale
-	 * @param socialScale
-	 * @param qualityOfLife
-	 * @param emphases
-	 * @param savedSchool
-	 */
-	public void addUniversity(
-    String name, String state, String location, String control, String enrollment, String percentFemale,
-	String satVerbal, String satMath, String cost, String percentFinAid, String percentEnrolled,
-	String applicants, String percentAdmitted, String academicScale, String socialScale,
-	String qualityOfLife, String[] emphases, ArrayList<Student> savedSchool) {
-		
-	}
 	
 	/**
 	 * Edits the specified university with the list of changes
@@ -201,6 +156,14 @@ public class AdminInteraction extends AccountInteraction{
 		this.afCon.removeUniversity(name);
 	}
 	
+	/**
+	 * Edit a user's profile
+	 * @param userName
+	 * @param firstName
+	 * @param lastName
+	 * @param password
+	 * @param userType
+	 */
 	public void editProfile(String userName, String firstName, String lastName, String password, String userType)
 	{
 		if(firstName == "" || lastName == "" || password == "" || userType == "")

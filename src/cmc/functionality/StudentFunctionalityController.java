@@ -8,10 +8,9 @@ import cmc.entity.*;
  * @author ajheroux
  *
  */
-public class StudentFunctionalityController extends UserFunctionalityController {
+public class StudentFunctionalityController extends UserFunctionalityController{
 	
 	public SearchController searchCon;
-	//constructer
 	
 	/**
 	 * Creating a new StudentFunctionalityController
@@ -87,10 +86,10 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 	 * View a school's detail information
 	 * @param universityName
 	 */
-	public void viewSchoolDetails(String universityName) {
+	public ArrayList<String> viewSchoolDetails(String universityName) {
 		this.universityCon = new UniversityController(this.DBCon.getUniversity2(universityName));
 		System.out.println(this.universityCon.getSchoolDetails());
-		
+		return this.universityCon.getSchoolDetails();
 	}
 	
 	/**
@@ -111,10 +110,11 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 		if(!found)
 		{
 		account.saveSchool(school);
-		this.DBCon.getUniversity2(school).addStudent(this.account.account.getUsername());
+		//this.DBCon.getUniversity2(school).addStudent(this.account.account.getUsername());
 		}
-		else
-		System.out.println("Sorry, the school is already in your list");
+		else {
+			throw new IllegalArgumentException();
+		}
 	
 
 	}
@@ -126,12 +126,13 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 	/**
 	 * View current user's saved schools list
 	 */
-	public void viewSavedSchools() {
+	public ArrayList<UserSavedSchool> viewSavedSchools() {
 		if(this.account.account.getUserType().equals("a")) {
-			System.out.println("Current account cannot view saved schools because it is an admin");
+			throw new IllegalArgumentException("User cannot be an admin");
 		}else {
 			this.account.viewSavedSchools();
 		}
+		return this.account.viewSavedSchools();
 	}
 	
 	/**
@@ -146,30 +147,47 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 	 * View a saved school's detail information
 	 * @param school String, saved school name to view details
 	 */
-	public void viewSavedSchoolDetails(String school) {
+	public ArrayList<String> viewSavedSchoolDetails(String school) {
 		Boolean schoolSaved = this.account.checkIfSchoolSaved(school);
-		if(schoolSaved) {
+		ArrayList<String> message;
+		if(schoolSaved)
+		{
 		   this.setUniversityCon(new UniversityController(this.DBCon.getUniversity2(school)));
 		   System.out.println(this.universityCon.getSchoolDetails());
-		}else {
-			System.out.println("This school is not saved");
+		   message = this.universityCon.getSchoolDetails();
+		   
 		}
+		else
+		{
+			throw new NullPointerException();
+		}
+		return message;
+	}
+
+	private void setUniversityCon(UniversityController universityController) {
+		// TODO Auto-generated method stub
+		UniversityController universityCon = super.universityCon;
 	}
 
 	/**
 	 * View how many times a school being saved by users
 	 * @param school
 	 */
-	public void viewUserSavedStatistics(String school){
+	public String[] viewUserSavedStatistics(String school){
+		String[] stats = {"", ""};
 		int savedTimes = this.DBCon.getUserSavedStatistics(school);
 		System.out.println(school + " has been saved for " + savedTimes + " times");
+		stats[0] = school;
+		stats[1] = savedTimes + "";
+		return stats;
 	}
 
 	/**
 	 * Compare saved schools with their required SatMath scores
+	 * @return 
 	 */
-	public void compareSchoolsByScore( ) {
-		this.account.compareSchoolsByScore();
+	public ArrayList<String> compareSchoolsByScore( ) {
+		return this.account.compareSchoolsByScore();
 	}
 
 }

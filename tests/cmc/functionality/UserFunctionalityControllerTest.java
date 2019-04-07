@@ -2,83 +2,155 @@ package cmc.functionality;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
 
-public class UserFunctionalityControllerTest {
+import cmc.entity.University;
 
+public class UserFunctionalityControllerTest {
+	UserFunctionalityController ufc ;
 	@Before
 	public void setUp() throws Exception {
+		this.ufc = new UserFunctionalityController();
 	}
 
-	@Test
-	public void testUserFunctionalityController() {
-		fail("Not yet implemented");
-	}
 
-	@Test
-	public void testGetAccountController() {
-		fail("Not yet implemented");
-	}
 
-	@Test
-	public void testGetUniversityCon() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetUniversityCon() {
-		fail("Not yet implemented");
-	}
+//	@Test
+//	public void testGetAccountController() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testGetUniversityCon() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testSetUniversityCon() {
+//		fail("Not yet implemented");
+//	}
 
 	@Test
 	public void testLogin() {
 		fail("Not yet implemented");
 	}
-
+	
+	/**
+ 	* test to make sure the user can logout
+ 	*/
 	@Test
 	public void testLogout() {
-		fail("Not yet implemented");
+		ufc.login("cz001", "password");
+		assertTrue(ufc.loggedIn);
+		ufc.logout();
+		assertFalse(ufc.loggedIn);
 	}
 
+	/**
+	 * tests to make sure you can view the profile of a user
+	 */
 	@Test
 	public void testViewUserProfile() {
-		fail("Not yet implemented");
+		DBController db = new DBController();
+		ArrayList<String> userInfo = ufc.viewUserProfile("cz001");
+		assertTrue(userInfo.get(0).equals(db.getAccount("cz001").getFirstName()));
+		assertTrue(userInfo.get(1).equals(db.getAccount("cz001").getLastName()));
+		assertTrue(userInfo.get(2).equals(db.getAccount("cz001").getUsername()));
 	}
-
+	
+	/**
+	 * tests to make sure view user fails when the user does not exist
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void testViewUserFailsWhenUserDNE()
+	{
+		ufc.viewUserProfile("nonexist");
+	}
+	
+	/**
+	 * tests to make sure edit User fails when user does not exist
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUserFailsWhenDNE()
+	{
+		ufc.editUserProfile("NONEXISTANT", "adf", "af", "sdf", "a");
+	}
+	
+	/**
+	 * tests to make sure you can edit the profile of a user
+	 */
 	@Test
 	public void testEditUserProfile() {
-		fail("Not yet implemented");
+		DBController db = new DBController();
+		ufc.editUserProfile("cz001", "first", "pass", "last", "u");
+		assertTrue(db.getAccount("cz001").getFirstName().equals("first"));
+		assertTrue(db.getAccount("cz001").getLastName().equals("last"));
+		assertTrue(db.getAccount("cz001").getPassword().equals("pass"));
+		ufc.editUserProfile("cz001", "Carrie", "password", "Zhang", "u");
+		
 	}
 
+	/**
+	 * tests to make sure you can get a complete list of schools to view
+	 */
 	@Test
 	public void testViewSchoolList() {
-		fail("Not yet implemented");
+		DBController db = new DBController();
+		ArrayList<University>universityList = db.getUniversityList();
+		ArrayList<University> unis = ufc.viewSchoolList();
+		for(int i = 0; i < universityList.size(); i++)
+		{
+			assertTrue(universityList.get(i).getName().equals(unis.get(i).getName()));
+		}
 	}
 
+	/**
+	 * tests to make sure the forgot password feature works
+	 */
 	@Test
 	public void testForgotPassword() {
 		fail("Not yet implemented");
 	}
 
+	/**
+	 * tests to make sure you can see the universities details
+	 */
 	@Test
 	public void testViewUniversityDetials() {
-		fail("Not yet implemented");
+		// 	ADELPHI 	NEW YORK 	-1 	PRIVATE 	15000 	70 	500 	475 	37437 	60 	5500 	70 	40 	2 	2 	2
+		University school = new DBController().getUniversity("ADELPHI");
+		ArrayList<String> schoolDetails = ufc.viewUniversityDetials("ADELPHI");
+		assertTrue(schoolDetails.get(0).equals((school.getName())));
+		assertTrue(schoolDetails.get(1).equals((school.getState()))); 
+		assertTrue(schoolDetails.get(3).equals(school.getControl()));
+		assertTrue(schoolDetails.get(4).equals(school.getEnrollment()));
+	}
+	
+	/**
+	 * tests to make sure a university fails when you call to view a non existant university
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void testViewUniversityDetailsFailsWhenUniversityDNE()
+	{
+		ufc.viewUniversityDetials("henlo");
 	}
 
-	@Test
-	public void testCheckPassword() {
-		fail("Not yet implemented");
-	}
+//	@Test
+//	public void testCheckPassword() {
+//		fail("Not yet implemented");
+//	}
 
-	@Test
-	public void testGetAccount() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetAccount() {
-		fail("Not yet implemented");
-	}
+//	@Test
+//	public void testGetAccount() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testSetAccount() {
+//		fail("Not yet implemented");
+//	}
 
 }
