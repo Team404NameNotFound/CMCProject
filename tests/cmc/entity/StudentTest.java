@@ -53,45 +53,48 @@ public class StudentTest {
 		Assert.assertTrue(this.testStudent.isSchoolSaved("TestSchool"));
 	}
 	
-	@Test
-	public void testIsSchoolSavedReturnsFalse() {
-		Assert.assertFalse(this.testStudent.isSchoolSaved("TestFalse"));
-	}
-
-	@Test
-	public void testRemoveSchool() {
-		
-		ArrayList<UserSavedSchool> expected = new ArrayList<UserSavedSchool>();
-		this.testStudent.removeSchool("TestSchool");
-		ArrayList<UserSavedSchool> result = this.testStudent.getSavedSchools();
-		assertEquals(result,expected);
-	}
 	
-	@Test (expected = IllegalArgumentException.class)
-	public void testRemoveSchoolInvalidSchoolName() {
-		this.testStudent.removeSchool("Non-saved School");
-	}
+	//there is no longer a removeSchool method
+//	@Test
+//	public void testIsSchoolSavedReturnsFalse() {
+//		Assert.assertFalse(this.testStudent.isSchoolSaved("TestFalse"));
+//	}
+//
+//	@Test
+//	public void testRemoveSchool() {
+//		
+//		ArrayList<UserSavedSchool> expected = new ArrayList<UserSavedSchool>();
+//		this.testStudent.removeSchool("TestSchool");
+//		ArrayList<UserSavedSchool> result = this.testStudent.getSavedSchools();
+//		assertEquals(result,expected);
+//	}
+//	
+//	@Test (expected = IllegalArgumentException.class)
+//	public void testRemoveSchoolInvalidSchoolName() {
+//		this.testStudent.removeSchool("Non-saved School");
+//	}
 
-	@Test
-	public void testSaveSchool() {
-		String[] list = {"-1"};
-		University newUniversity = new University("SaveUniversity", "-1", "-1", "-1", "-1", "-1",
-				"-1", "-1", "-1", "-1", "-1", "-1",
-				"-1", "-1", "-1", "-1", list);
-		this.testStudent.saveSchool(newUniversity, "Current Date");
-		
-		this.testStudent.isSchoolSaved("SaveUniversity");
-	}
-	
-	@Test (expected = IllegalArgumentException.class)
-	public void testSaveSchoolSaveSchoolThatIsAlreadySaved() {
-		String[] list = {"-1"};
-		University newUniversity = new University("SaveUniversity", "-1", "-1", "-1", "-1", "-1",
-				"-1", "-1", "-1", "-1", "-1", "-1",
-				"-1", "-1", "-1", "-1", list);
-		this.testStudent.saveSchool(newUniversity, "Current Date");
-		this.testStudent.saveSchool(newUniversity, "Current Date");
-	}
+	//there is no longer a saveSchool method either
+//	@Test
+//	public void testSaveSchool() {
+//		String[] list = {"-1"};
+//		University newUniversity = new University("SaveUniversity", "-1", "-1", "-1", "-1", "-1",
+//				"-1", "-1", "-1", "-1", "-1", "-1",
+//				"-1", "-1", "-1", "-1", list);
+//		this.testStudent.saveSchool(newUniversity, "Current Date");
+//		
+//		this.testStudent.isSchoolSaved("SaveUniversity");
+//	}
+//	
+//	@Test (expected = IllegalArgumentException.class)
+//	public void testSaveSchoolSaveSchoolThatIsAlreadySaved() {
+//		String[] list = {"-1"};
+//		University newUniversity = new University("SaveUniversity", "-1", "-1", "-1", "-1", "-1",
+//				"-1", "-1", "-1", "-1", "-1", "-1",
+//				"-1", "-1", "-1", "-1", list);
+//		this.testStudent.saveSchool(newUniversity, "Current Date");
+//		this.testStudent.saveSchool(newUniversity, "Current Date");
+//	}
 	
 
 }

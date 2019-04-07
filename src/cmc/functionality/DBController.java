@@ -94,6 +94,7 @@ public class DBController
 					if(emphases[i][0].equals(school))
 					{
 						returnEmphases[placer] = emphases[i][1];
+						placer++;
 					}
 				}
 				
