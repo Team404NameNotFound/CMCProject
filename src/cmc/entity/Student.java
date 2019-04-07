@@ -77,9 +77,10 @@ public class Student extends Account {
 		for(int i=0; i<savedSchools.size(); i++) {
 			if(savedSchools.get(i).getName().equals(universityName)) {
 				savedSchools.remove(i);
+				return;
 			}
 		}
-		throw new IllegalArgumentException(universityName + "is not a saved school.");
+		throw new IllegalArgumentException(universityName + " is not a saved school.");
 	}
 	
 	/**
@@ -89,6 +90,11 @@ public class Student extends Account {
 	 */
 	public void saveSchool(University university, String dateAdded) {
 		UserSavedSchool schoolToSave = new UserSavedSchool(university, dateAdded);
+		
+		if (this.isSchoolSaved(university.getName())) {
+			throw new IllegalArgumentException("You connot save the same school more than once");
+		}
+		
 		savedSchools.add(schoolToSave);
 	}
 
