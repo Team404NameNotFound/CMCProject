@@ -141,6 +141,7 @@ public class StudentFunctionalityController extends UserFunctionalityController{
 	 */
 	public void removeSavedSchool(String school) {
 		this.setAccount(account);
+		//if(this.account == null) System.out.println("the account is null");
 		this.account.removeSavedSchool(school);
 	}
 	

@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
+import javax.xml.transform.Result;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,10 +25,12 @@ public class StudentInteractionTest {
 	private StudentInteraction student = new StudentInteraction();
 	private String[] emphases = null;
 	private University school = new University("BROWN", "RHODEISLAND", "URBAN", "PRIVATE", "10000", "50", "625", "650", "36450", "40", "20", "50", "11500", "5", "4", "5", emphases);
-	
+	private AccountController user =  new AccountController(dbCon.getAccount("kmendel001@csbsju.edu"));
 	@Before
 	public void setUp() throws Exception {
 		StudentInteraction student = new StudentInteraction();
+		this.student.sfCon.setAccount(user);
+		user.removeAllSavedSchools();
 		
 	}
 	
@@ -60,7 +64,7 @@ public class StudentInteractionTest {
 	}
 	
 	//good
-	@Test(expected=NullPointerException.class)
+	@Test(expected=IllegalArgumentException.class)
 	public void testViewSchoolDetailsInvalidSchool() {
 		ArrayList<String> expResult = new ArrayList<String>();
 		expResult.add("FAKEVILLE COLLEGE");
@@ -201,21 +205,22 @@ public class StudentInteractionTest {
 		dbCon.setAccount(user1);
 		student.login("kmendel001@csbsju.edu", "user");
 		student.saveSchool("AUGSBURG");
-		ArrayList<UserSavedSchool> schools = dbCon.getSchoolList2(dbCon.getAccount("kmendel001@csbsju.edu"));
+		ArrayList<UserSavedSchool> result = dbCon.getSchoolList2(dbCon.getAccount("kmendel001@csbsju.edu"));
 		student.removeSavedSchool("AUGSBURG");
-		ArrayList<String> expSchools = new ArrayList();
-		expSchools.add("AUGSBURG");
-		expSchools.add("BENNINGTON");
-		expSchools.add("YALE");
+		ArrayList<String> expResult = new ArrayList();
+		expResult.add("AUGSBURG");
+		expResult.add("BENNINGTON");
+		expResult.add("YALE");
+		assertEquals("SavedSchools are now"+result, expResult, result);
 		
-		Boolean same = true;
-		for(int i=0; i<schools.size(); i++)
-		{
-			System.out.println(schools.get(i).getName() + " " +expSchools.get(i));
-			if(!schools.get(i).getName().equals(expSchools.get(i)))
-				same = false;
-		}
-		assertTrue(same);
+//		Boolean same = true;
+//		for(int i=0; i<schools.size(); i++)
+//		{
+//			System.out.println(schools.get(i).getName() + " " +expSchools.get(i));
+//			if(!schools.get(i).getName().equals(expSchools.get(i)))
+//				same = false;
+//		}
+//		assertTrue(same);
 	}
 	
 	//good
@@ -223,13 +228,14 @@ public class StudentInteractionTest {
 	public void testSaveSchoolAlreadySaved() {
 		student.login("kmendel001@csbsju.edu", "user");
 		student.saveSchool("YALE");
+		student.saveSchool("YALE");
 	}
 
 	//good
-	@Test(expected=UnsupportedOperationException.class)
+	@Test(expected=IllegalArgumentException.class)
 	public void testSaveSchoolInvalidSchool() {
 		student.login("kmendel001@csbsju.edu", "user");
-		student.saveSchool("FAKE COLLEGE"); //Null
+		student.saveSchool("FAKE COLLEGE");
 	}
 	
 
@@ -237,29 +243,10 @@ public class StudentInteractionTest {
 	@Test
 	public void testViewSavedSchoolDetails() {
 		student.login("kmendel001@csbsju.edu", "user");
-		student.viewSavedSchoolDetails("YALE"); //null pointer
+		student.saveSchool("BROWN");
+		student.viewSavedSchoolDetails("BROWN"); //null pointer
 		//should get time stamp
 		ArrayList<String> results = new ArrayList();
-		results.add(student.viewSavedSchoolDetails("BROWN").get(0));
-		results.add(student.viewSavedSchoolDetails("BROWN").get(1));
-		results.add(student.viewSavedSchoolDetails("BROWN").get(2));
-		results.add(student.viewSavedSchoolDetails("BROWN").get(3));
-		results.add(student.viewSavedSchoolDetails("BROWN").get(4));
-		results.add(student.viewSavedSchoolDetails("BROWN").get(5));
-		results.add(student.viewSavedSchoolDetails("BROWN").get(5));
-		results.add(student.viewSavedSchoolDetails("BROWN").get(6));
-		results.add(student.viewSavedSchoolDetails("BROWN").get(7));
-		results.add(student.viewSavedSchoolDetails("BROWN").get(8));
-		results.add(student.viewSavedSchoolDetails("BROWN").get(9));
-		results.add(student.viewSavedSchoolDetails("BROWN").get(10));
-		results.add(student.viewSavedSchoolDetails("BROWN").get(11));
-		results.add(student.viewSavedSchoolDetails("BROWN").get(12));
-		results.add(student.viewSavedSchoolDetails("BROWN").get(13));
-		results.add(student.viewSavedSchoolDetails("BROWN").get(14));
-		results.add(student.viewSavedSchoolDetails("BROWN").get(15));
-		for(String emphasis: dbCon.getUniversity("BROWN").getEmphases())
-			results.add(emphasis);
-		
 		ArrayList<String> expResult = new ArrayList();
 		expResult.add("BROWN");
 		expResult.add("RHODEISLAND");
@@ -281,23 +268,24 @@ public class StudentInteractionTest {
 		expResult.add("BIOLOGY");
 		expResult.add("HISTORY");
 		
+		assertEquals("Saved school details are"+ results, expResult, results);
 		
-		Boolean same = false;
-		for(int i=0; i<results.size(); i++)
-		{
-			if(results.get(i).equals(expResult.get(i)))
-			{
-				same = true;
-			}
-		}
-		assertTrue(same);
+//		Boolean same = false;
+//		for(int i=0; i<results.size(); i++)
+//		{
+//			if(results.get(i).equals(expResult.get(i)))
+//			{
+//				same = true;
+//			}
+//		}
+//		assertTrue(same);
 	}
 	
 	//BAD
-	@Test(expected=UnsupportedOperationException.class)
+	@Test(expected=IllegalArgumentException.class)
 	public void testViewSavedSchoolDetailsSchoolNotSaved() {
 		student.login("kmendel001@csbsju.edu", "user");
-		student.viewSavedSchoolDetails("HARVARD"); //Null pointer
+		student.viewSavedSchoolDetails("HARVARD");
 		
 	}
 	
@@ -305,47 +293,55 @@ public class StudentInteractionTest {
 	@Test(expected=UnsupportedOperationException.class)
 	public void testViewSavedSchoolInvalidSchool() {
 		student.login("kmendel001@csbsju.edu", "user");
-		student.viewSavedSchoolDetails("FAKE COLLEGE"); //Null pointer
+		student.viewSavedSchoolDetails("FAKE COLLEGE");
 	}
 
 	//BAD
 	@Test
 	public void testViewSavedSchools() {
 		student.login("kmendel001@csbsju.edu", "user");
-		ArrayList<UserSavedSchool> schools = student.viewSavedSchools();
-		ArrayList<String> expSchools = new ArrayList();
-		expSchools.add("AUGSBURG");
-		expSchools.add("BENNINGTON");
-		expSchools.add("YALE");
-	
-		Boolean same = true;
-		for(int i=0; i<schools.size(); i++)
-		{
-			System.out.println(schools.get(i).getName() + " " +expSchools.get(i));
-			if(!schools.get(i).getName().equals(expSchools.get(i)))
-				same = false;
-		}
-		assertTrue(same);
+		student.saveSchool("AUGSBURG");
+		student.saveSchool("BENNINGTON");
+		student.saveSchool("YALE");
+		ArrayList<UserSavedSchool> result = student.viewSavedSchools();
+		ArrayList<String> expResult = new ArrayList();
+		expResult.add("AUGSBURG");
+		expResult.add("BENNINGTON");
+		expResult.add("YALE");
+		
+		assertEquals("Saved schools are "+result, expResult, result);
+//		Boolean same = true;
+//		for(int i=0; i<schools.size(); i++)
+//		{
+//			System.out.println(schools.get(i).getName() + " " +expSchools.get(i));
+//			if(!schools.get(i).getName().equals(expSchools.get(i)))
+//				same = false;
+//		}
+//		assertTrue(same);
 	}
 
 	//BAD
 	@Test
 	public void testViewUserSavedStatisticsValidUserValidSchools() {
 		student.login("kmendel001@csbsju.edu", "user");
-		ArrayList<String> results = student.compareSchoolsByScore();
+		student.saveSchool("AUGSBURG");
+		student.saveSchool("BENNINGTON");
+		student.saveSchool("YALE");
+		String[] results = student.viewUserSavedStatistics("YALE");
 		ArrayList<String> expResults = new ArrayList();
-		expResults.add("AUGSBURG 2");
-		expResults.add("BENNINGTON 1");
 		expResults.add("YALE 2");
-		Boolean same = true;
-		for(int i=0; i<results.size(); i++)
-		{
-			if(!results.get(i).equals(expResults.get(i)))
-			{
-				same = false;
-			}
-		}
-		assertTrue(same);
+		
+		assertEquals("Saved schools are "+results, expResults, results);
+		
+//		Boolean same = true;
+//		for(int i=0; i<results.size(); i++)
+//		{
+//			if(!results.get(i).equals(expResults.get(i)))
+//			{
+//				same = false;
+//			}
+//		}
+//		assertTrue(same);
 	}
 	
 	//BAD
@@ -358,7 +354,8 @@ public class StudentInteractionTest {
 	//BAD
 	@Test(expected=UnsupportedOperationException.class)
 	public void testViewUserSavedStatisticsValidUserNoSchools() {
-		fail("Not yet implemented");
+		student.login("user@csbsju.edu", "user");
+		student.compareSchoolsByScore();
 	}
 
 	//good
@@ -387,7 +384,7 @@ public class StudentInteractionTest {
 	}	
 	
 	//BAD
-	@Test(expected=IllegalArgumentException.class)
+	@Test(expected=UnsupportedOperationException.class)
 	public void testRemoveSavedSchoolInvalidSchool() {
 		student.login("kmendel001@csbsju.edu", "user");
 		student.removeSavedSchool("FAKE COLLEGE");
@@ -412,21 +409,25 @@ public class StudentInteractionTest {
 	//BAD
 	@Test
 	public void testCompareSchoolsByScoreManySaved() {
-		student.login("kmendel001@csbsju.edu", "user"); //something wrong with check user
+		student.login("kmendel001@csbsju.edu", "user"); 
+		student.saveSchool("AUGSBURG");
+		student.saveSchool("BENNINGTON");
+		student.saveSchool("YALE");
+		
 		ArrayList<String> result = student.compareSchoolsByScore();
 		ArrayList<String> expResult = new ArrayList();
-		expResult.add("AUGSBURG 490");
-		expResult.add("Yale 675");
-		
-		Boolean same = true;
-		for(int i=0; i<result.size(); i++)
-		{
-			if(!result.get(i).equals(expResult.get(i)))
-			{
-				same = false;
-			}
-		}
-		assertTrue(same);
+		expResult.add("AUGSBURG 490.0");
+		expResult.add("Yale 675.0");
+		assertEquals("Compared schools are"+result, expResult, result);
+//		Boolean same = true;
+//		for(int i=0; i<result.size(); i++)
+//		{
+//			if(!result.get(i).equals(expResult.get(i)))
+//			{
+//				same = false;
+//			}
+//		}
+//		assertTrue(same);
 	}
 	
 	//BAD
