@@ -389,14 +389,17 @@ public class AccountController {
 		ArrayList<String> returnList = new ArrayList<>();
 
 		for (int i = 0; i < savedSchools.size(); i++) {
-			if(0<= Double.parseDouble(savedSchools.get(i).getSatMath()))
+			if(!(Double.parseDouble((savedSchools.get(i).getSatMath())) == 1))
 			{
-				scores[i][0] = Double.parseDouble(savedSchools.get(i).getSatMath());
-				scores[i][1] = Double.parseDouble("" + i);
-			}
-			if( -1 > Double.parseDouble(savedSchools.get(i).getSatMath()))
-			{
-				throw new UnsupportedOperationException("Score cannot be less than zero");
+				if(0<= Double.parseDouble(savedSchools.get(i).getSatMath()))
+				{
+					scores[i][0] = Double.parseDouble(savedSchools.get(i).getSatMath());
+					scores[i][1] = Double.parseDouble("" + i);
+				}
+				if( -1 > Double.parseDouble(savedSchools.get(i).getSatMath()))
+				{
+					throw new UnsupportedOperationException("Score cannot be less than zero");
+				}
 			}
 		}
 		

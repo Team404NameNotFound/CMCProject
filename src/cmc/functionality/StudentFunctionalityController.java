@@ -152,19 +152,50 @@ public class StudentFunctionalityController extends UserFunctionalityController{
 	public ArrayList<String> viewSavedSchoolDetails(String school) {
 		this.setAccount(account);
 		Boolean schoolSaved = super.account.checkIfSchoolSaved(school);
-		ArrayList<String> message;
+		ArrayList<String> returnSchool;
+		ArrayList<String> savedDetails = new ArrayList();
 		if(schoolSaved)
 		{
-		   this.setUniversityCon(new UniversityController(this.DBCon.getUniversity2(school)));
-		   System.out.println(this.universityCon.getSchoolDetails());
-		   message = this.universityCon.getSchoolDetails();
+		   //this.setUniversityCon(new UniversityController(this.DBCon.getUniversity2(school)));
+		   //System.out.println(this.universityCon.getSchoolDetails());
+		   //message = this.universityCon.getSchoolDetails();
 		   
+		   ArrayList<UserSavedSchool> savedSchools = DBCon.getSchoolList2(DBCon.getAccount(account.account.getUsername()));
+		   int index = 0;
+		   for(int i=0; i<savedSchools.size(); i++) {
+			   
+			   if(savedSchools.get(i).getName().equals(school)) {
+				   System.out.print("School found");
+				   index = i;
+				   savedDetails.add(savedSchools.get(i).getName());
+				   savedDetails.add(savedSchools.get(i).getState());
+				   savedDetails.add(savedSchools.get(i).getLocation());
+				   savedDetails.add(savedSchools.get(i).getControl());
+				   savedDetails.add(savedSchools.get(i).getEnrollment());
+				   savedDetails.add(savedSchools.get(i).getPercentFemale());
+				   savedDetails.add(savedSchools.get(i).getSatMath());
+				   savedDetails.add(savedSchools.get(i).getSatVerbal());
+				   savedDetails.add(savedSchools.get(i).getCost());
+				   savedDetails.add(savedSchools.get(i).getPercentFinAid());
+				   savedDetails.add(savedSchools.get(i).getEnrollment());
+				   savedDetails.add(savedSchools.get(i).getPercentAdmitted());
+				   savedDetails.add(savedSchools.get(i).getAcademicScale());
+				   savedDetails.add(savedSchools.get(i).getSocialScale());
+				   savedDetails.add(savedSchools.get(i).getQualityOfLife());
+				   for(int e=0; e<savedSchools.get(i).getEmphases().length; e++)
+					   savedDetails.add(savedSchools.get(i).getEmphases()[e]);
+				   savedDetails.add(savedSchools.get(i).getDateAdded());
+				   return savedDetails;
+			   }
+		   }
+
 		}
-		else
-		{
-			throw new IllegalArgumentException();
+		else {
+		throw new IllegalArgumentException();
 		}
-		return message;
+		return savedDetails;
+
+		
 	}
 
 	private void setUniversityCon(UniversityController universityController) {

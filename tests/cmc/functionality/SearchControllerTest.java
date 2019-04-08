@@ -40,14 +40,15 @@ public class SearchControllerTest {
 	}
 
 	@Test
-	public void testRankUniversity() {
-		ArrayList<University> result = searchCon.rankUniversity(dbCon.getUniversity("BARUCH"));
+	public void testRankUniversity2() {
+		ArrayList<University> result = searchCon.rankUniversity2(dbCon.getUniversity("BARUCH"));
 		ArrayList<University> expResults = new ArrayList();
+		expResults.add(dbCon.getUniversity("FORDHAM"));
 		expResults.add(dbCon.getUniversity("ST JOHN'S UNIVERSITY"));
 		expResults.add(dbCon.getUniversity("NEWYORK IT"));
-		expResults.add(dbCon.getUniversity("FORDHAM"));
-		expResults.add(dbCon.getUniversity("HOFSTRA"));
-		expResults.add(dbCon.getUniversity("UNIVERSITY OF GEORGIA"));
+		expResults.add(dbCon.getUniversity("SAN JOSE STATE"));
+		expResults.add(dbCon.getUniversity("UNIVERSITY OF LOWELL"));
+
 		for(int i=0; i<result.size(); i++) {
 			System.out.println(result.get(i).getName());
 		}

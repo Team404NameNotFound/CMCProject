@@ -288,6 +288,249 @@ public class SearchController {
 		return returnUniversity;
 	}
 
+	
+	public ArrayList<University> rankUniversity2(University university)
+	{
+		ArrayList<University> returnUniversity = new ArrayList<University>();
+		double numStudents = Integer.parseInt(university.getEnrollment());
+		double numStudMin = Integer.parseInt(university.getEnrollment());
+		double numStudMax = Integer.parseInt(university.getEnrollment());
+		double percentFemale = Float.parseFloat(university.getPercentFemale());
+		double nperFemMin = Float.parseFloat(university.getPercentFemale());
+		double perFemMax = Float.parseFloat(university.getPercentFemale());
+		double SatVerbal = Integer.parseInt(university.getSatVerbal());
+		double SatVerbalMin = Integer.parseInt(university.getSatVerbal());
+		double SatVerbalMax = Integer.parseInt(university.getSatVerbal());
+		double SatMath = Integer.parseInt(university.getSatMath());
+		double SatMathMin = Integer.parseInt(university.getSatMath());
+		double SatMathMax = Integer.parseInt(university.getSatMath());
+		double expenses = Integer.parseInt(university.getCost());
+		double expMin = Integer.parseInt(university.getCost());
+		double expMax = Integer.parseInt(university.getCost());
+		double percentFinAid = Float.parseFloat(university.getPercentFinAid());
+		double perFinAidMin = Float.parseFloat(university.getPercentFinAid());
+		double perFinAidMax  = Float.parseFloat(university.getPercentFinAid());
+		double numApplicants = Integer.parseInt(university.getApplicants());
+		double numAppMin = Integer.parseInt(university.getApplicants());
+		double numAppMax = Integer.parseInt(university.getApplicants());
+		double percentAdmitted = Float.parseFloat(university.getPercentAdmitted());
+		double perAdmitMin = Float.parseFloat(university.getPercentAdmitted());
+		double perAdmitMax= Float.parseFloat(university.getPercentAdmitted());
+		double percentEnrolled = Float.parseFloat(university.getPercentEnrolled());
+		double perEnrollMin = Float.parseFloat(university.getPercentEnrolled());
+		double perEnrollMax = Float.parseFloat(university.getPercentEnrolled());
+		double academicScale = Integer.parseInt(university.getAcademicScale());
+		double academicMin = Integer.parseInt(university.getAcademicScale());
+		double academicMax = Integer.parseInt(university.getAcademicScale());
+		double socialScale = Integer.parseInt(university.getSocialScale());
+		double socialMin = Integer.parseInt(university.getSocialScale());
+		double socialMax = Integer.parseInt(university.getSocialScale());
+		double qualityOfLifeScale = Integer.parseInt(university.getQualityOfLife());
+		double qolMin = Integer.parseInt(university.getQualityOfLife());
+		double qolMax = Integer.parseInt(university.getQualityOfLife());
+		
+
+		double[][] schoolMatches = new double[this.universityList.length][2];
+		
+		for(int i = 0; i < this.universityList.length; i++)
+		{
+			//testing distance based on enrollment
+			if(Math.abs((Double.parseDouble(universityList[i].getEnrollment())))<numStudMin)
+			{
+				numStudMin = Math.abs((Double.parseDouble(universityList[i].getEnrollment())));
+			}
+			if(Math.abs((Double.parseDouble(universityList[i].getEnrollment())))>numStudMax)
+			{
+				numStudMax = Math.abs((Double.parseDouble(universityList[i].getEnrollment())));
+			}
+
+			//testing distance based on percent female
+			if(Math.abs((Double.parseDouble(universityList[i].getPercentFemale())))<nperFemMin)
+			{
+				nperFemMin = Math.abs((Double.parseDouble(universityList[i].getPercentFemale())));
+			}
+			if(Math.abs((Double.parseDouble(universityList[i].getPercentFemale())))>perFemMax)
+			{
+				perFemMax = Math.abs((Double.parseDouble(universityList[i].getPercentFemale())));
+			}
+			
+			//testing distance based on SATVerbal
+			if(Math.abs((Double.parseDouble(universityList[i].getSatVerbal())))<SatVerbalMin)
+			{
+				SatVerbalMin = Math.abs((Double.parseDouble(universityList[i].getSatVerbal())));
+			}
+			if(Math.abs((Double.parseDouble(universityList[i].getSatVerbal())))>SatVerbalMax)
+			{
+				SatVerbalMax = Math.abs((Double.parseDouble(universityList[i].getSatVerbal())));
+			}
+			
+
+			//testing distance based on SATMath
+			if(Math.abs((Double.parseDouble(universityList[i].getSatMath())))<SatMathMin)
+			{
+				SatMathMin = Math.abs((Double.parseDouble(universityList[i].getSatMath())));
+			}
+			if(Math.abs((Double.parseDouble(universityList[i].getSatMath())))>SatMathMax)
+			{
+				SatMathMax = Math.abs((Double.parseDouble(universityList[i].getSatMath())));
+			}
+
+			//calculating score based on expenses
+			if(Math.abs((Double.parseDouble(universityList[i].getCost())))<expMin)
+			{
+				expMin = Math.abs((Double.parseDouble(universityList[i].getCost())));
+			}
+			if(Math.abs((Double.parseDouble(universityList[i].getCost())))>expMax)
+			{
+				expMax = Math.abs((Double.parseDouble(universityList[i].getCost())));
+			}
+
+			//testing distance based on FinancialAid
+			if(Math.abs((Double.parseDouble(universityList[i].getPercentFinAid())))<perFinAidMin)
+			{
+				perFinAidMin = Math.abs((Double.parseDouble(universityList[i].getPercentFinAid())));
+			}
+			if(Math.abs((Double.parseDouble(universityList[i].getPercentFinAid())))>perFinAidMax)
+			{
+				perFinAidMax = Math.abs((Double.parseDouble(universityList[i].getPercentFinAid())));
+			}
+
+			//testing distance based on numberApplicants
+
+			if(Math.abs((Double.parseDouble(universityList[i].getApplicants())))<numAppMin)
+			{
+				numAppMin = Math.abs((Double.parseDouble(universityList[i].getApplicants())));
+			}
+			if(Math.abs((Double.parseDouble(universityList[i].getApplicants())))>numAppMax)
+			{
+				numAppMax = Math.abs((Double.parseDouble(universityList[i].getApplicants())));
+			}
+
+			//testing distance based on percentAdmitted
+			if(Math.abs((Double.parseDouble(universityList[i].getPercentAdmitted())))<perAdmitMin)
+			{
+				perAdmitMin = Math.abs((Double.parseDouble(universityList[i].getPercentAdmitted())));
+			}
+			if(Math.abs((Double.parseDouble(universityList[i].getPercentAdmitted())))>perAdmitMax)
+			{
+				perAdmitMax = Math.abs((Double.parseDouble(universityList[i].getPercentAdmitted())));
+			}
+
+			//testing distance based on percentEnrolled
+			if(Math.abs((Double.parseDouble(universityList[i].getPercentEnrolled())))<perEnrollMin)
+			{
+				perEnrollMin = Math.abs((Double.parseDouble(universityList[i].getPercentEnrolled())));
+			}
+			if(Math.abs((Double.parseDouble(universityList[i].getPercentEnrolled())))>perEnrollMax)
+			{
+				perEnrollMax = Math.abs((Double.parseDouble(universityList[i].getPercentEnrolled())));
+			}
+
+			//testing distance based on academicSclae
+			if(Math.abs((Double.parseDouble(universityList[i].getAcademicScale())))<academicMin)
+			{
+				academicMin = Math.abs((Double.parseDouble(universityList[i].getAcademicScale())));
+			}
+			if(Math.abs((Double.parseDouble(universityList[i].getAcademicScale())))>academicMax)
+			{
+				academicMax = Math.abs((Double.parseDouble(universityList[i].getAcademicScale())));
+			}
+
+			//testing distance based on socialScale
+			if(Math.abs((Double.parseDouble(universityList[i].getSocialScale())))<socialMin)
+			{
+				socialMin = Math.abs((Double.parseDouble(universityList[i].getSocialScale())));
+			}
+			if(Math.abs((Double.parseDouble(universityList[i].getSocialScale())))>socialMax)
+			{
+				socialMax = Math.abs((Double.parseDouble(universityList[i].getSocialScale())));
+			}
+
+			//tesing distance distance based on qualityoflife
+			if(Math.abs((Double.parseDouble(universityList[i].getQualityOfLife())))<qolMin)
+			{
+				qolMin = Math.abs((Double.parseDouble(universityList[i].getQualityOfLife())));
+			}
+			if(Math.abs((Double.parseDouble(universityList[i].getQualityOfLife())))>qolMax)
+			{
+				qolMax = Math.abs((Double.parseDouble(universityList[i].getQualityOfLife())));
+			}
+		}
+		
+		for(int i = 0; i < this.universityList.length; i++)
+		{
+			Double score = 0.0;
+
+			//testing distance based on enrollment
+			score = score + (Math.abs((Double.parseDouble(universityList[i].getEnrollment()) - numStudents)) / (numStudMax - numStudMin)) ;
+
+			//testing distance based on percent female
+			score = score + (Math.abs((Double.parseDouble(universityList[i].getPercentFemale()) - percentFemale)) / (perFemMax - nperFemMin));
+
+			//testing distance based on SATVerbal
+			score = score + (Math.abs((Double.parseDouble(universityList[i].getSatVerbal()) - SatVerbal)) / (SatVerbalMax - SatVerbalMin));
+
+			//testing distance based on SATMath
+			score = score + (Math.abs((Double.parseDouble(universityList[i].getSatMath()) - SatMath)) / (SatMathMax - SatMathMin));
+
+			//calculating score based on epenses
+			score = score + (Math.abs((Double.parseDouble(universityList[i].getCost()) - expenses)) / (expMax - expMin));
+
+			//testing distance based on FinancialAid
+			score = score + (Math.abs((Double.parseDouble(universityList[i].getPercentFinAid()) - percentFinAid)) / (perFinAidMax - perFinAidMin));
+
+			//testing distance based on numberApplicants
+
+			score = score + (Math.abs((Double.parseDouble(universityList[i].getApplicants()) - numApplicants)) / (numAppMax - numAppMin));
+
+			//testing distance based on percentAdmitted
+			score = score + (Math.abs((Double.parseDouble(universityList[i].getPercentAdmitted()) - percentAdmitted)) / (perAdmitMax - perAdmitMin));
+
+			//testing distance based on percentEnrolled
+			score = score + (Math.abs((Double.parseDouble(universityList[i].getPercentEnrolled()) - percentEnrolled)) / (perEnrollMax - perEnrollMin));
+
+			//testing distance based on academicSclae
+			score = score + (Math.abs((Double.parseDouble(universityList[i].getAcademicScale()) - academicScale)) / (academicMax - academicMin));
+
+			//testing distance based on socialScale
+			score = score + (Math.abs((Double.parseDouble(universityList[i].getSocialScale()) - socialScale)) / (socialMax - socialMin));
+
+			//tesing distance distance based on qualityoflife
+			score = score + (Math.abs((Double.parseDouble(universityList[i].getQualityOfLife()) - qualityOfLifeScale)) / (qolMax - qolMin));
+
+
+			//setting final score of university
+			schoolMatches[i][0] = score;//i};
+			schoolMatches[i][1] = Double.parseDouble(""+i);
+		}
+		
+		
+//		java.util.Arrays.sort(schoolMatches, new java.util.Comparator<double[]>() {
+//			public int compare(double[] a, double[] b) {
+//				return Double.compare(a[0], b[0]);
+//			}
+//		});
+		
+		
+		java.util.Arrays.sort(schoolMatches, new java.util.Comparator<double[]>() {
+			public int compare(double[] a, double[] b) {
+				return Double.compare(a[0], b[0]);
+			}
+		});
+
+
+		for (int i=0; i<5; i++)
+		{
+			int position = (int)schoolMatches[i+1][1];
+			System.out.println(schoolMatches[i+1][0]);
+			returnUniversity.add(universityList[position]);
+		}
+
+		return returnUniversity;
+	}
+	
+	
+	
 	/**
 	 * @param schoolName
 	 * @param state
