@@ -35,9 +35,12 @@ public class DBController
 			 
 			if (userList[n][2].equals(inputString))
 			{
+
 				return true;
-			}
+
 		}
+		
+	}
 		return false;
 	}
 	
@@ -90,6 +93,7 @@ public class DBController
 					if(emphases[i][0].equals(school))
 					{
 						returnEmphases[placer] = emphases[i][1];
+						placer++;
 					}
 				}
 				

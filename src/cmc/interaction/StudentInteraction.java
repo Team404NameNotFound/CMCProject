@@ -244,12 +244,11 @@ public class StudentInteraction extends AccountInteraction{
 	 * Compare saved school with their Sat Math Scores
 	 * @return 
 	 */
-	public String[][] compareSchoolsByScore() {
-		sfCon.compareSchoolsByScore();
+	public ArrayList<String> compareSchoolsByScore() {
 		return sfCon.compareSchoolsByScore();
 	}
 
-	public ArrayList<String> editProfile(String userName, String firstName, String lastName, String password)
+	public ArrayList<String> editProfile(String userName, String firstName, String password, String lastName)
 	{
 		if(firstName == "" || lastName == "" || password == "")
 		{

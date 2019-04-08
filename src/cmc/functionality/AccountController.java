@@ -72,9 +72,12 @@ public class AccountController {
 	 * @return boolean true if school already saved, else false
 	 */
 	public boolean checkIfSchoolSaved(String school) {
-		if (this.account == null || this.account.getUserType().equals("a"))
+		if (this.account == null)
+			throw new NullPointerException();	
+		else if(this.account.getUserType().equals("a"))
 			throw new UnsupportedOperationException("Current account is an admin");
-		else {
+		else 
+		{
 			if (this.dbController.getUniversity2(school) == null) {
 				throw new UnsupportedOperationException("Invalid school name");
 			}
@@ -92,12 +95,23 @@ public class AccountController {
 	 * Toggles the status of the current user
 	 * 
 	 * @return Account account with activation status changed
-	 *//*
-		 * public Account toggleActivationStatus() { if (account == null)
-		 * System.out.println("account is still null //line64 AccountController"); if
-		 * (account.getUserStatus().equals("N")) { account.setUserStatus("Y"); } else {
-		 * account.setUserStatus("N"); } return account; }
-		 */
+	 */
+		 public Account toggleActivationStatus() { 
+			if (account == null)
+				throw new NullPointerException(); 
+			
+			else if(account.getUserStatus().equals("N")) 
+			{
+				account.setUserStatus("Y"); 
+			} 
+			else 
+			{
+				account.setUserStatus("N"); 
+			} 
+			dbController.setAccount(account);
+			return account;
+		}
+		 
 	/**
 	 * Checks if the password matches for the current user
 	 * 
@@ -143,13 +157,21 @@ public class AccountController {
 	 * @param newPassword
 	 *            new password to be put in to account
 	 */
-	public void updatePassword(String newPassword) {
-		if (newPassword.equals(null) || newPassword.equals("")) {
-			throw new IllegalArgumentException("Sorry, new password has to have a password");
-		} else {
-			account.setPassword(newPassword);
-
+	public Account updatePassword(String newPassword) {
+		if (newPassword.equals(null) || newPassword.equals(""))
+		{
+			throw new IllegalArgumentException("Sorry, new password has to have characters");
+		} 
+		else if (newPassword.equals(dbController.getAccount(account.getUsername()).getPassword()))
+		{
+			throw new IllegalArgumentException("Sorry, new password has to be different from existing password");
 		}
+		else 
+		{
+			account.setPassword(newPassword);
+			dbController.setAccount(account);
+		}
+		return account;
 	}
 
 	/**
@@ -215,30 +237,44 @@ public class AccountController {
 	 * @return Account account with information edited
 	 */
 	public Account updateUserInfo(String fName, String lName, String password, String status, String type) {
-		if (!fName.equals("-1")) {
+		if (!fName.equals("") && fName != null){
 			account.setFirstName(fName);
 		}
-		if (!lName.equals("-1")) {
+		if (!lName.equals("") && lName != null) {
 			account.setLastName(lName);
 		}
-		if (!password.equals("-1")) {
+		if (!password.equals("") && password != null) {
 			account.setPassword(password);
 		}
-		if (!type.equals("-1")) {
-			if (type.equals("u")) {
-				account.setUserType("u");
-			} else if (type.equals("a")) {
-				account.setUserType("a");
+		if(!type.equals("-1"))
+		{
+			if (!type.equals("") && type != null) 
+			{
+				if (type.equals("u") || type.equals("U")) {
+					account.setUserType("u");
+				} 
+				else if (type.equals("a") || type.equals("A")) 
+				{
+					account.setUserType("a");
+				}
+				else
+				{
+					throw new UnsupportedOperationException("Account type can only be \" a\" or  \"u\" ");
+				}
 			}
-		}
-		if (!status.equals("-1")) {
-			if (status.equals("Y")) {
-				account.setUserStatus("Y");
-			} else if (status.equals("N")) {
-				account.setUserStatus("N");
+			if (!status.equals("") && status != null) {
+				if (status.equals("Y") || status.equals("y")) {
+					account.setUserType("Y");
+				} else if (type.equals("N") || type.equals("n")) {
+					account.setUserType("N");
+				}else{
+					throw new UnsupportedOperationException("Account status can only be \" N\" or  \" Y\" ");
+				}
 			}
 		}
 		return account;
+		
+		
 	}
 
 	/**
@@ -312,15 +348,26 @@ public class AccountController {
 	 *            list of schools user has saved
 	 * @return
 	 */
-	/*
-	 * public Account createNewAccount(String fName, String lName, String userName,
-	 * String password, String type, ArrayList<UserSavedSchool> savedSchools) { if
-	 * (type.equals("a")) { account = new Admin(fName, lName, userName, password,
-	 * type, "Y"); return account; } else if (type.equals("u")) { account = new
-	 * Student(fName, lName, userName, password, type, "Y", savedSchools); return
-	 * account; } else { throw new
-	 * IllegalArgumentException("Sorry you need to specify the type of user."); } }
-	 */
+	
+	public Account createNewAccount(String fName, String lName, String userName,
+	String password, String type, ArrayList<UserSavedSchool> savedSchools) 
+	{ 
+		if(type.equals("a"))
+		{ 
+			account = new Admin(fName, lName, userName, password,type, "Y"); 
+			return account;
+		}
+		else if (type.equals("u")) 
+		{
+			account = new Student(fName, lName, userName, password, type, "Y", savedSchools);
+			return account; 
+		} 
+		else 
+		{ 
+			throw new IllegalArgumentException("Sorry you need to specify the type of user.");
+		}
+	}
+	 
 
 	// comparing SAT math for now
 	/**
@@ -342,9 +389,19 @@ public class AccountController {
 		ArrayList<String> returnList = new ArrayList<>();
 
 		for (int i = 0; i < savedSchools.size(); i++) {
-			scores[i][0] = Double.parseDouble(savedSchools.get(i).getSatMath());
-			scores[i][1] = Double.parseDouble("" + i);
+			if(0<= Double.parseDouble(savedSchools.get(i).getSatMath()))
+			{
+				scores[i][0] = Double.parseDouble(savedSchools.get(i).getSatMath());
+				scores[i][1] = Double.parseDouble("" + i);
+			}
+			if( -1 > Double.parseDouble(savedSchools.get(i).getSatMath()))
+			{
+				throw new UnsupportedOperationException("Score cannot be less than zero");
+			}
 		}
+		
+		if(scores.length == 0)
+			throw new UnsupportedOperationException("No schools to compare");
 
 		java.util.Arrays.sort(scores, new java.util.Comparator<double[]>() {
 			public int compare(double[] a, double[] b) {

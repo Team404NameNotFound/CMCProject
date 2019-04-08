@@ -49,9 +49,10 @@ public class StudentTest {
 	}
 
 	@Test
-	public void testIsSchoolSaved() {
+	public void testIsSchoolSavedReturnsTrue() {
 		Assert.assertTrue(this.testStudent.isSchoolSaved("TestSchool"));
 	}
+	
 	
 	@Test
 	public void testIsSchoolSavedReturnsFalse() {
@@ -60,11 +61,8 @@ public class StudentTest {
 
 	@Test
 	public void testRemoveSchool() {
-		
-		ArrayList<UserSavedSchool> expected = new ArrayList<UserSavedSchool>();
 		this.testStudent.removeSchool("TestSchool");
-		ArrayList<UserSavedSchool> result = this.testStudent.getSavedSchools();
-		assertEquals(result,expected);
+		assertTrue(this.testStudent.getSavedSchools().size() == 0);
 	}
 	
 	@Test (expected = IllegalArgumentException.class)
@@ -93,5 +91,4 @@ public class StudentTest {
 		this.testStudent.saveSchool(newUniversity, "Current Date");
 	}
 	
-
 }

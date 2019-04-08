@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import cmc.entity.Account;
 import cmc.entity.University;
+import dblibrary.project.csci230.UniversityDBLibrary;
 
 public class DBControllerTest {
 
@@ -18,6 +19,7 @@ public class DBControllerTest {
 	private University testuni2;
 	private Account testacc;
 	private Account testacc2;
+	private UniversityDBLibrary dbLibrary;
 
 	
 	@Before
@@ -27,6 +29,7 @@ public class DBControllerTest {
 		testuni2 = new University("testuni", "edit", "", "", "", "", "", "", "", "", "", "", "", "", "", "", emphases);
 		testacc = new Account("first", "last", "testacc", "password", "u", "Y");
 		testacc = new Account("first", "editedlast", "testacc", "password", "u", "Y");
+		dbLibrary = new UniversityDBLibrary("error404", "csci230");
 	}
 
 	@Test
@@ -52,10 +55,11 @@ public class DBControllerTest {
 
 	@Test
 	public void testAddUniversity() {
+		int expResult = dbLibrary.university_getUniversities().length+1;
 		dbcon.addUniversity(testuni);
-		boolean result = dbcon.findUniversity("testuni");
-		boolean expResult = true;
-		assertEquals(result, expResult);	
+		int result = dbLibrary.university_getUniversities().length;
+		dbcon.removeUniversity("testuni");
+		assertEquals(result, expResult);		
 		}
 	
 	@Test
@@ -74,7 +78,6 @@ public class DBControllerTest {
 
 	@Test
 	public void testSetUniversity() {
-		dbcon.setUniversity(testuni2);
 		University result = dbcon.getUniversity("testuni");
 		University expResult = testuni2;
 		assertEquals(result, expResult);	}
@@ -89,8 +92,8 @@ public class DBControllerTest {
 	@Test
 	public void testAddUser() {
 		dbcon.addUser(testacc);
-		Account result = dbcon.getAccount("testacc");
-		Account expResult = testacc;
+		Boolean result = dbcon.checkUser("testacc");
+		Boolean expResult = true;
 		assertEquals(result, expResult);
 	}
 
@@ -145,7 +148,11 @@ public class DBControllerTest {
 
 	@Test
 	public void testAddEmphasis() {
-		fail("Not yet implemented");
+		int expResult = dbLibrary.university_getEmphases().length+1;
+		dbcon.addEmphasis("testuni","testEmphasis");
+		int result = dbLibrary.university_getEmphases().length;
+		dbLibrary.university_removeUniversityEmphasis("testuni","testEmphasis");
+		assertEquals(result, expResult);	
 	}
 
 	@Test
