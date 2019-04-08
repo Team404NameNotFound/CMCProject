@@ -3,6 +3,8 @@ package cmc.functionality;
 import static org.junit.Assert.*;
 import cmc.entity.*;
 import java.util.ArrayList;
+
+import org.junit.After;
 import org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,17 +19,21 @@ public class StudentFunctionalityControllerTest {
 		this.studentConTest.login("ajheroux@csbsju.edu", "38dgf");
 		this.studentConTest.saveSchool("YALE");
 	}
-
+	
+	@After
+	public void cleanUp() {
+		this.studentConTest.removeSavedSchool("YALE");
+		this.studentConTest.logout();
+	}
 
 	@Test
 	public void testRankUniversity() {
-		this.studentConTest.rankUniversity("UniName<>");
-		
+		this.studentConTest.rankUniversity("UniName<>");	
 	}
 	
 	@Test (expected = IllegalArgumentException.class)
 	public void testRankUniversityUniversityDoesNotExsist() {
-		this.studentConTest.rankUniversity("Not a University");
+		this.studentConTest.rankUniversity("Lala Land");
 	}
 
 	@Test
@@ -40,9 +46,6 @@ public class StudentFunctionalityControllerTest {
 		DBController DBCon = new DBController();
 		ArrayList<String> schoolDetials = this.studentConTest.viewSchoolDetails("YALE");
 		University school = DBCon.getUniversity("YALE");
-		
-		System.out.println(school.getLocation());
-		
 		ArrayList<String> expected = new ArrayList<String>();
 		expected.add(school.getName());
 		expected.add(school.getState()); 
@@ -60,7 +63,6 @@ public class StudentFunctionalityControllerTest {
 		expected.add(school.getAcademicScale());
 		expected.add(school.getSocialScale());
 		expected.add(school.getQualityOfLife());
-		
 		assertEquals(schoolDetials, expected);
 	}
 	
@@ -71,11 +73,16 @@ public class StudentFunctionalityControllerTest {
 
 	@Test
 	public void testSaveSchool() {
-		this.studentConTest.saveSchool("YALE");
+		boolean found = false;
+		this.studentConTest.saveSchool("BROWN");
 		ArrayList<UserSavedSchool> savedSchools = this.studentConTest.viewSavedSchools();
-		University school = new DBController().getUniversity("YALE");
-		UserSavedSchool saveSchool = new UserSavedSchool(school, null);
-		assertTrue(savedSchools.contains(saveSchool));
+		for (int i = 0; i < savedSchools.size(); i++) {
+			if (savedSchools.get(i).getName().equals("BROWN")) {
+				found = true;
+			}
+		}
+		this.studentConTest.removeSavedSchool("BROWN");
+		assertTrue(found);
 	}
 
 	@Test (expected = IllegalArgumentException.class)
@@ -102,7 +109,7 @@ public class StudentFunctionalityControllerTest {
 	@Test
 	public void testRemoveSavedSchool() {
 		boolean found = false;
-		//this.studentConTest.removeSavedSchool("YALE");
+		this.studentConTest.removeSavedSchool("YALE");
 		ArrayList<UserSavedSchool> savedSchools = this.studentConTest.viewSavedSchools();
 		for (int i = 0; i < savedSchools.size(); i++) {
 			if (savedSchools.get(i).getName().equals("YALE"));{
@@ -110,6 +117,7 @@ public class StudentFunctionalityControllerTest {
 				System.out.println("It's True");
 			}
 		}
+		System.out.println(found + " " + found);
 		assertFalse(found);
 	}
 	
@@ -153,9 +161,10 @@ public class StudentFunctionalityControllerTest {
 
 	@Test
 	public void testViewUserSavedStatistics() {
-		this.studentConTest.saveSchool("YALE");
 		String[] saveStatistics = this.studentConTest.viewUserSavedStatistics("YALE");
-		assertTrue(saveStatistics[0] == "YALE" && saveStatistics[1] == "1");
+		System.out.println(saveStatistics[0]);
+		System.out.println(saveStatistics[1]);
+		assertTrue(saveStatistics[0].equals("YALE") && saveStatistics[1].equals("2"));
 	}
 	
 	@Test (expected = IllegalArgumentException.class)
