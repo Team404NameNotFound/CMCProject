@@ -246,22 +246,30 @@ public class AccountController {
 		if (!password.equals("") && password != null) {
 			account.setPassword(password);
 		}
-		if (!type.equals("") && type != null) {
-			if (type.equals("u") || type.equals("U")) {
-				account.setUserType("u");
-			} else if (type.equals("a") || type.equals("A")) {
-				account.setUserType("a");
-			}else{
-				throw new UnsupportedOperationException("Account type can only be \" a\" or  \"u\" ");
+		if(!type.equals("-1"))
+		{
+			if (!type.equals("") && type != null) 
+			{
+				if (type.equals("u") || type.equals("U")) {
+					account.setUserType("u");
+				} 
+				else if (type.equals("a") || type.equals("A")) 
+				{
+					account.setUserType("a");
+				}
+				else
+				{
+					throw new UnsupportedOperationException("Account type can only be \" a\" or  \"u\" ");
+				}
 			}
-		}
-		if (!status.equals("") && status != null) {
-			if (status.equals("Y") || status.equals("y")) {
-				account.setUserType("Y");
-			} else if (type.equals("N") || type.equals("n")) {
-				account.setUserType("N");
-			}else{
-				throw new UnsupportedOperationException("Account status can only be \" N\" or  \" Y\" ");
+			if (!status.equals("") && status != null) {
+				if (status.equals("Y") || status.equals("y")) {
+					account.setUserType("Y");
+				} else if (type.equals("N") || type.equals("n")) {
+					account.setUserType("N");
+				}else{
+					throw new UnsupportedOperationException("Account status can only be \" N\" or  \" Y\" ");
+				}
 			}
 		}
 		return account;

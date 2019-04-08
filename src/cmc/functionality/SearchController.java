@@ -49,16 +49,6 @@ public class SearchController {
 	}
 
 	/**
-	 * Do the quiz search
-	 * @return closeSchools
-	 */
-//	public ArrayList<University> doQuizSearch()
-//	{
-//		ArrayList<University> closeSchools = new  ArrayList<University>();
-//		return closeSchools;
-//	}
-
-	/**
 	 * Searching a school use some fields
 	 * @param schoolName
 	 * @param state

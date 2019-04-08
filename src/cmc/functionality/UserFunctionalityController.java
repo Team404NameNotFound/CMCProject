@@ -53,7 +53,6 @@ public class UserFunctionalityController {
 					AccountController userAcc = new AccountController(this.DBCon.getAccount(userName));
 					if (userAcc.checkPassword(password)) {
 						account = new AccountController(this.DBCon.getAccount(userName));
-						System.out.println("I am not null");
 						this.loggedIn = true;
 						return true;
 					}

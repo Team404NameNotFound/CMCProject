@@ -20,11 +20,6 @@ public class SearchControllerTest {
 	}
 
 	@Test
-	public void testSearchController() {
-		fail("Not yet implemented");
-	}
-
-	@Test
 	public void testGetQuizQuestions() {
 		String expResult = "How would you describe the location of your ideal college?" + 
 				"Which characteristics are most important to you when looking for a college" + 
@@ -40,22 +35,12 @@ public class SearchControllerTest {
 	}
 
 	@Test
-	public void testDoQuizSearch() {
-		fail("Not yet implemented");
-	}
-
-	@Test
 	public void testFieldSearch() {
 		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testRankUniversity() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSearch() {
 		fail("Not yet implemented");
 	}
 

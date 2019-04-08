@@ -150,7 +150,7 @@ public class StudentFunctionalityController extends UserFunctionalityController{
 	 */
 	public ArrayList<String> viewSavedSchoolDetails(String school) {
 		this.setAccount(account);
-		Boolean schoolSaved = this.account.checkIfSchoolSaved(school);
+		Boolean schoolSaved = super.account.checkIfSchoolSaved(school);
 		ArrayList<String> message;
 		if(schoolSaved)
 		{
