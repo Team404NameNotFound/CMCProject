@@ -41,7 +41,17 @@ public class SearchControllerTest {
 
 	@Test
 	public void testRankUniversity() {
-		fail("Not yet implemented");
+		ArrayList<University> result = searchCon.rankUniversity(dbCon.getUniversity("BARUCH"));
+		ArrayList<University> expResults = new ArrayList();
+		expResults.add(dbCon.getUniversity("ST JOHN'S UNIVERSITY"));
+		expResults.add(dbCon.getUniversity("NEWYORK IT"));
+		expResults.add(dbCon.getUniversity("FORDHAM"));
+		expResults.add(dbCon.getUniversity("HOFSTRA"));
+		expResults.add(dbCon.getUniversity("UNIVERSITY OF GEORGIA"));
+		for(int i=0; i<result.size(); i++) {
+			System.out.println(result.get(i).getName());
+		}
+		assertEquals("Additional recommended schools are "+result, expResults, result);
 	}
 
 }

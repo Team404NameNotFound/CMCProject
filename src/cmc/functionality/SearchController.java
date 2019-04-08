@@ -92,22 +92,8 @@ public class SearchController {
 	{
 		ArrayList<University> returnSchools = new ArrayList<University>();
 		for(int i = 0; i < this.universityList.length; i++)
-		{
-
-
-//			ArrayList<String> emphList = new ArrayList<String>();
-//			for (int k = 0; k<universityList[i].getEmphases().length; k++)
-//			{
-//				emphList.add(universityList[i].getEmphases()[k]);
-//			}
-//			for (int j=0; j < emphasescount; j++)
-//			{
-//				if(emphList.indexOf(emphases[j])==-1)
-//				{
-//					continu = false;
-//				}
-//			}
-			int emphMatchCount = 0;
+		{	
+			Boolean emphMatch =false;
 			for (int j = 0; j < emphases.length;j++)
 			{
 				String emph = emphases[j];
@@ -116,12 +102,12 @@ public class SearchController {
 				{
 					if (emph.equals(testList[k]))
 					{
-						emphMatchCount++;
+						emphMatch = true;
 					}
 				}
 			}
 			 
-			if (emphMatchCount == emphases.length)
+			if (emphMatch)
 			{
 
 				if((Integer.parseInt(this.universityList[i].getEnrollment()) > numStudentsMin && Integer.parseInt(this.universityList[i].getEnrollment()) < numStudentsMax)
@@ -292,7 +278,7 @@ public class SearchController {
 		});
 
 
-		for (int i =0; i<5; i++)
+		for (int i=0; i<5; i++)
 		{
 			int position = (int)schoolMatches[i+1][1];
 			returnUniversity.add(universityList[position]);
