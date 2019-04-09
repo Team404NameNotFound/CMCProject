@@ -107,38 +107,39 @@ public class SearchController {
 				}
 			}
 			 
-			if (emphMatch)
+			if (emphMatch || emphases.length == 0)
 			{
 
 				if((Integer.parseInt(this.universityList[i].getEnrollment()) > numStudentsMin && Integer.parseInt(this.universityList[i].getEnrollment()) < numStudentsMax)
 						|| (Integer.parseInt(this.universityList[i].getEnrollment()) > numStudentsMin && numStudentsMax == -1)
-						|| (Integer.parseInt(this.universityList[i].getEnrollment()) < numStudentsMax && numStudentsMax == -1)
+						|| (Integer.parseInt(this.universityList[i].getEnrollment()) < numStudentsMax && numStudentsMax == -1
+						|| numStudentsMax == -1 && numStudentsMax== -1)
 						)
 				{
 					if((Float.parseFloat(this.universityList[i].getPercentFemale()) > percentFemaleMin && (Float.parseFloat(this.universityList[i].getPercentFemale()) < percentFemaleMax)
 							|| (Float.parseFloat(this.universityList[i].getEnrollment()) > percentFemaleMin && percentFemaleMax == -1)
 							|| (Float.parseFloat(this.universityList[i].getEnrollment()) < percentFemaleMax && percentFemaleMin == -1)
-							))
+							|| percentFemaleMin == -1 && percentFemaleMax == -1))
 					{
 						if((Integer.parseInt(this.universityList[i].getSatVerbal()) > SATVerbalMin && Integer.parseInt(this.universityList[i].getSatVerbal()) < SATVerbalMax)
 								|| (Integer.parseInt(this.universityList[i].getSatVerbal()) > SATVerbalMin && SATVerbalMin == -1)
 								|| (Integer.parseInt(this.universityList[i].getSatVerbal()) < SATVerbalMax && SATVerbalMax == -1)
-								)
+								|| SATVerbalMin == -1 && SATVerbalMax == -1)
 						{
 							if((Integer.parseInt(this.universityList[i].getSatMath()) > SATMathMin && Integer.parseInt(this.universityList[i].getSatMath()) < SATMathMax)
 									|| (Integer.parseInt(this.universityList[i].getSatMath()) > SATMathMin && SATMathMin == -1)
 									|| (Integer.parseInt(this.universityList[i].getSatVerbal()) < SATMathMax && SATMathMax == -1)
-									)
+									|| SATMathMin == -1 && SATMathMax == -1)
 							{
 								if((Integer.parseInt(this.universityList[i].getCost()) > expensesMin && Integer.parseInt(this.universityList[i].getCost()) < expensesMax)
 										|| (Integer.parseInt(this.universityList[i].getCost()) > expensesMin && expensesMax == -1)
 										|| (Integer.parseInt(this.universityList[i].getCost()) < expensesMax && expensesMin == -1)
-										)
+										|| expensesMin == -1 && expensesMax == -1)
 								{
 									if((Float.parseFloat(this.universityList[i].getPercentFinAid()) > PercentFinancialAidMin && (Float.parseFloat(this.universityList[i].getPercentFinAid()) < percenetFinancialAidMax)
 											|| (Float.parseFloat(this.universityList[i].getPercentFinAid()) > PercentFinancialAidMin && percenetFinancialAidMax == -1)
 											|| (Float.parseFloat(this.universityList[i].getPercentFinAid()) < percenetFinancialAidMax && PercentFinancialAidMin == -1)
-											))
+											|| percenetFinancialAidMax == -1 && PercentFinancialAidMin == -1))
 									{
 										if((Integer.parseInt(this.universityList[i].getApplicants()) > numberApplicantsMin && Integer.parseInt(this.universityList[i].getApplicants()) < numberApplicatnsMax)
 												|| (Integer.parseInt(this.universityList[i].getApplicants()) > numberApplicantsMin && numberApplicatnsMax == -1)
@@ -149,27 +150,27 @@ public class SearchController {
 											if((Float.parseFloat(this.universityList[i].getPercentAdmitted()) > percentAddmittedMin && (Float.parseFloat(this.universityList[i].getPercentFinAid()) < percentAddmittedMin)
 													|| (Float.parseFloat(this.universityList[i].getPercentAdmitted()) > percentAddmittedMin && percentAdmittedMax == -1)
 													|| (Float.parseFloat(this.universityList[i].getPercentAdmitted()) < percentAdmittedMax && percentAddmittedMin == -1)
-													))
+													|| percentAddmittedMin == -1 && percentAdmittedMax == -1))
 											{
 												if((Float.parseFloat(this.universityList[i].getPercentEnrolled()) > percentEnrolledMin && (Float.parseFloat(this.universityList[i].getPercentEnrolled()) < percentEnrolledMin)
 														|| (Float.parseFloat(this.universityList[i].getPercentEnrolled()) > percentEnrolledMin && percentEnrolledMax == -1)
 														|| (Float.parseFloat(this.universityList[i].getPercentEnrolled()) < percentEnrolledMax && percentEnrolledMin == -1)
-														))
+														|| percentEnrolledMin == -1 && percentEnrolledMax == -1))
 												{
 													if((Integer.parseInt(this.universityList[i].getAcademicScale()) > academicScaleMin && Integer.parseInt(this.universityList[i].getAcademicScale()) < academicScaleMax)
 															|| (Integer.parseInt(this.universityList[i].getAcademicScale()) > academicScaleMin && academicScaleMax == -1)
 															|| (Integer.parseInt(this.universityList[i].getAcademicScale()) < academicScaleMax && academicScaleMin == -1)
-															)
+															|| academicScaleMin == -1 && academicScaleMax == -1)
 													{
 														if((Integer.parseInt(this.universityList[i].getSocialScale()) > socialScalemin && Integer.parseInt(this.universityList[i].getSocialScale()) < socialScaleMax)
 																|| (Integer.parseInt(this.universityList[i].getSocialScale()) > socialScalemin && academicScaleMax == -1)
 																|| (Integer.parseInt(this.universityList[i].getSocialScale()) < socialScaleMax && socialScalemin == -1)
-																)
+																|| socialScalemin == -1 && socialScaleMax == -1)
 														{
 															if((Integer.parseInt(this.universityList[i].getQualityOfLife()) > qualityOfLifeMin && Integer.parseInt(this.universityList[i].getQualityOfLife()) < qualityOfLifeMax)
 																	|| (Integer.parseInt(this.universityList[i].getQualityOfLife()) > qualityOfLifeMin && qualityOfLifeMax == -1)
 																	|| (Integer.parseInt(this.universityList[i].getQualityOfLife()) < qualityOfLifeMax && qualityOfLifeMin == -1)
-																	)
+																	|| qualityOfLifeMin == -1 && qualityOfLifeMax == -1)
 															{
 																if(state.toLowerCase().trim().equals(this.universityList[i].getState().toLowerCase().trim()) || state.equals("-1"))
 																{
