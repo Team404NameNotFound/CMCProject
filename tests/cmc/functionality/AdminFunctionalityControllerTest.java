@@ -118,7 +118,7 @@ public class AdminFunctionalityControllerTest {
 	}
 
 	/**
-	 * tests to make sure a user has to havea a unique username 
+	 * tests to make sure a user has to havea  a unique username 
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testAddUserFailsInDatabase() {

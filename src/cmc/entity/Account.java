@@ -143,5 +143,9 @@ public class Account {
 	public void setUserStatus(String userStatus) {
 		this.userStatus = userStatus;
 	}
+	
+	public String toString() {
+		return username + " " + firstName + " " + lastName + " " + password + " " + userType + " "+ userStatus;
+	}
 
 }

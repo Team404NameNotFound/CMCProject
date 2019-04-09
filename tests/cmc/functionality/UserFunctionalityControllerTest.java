@@ -33,9 +33,39 @@ public class UserFunctionalityControllerTest {
 //		fail("Not yet implemented");
 //	}
 
+	/**
+	 * tests to make sure login fails when invalid username is used
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void testLoginFailsUserDNE() {
+		ufc.login("userDNE","asdf");
+	}
+	
+	/**
+	 * tests to make sure the user status is active
+	 */
+	@Test(expected = NullPointerException.class)
+	public void testLoginFailsInvalidCredentials()
+	{
+		ufc.login("cuser", "user");
+	}
+	
+	/**
+	 * tests to check that login fails when password does not match
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void loginFailsPasswordMatch()
+	{
+		ufc.login("juser","asdf");
+	}
+	
+	/**
+	 * tests to make sure login works
+	 */
 	@Test
-	public void testLogin() {
-		fail("Not yet implemented");
+	public void loginTest()
+	{
+		assertTrue(ufc.login("juser", "user"));
 	}
 	
 	/**
@@ -110,9 +140,18 @@ public class UserFunctionalityControllerTest {
 	/**
 	 * tests to make sure the forgot password feature works
 	 */
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void testForgotPassword() {
-		fail("Not yet implemented");
+		ufc.forgotPassword("userDNE");
+	}
+	
+	@Test
+	public void forgotPasswordTest()
+	{
+		DBController db = new DBController();
+		String  passOld = db.getAccount("ajheroux@csbsju.edu").getPassword();
+		ufc.forgotPassword("ajheroux@csbsju.edu");
+		assertFalse(passOld.equals(db.getAccount("ajheroux@csbsju.edu").getPassword()));
 	}
 
 	/**

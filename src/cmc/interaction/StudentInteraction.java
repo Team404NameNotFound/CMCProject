@@ -245,11 +245,10 @@ public class StudentInteraction extends AccountInteraction{
 	 * @return 
 	 */
 	public ArrayList<String> compareSchoolsByScore() {
-		sfCon.compareSchoolsByScore();
 		return sfCon.compareSchoolsByScore();
 	}
 
-	public ArrayList<String> editProfile(String userName, String firstName, String lastName, String password)
+	public ArrayList<String> editProfile(String userName, String firstName, String password, String lastName)
 	{
 		if(firstName == "" || lastName == "" || password == "")
 		{

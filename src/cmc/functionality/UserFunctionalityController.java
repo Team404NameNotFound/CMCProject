@@ -57,9 +57,13 @@ public class UserFunctionalityController {
 						return true;
 					}
 					else {
-						System.out.println("Wrong Password");
-						return false;
+						throw new IllegalArgumentException("Invalid Password");
+						
 					}
+				}
+				else
+				{
+					throw new NullPointerException("Sorry, User is not active");
 				}
 			}
 			else {
