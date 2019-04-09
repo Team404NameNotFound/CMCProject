@@ -395,15 +395,9 @@ public class AccountController {
 		ArrayList<String> returnList = new ArrayList<>();
 
 		for (int i = 0; i < savedSchools.size(); i++) {
-				if(0<= Double.parseDouble(savedSchools.get(i).getSatMath()))
-				{
-					scores[i][0] = Double.parseDouble(savedSchools.get(i).getSatMath());
-					scores[i][1] = Double.parseDouble("" + i);
-				}
+			scores[i][0] = Double.parseDouble(savedSchools.get(i).getSatMath());
+			scores[i][1] = Double.parseDouble("" + i);
 		}
-		
-		if(scores.length == 0)
-			throw new UnsupportedOperationException("No schools to compare");
 
 		java.util.Arrays.sort(scores, new java.util.Comparator<double[]>() {
 			public int compare(double[] a, double[] b) {
@@ -412,8 +406,11 @@ public class AccountController {
 		});
 
 		for (int j = 0; j < scores.length; j++) {
+			if (scores[j][0]!=-1.0) {
 				returnList.add(savedSchools.get(j).getName() + " " + scores[j][0]);
+			}
 		}
+
 		return returnList;
 	}
 	
