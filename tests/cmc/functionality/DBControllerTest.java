@@ -25,18 +25,11 @@ public class DBControllerTest {
 	@Before
 	public void setUp() throws Exception {
 		dbcon = new DBController();
-		testuni = new University("testuni", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", emphases);
-		testuni2 = new University("testuni", "edit", "", "", "", "", "", "", "", "", "", "", "", "", "", "", emphases);
+		testuni = new University("testuni", "MN", "URBAN", "PRIVATE", "200", "50", "10", "11", "22", "33", "2222", "30", "25", "1", "2", "3", emphases);
+		testuni2 = new University("testuni", "EDIT", "URBAN", "PRIVATE", "200", "50", "10", "11", "22", "33", "2222", "30", "25", "1", "2", "3", emphases);
 		testacc = new Account("first", "last", "testacc", "password", "u", "Y");
-		testacc = new Account("first", "editedlast", "testacc", "password", "u", "Y");
+		testacc2 = new Account("first", "editedlast", "testacc", "password", "u", "Y");
 		dbLibrary = new UniversityDBLibrary("error404", "csci230");
-	}
-
-	@Test
-	public void testDBController() {
-		DBController result = new DBController();
-		DBController expResult = dbcon;
-		assertEquals(result, expResult);
 	}
 
 	@Test
@@ -55,6 +48,7 @@ public class DBControllerTest {
 
 	@Test
 	public void testAddUniversity() {
+		dbcon.removeUniversity("testuni");
 		int expResult = dbLibrary.university_getUniversities().length+1;
 		dbcon.addUniversity(testuni);
 		int result = dbLibrary.university_getUniversities().length;
@@ -64,23 +58,20 @@ public class DBControllerTest {
 	
 	@Test
 	public void testGetUniversity() {
+		dbcon.addUniversity(testuni);
+		dbcon.setUniversity(testuni);
 		University result = dbcon.getUniversity("testuni");
-		University expResult = testuni;
-		assertEquals(result, expResult);	
-		}
-
-	@Test
-	public void testGetUniversity2() {
-		University result = dbcon.getUniversity("testuni");
-		University expResult = testuni;
-		assertEquals(result, expResult);	
+		assertEquals(result.getName(), "testuni");	
 		}
 
 	@Test
 	public void testSetUniversity() {
+		dbcon.addUniversity(testuni);
+		dbcon.setUniversity(testuni2);
 		University result = dbcon.getUniversity("testuni");
-		University expResult = testuni2;
-		assertEquals(result, expResult);	}
+		dbcon.setUniversity(testuni2);
+		assertEquals(result.getState(), "EDIT");	
+		}
 	@Test
 	public void testRemoveUniversity() {
 		dbcon.removeUniversity("testuni");
@@ -99,9 +90,9 @@ public class DBControllerTest {
 
 	@Test
 	public void testGetAccount() {
+		dbcon.setAccount(testacc);
 		Account result = dbcon.getAccount("testacc");
-		Account expResult = testacc;
-		assertEquals(result, expResult);
+		assertEquals(result.getUsername(), "testacc");
 		}
 
 	@Test
@@ -109,7 +100,7 @@ public class DBControllerTest {
 		dbcon.setAccount(testacc2);
 		Account result = dbcon.getAccount("testacc");
 		Account expResult = testacc2;
-		assertEquals(result, expResult);
+		assertEquals(result.getLastName(), "editedlast");
 	}
 
 	@Test
@@ -122,29 +113,9 @@ public class DBControllerTest {
 	@Test
 	public void testFindUniversityDoesNotExist() {
 		boolean result = dbcon.findUniversity("NONEXISTINGUNIVERSITY");
-		boolean expResult = true;
+		boolean expResult = false;
 		assertEquals(result, expResult);	
 		}
-
-	@Test
-	public void testGetUniversityList() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetAccountList() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetSchoolList2() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetSchoolList() {
-		fail("Not yet implemented");
-	}
 
 	@Test
 	public void testAddEmphasis() {
@@ -157,17 +128,37 @@ public class DBControllerTest {
 
 	@Test
 	public void testSaveShool() {
-		fail("Not yet implemented");
+		dbcon.removeSavedSchool("testacc", "BROWN");
+		int expResult = dbcon.getUserSavedStatistics("BROWN")+1;
+		dbcon.saveShool("testacc", "BROWN");
+		int result = dbcon.getUserSavedStatistics("BROWN");
+		assertEquals(expResult, result);
 	}
 
 	@Test
 	public void testRemoveSavedSchool() {
-		fail("Not yet implemented");
+		dbcon.removeSavedSchool("testacc", "BROWN");
+		dbcon.saveShool("testacc", "BROWN");
+		int expResult = dbcon.getUserSavedStatistics("BROWN")-1;
+		dbcon.removeSavedSchool("testacc", "BROWN");
+		int result = dbcon.getUserSavedStatistics("BROWN");
+		assertEquals(expResult, result);
 	}
 
 	@Test
-	public void testGetUserSavedStatistics() {
-		fail("Not yet implemented");
+	public void testGetUserSavedStatistics()
+	{
+		String[][] namesWithSavedSchools= this.dbLibrary.user_getUsernamesWithSavedSchools();
+		int count = 0;
+		for(int i = 0 ; i < namesWithSavedSchools.length ; i++) 
+		{
+			if(namesWithSavedSchools[i][1].equals("BROWN"))
+			{
+				count++;
+			}
+		}
+		assertEquals(count, dbcon.getUserSavedStatistics("BROWN"));
 	}
+	
 
 }

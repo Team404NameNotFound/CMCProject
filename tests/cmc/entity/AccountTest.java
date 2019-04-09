@@ -14,12 +14,6 @@ public class AccountTest {
 		testacc = new Account("test", "account", "testacc", "password", "u", "Y");
 	}
 
-	@Test
-	public void testAccount() {
-		Account result = new Account("test", "account", "testacc", "password", "u", "Y");
-		Account expResult = testacc;
-		assertEquals(result, expResult);
-	}
 
 	@Test
 	public void testGetFirstName() {
