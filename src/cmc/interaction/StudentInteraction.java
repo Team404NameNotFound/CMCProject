@@ -208,8 +208,9 @@ public class StudentInteraction extends AccountInteraction{
 	/**
 	 * View how many times that a school is being saved by users
 	 * @param school
+	 * @return 
 	 */
-	public String[] viewUserSavedStatistics(String school) {
+	public String viewUserSavedStatistics(String school) {
 		this.sfCon.viewUserSavedStatistics(school);
 		return this.sfCon.viewUserSavedStatistics(school);
 	}

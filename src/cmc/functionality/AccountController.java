@@ -312,23 +312,29 @@ public class AccountController {
 	public Boolean removeSavedSchool(String school) {
 		ArrayList<UserSavedSchool> savedSchools = this.dbController.getSchoolList2(this.account);
 		University schoolToRemove = dbController.getUniversity2(school);
-
-		if (schoolToRemove == null) {
-			throw new UnsupportedOperationException("Invalid school to remove");
-		}
-
-		if (account == null || account.getUserType().equals("a")) {
-			throw new UnsupportedOperationException("Invalid account to remove a saved school");
-		}
-
-		Boolean removed = false;
-		for (University savedSchool : savedSchools) {
-			if (savedSchool.getName().equals(school)) {
-				removed = true;
-				this.dbController.removeSavedSchool(account.getUsername(), school);
+		if(this.checkIfSchoolSaved(school))
+		{
+			if (schoolToRemove == null) {
+				throw new UnsupportedOperationException("Invalid school to remove");
 			}
+	
+			if (account == null || account.getUserType().equals("a")) {
+				throw new UnsupportedOperationException("Invalid account to remove a saved school");
+			}
+	
+			Boolean removed = false;
+			for (University savedSchool : savedSchools) {
+				if (savedSchool.getName().equals(school)) {
+					removed = true;
+					this.dbController.removeSavedSchool(account.getUsername(), school);
+				}
+			}
+			return removed;
 		}
-		return removed;
+		else
+		{
+			throw new IllegalArgumentException();
+		}
 	}
 
 	/**
@@ -389,18 +395,11 @@ public class AccountController {
 		ArrayList<String> returnList = new ArrayList<>();
 
 		for (int i = 0; i < savedSchools.size(); i++) {
-			if(!(Double.parseDouble((savedSchools.get(i).getSatMath())) == 1))
-			{
 				if(0<= Double.parseDouble(savedSchools.get(i).getSatMath()))
 				{
 					scores[i][0] = Double.parseDouble(savedSchools.get(i).getSatMath());
 					scores[i][1] = Double.parseDouble("" + i);
 				}
-				if( -1 > Double.parseDouble(savedSchools.get(i).getSatMath()))
-				{
-					throw new UnsupportedOperationException("Score cannot be less than zero");
-				}
-			}
 		}
 		
 		if(scores.length == 0)
@@ -413,11 +412,8 @@ public class AccountController {
 		});
 
 		for (int j = 0; j < scores.length; j++) {
-			if (scores[j][0]!=-1.0) {
 				returnList.add(savedSchools.get(j).getName() + " " + scores[j][0]);
-			}
 		}
-
 		return returnList;
 	}
 	

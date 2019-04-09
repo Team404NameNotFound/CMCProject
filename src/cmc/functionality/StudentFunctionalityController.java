@@ -165,7 +165,6 @@ public class StudentFunctionalityController extends UserFunctionalityController{
 		   for(int i=0; i<savedSchools.size(); i++) {
 			   
 			   if(savedSchools.get(i).getName().equals(school)) {
-				   System.out.print("School found");
 				   index = i;
 				   savedDetails.add(savedSchools.get(i).getName());
 				   savedDetails.add(savedSchools.get(i).getState());
@@ -173,11 +172,11 @@ public class StudentFunctionalityController extends UserFunctionalityController{
 				   savedDetails.add(savedSchools.get(i).getControl());
 				   savedDetails.add(savedSchools.get(i).getEnrollment());
 				   savedDetails.add(savedSchools.get(i).getPercentFemale());
-				   savedDetails.add(savedSchools.get(i).getSatMath());
 				   savedDetails.add(savedSchools.get(i).getSatVerbal());
+				   savedDetails.add(savedSchools.get(i).getSatMath());
 				   savedDetails.add(savedSchools.get(i).getCost());
 				   savedDetails.add(savedSchools.get(i).getPercentFinAid());
-				   savedDetails.add(savedSchools.get(i).getEnrollment());
+				   savedDetails.add(savedSchools.get(i).getApplicants());
 				   savedDetails.add(savedSchools.get(i).getPercentAdmitted());
 				   savedDetails.add(savedSchools.get(i).getAcademicScale());
 				   savedDetails.add(savedSchools.get(i).getSocialScale());
@@ -207,7 +206,7 @@ public class StudentFunctionalityController extends UserFunctionalityController{
 	 * View how many times a school being saved by users
 	 * @param school
 	 */
-	public String[] viewUserSavedStatistics(String school){
+	public String viewUserSavedStatistics(String school){
 		if (!this.DBCon.findUniversity(school)) {
 			throw new IllegalArgumentException(school + "does not exist");
 		}
@@ -216,7 +215,7 @@ public class StudentFunctionalityController extends UserFunctionalityController{
 		System.out.println(school + " has been saved for " + savedTimes + " times");
 		stats[0] = school;
 		stats[1] = savedTimes + "";
-		return stats;
+		return stats[0]+" "+stats[1];
 	}
 
 	/**
