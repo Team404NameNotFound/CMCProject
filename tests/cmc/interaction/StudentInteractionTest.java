@@ -2,6 +2,7 @@ package cmc.interaction;
 
 import static org.junit.Assert.*;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -254,13 +255,10 @@ public class StudentInteractionTest {
 	//BAD
 	@Test
 	public void testViewSavedSchoolDetails() {
-		student.login("kmendel001@csbsju.edu", "user");
-		student.saveSchool("BROWN");
-		Date dateAdded = new Date();
-		String time = dateAdded + "";
-		student.viewSavedSchoolDetails("BROWN"); //null pointer
+		student.login("dateAdded@csbsju.edu", "user");
+		String time = "2019-04-08 18:59:42";
+		ArrayList<String> results = student.viewSavedSchoolDetails("BROWN"); //null pointer
 		//should get time stamp
-		ArrayList<String> results = new ArrayList();
 		ArrayList<String> expResult = new ArrayList();
 		expResult.add("BROWN");
 		expResult.add("RHODEISLAND");
@@ -285,15 +283,15 @@ public class StudentInteractionTest {
 		
 		assertEquals("Saved school details are"+ results, expResult, results);
 		
-//		Boolean same = false;
-//		for(int i=0; i<results.size(); i++)
-//		{
-//			if(results.get(i).equals(expResult.get(i)))
-//			{
-//				same = true;
-//			}
-//		}
-//		assertTrue(same);
+		Boolean same = false;
+		for(int i=0; i<results.size(); i++)
+		{
+			if(results.get(i).equals(expResult.get(i)))
+			{
+				same = true;
+			}
+		}
+		assertTrue(same);
 	}
 	
 //	//BAD

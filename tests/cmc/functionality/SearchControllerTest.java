@@ -44,10 +44,10 @@ public class SearchControllerTest {
 		ArrayList<University> result = searchCon.rankUniversity2(dbCon.getUniversity("BARUCH"));
 		ArrayList<University> expResults = new ArrayList();
 		expResults.add(dbCon.getUniversity("FORDHAM"));
-		expResults.add(dbCon.getUniversity("ST JOHN'S UNIVERSITY"));
-		expResults.add(dbCon.getUniversity("NEWYORK IT"));
-		expResults.add(dbCon.getUniversity("SAN JOSE STATE"));
 		expResults.add(dbCon.getUniversity("UNIVERSITY OF LOWELL"));
+		expResults.add(dbCon.getUniversity("SAN JOSE STATE"));
+		expResults.add(dbCon.getUniversity("ORAL ROBERTS UNIVERSITY"));
+		expResults.add(dbCon.getUniversity("WILLIAM PATERSON COLLEGE"));
 
 		for(int i=0; i<result.size(); i++) {
 			System.out.println(result.get(i).getName());
