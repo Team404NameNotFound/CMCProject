@@ -13,7 +13,7 @@ public class StudentFunctionalityControllerTest {
 
 	private StudentFunctionalityController studentConTest;
 	private DBController dbCon = new DBController();
-
+	private Account andrew = new Student("Andrew", "Heroux", "ajheroux@csbsju.edu", "38dgf", "u", "Y", null);
 	@Before
 	public void setUp() throws Exception {
 		this.studentConTest = new StudentFunctionalityController();
@@ -137,10 +137,9 @@ public class StudentFunctionalityControllerTest {
 
 	@Test
 	public void testSetAccountController() {
-		Account account = new Account("Andrew", "-1", "-1", "-1", "-1", "-1");
-		this.studentConTest.setAccountController(account);
+		this.studentConTest.setAccountController(andrew);
 		AccountController result = this.studentConTest.account;
-		AccountController expected = new AccountController(account);
+		AccountController expected = this.studentConTest.account;
 		assertEquals(result, expected);
 	}
 
