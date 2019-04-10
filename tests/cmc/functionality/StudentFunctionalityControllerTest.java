@@ -54,7 +54,7 @@ public class StudentFunctionalityControllerTest {
 
 	@Test
 	public void testRankUniversity() {
-		this.studentConTest.rankUniversity("UniName<>");
+		this.studentConTest.rankUniversity("BROWN");
 	}
 
 	@Test(expected = IllegalArgumentException.class)
