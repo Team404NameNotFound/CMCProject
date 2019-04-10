@@ -112,6 +112,20 @@ public class AccountInteractionTest {
 		ac.editProfile("cz001", "", "las", "pass", "a");
 	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditProfile()
+	{
+		ArrayList<String> userInfo = ac.viewProfile("cz001");
+		ac.editProfile("cz001", "cart", "last", "no", "a");
+		assertTrue(userInfo.get(0).equals("cz001"));
+//		ArrayList<String> userInfo1 = ac.viewProfile("cz001");
+		assertTrue(userInfo.get(1).equals("cart"));
+		assertTrue(userInfo.get(2).equals("last"));
+		assertTrue(userInfo.get(3).equals("no"));
+		assertTrue(userInfo.get(4).equals("a"));
+		
+		ac.editProfile("cz001", "Carrie", "Zhang", "password", "u");
+	}
 	@Test
 	public void testLogout() {
 		ac.login("cz001", "password");

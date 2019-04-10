@@ -54,7 +54,7 @@ public class AccountInteraction {
 	 */
 	public ArrayList<String> viewSchoolDetails(String univeristyName) {
 		ArrayList<String> school = UFCon.viewUniversityDetials(univeristyName);
-		System.out.print(school);
+//		System.out.print(school);
 		return school;
 	}
 
