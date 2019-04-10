@@ -16,7 +16,7 @@ public class StudentFunctionalityControllerTest {
 	@Before
 	public void setUp() throws Exception {
 		this.studentConTest = new StudentFunctionalityController();
-		this.studentConTest.login("ajheroux@csbsju.edu", "38dgf");
+		this.studentConTest.login("testacc", "password");
 		this.studentConTest.saveSchool("YALE");
 	}
 

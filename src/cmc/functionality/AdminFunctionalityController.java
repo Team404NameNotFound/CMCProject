@@ -156,10 +156,10 @@ public class AdminFunctionalityController extends UserFunctionalityController {
 				AccountController acCon = new AccountController();
 				Account account = acCon.createNewAccount(firstname, lastname, username, password, userType,
 						savedSchoolList);
-				if (account != null) {
+
 					DBCon.addUser(account);
 					added = true;
-				}
+				
 			}
 		} else {
 			throw new IllegalArgumentException("sorry, invalid username");
