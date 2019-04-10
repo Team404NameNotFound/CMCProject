@@ -180,7 +180,7 @@ public class StudentFunctionalityControllerTest {
 		DBController DBCon = new DBController();
 		ArrayList<String> schoolDetials = this.studentConTest.viewSavedSchoolDetails("AUGSBURG");
 		University school = DBCon.getUniversity("AUGSBURG");
-		String timeAdded = "2019-03-23 16:06:20";
+		String timeAdded = "2019-03-23 16:06:20.0";
 
 		ArrayList<String> expected = new ArrayList<String>();
 		expected.add(school.getName());
@@ -198,11 +198,10 @@ public class StudentFunctionalityControllerTest {
 		expected.add(school.getAcademicScale());
 		expected.add(school.getSocialScale());
 		expected.add(school.getQualityOfLife());
-		for(int j=0; j<school.getEmphases().length; j++)
-		{
-			System.out.print(school.getEmphases()[j]);
-			expected.add(school.getEmphases()[j]);
-		}
+		expected.add("BUSINESS-ADMINISTRATION");
+		expected.add("EDUCATION");
+		expected.add("PERFORMING-ARTS");
+		
 		expected.add(timeAdded);
 		
 		for(int i=0; i<schoolDetials.size(); i++)
