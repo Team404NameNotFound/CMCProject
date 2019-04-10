@@ -306,9 +306,9 @@ public class StudentInteractionTest {
 		expResults.add(dbCon.getUniversity("UNIVERSITY OF LOWELL"));
 
 		for(int i=0; i<result.size(); i++) {
-			System.out.println(result.get(i).getName());
+			assertEquals("Additional recommended schools are "+result, expResults.get(i).getName(), result.get(i).getName());
 		}
-		assertEquals("Additional recommended schools are "+result, expResults, result);
+		
 	}
 
 	//good
@@ -327,14 +327,14 @@ public class StudentInteractionTest {
 		expResult.add("YALE");
 		
 		
-//		Boolean same = true;
-//		for(int i=0; i<schools.size(); i++)
-//		{
-//			System.out.println(schools.get(i).getName() + " " +expSchools.get(i));
-//			if(!schools.get(i).getName().equals(expSchools.get(i)))
-//				same = false;
-//		}
-//		assertTrue(same);
+		Boolean same = true;
+		for(int i=0; i<result.size(); i++)
+		{
+			System.out.println(result.get(i).getName() + " " +expResult.get(i));
+			if(!result.get(i).getName().equals(expResult.get(i)))
+				same = false;
+		}
+		assertTrue(same);
 	}
 	
 	//good

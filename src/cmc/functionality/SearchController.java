@@ -100,7 +100,16 @@ public class SearchController {
 					}
 				}
 			}
-
+			if(numStudentsMin<-1|| numStudentsMax <-1|| percentFemaleMin<-1 || percentFemaleMin>100 || percentFemaleMax<-1|| percentFemaleMax>100
+			|| SATVerbalMin<-1 || SATVerbalMin>800 || SATVerbalMax <-1 || SATVerbalMax >800|| SATMathMin < -1 || SATMathMin > 100 ||
+			SATMathMax< -1 || SATMathMax> 800 || expensesMin<-1 ||expensesMax<-1 || PercentFinancialAidMin <-1||
+			percenetFinancialAidMax <-1 || numberApplicantsMin <-1 || numberApplicatnsMax <-1 || percentAddmittedMin<-1 ||
+			percentAdmittedMax <-1 || percentEnrolledMin <-1 || percentEnrolledMax <-1|| academicScaleMin <-1 ||
+			academicScaleMax <-1 || socialScalemin <-1 || socialScaleMax<-1 || qualityOfLifeMin <-1 || qualityOfLifeMax <-1)
+			{
+				throw new IllegalArgumentException("Sorry, invalid parameters");
+			}
+			
 			if (emphMatch || emphases.length == 0) {
 
 				if ((Integer.parseInt(this.universityList[i].getEnrollment()) > numStudentsMin

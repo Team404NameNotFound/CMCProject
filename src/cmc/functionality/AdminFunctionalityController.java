@@ -114,7 +114,29 @@ public class AdminFunctionalityController extends UserFunctionalityController {
 			String percentFemale, String satVerbal, String satMath, String cost, String percentFinAid,
 			String percentEnrolled, String applicants, String percentAdmitted, String academicScale, String socialScale,
 			String qualityOfLife, String[] emphases) {
-		University uniToChange = this.DBCon.getUniversity(name);
+
+		/*
+		 * if (this.loggedIn == false) { throw new
+		 * IllegalArgumentException("This admin has not logged in"); }
+		 */
+
+		University uniToChange = this.DBCon.getUniversity2(name);
+		if (uniToChange == null) {
+			throw new IllegalArgumentException(name + " does not exist in the database");
+		}
+
+		String[] currentEmpases = uniToChange.getEmphases();
+
+		if (currentEmpases.length > 0) {
+			for (String oldEmphase : currentEmpases) {
+				this.DBCon.removeEmphasis(uniToChange.getName(), oldEmphase);
+			}
+		}
+		
+		for (String newEmphase : emphases) {
+			this.DBCon.addEmphasis(uniToChange.getName(), newEmphase);
+		}
+
 		universityCon = new UniversityController(uniToChange);
 		this.DBCon.setUniversity(universityCon.updateUniversityInfo(name, state, location, control, enrollment,
 				percentFemale, satVerbal, satMath, cost, percentFinAid, percentEnrolled, applicants, percentAdmitted,
@@ -150,7 +172,7 @@ public class AdminFunctionalityController extends UserFunctionalityController {
 			if (firstname.equals("") || lastname.equals("") || username.equals("") || password.equals("")
 					|| userType.equals("")) {
 				throw new IllegalArgumentException("Sorry, you need to specify all fields.");
-			} else if (!(userType.equalsIgnoreCase("u") || !userType.equalsIgnoreCase("a"))) {
+			} else if (!userType.equalsIgnoreCase("u") && !userType.equalsIgnoreCase("a")) {
 				throw new IllegalArgumentException("Sorry, you need to specify a valid user type.");
 			} else {
 				AccountController acCon = new AccountController();
