@@ -12,23 +12,22 @@ import cmc.entity.University;
 public class SearchControllerTest {
 	private DBController dbCon = new DBController();
 	private ArrayList<University> allSchools = dbCon.getUniversityList();
-	private SearchController searchCon= new SearchController(allSchools);
-	
+	private SearchController searchCon = new SearchController(allSchools);
+
 	@Before
 	public void setUp() throws Exception {
-		
+
 	}
 
 	@Test
 	public void testGetQuizQuestions() {
-		String expResult = "How would you describe the location of your ideal college?" + 
-				"Which characteristics are most important to you when looking for a college" + 
-				"I prefer large lectures where I can observe and be anonymous, rather than small discussions with participation and my professors know my name " +
-		"Do you know what you would like to study?";
+		String expResult = "How would you describe the location of your ideal college?"
+				+ "Which characteristics are most important to you when looking for a college"
+				+ "I prefer large lectures where I can observe and be anonymous, rather than small discussions with participation and my professors know my name "
+				+ "Do you know what you would like to study?";
 		String result = "";
 		String[] questions = searchCon.getQuizQuestions();
-		for(int i=0; i<questions.length; i++)
-		{
+		for (int i = 0; i < questions.length; i++) {
 			result += questions[i];
 		}
 		assertEquals(result, expResult);
@@ -41,13 +40,13 @@ public class SearchControllerTest {
 		String location = "URBAN";
 		int numStudentsMin = -1;
 		int numStudentsMax = -1;
-		float percentFemaleMin = -1; 
+		float percentFemaleMin = -1;
 		float percentFemaleMax = -1;
-		int SATVerbalMin = -1; 
+		int SATVerbalMin = -1;
 		int SATVerbalMax = -1;
 		int SATMathMin = -1;
-		int SATMathMax = -1; 
-		int expensesMin = -1; 
+		int SATMathMax = -1;
+		int expensesMin = -1;
 		int expensesMax = -1;
 		float PercentFinancialAidMin = -1;
 		float percenetFinancialAidMax = -1;
@@ -58,30 +57,29 @@ public class SearchControllerTest {
 		float percentEnrolledMin = -1;
 		float percentEnrolledMax = -1;
 		int academicScaleMin = -1;
-		int academicScaleMax =-1;
+		int academicScaleMax = -1;
 		int socialScaleMin = -1;
-		int socialScaleMax = -1 ;
-		int qualityOfLifeMin = -1; 
+		int socialScaleMax = -1;
+		int qualityOfLifeMin = -1;
 		int qualityOfLifeMax = -1;
 		String[] emphases = new String[0];
 		String control = "-1";
-		ArrayList<University> result = searchCon.fieldSearch(schoolName, state, location, numStudentsMin, numStudentsMax, percentFemaleMin
-				, percentFemaleMax, SATVerbalMin, SATVerbalMax, SATMathMin, SATMathMax, expensesMin, expensesMax
-				, PercentFinancialAidMin, percenetFinancialAidMax, numberApplicantsMin, numberApplicatnsMax
-				, percentAddmittedMin, percentAdmittedMax, percentEnrolledMin, percentEnrolledMax, academicScaleMin
-				, academicScaleMax, socialScaleMin, socialScaleMax, qualityOfLifeMin, qualityOfLifeMax, emphases
-				, control);
-		
+		ArrayList<University> result = searchCon.fieldSearch(schoolName, state, location, numStudentsMin,
+				numStudentsMax, percentFemaleMin, percentFemaleMax, SATVerbalMin, SATVerbalMax, SATMathMin, SATMathMax,
+				expensesMin, expensesMax, PercentFinancialAidMin, percenetFinancialAidMax, numberApplicantsMin,
+				numberApplicatnsMax, percentAddmittedMin, percentAdmittedMax, percentEnrolledMin, percentEnrolledMax,
+				academicScaleMin, academicScaleMax, socialScaleMin, socialScaleMax, qualityOfLifeMin, qualityOfLifeMax,
+				emphases, control);
+
 		ArrayList<University> expResult = new ArrayList();
 		expResult.add(dbCon.getUniversity("BROWN"));
-		for(int i=0; i<result.size(); i++)
-		{
+		for (int i = 0; i < result.size(); i++) {
 			System.out.print(result.get(i).getName());
 			assertEquals(result.get(i).getName(), expResult.get(i).getName());
 		}
 	}
 
-	//@Test
+	// @Test
 	public void testRankUniversity2() {
 		ArrayList<University> result = searchCon.rankUniversity2(dbCon.getUniversity("BARUCH"));
 		ArrayList<University> expResults = new ArrayList();
@@ -91,10 +89,10 @@ public class SearchControllerTest {
 		expResults.add(dbCon.getUniversity("ORAL ROBERTS UNIVERSITY"));
 		expResults.add(dbCon.getUniversity("WILLIAM PATERSON COLLEGE"));
 
-		for(int i=0; i<result.size(); i++) {
+		for (int i = 0; i < result.size(); i++) {
 			System.out.println(result.get(i).getName());
 		}
-		assertEquals("Additional recommended schools are "+result, expResults, result);
+		assertEquals("Additional recommended schools are " + result, expResults, result);
 	}
 
 }

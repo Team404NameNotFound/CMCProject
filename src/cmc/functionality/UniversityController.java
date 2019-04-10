@@ -2,6 +2,7 @@
  * 
  */
 package cmc.functionality;
+
 import cmc.entity.*;
 import java.util.ArrayList;
 
@@ -12,27 +13,30 @@ import java.util.ArrayList;
 public class UniversityController {
 
 	University school;
+
 	/**
-	 * constructs a new UniversityController with the school provided 
-	 * @param schooltoChange the University object that will be changed/updated
+	 * constructs a new UniversityController with the school provided
+	 * 
+	 * @param schooltoChange
+	 *            the University object that will be changed/updated
 	 */
 	public UniversityController(University schoolToChange) {
 		this.school = schoolToChange;
 	}
-	
+
 	public UniversityController() {
 		this.school = new University();
 	}
 
 	/**
 	 * returns a string of all the school's attributes
+	 * 
 	 * @return String the string for the school
 	 */
-	public ArrayList<String> getSchoolDetails()
-	{
+	public ArrayList<String> getSchoolDetails() {
 		ArrayList<String> schoolDetails = new ArrayList<String>();
 		schoolDetails.add(school.getName());
-		schoolDetails.add(school.getState()); 
+		schoolDetails.add(school.getState());
 		schoolDetails.add(school.getLocation());
 		schoolDetails.add(school.getControl());
 		schoolDetails.add(school.getEnrollment());
@@ -48,11 +52,12 @@ public class UniversityController {
 		schoolDetails.add(school.getSocialScale());
 		schoolDetails.add(school.getQualityOfLife());
 		return schoolDetails;
-		
+
 	}
-	
+
 	/**
 	 * updates the information for a school from what the admin provided
+	 * 
 	 * @param name
 	 * @param state
 	 * @param location
@@ -73,84 +78,69 @@ public class UniversityController {
 	 * @param savedSchool
 	 * @return
 	 */
-	public University updateUniversityInfo(String name, String state, String location, String control, String enrollment, String percentFemale,
-			String satVerbal, String satMath, String cost, String percentFinAid, String percentEnrolled, String applicants,
-			String percentAdmitted, String academicScale, String socialScale, String qualityOfLife, String[] emphases
-			)
-	{
-		//goes through and tests every parameter to see if it has a value so that only the parameters with new values are updated
-		if(!name.equals("-1"))
-		{
+	public University updateUniversityInfo(String name, String state, String location, String control,
+			String enrollment, String percentFemale, String satVerbal, String satMath, String cost,
+			String percentFinAid, String percentEnrolled, String applicants, String percentAdmitted,
+			String academicScale, String socialScale, String qualityOfLife, String[] emphases) {
+		// goes through and tests every parameter to see if it has a value so that only
+		// the parameters with new values are updated
+		if (!name.equals("-1")) {
 			school.setName(name);
 		}
-		if(!state.equals("-1") && !state.equals(""))
-		{
+		if (!state.equals("-1") && !state.equals("")) {
 			school.setState(state);
 		}
-		if(!location.equals("-1") && !location.equals(""))
-		{
+		if (!location.equals("-1") && !location.equals("")) {
 			school.setLocation(location);
 		}
-		if(!control.equals("-1"))
-		{
+		if (!control.equals("-1")) {
 			school.setControl(control);
 		}
-		if(!enrollment.equals("-1") && !enrollment.equals(""))
-		{
+		if (!enrollment.equals("-1") && !enrollment.equals("")) {
 			school.setEnrollment(enrollment);
 		}
-		if(!percentFemale.equals("-1") && !percentFemale.equals(""))
-		{
+		if (!percentFemale.equals("-1") && !percentFemale.equals("")) {
 			school.setPercentFemale(percentFemale);
 		}
-		if(!satVerbal.equals("-1") && !satVerbal.equals(""))
-		{
+		if (!satVerbal.equals("-1") && !satVerbal.equals("")) {
 			school.setSatVerbal(satVerbal);
 		}
-		if(!satMath.equals("-1") && !satMath.equals(""))
-		{
+		if (!satMath.equals("-1") && !satMath.equals("")) {
 			school.setSatMath(satMath);
 		}
-		if(!cost.equals("-1") && !cost.equals(""))
-		{
+		if (!cost.equals("-1") && !cost.equals("")) {
 			school.setCost(cost);
 		}
-		if(!percentFinAid.equals("-1") && !percentFinAid.equals(""))
-		{
+		if (!percentFinAid.equals("-1") && !percentFinAid.equals("")) {
 			school.setPercentFinAid(percentFinAid);
 		}
-		if(!applicants.equals("-1") && !applicants.equals(""))
-		{
+		if (!applicants.equals("-1") && !applicants.equals("")) {
 			school.setApplicants(applicants);
 		}
-		if(!percentAdmitted.equals("-1") && !percentAdmitted.equals(""))
-		{
+		if (!percentAdmitted.equals("-1") && !percentAdmitted.equals("")) {
 			school.setPercentAdmitted(percentAdmitted);
 		}
-		if(!percentEnrolled.equals("-1") && !percentEnrolled.equals(""))
-		{
+		if (!percentEnrolled.equals("-1") && !percentEnrolled.equals("")) {
 			school.setPercentEnrolled(percentEnrolled);
 		}
-		if(!academicScale.equals("-1") && !academicScale.equals(""))
-		{
+		if (!academicScale.equals("-1") && !academicScale.equals("")) {
 			school.setAcademicScale(academicScale);
 		}
-		if(!socialScale.equals("-1") && !socialScale.equals(""))
-		{
+		if (!socialScale.equals("-1") && !socialScale.equals("")) {
 			school.setSocialScale(socialScale);
 		}
-		if(!qualityOfLife.equals("-1") && !qualityOfLife.equals(""))
-		{
+		if (!qualityOfLife.equals("-1") && !qualityOfLife.equals("")) {
 			school.setQualityOfLife(qualityOfLife);
 		}
-		if(!emphases[0].equals("-1") && !emphases[0].equals(""))
-		{
+		if (!emphases[0].equals("-1") && !emphases[0].equals("")) {
 			school.setEmphases(emphases);
 		}
 		return school;
 	}
-	
-	/**Create a new University
+
+	/**
+	 * Create a new University
+	 * 
 	 * @param name
 	 * @param state
 	 * @param location
@@ -170,14 +160,14 @@ public class UniversityController {
 	 * @param emphases
 	 * @return
 	 */
-	public University createNewUniversity(String name, String state, String location, String control, String enrollment, String percentFemale,
-			String satVerbal, String satMath, String cost, String percentFinAid, String percentEnrolled, String applicants,
-			String percentAdmitted, String academicScale, String socialScale, String qualityOfLife, String[] emphases)
-	{
+	public University createNewUniversity(String name, String state, String location, String control, String enrollment,
+			String percentFemale, String satVerbal, String satMath, String cost, String percentFinAid,
+			String percentEnrolled, String applicants, String percentAdmitted, String academicScale, String socialScale,
+			String qualityOfLife, String[] emphases) {
 		University newSchool;
-		newSchool = new University(name, state, location, control, enrollment, percentFemale, satVerbal,
-				satMath, cost, percentFinAid, percentEnrolled, applicants, percentAdmitted, academicScale, socialScale,
-				qualityOfLife, emphases);
+		newSchool = new University(name, state, location, control, enrollment, percentFemale, satVerbal, satMath, cost,
+				percentFinAid, percentEnrolled, applicants, percentAdmitted, academicScale, socialScale, qualityOfLife,
+				emphases);
 		this.school = newSchool;
 		return newSchool;
 	}

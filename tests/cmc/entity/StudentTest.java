@@ -8,9 +8,8 @@ import org.junit.Before;
 import org.junit.Test;
 import java.lang.Exception.*;
 
-
 public class StudentTest {
-	
+
 	private Student testStudent;
 	private ArrayList<UserSavedSchool> schoolList;
 	private UserSavedSchool savedSchool;
@@ -18,14 +17,12 @@ public class StudentTest {
 	@Before
 	public void setUp() throws Exception {
 		this.schoolList = new ArrayList<UserSavedSchool>();
-		String[] list = {"-1"};
-		this.savedSchool = new UserSavedSchool("TestSchool", "MN", "St. Cloud", "Public", "-1",
-				"-1", "-1", "-1", "-1", "-1",
-				"-1", "-1", "-1", "-1", "-1", "-1", list, "-1");
+		String[] list = { "-1" };
+		this.savedSchool = new UserSavedSchool("TestSchool", "MN", "St. Cloud", "Public", "-1", "-1", "-1", "-1", "-1",
+				"-1", "-1", "-1", "-1", "-1", "-1", "-1", list, "-1");
 		this.schoolList.add(savedSchool);
 		this.testStudent = new Student("Test", "Student", "ajheroux@csbsju.edu", "password", "a", "Y", this.schoolList);
 	}
-
 
 	@Test
 	public void testGetSavedSchools() {
@@ -37,10 +34,9 @@ public class StudentTest {
 	@Test
 	public void testSetSavedSchools() {
 		ArrayList<UserSavedSchool> localSchoolList = new ArrayList<UserSavedSchool>();
-		String[] list = {"-1"};
+		String[] list = { "-1" };
 		UserSavedSchool localSavedSchool = new UserSavedSchool("LocalTestSchool", "MN", "St. Joseph", "Private", "-1",
-				"-1", "-1", "-1", "-1", "-1",
-				"-1", "-1", "-1", "-1", "-1", "-1", list, "-1");
+				"-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", list, "-1");
 		localSchoolList.add(localSavedSchool);
 		this.testStudent.setSavedSchools(localSchoolList);
 		ArrayList<UserSavedSchool> result = localSchoolList;
@@ -52,8 +48,7 @@ public class StudentTest {
 	public void testIsSchoolSavedReturnsTrue() {
 		Assert.assertTrue(this.testStudent.isSchoolSaved("TestSchool"));
 	}
-	
-	
+
 	@Test
 	public void testIsSchoolSavedReturnsFalse() {
 		Assert.assertFalse(this.testStudent.isSchoolSaved("TestFalse"));
@@ -64,31 +59,29 @@ public class StudentTest {
 		this.testStudent.removeSchool("TestSchool");
 		assertTrue(this.testStudent.getSavedSchools().size() == 0);
 	}
-	
-	@Test (expected = IllegalArgumentException.class)
+
+	@Test(expected = IllegalArgumentException.class)
 	public void testRemoveSchoolInvalidSchoolName() {
 		this.testStudent.removeSchool("Non-saved School");
 	}
 
 	@Test
 	public void testSaveSchool() {
-		String[] list = {"-1"};
-		University newUniversity = new University("SaveUniversity", "-1", "-1", "-1", "-1", "-1",
-				"-1", "-1", "-1", "-1", "-1", "-1",
-				"-1", "-1", "-1", "-1", list);
+		String[] list = { "-1" };
+		University newUniversity = new University("SaveUniversity", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1",
+				"-1", "-1", "-1", "-1", "-1", "-1", "-1", list);
 		this.testStudent.saveSchool(newUniversity, "Current Date");
-		
+
 		this.testStudent.isSchoolSaved("SaveUniversity");
 	}
-	
-	@Test (expected = IllegalArgumentException.class)
+
+	@Test(expected = IllegalArgumentException.class)
 	public void testSaveSchoolSaveSchoolThatIsAlreadySaved() {
-		String[] list = {"-1"};
-		University newUniversity = new University("SaveUniversity", "-1", "-1", "-1", "-1", "-1",
-				"-1", "-1", "-1", "-1", "-1", "-1",
-				"-1", "-1", "-1", "-1", list);
+		String[] list = { "-1" };
+		University newUniversity = new University("SaveUniversity", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1",
+				"-1", "-1", "-1", "-1", "-1", "-1", "-1", list);
 		this.testStudent.saveSchool(newUniversity, "Current Date");
 		this.testStudent.saveSchool(newUniversity, "Current Date");
 	}
-	
+
 }
