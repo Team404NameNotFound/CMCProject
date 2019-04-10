@@ -10,12 +10,18 @@ package cmc.entity;
 public class Account {
 
 	/**
-	 * @param firstName first name of the Account
-	 * @param lasName last name of the Account
-	 * @param username username of the Account
-	 * @param password password of the Account
-	 * @param userType type of account admin or student
-	 * @param userStatus whether account is active or inactive
+	 * @param firstName
+	 *            first name of the Account
+	 * @param lasName
+	 *            last name of the Account
+	 * @param username
+	 *            username of the Account
+	 * @param password
+	 *            password of the Account
+	 * @param userType
+	 *            type of account admin or student
+	 * @param userStatus
+	 *            whether account is active or inactive
 	 */
 	private String firstName;
 	private String lastName;
@@ -23,15 +29,22 @@ public class Account {
 	private String password;
 	private String userType;
 	private String userStatus;
-	
+
 	/**
 	 * Creates a new Account object with the following attributes
-	 * @param firstName first name of the Account
-	 * @param lasName last name of the Account
-	 * @param username username of the Account
-	 * @param password password of the Account
-	 * @param userType type of account admin or student
-	 * @param userStatus whether account is active or inactive
+	 * 
+	 * @param firstName
+	 *            first name of the Account
+	 * @param lasName
+	 *            last name of the Account
+	 * @param username
+	 *            username of the Account
+	 * @param password
+	 *            password of the Account
+	 * @param userType
+	 *            type of account admin or student
+	 * @param userStatus
+	 *            whether account is active or inactive
 	 */
 	public Account(String firstName, String lastName, String username, String password, String userType,
 			String userStatus) {
@@ -44,22 +57,25 @@ public class Account {
 		this.userStatus = userStatus;
 	}
 
-//	/**
-//	 * Allows user with the correspoding username and password to access the system
-//	 * @param firstName first name of the Account
-//	 * @param lasName last name of the Account
-//	 * @param username username of the Account
-//	 * @param password password of the Account
-//	 * @param userType type of account admin or student
-//	 * @param userStatus whether account is active or inactive
-//	 * @return Account the account object of the user who will be logged on
-//	 */
-//	public Account logon(String firstName, String lastName, String username, String password, String userType,
-//			String userStatus) {
-//		Account user = new Account(firstName, lastName, username, password, userType, userStatus);
-//		return user;
-//	}
-	
+	// /**
+	// * Allows user with the correspoding username and password to access the
+	// system
+	// * @param firstName first name of the Account
+	// * @param lasName last name of the Account
+	// * @param username username of the Account
+	// * @param password password of the Account
+	// * @param userType type of account admin or student
+	// * @param userStatus whether account is active or inactive
+	// * @return Account the account object of the user who will be logged on
+	// */
+	// public Account logon(String firstName, String lastName, String username,
+	// String password, String userType,
+	// String userStatus) {
+	// Account user = new Account(firstName, lastName, username, password, userType,
+	// userStatus);
+	// return user;
+	// }
+
 	/**
 	 * @return first name of the Account
 	 */
@@ -68,7 +84,8 @@ public class Account {
 	}
 
 	/**
-	 * @param firstName first name of the Account
+	 * @param firstName
+	 *            first name of the Account
 	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
@@ -82,7 +99,8 @@ public class Account {
 	}
 
 	/**
-	 * @param lastNamelast name of the Account
+	 * @param lastNamelast
+	 *            name of the Account
 	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
@@ -96,7 +114,8 @@ public class Account {
 	}
 
 	/**
-	 * @param username username of the Account
+	 * @param username
+	 *            username of the Account
 	 */
 	public void setUsername(String username) {
 		this.username = username;
@@ -110,7 +129,8 @@ public class Account {
 	}
 
 	/**
-	 * @param password password of the Account
+	 * @param password
+	 *            password of the Account
 	 */
 	public void setPassword(String password) {
 		this.password = password;
@@ -124,7 +144,8 @@ public class Account {
 	}
 
 	/**
-	 * @param userType type of account admin or student
+	 * @param userType
+	 *            type of account admin or student
 	 */
 	public void setUserType(String userType) {
 		this.userType = userType;
@@ -138,14 +159,15 @@ public class Account {
 	}
 
 	/**
-	 * @param userStatus whether account is active or inactive
+	 * @param userStatus
+	 *            whether account is active or inactive
 	 */
 	public void setUserStatus(String userStatus) {
 		this.userStatus = userStatus;
 	}
-	
+
 	public String toString() {
-		return username + " " + firstName + " " + lastName + " " + password + " " + userType + " "+ userStatus;
+		return username + " " + firstName + " " + lastName + " " + password + " " + userType + " " + userStatus;
 	}
 
 }

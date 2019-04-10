@@ -6,13 +6,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class AdminTest {
-	Admin testAdmin ;
-	
+	Admin testAdmin;
+
 	@Before
 	public void setUp() throws Exception {
-		testAdmin = new Admin( "Hugo",  "Virgen",  "hvirgen",  "Henlo",  "a", "Y");
+		testAdmin = new Admin("Hugo", "Virgen", "hvirgen", "Henlo", "a", "Y");
 	}
-
 
 	/*
 	 * testing getFirstName method
@@ -21,6 +20,7 @@ public class AdminTest {
 	public void testGetFirstName() {
 		assertTrue(testAdmin.getFirstName().equals("Hugo"));
 	}
+
 	/**
 	 * testing setFirstName method
 	 */
@@ -114,7 +114,5 @@ public class AdminTest {
 		this.testAdmin.setUserStatus("N");
 		assertTrue(this.testAdmin.getUserStatus().equals("N"));
 	}
-
-
 
 }

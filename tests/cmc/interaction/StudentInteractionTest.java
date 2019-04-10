@@ -22,22 +22,24 @@ import cmc.functionality.StudentFunctionalityController;
 import cmc.functionality.UserFunctionalityController;
 
 public class StudentInteractionTest {
-	
+
 	private DBController dbCon = new DBController();
 	private StudentInteraction student = new StudentInteraction();
 	private String[] emphases = null;
-	private University school = new University("BROWN", "RHODEISLAND", "URBAN", "PRIVATE", "10000", "50", "625", "650", "36450", "40", "20", "50", "11500", "5", "4", "5", emphases);
-	private AccountController user =  new AccountController(dbCon.getAccount("kmendel001@csbsju.edu"));
+	private University school = new University("BROWN", "RHODEISLAND", "URBAN", "PRIVATE", "10000", "50", "625", "650",
+			"36450", "40", "20", "50", "11500", "5", "4", "5", emphases);
+	private AccountController user = new AccountController(dbCon.getAccount("kmendel001@csbsju.edu"));
+
 	@Before
 	public void setUp() throws Exception {
 		StudentInteraction student = new StudentInteraction();
 		this.student.sfCon.setAccount(user);
 		user.removeAllSavedSchools();
-		
+
 	}
-	
+
 	@After
-	public void shutDown() throws Exception{
+	public void shutDown() throws Exception {
 		student.logout();
 	}
 
@@ -500,19 +502,18 @@ public class StudentInteractionTest {
 	//BAD
 	@Test
 	public void testCompareSchoolsByScoreManySaved() {
-		student.login("kmendel001@csbsju.edu", "user"); 
+		student.login("kmendel001@csbsju.edu", "user");
 		student.saveSchool("AUGSBURG");
 		student.saveSchool("BENNINGTON");
 		student.saveSchool("YALE");
-		
+
 		ArrayList<String> result = student.compareSchoolsByScore();
 		ArrayList<String> expResult = new ArrayList();
 
 		expResult.add("AUGSBURG 490.0");
 		expResult.add("YALE 675.0");
 
-		for(int i=0; i<result.size(); i++)
-		{
+		for (int i = 0; i < result.size(); i++) {
 			System.out.print(result.get(i));
 			assertTrue(result.get(i).equals(expResult.get(i)));
 		}
@@ -549,5 +550,4 @@ public class StudentInteractionTest {
 		Account expResult = new Account("No", "Schools", "user@csbsju.edu", "user", "u", "Y");
 		assertEquals(result.toString(), expResult.toString());
 	}
-	
 }

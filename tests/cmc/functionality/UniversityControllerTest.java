@@ -18,8 +18,14 @@ public class UniversityControllerTest {
 
 	@Before
 	public void setUp() throws Exception {
-		university1 = new University("testUniversity", "testState", "testLocation", "testControl", "testEnrollment", "testPercentFemale", "testSatVerbal", "testSatMath", "testCost", "testPercentFinAid", "testPercentEnrolled", "testApplicants", "testPercentAdmitted", "testAcademicScale", "testSocialScale", "testQualityOfLife", new String[]{"emphasis"});
-		university2 = new University("testUniversity", "Oregon", "testLocation", "testControl", "testEnrollment", "testPercentFemale", "testSatVerbal", "testSatMath", "testCost", "testPercentFinAid", "testPercentEnrolled", "testApplicants", "testPercentAdmitted", "testAcademicScale", "testSocialScale", "testQualityOfLife", new String[]{"emphasis"});
+		university1 = new University("testUniversity", "testState", "testLocation", "testControl", "testEnrollment",
+				"testPercentFemale", "testSatVerbal", "testSatMath", "testCost", "testPercentFinAid",
+				"testPercentEnrolled", "testApplicants", "testPercentAdmitted", "testAcademicScale", "testSocialScale",
+				"testQualityOfLife", new String[] { "emphasis" });
+		university2 = new University("testUniversity", "Oregon", "testLocation", "testControl", "testEnrollment",
+				"testPercentFemale", "testSatVerbal", "testSatMath", "testCost", "testPercentFinAid",
+				"testPercentEnrolled", "testApplicants", "testPercentAdmitted", "testAcademicScale", "testSocialScale",
+				"testQualityOfLife", new String[] { "emphasis" });
 
 		unicon = new UniversityController();
 		unicon2 = new UniversityController(university1);
@@ -32,12 +38,16 @@ public class UniversityControllerTest {
 
 	@Test
 	public void testUpdateUniversityInfo() {
-		UniversityController uniconUpdate = new UniversityController(new University("testUniversity", "Oregon", "testLocation", "testControl", "testEnrollment", "testPercentFemale", "testSatVerbal", "testSatMath", "testCost", "testPercentFinAid", "testPercentEnrolled", "testApplicants", "testPercentAdmitted", "testAcademicScale", "testSocialScale", "testQualityOfLife", new String[]{"emphasis"}));
-		unicon2.updateUniversityInfo("-1", "Oregon", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", new String[]{"-1"});
+		UniversityController uniconUpdate = new UniversityController(new University("testUniversity", "Oregon",
+				"testLocation", "testControl", "testEnrollment", "testPercentFemale", "testSatVerbal", "testSatMath",
+				"testCost", "testPercentFinAid", "testPercentEnrolled", "testApplicants", "testPercentAdmitted",
+				"testAcademicScale", "testSocialScale", "testQualityOfLife", new String[] { "emphasis" }));
+		unicon2.updateUniversityInfo("-1", "Oregon", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1",
+				"-1", "-1", "-1", new String[] { "-1" });
 		ArrayList<String> result = unicon2.getSchoolDetails();
 		ArrayList<String> expResult = uniconUpdate.getSchoolDetails();
-		
+
 		assertEquals(result, expResult);
-		
+
 	}
 }

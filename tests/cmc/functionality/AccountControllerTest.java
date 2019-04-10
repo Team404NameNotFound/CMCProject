@@ -251,42 +251,42 @@ public class AccountControllerTest {
 		admin.createNewAccount("Andrew", "Heroux", "ajheroux@csbsju.edu", "GoodPassword", "HAha", savedSchools);
 	}
 
-	@Test (expected = IllegalArgumentException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void testCheckPassword_emptyPassword_case1() {
 		user.checkPassword("");
 	}
-	
+
 	@Test
 	public void testCheckPassword_wrongPassword_case2() {
 		Boolean result = user.checkPassword("cuser");
 		Boolean expResult = false;
 		assertEquals("Check wrong password: " + expResult, expResult, result);
 	}
-	
+
 	@Test
 	public void testCheckPassword_correctPassword_case3() {
 		Boolean result = user.checkPassword("user");
 		Boolean expResult = true;
 		assertEquals("Check corrent password: " + expResult, expResult, result);
 	}
-	
+
 	@Test
 	public void testMakeRandomPasswor() {
 		int result = user.makeRandomPassword().length();
 		int expResult = 5;
 		assertEquals(" Make random password: " + expResult, expResult, result);
 	}
-	
+
 	@Test(expected = UnsupportedOperationException.class)
 	public void testUpdateUserInfo_invalidType_case1() {
 		user.updateUserInfo("updated", "updated", "updated", "Y", "updated");
 	}
-	
+
 	@Test(expected = UnsupportedOperationException.class)
 	public void testUpdateUserInfo_invalidStatus_case2() {
 		user.updateUserInfo("updated", "updated", "updated", "updated", "u");
 	}
-	
+
 	@Test
 	public void testUpdateUserInfo_unchangeUserInfo_case3() {
 		String expFN = user.account.getFirstName();
@@ -305,9 +305,9 @@ public class AccountControllerTest {
 		assertEquals("Update password  is now " + resultP, expP, resultP);
 		assertEquals("Update status  is now " + resultS, expS, resultS);
 		assertEquals("Update type  is now " + resultT, expT, resultT);
-		
+
 	}
-	
+
 	@Test
 	public void testUpdateUserInfo_updateUserLastname_case4() {
 		String expLN = "updatedLastName";
@@ -315,7 +315,7 @@ public class AccountControllerTest {
 		String resultLN = user.account.getLastName();
 		assertEquals("Update last name is now " + resultLN, expLN, resultLN);
 	}
-	
+
 	@Test
 	public void testUpdateUserInfo_updateUserStatus_case5() {
 		String expS = "Y";
@@ -323,8 +323,6 @@ public class AccountControllerTest {
 		String resultS = admin.account.getUserStatus();
 		assertEquals("Update last name is now " + resultS, expS, resultS);
 	}
-	
-
 
 	/*
 	 * 
