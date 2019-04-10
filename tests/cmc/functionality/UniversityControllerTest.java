@@ -31,10 +31,6 @@ public class UniversityControllerTest {
 		unicon2 = new UniversityController(university1);
 	}
 
-	@Test
-	public void testGetSchoolDetails() {
-		fail("Not yet implemented");
-	}
 
 	@Test
 	public void testUpdateUniversityInfo() {

@@ -192,6 +192,7 @@ public class AccountController {
 		});
 
 		// Compose the message
+		if (emailAddress.contains("@") && emailMessage!=null){
 		try {
 			MimeMessage message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(user));
@@ -207,6 +208,11 @@ public class AccountController {
 			return sent;
 		} catch (MessagingException e) {
 			e.printStackTrace();
+			return false;
+		}
+		}
+		else
+		{
 			return false;
 		}
 	}
