@@ -232,7 +232,7 @@ public class Phase2_FunctionalityTestDriver {
 	//U16 View user profile
 	    System.out.println("UC 16 View User Profile");
 	    System.out.println("-------------------------");		
-		user.viewProfile(adminUsername);
+		//suser.viewProfile(adminUsername);
 		System.out.println("-------------------------\n\n\n");
 //		
 	//U17 Edit user information

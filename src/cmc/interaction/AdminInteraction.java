@@ -76,10 +76,11 @@ public class AdminInteraction extends AccountInteraction{
 	 * @param university
 	 * @param changes
 	 */
-	public void editUniversityInfo(String name, String state, String location, String control, String enrollment,
-			String percentFemale, String satVerbal, String satMath, String cost, String percentFinAid,
-			String percentEnrolled, String applicants, String percentAdmitted, String academicScale, String socialScale,
-			String qualityOfLife, String[] emphases){
+	public void editUniversityInfo(String name, String state, String location, String control, 
+			String enrollment, String percentFemale, String satVerbal, String satMath, 
+			String cost, String percentFinAid, String percentEnrolled, String applicants, 
+			String percentAdmitted, String academicScale, String socialScale, String qualityOfLife, 
+			String[] emphases){
 			this.afCon.editUniversity(name, state, location, control, enrollment, percentFemale, satVerbal, satMath, cost, percentFinAid, percentEnrolled, applicants, percentAdmitted, academicScale, socialScale, qualityOfLife, emphases);
 	}
 	
@@ -164,18 +165,25 @@ public class AdminInteraction extends AccountInteraction{
 	 * @param password
 	 * @param userType
 	 */
-	public void editProfile(String userName, String firstName, String lastName, String password, String userType)
+	public void editProfile(String userName, String firstName, String lastName, String password, String userType, String userStatus)
 	{
-		if(firstName == "" || lastName == "" || password == "" || userType == "")
+		if(firstName == "" || lastName == "" || password == "" || userType == "" || userStatus == "" )
 		{
 			throw new IllegalArgumentException();
 		}
-		else if(!userType.equals("a") || !userType.equals("u"))
+		else if(!userType.equals("a") && !userType.equals("u"))
+		{
+			throw new IllegalArgumentException();
+		}	
+		else if(!userStatus.equals("Y") && !userStatus.equals("N"))
 		{
 			throw new IllegalArgumentException();
 		}	
 		else 
-		{
+		{ 
+			if(userStatus.equals("N")) {
+				this.afCon.getAccount().toggleActivationStatus();
+			}
 			UFCon.editUserProfile(userName, firstName, lastName, password, userType);
 		}
 	}

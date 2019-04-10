@@ -2,6 +2,7 @@
  * 
  */
 package cmc.functionality;
+
 import cmc.entity.*;
 import java.util.ArrayList;
 
@@ -12,27 +13,30 @@ import java.util.ArrayList;
 public class UniversityController {
 
 	University school;
+
 	/**
-	 * constructs a new UniversityController with the school provided 
-	 * @param schooltoChange the University object that will be changed/updated
+	 * constructs a new UniversityController with the school provided
+	 * 
+	 * @param schooltoChange
+	 *            the University object that will be changed/updated
 	 */
 	public UniversityController(University schoolToChange) {
 		this.school = schoolToChange;
 	}
-	
+
 	public UniversityController() {
 		this.school = new University();
 	}
 
 	/**
 	 * returns a string of all the school's attributes
+	 * 
 	 * @return String the string for the school
 	 */
-	public ArrayList<String> getSchoolDetails()
-	{
+	public ArrayList<String> getSchoolDetails() {
 		ArrayList<String> schoolDetails = new ArrayList<String>();
 		schoolDetails.add(school.getName());
-		schoolDetails.add(school.getState()); 
+		schoolDetails.add(school.getState());
 		schoolDetails.add(school.getLocation());
 		schoolDetails.add(school.getControl());
 		schoolDetails.add(school.getEnrollment());
@@ -48,11 +52,12 @@ public class UniversityController {
 		schoolDetails.add(school.getSocialScale());
 		schoolDetails.add(school.getQualityOfLife());
 		return schoolDetails;
-		
+
 	}
-	
+
 	/**
 	 * updates the information for a school from what the admin provided
+	 * 
 	 * @param name
 	 * @param state
 	 * @param location
@@ -73,84 +78,143 @@ public class UniversityController {
 	 * @param savedSchool
 	 * @return
 	 */
-	public University updateUniversityInfo(String name, String state, String location, String control, String enrollment, String percentFemale,
-			String satVerbal, String satMath, String cost, String percentFinAid, String percentEnrolled, String applicants,
-			String percentAdmitted, String academicScale, String socialScale, String qualityOfLife, String[] emphases
-			)
-	{
-		//goes through and tests every parameter to see if it has a value so that only the parameters with new values are updated
-		if(!name.equals("-1"))
-		{
-			school.setName(name);
-		}
-		if(!state.equals("-1") && !state.equals(""))
-		{
+	public University updateUniversityInfo(String name, String state, String location, String control,
+			String enrollment, String percentFemale, String satVerbal, String satMath, String cost,
+			String percentFinAid, String percentEnrolled, String applicants, String percentAdmitted,
+			String academicScale, String socialScale, String qualityOfLife, String[] emphases) {
+		// goes through and tests every parameter to see if it has a value so that only
+		// the parameters with new values are updated
+		if (state.matches("[a-zA-Z]+")) {
 			school.setState(state);
+		}else if(state == null || state.equals("")) {
+			school.setState("-1");
+		}else {
+			throw new IllegalArgumentException("Invalid State");
 		}
-		if(!location.equals("-1") && !location.equals(""))
-		{
+		
+		if (location.matches("[a-zA-Z]+")) {
 			school.setLocation(location);
+		}else if(location == null || location.equals("")) {
+			school.setLocation("-1");
+		}else {
+			throw new IllegalArgumentException("Invalid location");
 		}
-		if(!control.equals("-1"))
-		{
+		
+		if (control.equals("PRIVATE") || control.equals("PUBLIC")) {
 			school.setControl(control);
+		}else if(control == null || control.equals("")) {
+			school.setControl("-1");
+		}else {
+			throw new IllegalArgumentException("Invalid control");
 		}
-		if(!enrollment.equals("-1") && !enrollment.equals(""))
-		{
+		
+		if (enrollment.matches("\\d+")) {
 			school.setEnrollment(enrollment);
+		}else if(enrollment == null || enrollment.equals("")) {
+			school.setEnrollment("-1");
+		}else {
+			throw new IllegalArgumentException("Invalid enrollment");
 		}
-		if(!percentFemale.equals("-1") && !percentFemale.equals(""))
-		{
+		
+		if (percentFemale.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentFemale) > 0.0 && Double.parseDouble(percentFemale) < 100.0) {
 			school.setPercentFemale(percentFemale);
+		}else if(percentFemale == null || percentFemale.equals("")) {
+			school.setPercentFemale("-1");
+		}else {
+			throw new IllegalArgumentException("Invalid percentFemale");
 		}
-		if(!satVerbal.equals("-1") && !satVerbal.equals(""))
-		{
+		
+		if (satVerbal.matches("\\d+") && Double.parseDouble(satVerbal) >= 200 && Double.parseDouble(satVerbal) <= 800) {
 			school.setSatVerbal(satVerbal);
+		}else if(satVerbal == null || satVerbal.equals("")) {
+			school.setSatVerbal("-1");
+		}else {
+			throw new IllegalArgumentException("Invalid satVerbal");
 		}
-		if(!satMath.equals("-1") && !satMath.equals(""))
-		{
+		
+		if (satMath.matches("\\d+") && Double.parseDouble(satMath) >= 200 && Double.parseDouble(satMath) <= 800) {
 			school.setSatMath(satMath);
+		}else if(satMath == null || satMath.equals("")) {
+			school.setSatMath("-1");
+		}else {
+			throw new IllegalArgumentException("Invalid satMath");
 		}
-		if(!cost.equals("-1") && !cost.equals(""))
-		{
+		
+		if (cost.matches("\\d+")) {
 			school.setCost(cost);
+		}else if(cost == null || cost.equals("")) {
+			school.setCost("-1");
+		}else {
+			throw new IllegalArgumentException("Invalid cost");
 		}
-		if(!percentFinAid.equals("-1") && !percentFinAid.equals(""))
-		{
+		
+		if (percentFinAid.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentFinAid) > 0.0 && Double.parseDouble(percentFinAid) < 100.0) {
 			school.setPercentFinAid(percentFinAid);
+		}else if(percentFinAid == null || percentFinAid.equals("")) {
+			school.setPercentFinAid("-1");
+		}else {
+			throw new IllegalArgumentException("Invalid percentFinAid");
 		}
-		if(!applicants.equals("-1") && !applicants.equals(""))
-		{
+		
+		if (applicants.matches("\\d+")) {
 			school.setApplicants(applicants);
+		}else if(applicants == null || applicants.equals("")) {
+			school.setApplicants("-1");
+		}else {
+			throw new IllegalArgumentException("Invalid applicants");
 		}
-		if(!percentAdmitted.equals("-1") && !percentAdmitted.equals(""))
-		{
+		
+		if (percentAdmitted.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentAdmitted) > 0 && Double.parseDouble(percentAdmitted) < 100) {
 			school.setPercentAdmitted(percentAdmitted);
+		}else if(percentAdmitted == null || percentAdmitted.equals("")) {
+			school.setPercentAdmitted("-1");
+		}else {
+			throw new IllegalArgumentException("Invalid percentAdmitted");
 		}
-		if(!percentEnrolled.equals("-1") && !percentEnrolled.equals(""))
-		{
+		
+		if (percentEnrolled.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentEnrolled) > 0 && Double.parseDouble(percentEnrolled) < 100) {
 			school.setPercentEnrolled(percentEnrolled);
+		}else if(percentEnrolled == null || percentEnrolled.equals("")) {
+			school.setPercentEnrolled("-1");
+		}else {
+			throw new IllegalArgumentException("Invalid percentEnrolled");
 		}
-		if(!academicScale.equals("-1") && !academicScale.equals(""))
-		{
+		
+		if (academicScale.matches("[12345]")) {
 			school.setAcademicScale(academicScale);
+		}else if(academicScale == null || academicScale.equals("")) {
+			school.setAcademicScale("-1");
+		}else {
+			throw new IllegalArgumentException("Invalid academicScale");
 		}
-		if(!socialScale.equals("-1") && !socialScale.equals(""))
-		{
+		
+		if (socialScale.matches("[12345]")) {
 			school.setSocialScale(socialScale);
+		}else if(socialScale == null || socialScale.equals("")) {
+			school.setSocialScale("-1");
+		}else {
+			throw new IllegalArgumentException("Invalid socialScale");
 		}
-		if(!qualityOfLife.equals("-1") && !qualityOfLife.equals(""))
-		{
+		
+		if (qualityOfLife.matches("[12345]")) {
 			school.setQualityOfLife(qualityOfLife);
+		}else if(qualityOfLife == null || qualityOfLife.equals("")) {
+			school.setQualityOfLife("-1");
+		}else {
+			throw new IllegalArgumentException("Invalid qualityOfLife");
 		}
-		if(!emphases[0].equals("-1") && !emphases[0].equals(""))
-		{
+		
+		if (emphases == null || emphases.length == 0) {
+			school.setEmphases(new String[] {});
+		}else {
 			school.setEmphases(emphases);
 		}
 		return school;
 	}
-	
-	/**Create a new University
+
+	/**
+	 * Create a new University
+	 * 
 	 * @param name
 	 * @param state
 	 * @param location
@@ -170,14 +234,14 @@ public class UniversityController {
 	 * @param emphases
 	 * @return
 	 */
-	public University createNewUniversity(String name, String state, String location, String control, String enrollment, String percentFemale,
-			String satVerbal, String satMath, String cost, String percentFinAid, String percentEnrolled, String applicants,
-			String percentAdmitted, String academicScale, String socialScale, String qualityOfLife, String[] emphases)
-	{
+	public University createNewUniversity(String name, String state, String location, String control, String enrollment,
+			String percentFemale, String satVerbal, String satMath, String cost, String percentFinAid,
+			String percentEnrolled, String applicants, String percentAdmitted, String academicScale, String socialScale,
+			String qualityOfLife, String[] emphases) {
 		University newSchool;
-		newSchool = new University(name, state, location, control, enrollment, percentFemale, satVerbal,
-				satMath, cost, percentFinAid, percentEnrolled, applicants, percentAdmitted, academicScale, socialScale,
-				qualityOfLife, emphases);
+		newSchool = new University(name, state, location, control, enrollment, percentFemale, satVerbal, satMath, cost,
+				percentFinAid, percentEnrolled, applicants, percentAdmitted, academicScale, socialScale, qualityOfLife,
+				emphases);
 		this.school = newSchool;
 		return newSchool;
 	}
