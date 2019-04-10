@@ -165,11 +165,15 @@ public class UniversityController {
 			String percentEnrolled, String applicants, String percentAdmitted, String academicScale, String socialScale,
 			String qualityOfLife, String[] emphases) {
 		University newSchool;
-		newSchool = new University(name, state, location, control, enrollment, percentFemale, satVerbal, satMath, cost,
-				percentFinAid, percentEnrolled, applicants, percentAdmitted, academicScale, socialScale, qualityOfLife,
-				emphases);
+		if (Integer.parseInt(academicScale)>0 && Integer.parseInt(academicScale)<6 && Integer.parseInt(socialScale)>0 && Integer.parseInt(socialScale)<6 &&Integer.parseInt(qualityOfLife)>0 && Integer.parseInt(qualityOfLife)<6 ) 
+		{
+			newSchool = new University(name, state, location, control, enrollment, percentFemale, satVerbal, satMath, cost,
+					percentFinAid, percentEnrolled, applicants, percentAdmitted, academicScale, socialScale, qualityOfLife,
+					emphases);
 		this.school = newSchool;
 		return newSchool;
+		}
+		return null;
 	}
 
 }
