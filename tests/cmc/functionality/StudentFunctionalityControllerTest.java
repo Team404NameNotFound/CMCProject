@@ -12,10 +12,13 @@ import org.junit.Test;
 public class StudentFunctionalityControllerTest {
 
 	private StudentFunctionalityController studentConTest;
+	private DBController dbCon = new DBController();
 
 	@Before
 	public void setUp() throws Exception {
 		this.studentConTest = new StudentFunctionalityController();
+		Account andrew = new Student("Andrew", "Heroux", "ajheroux@csbsju.edu", "38dgf", "u", "Y", null);
+		dbCon.setAccount(andrew);
 		this.studentConTest.login("ajheroux@csbsju.edu", "38dgf");
 		this.studentConTest.saveSchool("YALE");
 	}
@@ -38,14 +41,56 @@ public class StudentFunctionalityControllerTest {
 
 	@Test
 	public void testSearch() {
-		fail("Not yet implemented");// How to test???
+			String schoolName = "BROWN";
+			String state = "RHODEISLAND";
+			String location = "URBAN";
+			int numStudentsMin = -1;
+			int numStudentsMax = -1;
+			float percentFemaleMin = -1; 
+			float percentFemaleMax = -1;
+			int SATVerbalMin = -1; 
+			int SATVerbalMax = -1;
+			int SATMathMin = -1;
+			int SATMathMax = -1; 
+			int expensesMin = -1; 
+			int expensesMax = -1;
+			float PercentFinancialAidMin = -1;
+			float percenetFinancialAidMax = -1;
+			int numberApplicantsMin = -1;
+			int numberApplicatnsMax = -1;
+			float percentAddmittedMin = -1;
+			float percentAdmittedMax = -1;
+			float percentEnrolledMin = -1;
+			float percentEnrolledMax = -1;
+			int academicScaleMin = -1;
+			int academicScaleMax =-1;
+			int socialScaleMin = -1;
+			int socialScaleMax = -1 ;
+			int qualityOfLifeMin = -1; 
+			int qualityOfLifeMax = -1;
+			String[] emphases = new String[0];
+			String control = "-1";
+			ArrayList<University> result = studentConTest.search(schoolName, state, location, numStudentsMin, numStudentsMax, percentFemaleMin
+					, percentFemaleMax, SATVerbalMin, SATVerbalMax, SATMathMin, SATMathMax, expensesMin, expensesMax
+					, PercentFinancialAidMin, percenetFinancialAidMax, numberApplicantsMin, numberApplicatnsMax
+					, percentAddmittedMin, percentAdmittedMax, percentEnrolledMin, percentEnrolledMax, academicScaleMin
+					, academicScaleMax, socialScaleMin, socialScaleMax, qualityOfLifeMin, qualityOfLifeMax, emphases
+					, control);
+			
+			ArrayList<University> expResult = new ArrayList();
+			expResult.add(dbCon.getUniversity("BROWN"));
+			for(int i=0; i<result.size(); i++)
+			{
+				System.out.print(result.get(i).getName());
+				assertEquals(result.get(i).getName(), expResult.get(i).getName());
+			}
 	}
 
 	@Test
 	public void testViewSchoolDetails() {
 		DBController DBCon = new DBController();
-		ArrayList<String> schoolDetials = this.studentConTest.viewSchoolDetails("YALE");
-		University school = DBCon.getUniversity("YALE");
+		ArrayList<String> schoolDetials = this.studentConTest.viewSchoolDetails("AUGSBURG");
+		University school = DBCon.getUniversity("AUGSBURG");
 		ArrayList<String> expected = new ArrayList<String>();
 		expected.add(school.getName());
 		expected.add(school.getState());
@@ -102,8 +147,11 @@ public class StudentFunctionalityControllerTest {
 	@Test
 	public void testViewSavedSchools() {
 		ArrayList<UserSavedSchool> result = this.studentConTest.viewSavedSchools();
-		ArrayList<UserSavedSchool> expected = this.studentConTest.account.viewSavedSchools();
-		assertEquals(result, expected);
+		ArrayList<UserSavedSchool> expected = dbCon.getSchoolList2(dbCon.getAccount("ajheroux@csbsju.edu"));
+		for(int i=0; i<result.size(); i++) {
+			assertEquals(result.get(i).getName(), expected.get(i).getName());
+		}
+		
 	}
 
 	@Test
@@ -112,8 +160,7 @@ public class StudentFunctionalityControllerTest {
 		this.studentConTest.removeSavedSchool("YALE");
 		ArrayList<UserSavedSchool> savedSchools = this.studentConTest.viewSavedSchools();
 		for (int i = 0; i < savedSchools.size(); i++) {
-			if (savedSchools.get(i).getName().equals("YALE"))
-				;
+			if (savedSchools.get(i).getName().equals("YALE"));
 			{
 				found = true;
 				System.out.println("It's True");
@@ -131,8 +178,9 @@ public class StudentFunctionalityControllerTest {
 	@Test
 	public void testViewSavedSchoolDetails() {
 		DBController DBCon = new DBController();
-		ArrayList<String> schoolDetials = this.studentConTest.viewSavedSchoolDetails("YALE");
-		University school = DBCon.getUniversity("YALE");
+		ArrayList<String> schoolDetials = this.studentConTest.viewSavedSchoolDetails("AUGSBURG");
+		University school = DBCon.getUniversity("AUGSBURG");
+		String timeAdded = "2019-03-23 16:06:20";
 
 		ArrayList<String> expected = new ArrayList<String>();
 		expected.add(school.getName());
@@ -147,12 +195,21 @@ public class StudentFunctionalityControllerTest {
 		expected.add(school.getPercentFinAid());
 		expected.add(school.getApplicants());
 		expected.add(school.getPercentAdmitted());
-		expected.add(school.getPercentEnrolled());
 		expected.add(school.getAcademicScale());
 		expected.add(school.getSocialScale());
 		expected.add(school.getQualityOfLife());
-
-		assertEquals(schoolDetials, expected);
+		for(int j=0; j<school.getEmphases().length; j++)
+		{
+			System.out.print(school.getEmphases()[j]);
+			expected.add(school.getEmphases()[j]);
+		}
+		expected.add(timeAdded);
+		
+		for(int i=0; i<schoolDetials.size(); i++)
+		{
+			System.out.println(schoolDetials.get(i)+ " "+expected.get(i));
+			assertEquals(schoolDetials.get(i), expected.get(i));
+		}
 	}
 
 	@Test(expected = IllegalArgumentException.class)
