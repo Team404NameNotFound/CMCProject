@@ -313,16 +313,31 @@ public class DBController {
 
 	/**
 	 * Updated emphases for a specified university
+<<<<<<< HEAD
+	 * @param school name of university to update
+	 * @param emphasis emphasis to add to university
+=======
 	 * 
 	 * @param school
 	 *            name of university to update
 	 * @param emphasis
 	 *            emphasis to add to univeristy
+>>>>>>> 932983eb2c5635757f7ce51735d6984d882ac828
 	 */
 	public void addEmphasis(String school, String emphasis) {
 		dbLibrary.university_addUniversityEmphasis(school, emphasis);
 	}
 
+	/**
+	 * Remove emphases for a specified university
+	 * @param school name of university to update
+	 * @param emphasis emphasis to remove to university
+	 */
+	public void removeEmphasis(String school, String emphasis)
+	{
+		dbLibrary.university_removeUniversityEmphasis(school, emphasis);
+	}
+	
 	/**
 	 * Add a new school on user's saved school list
 	 * 

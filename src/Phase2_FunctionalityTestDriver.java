@@ -186,7 +186,51 @@ public class Phase2_FunctionalityTestDriver {
 		System.out.println("After removing, the new saved school list for current user is");
 		student.viewSavedSchools();
 		System.out.println("-------------------------\n\n\n");
-
+		
+	//U11 View saved schools
+	    System.out.println("UC 11 View saved schools:");
+	    System.out.println("-------------------------");
+	    System.out.println("Testing view saved schools: ");
+	    student.viewSavedSchools();
+	    System.out.println("-------------------------\n\n\n");
+	    
+	//U12 Remove a saved school
+	    System.out.println("Remove a saved school:");
+	    System.out.println("-------------------------");
+	    System.out.println("Testing remove a saved school, remove: GEORGE WASHINGTON\"");
+	    student.removeSavedSchool("GEORGE WASHINGTON");
+	    System.out.println("After removing, the new saved school list for current user is");
+	    student.viewSavedSchools();
+	    System.out.println("-------------------------\n\n\n");
+	    
+	//U13 View saved school details
+	    System.out.println("View saved school details:");
+	    System.out.println("-------------------------");
+	    System.out.println("Testing view a saved school details: ");
+	    student.viewSavedSchoolDetails("YALE");
+	    System.out.println("-------------------------\n\n\n");
+	    
+	//U14 View user saved statistics
+	    System.out.println("View user saved statistics:");
+	    System.out.println("-------------------------");
+	    System.out.println("Testing view userSavedStatistisc: ");
+	    student.viewUserSavedStatistics("YALE");
+	    student.viewUserSavedStatistics("GEORGE WASHINGTON");;
+	    System.out.println("-------------------------\n\n\n");
+	    
+		
+	//U15 Compare schools by score
+	    System.out.println("UC 15 Compare Schools by SAT Math Score:");
+	    System.out.println("-------------------------");
+	    System.out.println("Testing compare scores");
+	    student.compareSchoolsByScore();
+	    System.out.println("-------------------------\n\n\n");
+	
+	//U16 View user profile
+	    System.out.println("UC 16 View User Profile");
+	    System.out.println("-------------------------");		
+		//suser.viewProfile(adminUsername);
+	    
 		// U13 View saved school details
 		System.out.println("View saved school details:");
 		System.out.println("-------------------------");
@@ -213,7 +257,8 @@ public class Phase2_FunctionalityTestDriver {
 		// U16 View user profile
 		System.out.println("UC 16 View User Profile");
 		System.out.println("-------------------------");
-		user.viewProfile(adminUsername);
+		//user.viewProfile(adminUsername);
+
 		System.out.println("-------------------------\n\n\n");
 		//
 		// U17 Edit user information
