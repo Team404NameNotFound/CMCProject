@@ -197,10 +197,11 @@ public class AdminFunctionalityController extends UserFunctionalityController {
 	 *            user name associated with account being edited
 	 */
 	public void toggleActivationStatus(String accountName) {
-		this.account = new AccountController(DBCon.getAccount(accountName));
-
+		AccountController toggleAccount =  new AccountController(DBCon.getAccount(accountName));
+		//this.account = new AccountController(DBCon.getAccount(accountName));
+        toggleAccount.toggleActivationStatus();
 		// this.account.setAccount(account);
-		DBCon.setAccount(this.account.toggleActivationStatus());
+		//DBCon.setAccount(this.account.toggleActivationStatus());
 	}
 
 }

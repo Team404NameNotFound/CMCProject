@@ -88,7 +88,7 @@ public class AdminInteractionTest {
 	@Test (expected = NullPointerException.class)
 	public void testToggleActivationStatus_adminToggleNonexsitingUser_case2() {
 		admin.login("nadmin", "Admin");
-		admin.toggleActivationStatus("TODAY IS A SUNNY DAY ");
+		admin.toggleActivationStatus("ASDASD");
 	}
 	
 	@Test (expected = NullPointerException.class)
@@ -100,19 +100,10 @@ public class AdminInteractionTest {
 	@Test
 	public void testToggleActivationStatus_adminToggleActivationSuccessfully_case4() {
 		admin.login("nadmin", "Admin");
-		admin.toggleActivationStatus("cz001");
-		String expResult = "N";
-		String result= (this.dbController.getAccount("cz001").getUserStatus());
+		admin.toggleActivationStatus("cuser");
+		String expResult = "Y";
+		String result= (this.dbController.getAccount("cuser").getUserStatus());
 		assertEquals("Admin toggle avtication status: " + expResult, expResult,result);
-	}
-	
-	@Test 
-	public void testToggleActivationStatus_adminToggleTwice_case5() {
-		admin.login("nadmin", "Admin");
-		admin.toggleActivationStatus("cz001");
-		String expResult = "N";
-		String result= (this.dbController.getAccount("cz001").getUserStatus());
-		assertEquals("Admin edit profile: first name" + expResult, expResult,result);
 	}
 
 	
@@ -300,26 +291,67 @@ public class AdminInteractionTest {
 	
 	//***********************************************************************************************************************
 
-	/*@Test
+	@Test
 	public void testViewUsers() {
-		fail("Not yet implemented");
+		admin.login("nadmin", "Admin"); 
+		admin.viewUsers();
 	}
 
 	@Test
 	public void testViewUniversities() {
-		fail("Not yet implemented");  
+		admin.login("nadmin", "Admin"); 
+		admin.viewUniversities();
 	}
 
-	@Test
-	public void testAddNewUniversity() {
-		fail("Not yet implemented");
-	}
 
-	@Test
-	public void testRemoveUniversity() {
-		fail("Not yet implemented");
-	}*/
+	@Test (expected = IllegalArgumentException.class)
+	public void testRemoveUniversity_removeInvalidUniversity() {
+		admin.login("nadmin", "Admin"); 
+		admin.removeUniversity("yoyoyo");
+	}
 	
+	@Test
+	public void testRemoveUniversity_removeSuccessfully() {
+		admin.login("nadmin", "Admin"); 
+		admin.removeUniversity("ECOLE NATIONALE SUPERIEURE DE TELECOMMUNICATION DE PARIS");
+	}
+	
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void testAddNewUniversity_addExistingUniversity() {
+		admin.addNewUniversity("YALE", "state", "location", "control", 
+				"enrollment", "percentFemale", "satVerbal", "satMath", 
+				"cost", "percentFinAid", "percentEnrolled", "applicants", 
+				"percentAdmitted", "academicScale", "socialScale", 
+				"qualityOfLife", new String[] {});
+	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void testAddNewUniversity_addInvalidUniversityControl() {
+		admin.addNewUniversity("YAYAYAYAYAYA", "state", "location", "control", 
+				"enrollment", "percentFemale", "satVerbal", "satMath", 
+				"cost", "percentFinAid", "percentEnrolled", "applicants", 
+				"percentAdmitted", "academicScale", "socialScale", 
+				"qualityOfLife", new String[] {});
+	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void testAddNewUniversity_addInvalidUniversityPercentFemale() {
+		admin.addNewUniversity("YAYAYAYAYAYA", "state", "location", "control", 
+				"enrollment", "-111111", "satVerbal", "satMath", 
+				"cost", "percentFinAid", "percentEnrolled", "applicants", 
+				"percentAdmitted", "academicScale", "socialScale", 
+				"qualityOfLife", new String[] {});
+	}
+	
+	@Test
+	public void testAddNewUniversity_addSuccessfully() {
+		admin.addNewUniversity("aaaaa", "TEXAS", "SUBURBAN",  "PRIVATE",
+				 "10000", "50",  "", "", 
+				 "12088", "70", "80", "4000", 
+				"90", "2", "3", "3", 
+				new String[] {"ACCOUNTING", "BIOLOGY"});
+	}
 
 	@Test (expected = IllegalArgumentException.class)
 	public void testAddUser_studentAddUser_case1() {
@@ -359,9 +391,9 @@ public class AdminInteractionTest {
 	@Test
 	public void testAddUser_adminAddUserSuccessfully_case7() {
 		admin.login("nadmin", "Admin");
-		admin.addUser("testAddUser", "testAddUser", "testAddUser", "testAddUser", "a");
-		String expResult = "testAddUser";
-		String result = dbController.getAccount("testAddUser").getUsername();
+		admin.addUser("testAddUser", "test", "thisIsANewUSER", "testAddUser", "a");
+		String expResult = "thisIsANewUSER";
+		String result = dbController.getAccount("thisIsANewUSER").getUsername();
 	    assertEquals("Admin add new user" + expResult,expResult, result);
 	}
 

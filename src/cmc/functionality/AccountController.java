@@ -96,16 +96,20 @@ public class AccountController {
 	 * @return Account account with activation status changed
 	 */
 	public Account toggleActivationStatus() {
-		if (account == null)
+		if (this.account == null)
 			throw new NullPointerException();
 
-		else if (account.getUserStatus().equals("N")) {
-			account.setUserStatus("Y");
-		} else {
-			account.setUserStatus("N");
+		else if (this.account.getUserStatus().equals("N")) {
+			this.account.setUserStatus("Y");
+			dbController.setAccount(this.account);
+		} else  if(this.account.getUserStatus().equals("Y")){
+			this.account.setUserStatus("N");
+			dbController.setAccount(this.account);
+		}else {
+			System.out.println("wrong 107 ac");
 		}
-		dbController.setAccount(account);
-		return account;
+		//dbController.setAccount(this.account);
+		return this.account;
 	}
 
 	/**

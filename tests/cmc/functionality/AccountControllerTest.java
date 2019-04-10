@@ -187,9 +187,9 @@ public class AccountControllerTest {
 
 	@Test
 	public void testToggleActivationStatusYtoN() {
-		Account userCheck = dbController.getAccount("kmendel001@csbsju.edu");
-		userCheck.setUserStatus("Y");
-		dbController.setAccount(userCheck);
+		//Account userCheck = dbController.getAccount("kmendel001@csbsju.edu");
+		//userCheck.setUserStatus("N"); //y
+		//dbController.setAccount(userCheck);
 		user2.toggleActivationStatus();
 		String result = dbController.getAccount("kmendel001@csbsju.edu").getUserStatus();
 		String expResult = "N";
