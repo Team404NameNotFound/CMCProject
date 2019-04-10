@@ -20,12 +20,35 @@ public class StudentFunctionalityControllerTest {
 		Account andrew = new Student("Andrew", "Heroux", "ajheroux@csbsju.edu", "38dgf", "u", "Y", null);
 		dbCon.setAccount(andrew);
 		this.studentConTest.login("ajheroux@csbsju.edu", "38dgf");
-		this.studentConTest.saveSchool("YALE");
+		Boolean found = false;
+		for(int i = 0; i<dbCon.getSchoolList2(dbCon.getAccount("ajheroux@csbsju.edu")).size(); i++)
+		{
+			if(dbCon.getSchoolList2(dbCon.getAccount("ajheroux@csbsju.edu")).get(i).getName().equals("YALE"))
+			{
+				found = true;
+			}
+		}
+		if(!found)
+		{
+			this.studentConTest.saveSchool("YALE");
+		}
+		
 	}
 
 	@After
 	public void cleanUp() {
-		this.studentConTest.removeSavedSchool("YALE");
+		Boolean found = false;
+		for(int i = 0; i<dbCon.getSchoolList2(dbCon.getAccount("ajheroux@csbsju.edu")).size(); i++)
+		{
+			if(dbCon.getSchoolList2(dbCon.getAccount("ajheroux@csbsju.edu")).get(i).getName().equals("YALE"))
+			{
+				found = true;
+			}
+		}
+		if(found)
+		{
+			this.studentConTest.removeSavedSchool("YALE");
+		}
 		this.studentConTest.logout();
 	}
 
