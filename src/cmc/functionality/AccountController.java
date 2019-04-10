@@ -73,11 +73,10 @@ public class AccountController {
 	 */
 	public boolean checkIfSchoolSaved(String school) {
 		if (this.account == null)
-			throw new NullPointerException();	
-		else if(this.account.getUserType().equals("a"))
+			throw new NullPointerException();
+		else if (this.account.getUserType().equals("a"))
 			throw new UnsupportedOperationException("Current account is an admin");
-		else 
-		{
+		else {
 			if (this.dbController.getUniversity2(school) == null) {
 				throw new UnsupportedOperationException("Invalid school name");
 			}
@@ -96,22 +95,19 @@ public class AccountController {
 	 * 
 	 * @return Account account with activation status changed
 	 */
-		 public Account toggleActivationStatus() { 
-			if (account == null)
-				throw new NullPointerException(); 
-			
-			else if(account.getUserStatus().equals("N")) 
-			{
-				account.setUserStatus("Y"); 
-			} 
-			else 
-			{
-				account.setUserStatus("N"); 
-			} 
-			dbController.setAccount(account);
-			return account;
+	public Account toggleActivationStatus() {
+		if (account == null)
+			throw new NullPointerException();
+
+		else if (account.getUserStatus().equals("N")) {
+			account.setUserStatus("Y");
+		} else {
+			account.setUserStatus("N");
 		}
-		 
+		dbController.setAccount(account);
+		return account;
+	}
+
 	/**
 	 * Checks if the password matches for the current user
 	 * 
@@ -158,16 +154,11 @@ public class AccountController {
 	 *            new password to be put in to account
 	 */
 	public Account updatePassword(String newPassword) {
-		if (newPassword.equals(null) || newPassword.equals(""))
-		{
+		if (newPassword.equals(null) || newPassword.equals("")) {
 			throw new IllegalArgumentException("Sorry, new password has to have characters");
-		} 
-		else if (newPassword.equals(dbController.getAccount(account.getUsername()).getPassword()))
-		{
+		} else if (newPassword.equals(dbController.getAccount(account.getUsername()).getPassword())) {
 			throw new IllegalArgumentException("Sorry, new password has to be different from existing password");
-		}
-		else 
-		{
+		} else {
 			account.setPassword(newPassword);
 			dbController.setAccount(account);
 		}
@@ -237,7 +228,7 @@ public class AccountController {
 	 * @return Account account with information edited
 	 */
 	public Account updateUserInfo(String fName, String lName, String password, String status, String type) {
-		if (!fName.equals("") && fName != null){
+		if (!fName.equals("") && fName != null) {
 			account.setFirstName(fName);
 		}
 		if (!lName.equals("") && lName != null) {
@@ -246,19 +237,13 @@ public class AccountController {
 		if (!password.equals("") && password != null) {
 			account.setPassword(password);
 		}
-		if(!type.equals("-1"))
-		{
-			if (!type.equals("") && type != null) 
-			{
+		if (!type.equals("-1")) {
+			if (!type.equals("") && type != null) {
 				if (type.equals("u") || type.equals("U")) {
 					account.setUserType("u");
-				} 
-				else if (type.equals("a") || type.equals("A")) 
-				{
+				} else if (type.equals("a") || type.equals("A")) {
 					account.setUserType("a");
-				}
-				else
-				{
+				} else {
 					throw new UnsupportedOperationException("Account type can only be \" a\" or  \"u\" ");
 				}
 			}
@@ -267,14 +252,13 @@ public class AccountController {
 					account.setUserType("Y");
 				} else if (type.equals("N") || type.equals("n")) {
 					account.setUserType("N");
-				}else{
+				} else {
 					throw new UnsupportedOperationException("Account status can only be \" N\" or  \" Y\" ");
 				}
 			}
 		}
 		return account;
-		
-		
+
 	}
 
 	/**
@@ -312,16 +296,15 @@ public class AccountController {
 	public Boolean removeSavedSchool(String school) {
 		ArrayList<UserSavedSchool> savedSchools = this.dbController.getSchoolList2(this.account);
 		University schoolToRemove = dbController.getUniversity2(school);
-		if(this.checkIfSchoolSaved(school))
-		{
+		if (this.checkIfSchoolSaved(school)) {
 			if (schoolToRemove == null) {
 				throw new UnsupportedOperationException("Invalid school to remove");
 			}
-	
+
 			if (account == null || account.getUserType().equals("a")) {
 				throw new UnsupportedOperationException("Invalid account to remove a saved school");
 			}
-	
+
 			Boolean removed = false;
 			for (University savedSchool : savedSchools) {
 				if (savedSchool.getName().equals(school)) {
@@ -330,9 +313,7 @@ public class AccountController {
 				}
 			}
 			return removed;
-		}
-		else
-		{
+		} else {
 			throw new IllegalArgumentException();
 		}
 	}
@@ -354,26 +335,19 @@ public class AccountController {
 	 *            list of schools user has saved
 	 * @return
 	 */
-	
-	public Account createNewAccount(String fName, String lName, String userName,
-	String password, String type, ArrayList<UserSavedSchool> savedSchools) 
-	{ 
-		if(type.equals("a"))
-		{ 
-			account = new Admin(fName, lName, userName, password,type, "Y"); 
+
+	public Account createNewAccount(String fName, String lName, String userName, String password, String type,
+			ArrayList<UserSavedSchool> savedSchools) {
+		if (type.equals("a")) {
+			account = new Admin(fName, lName, userName, password, type, "Y");
 			return account;
-		}
-		else if (type.equals("u")) 
-		{
+		} else if (type.equals("u")) {
 			account = new Student(fName, lName, userName, password, type, "Y", savedSchools);
-			return account; 
-		} 
-		else 
-		{ 
+			return account;
+		} else {
 			throw new IllegalArgumentException("Sorry you need to specify the type of user.");
 		}
 	}
-	 
 
 	// comparing SAT math for now
 	/**
@@ -395,15 +369,9 @@ public class AccountController {
 		ArrayList<String> returnList = new ArrayList<>();
 
 		for (int i = 0; i < savedSchools.size(); i++) {
-				if(0<= Double.parseDouble(savedSchools.get(i).getSatMath()))
-				{
-					scores[i][0] = Double.parseDouble(savedSchools.get(i).getSatMath());
-					scores[i][1] = Double.parseDouble("" + i);
-				}
+			scores[i][0] = Double.parseDouble(savedSchools.get(i).getSatMath());
+			scores[i][1] = Double.parseDouble("" + i);
 		}
-		
-		if(scores.length == 0)
-			throw new UnsupportedOperationException("No schools to compare");
 
 		java.util.Arrays.sort(scores, new java.util.Comparator<double[]>() {
 			public int compare(double[] a, double[] b) {
@@ -412,11 +380,14 @@ public class AccountController {
 		});
 
 		for (int j = 0; j < scores.length; j++) {
+			if (scores[j][0] != -1.0) {
 				returnList.add(savedSchools.get(j).getName() + " " + scores[j][0]);
+			}
 		}
+
 		return returnList;
 	}
-	
+
 	public boolean removeAllSavedSchools() {
 		ArrayList<UserSavedSchool> savedSchools = this.dbController.getSchoolList2(this.account);
 
@@ -424,14 +395,14 @@ public class AccountController {
 			throw new UnsupportedOperationException("Invalid account to remove a saved school");
 		}
 
-		if(savedSchools.size() == 0 ) {
+		if (savedSchools.size() == 0) {
 			return false;
 		}
-		
+
 		for (University savedSchool : savedSchools) {
-				this.dbController.removeSavedSchool(account.getUsername(), savedSchool.getName());
+			this.dbController.removeSavedSchool(account.getUsername(), savedSchool.getName());
 		}
-	
+
 		return true;
 	}
 

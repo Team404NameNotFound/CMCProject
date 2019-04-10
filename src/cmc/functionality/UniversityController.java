@@ -84,6 +84,7 @@ public class UniversityController {
 			String academicScale, String socialScale, String qualityOfLife, String[] emphases) {
 		// goes through and tests every parameter to see if it has a value so that only
 		// the parameters with new values are updated
+
 		if (state.matches("[a-zA-Z]+")) {
 			school.setState(state);
 		}else if(state == null || state.equals("")) {
@@ -91,6 +92,7 @@ public class UniversityController {
 		}else {
 			throw new IllegalArgumentException("Invalid State");
 		}
+
 		
 		if (location.matches("[a-zA-Z]+")) {
 			school.setLocation(location);
@@ -99,6 +101,7 @@ public class UniversityController {
 		}else {
 			throw new IllegalArgumentException("Invalid location");
 		}
+
 		
 		if (control.equals("PRIVATE") || control.equals("PUBLIC")) {
 			school.setControl(control);
@@ -107,6 +110,7 @@ public class UniversityController {
 		}else {
 			throw new IllegalArgumentException("Invalid control");
 		}
+
 		
 		if (enrollment.matches("\\d+")) {
 			school.setEnrollment(enrollment);
@@ -115,6 +119,7 @@ public class UniversityController {
 		}else {
 			throw new IllegalArgumentException("Invalid enrollment");
 		}
+
 		
 		if (percentFemale.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentFemale) > 0.0 && Double.parseDouble(percentFemale) < 100.0) {
 			school.setPercentFemale(percentFemale);
@@ -123,6 +128,7 @@ public class UniversityController {
 		}else {
 			throw new IllegalArgumentException("Invalid percentFemale");
 		}
+
 		
 		if (satVerbal.matches("\\d+") && Double.parseDouble(satVerbal) >= 200 && Double.parseDouble(satVerbal) <= 800) {
 			school.setSatVerbal(satVerbal);
@@ -139,6 +145,7 @@ public class UniversityController {
 		}else {
 			throw new IllegalArgumentException("Invalid satMath");
 		}
+
 		
 		if (cost.matches("\\d+")) {
 			school.setCost(cost);
@@ -147,7 +154,7 @@ public class UniversityController {
 		}else {
 			throw new IllegalArgumentException("Invalid cost");
 		}
-		
+
 		if (percentFinAid.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentFinAid) > 0.0 && Double.parseDouble(percentFinAid) < 100.0) {
 			school.setPercentFinAid(percentFinAid);
 		}else if(percentFinAid == null || percentFinAid.equals("")) {
@@ -155,6 +162,7 @@ public class UniversityController {
 		}else {
 			throw new IllegalArgumentException("Invalid percentFinAid");
 		}
+
 		
 		if (applicants.matches("\\d+")) {
 			school.setApplicants(applicants);
@@ -163,6 +171,7 @@ public class UniversityController {
 		}else {
 			throw new IllegalArgumentException("Invalid applicants");
 		}
+
 		
 		if (percentAdmitted.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentAdmitted) > 0 && Double.parseDouble(percentAdmitted) < 100) {
 			school.setPercentAdmitted(percentAdmitted);
@@ -171,6 +180,7 @@ public class UniversityController {
 		}else {
 			throw new IllegalArgumentException("Invalid percentAdmitted");
 		}
+
 		
 		if (percentEnrolled.matches("-?\\d+(\\.\\d+)?") && Double.parseDouble(percentEnrolled) > 0 && Double.parseDouble(percentEnrolled) < 100) {
 			school.setPercentEnrolled(percentEnrolled);
@@ -179,6 +189,7 @@ public class UniversityController {
 		}else {
 			throw new IllegalArgumentException("Invalid percentEnrolled");
 		}
+
 		
 		if (academicScale.matches("[12345]")) {
 			school.setAcademicScale(academicScale);
@@ -187,6 +198,7 @@ public class UniversityController {
 		}else {
 			throw new IllegalArgumentException("Invalid academicScale");
 		}
+
 		
 		if (socialScale.matches("[12345]")) {
 			school.setSocialScale(socialScale);
@@ -195,6 +207,7 @@ public class UniversityController {
 		}else {
 			throw new IllegalArgumentException("Invalid socialScale");
 		}
+
 		
 		if (qualityOfLife.matches("[12345]")) {
 			school.setQualityOfLife(qualityOfLife);
@@ -203,6 +216,7 @@ public class UniversityController {
 		}else {
 			throw new IllegalArgumentException("Invalid qualityOfLife");
 		}
+
 		
 		if (emphases == null || emphases.length == 0) {
 			school.setEmphases(new String[] {});

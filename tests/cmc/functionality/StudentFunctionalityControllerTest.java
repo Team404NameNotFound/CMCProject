@@ -10,7 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class StudentFunctionalityControllerTest {
-	
+
 	private StudentFunctionalityController studentConTest;
 
 	@Before
@@ -19,7 +19,7 @@ public class StudentFunctionalityControllerTest {
 		this.studentConTest.login("ajheroux@csbsju.edu", "38dgf");
 		this.studentConTest.saveSchool("YALE");
 	}
-	
+
 	@After
 	public void cleanUp() {
 		this.studentConTest.removeSavedSchool("YALE");
@@ -28,17 +28,17 @@ public class StudentFunctionalityControllerTest {
 
 	@Test
 	public void testRankUniversity() {
-		this.studentConTest.rankUniversity("UniName<>");	
+		this.studentConTest.rankUniversity("UniName<>");
 	}
-	
-	@Test (expected = IllegalArgumentException.class)
+
+	@Test(expected = IllegalArgumentException.class)
 	public void testRankUniversityUniversityDoesNotExsist() {
 		this.studentConTest.rankUniversity("Lala Land");
 	}
 
 	@Test
 	public void testSearch() {
-		fail("Not yet implemented");//How to test???
+		fail("Not yet implemented");// How to test???
 	}
 
 	@Test
@@ -48,7 +48,7 @@ public class StudentFunctionalityControllerTest {
 		University school = DBCon.getUniversity("YALE");
 		ArrayList<String> expected = new ArrayList<String>();
 		expected.add(school.getName());
-		expected.add(school.getState()); 
+		expected.add(school.getState());
 		expected.add(school.getLocation());
 		expected.add(school.getControl());
 		expected.add(school.getEnrollment());
@@ -65,8 +65,8 @@ public class StudentFunctionalityControllerTest {
 		expected.add(school.getQualityOfLife());
 		assertEquals(schoolDetials, expected);
 	}
-	
-	@Test (expected = IllegalArgumentException.class)
+
+	@Test(expected = IllegalArgumentException.class)
 	public void testViewSchoolDetailsFailsForInvalidSchoolName() {
 		this.studentConTest.viewSchoolDetails("Lala Land");
 	}
@@ -85,11 +85,11 @@ public class StudentFunctionalityControllerTest {
 		assertTrue(found);
 	}
 
-	@Test (expected = IllegalArgumentException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void testSaveSchoolFailsForSchoolThatDoesNotExist() {
 		this.studentConTest.saveSchool("Lala Land");
 	}
-	
+
 	@Test
 	public void testSetAccountController() {
 		Account account = new Account("Andrew", "-1", "-1", "-1", "-1", "-1");
@@ -112,7 +112,9 @@ public class StudentFunctionalityControllerTest {
 		this.studentConTest.removeSavedSchool("YALE");
 		ArrayList<UserSavedSchool> savedSchools = this.studentConTest.viewSavedSchools();
 		for (int i = 0; i < savedSchools.size(); i++) {
-			if (savedSchools.get(i).getName().equals("YALE"));{
+			if (savedSchools.get(i).getName().equals("YALE"))
+				;
+			{
 				found = true;
 				System.out.println("It's True");
 			}
@@ -120,22 +122,21 @@ public class StudentFunctionalityControllerTest {
 		System.out.println(found + " " + found);
 		assertFalse(found);
 	}
-	
-	@Test (expected = UnsupportedOperationException.class)
+
+	@Test(expected = UnsupportedOperationException.class)
 	public void testRemoveSavedSchoolFailsForNonExistingSchool() {
 		this.studentConTest.removeSavedSchool("Lala Land");
 	}
-	
 
 	@Test
 	public void testViewSavedSchoolDetails() {
 		DBController DBCon = new DBController();
 		ArrayList<String> schoolDetials = this.studentConTest.viewSavedSchoolDetails("YALE");
 		University school = DBCon.getUniversity("YALE");
-		
+
 		ArrayList<String> expected = new ArrayList<String>();
 		expected.add(school.getName());
-		expected.add(school.getState()); 
+		expected.add(school.getState());
 		expected.add(school.getLocation());
 		expected.add(school.getControl());
 		expected.add(school.getEnrollment());
@@ -150,11 +151,11 @@ public class StudentFunctionalityControllerTest {
 		expected.add(school.getAcademicScale());
 		expected.add(school.getSocialScale());
 		expected.add(school.getQualityOfLife());
-		
+
 		assertEquals(schoolDetials, expected);
 	}
-	
-	@Test (expected = IllegalArgumentException.class)
+
+	@Test(expected = IllegalArgumentException.class)
 	public void testViewSavedSchoolDetailsFailsForInvalidSchoolName() {
 		this.studentConTest.viewSchoolDetails("Lala Land");
 	}
@@ -166,8 +167,8 @@ public class StudentFunctionalityControllerTest {
 //		System.out.println(saveStatistics[1]);
 //		assertTrue(saveStatistics[0].equals("YALE") && saveStatistics[1].equals("2"));
 	}
-	
-	@Test (expected = IllegalArgumentException.class)
+
+	@Test(expected = IllegalArgumentException.class)
 	public void testViewUserSavedStatisticsFailsForNonExistingSchool() {
 		this.studentConTest.viewUserSavedStatistics("Lala Land");
 	}

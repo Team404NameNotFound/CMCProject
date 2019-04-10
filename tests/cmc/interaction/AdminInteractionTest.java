@@ -126,7 +126,7 @@ public class AdminInteractionTest {
 	}*/
 	
 	//***************************************************EditUniversityInfo*******************************
-	/*@Test (expected = IllegalArgumentException.class)
+	@Test (expected = IllegalArgumentException.class)
 	public void testEditUniversityInfo_adminEditNonExistingSchool_case2() {
 		admin.login("nadmin", "Admin");
 		admin.editUniversityInfo("haha", "TEXAS", "SUBURBAN",  "PRIVATE",
@@ -296,7 +296,7 @@ public class AdminInteractionTest {
 		String[] result2 = this.dbController.getUniversity2("ABILENE CHRISTIAN UNIVERSITY").getEmphases();
 		assertEquals("Admin edit ABILENE CHRISTIAN UNIVERSITY to be all empty:  " + expResult,expResult, result);
 		assertEquals("Admin edit emphases:  " + expResult2,expResult2, result2);
-	}*/
+	}
 	
 	//***********************************************************************************************************************
 

@@ -2,7 +2,9 @@
 g * This class allows for the creation of University objects
  */
 package cmc.entity;
+
 import java.util.*;
+
 /**
  * @author kmendel001
  *
@@ -29,29 +31,50 @@ public class University {
 	private String socialScale;
 	private String qualityOfLife;
 	private String[] emphases;
-	//private ArrayList<String> students = new ArrayList<>();
+	// private ArrayList<String> students = new ArrayList<>();
 
 	/**
 	 * Creates a new university object with the following attributes
-	 * @param name name of the university
-	 * @param state state where the university is located
-	 * @param location setting where the university is located
-	 * @param control what type of control the university is under
-	 * @param enrollment number of students enrolled at the university
-	 * @param percentFemale percentage of the study body that is female
-	 * @param satVerbal average verbal SAT score of student body
-	 * @param satMath average math SAT score of student body
-	 * @param cost annual tuition to attend university
-	 * @param percentFinAid percentage of study body that received financial aid
-	 * @param percentEnrolled percent of applicants that decide to enroll
-	 * @param applicants annual number of applicants
-	 * @param percentAdmitted percent of applicants that get admitted
-	 * @param academicScale integer value between 1 and 5 indicating academic scale of the university
-	 * @param socialScale integer value between 1 and 5 indicating social life at the university
-	 * @param qualityOfLife integer value between 1 and 5 indicating quality of life at the university
-	 * @param emphases up to five areas of study that the university excels in
+	 * 
+	 * @param name
+	 *            name of the university
+	 * @param state
+	 *            state where the university is located
+	 * @param location
+	 *            setting where the university is located
+	 * @param control
+	 *            what type of control the university is under
+	 * @param enrollment
+	 *            number of students enrolled at the university
+	 * @param percentFemale
+	 *            percentage of the study body that is female
+	 * @param satVerbal
+	 *            average verbal SAT score of student body
+	 * @param satMath
+	 *            average math SAT score of student body
+	 * @param cost
+	 *            annual tuition to attend university
+	 * @param percentFinAid
+	 *            percentage of study body that received financial aid
+	 * @param percentEnrolled
+	 *            percent of applicants that decide to enroll
+	 * @param applicants
+	 *            annual number of applicants
+	 * @param percentAdmitted
+	 *            percent of applicants that get admitted
+	 * @param academicScale
+	 *            integer value between 1 and 5 indicating academic scale of the
+	 *            university
+	 * @param socialScale
+	 *            integer value between 1 and 5 indicating social life at the
+	 *            university
+	 * @param qualityOfLife
+	 *            integer value between 1 and 5 indicating quality of life at the
+	 *            university
+	 * @param emphases
+	 *            up to five areas of study that the university excels in
 	 */
-	
+
 	public University() {
 		this.name = "";
 		this.state = "";
@@ -71,10 +94,11 @@ public class University {
 		this.qualityOfLife = "";
 		this.emphases = null;
 	}
-	
-	public University(String name, String state, String location, String control, String enrollment, String percentFemale,
-			String satVerbal, String satMath, String cost, String percentFinAid, String percentEnrolled, String applicants,
-			String percentAdmitted, String academicScale, String socialScale, String qualityOfLife, String[] emphases) {
+
+	public University(String name, String state, String location, String control, String enrollment,
+			String percentFemale, String satVerbal, String satMath, String cost, String percentFinAid,
+			String percentEnrolled, String applicants, String percentAdmitted, String academicScale, String socialScale,
+			String qualityOfLife, String[] emphases) {
 		super();
 		this.name = name;
 		this.state = state;
@@ -103,7 +127,8 @@ public class University {
 	}
 
 	/**
-	 * @param name university name
+	 * @param name
+	 *            university name
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -117,7 +142,8 @@ public class University {
 	}
 
 	/**
-	 * @param state where the university is located
+	 * @param state
+	 *            where the university is located
 	 */
 	public void setState(String state) {
 		this.state = state;
@@ -131,7 +157,8 @@ public class University {
 	}
 
 	/**
-	 * @param location what setting the university is located in
+	 * @param location
+	 *            what setting the university is located in
 	 */
 	public void setLocation(String location) {
 		this.location = location;
@@ -145,7 +172,8 @@ public class University {
 	}
 
 	/**
-	 * @param control the type of control a university is under
+	 * @param control
+	 *            the type of control a university is under
 	 */
 	public void setControl(String control) {
 		this.control = control;
@@ -159,7 +187,8 @@ public class University {
 	}
 
 	/**
-	 * @param enrollment the number of students that attend a university
+	 * @param enrollment
+	 *            the number of students that attend a university
 	 */
 	public void setEnrollment(String enrollment) {
 		this.enrollment = enrollment;
@@ -173,7 +202,8 @@ public class University {
 	}
 
 	/**
-	 * @param percentFemale percentage of the student body at the university that is female
+	 * @param percentFemale
+	 *            percentage of the student body at the university that is female
 	 */
 	public void setPercentFemale(String percentFemale) {
 		this.percentFemale = percentFemale;
@@ -187,7 +217,8 @@ public class University {
 	}
 
 	/**
-	 * @param satVerbal average verbal SAT score of the student body
+	 * @param satVerbal
+	 *            average verbal SAT score of the student body
 	 */
 	public void setSatVerbal(String satVerbal) {
 		this.satVerbal = satVerbal;
@@ -201,7 +232,8 @@ public class University {
 	}
 
 	/**
-	 * @param satMath average math SAT score of the student body
+	 * @param satMath
+	 *            average math SAT score of the student body
 	 */
 	public void setSatMath(String satMath) {
 		this.satMath = satMath;
@@ -215,7 +247,8 @@ public class University {
 	}
 
 	/**
-	 * @param cost annual tuition of a university
+	 * @param cost
+	 *            annual tuition of a university
 	 */
 	public void setCost(String cost) {
 		this.cost = cost;
@@ -229,7 +262,8 @@ public class University {
 	}
 
 	/**
-	 * @param percentFinAid percentage of the student body that received financial aid
+	 * @param percentFinAid
+	 *            percentage of the student body that received financial aid
 	 */
 	public void setPercentFinAid(String percentFinAid) {
 		this.percentFinAid = percentFinAid;
@@ -243,7 +277,8 @@ public class University {
 	}
 
 	/**
-	 * @param percentEnrolled percentage of applicants that enroll
+	 * @param percentEnrolled
+	 *            percentage of applicants that enroll
 	 */
 	public void setPercentEnrolled(String percentEnrolled) {
 		this.percentEnrolled = percentEnrolled;
@@ -257,7 +292,8 @@ public class University {
 	}
 
 	/**
-	 * @param applicants percentage of applicants that enroll
+	 * @param applicants
+	 *            percentage of applicants that enroll
 	 */
 	public void setApplicants(String applicants) {
 		this.applicants = applicants;
@@ -271,7 +307,8 @@ public class University {
 	}
 
 	/**
-	 * @param percentAdmitted percentage of total applicants that are admitted
+	 * @param percentAdmitted
+	 *            percentage of total applicants that are admitted
 	 */
 	public void setPercentAdmitted(String percentAdmitted) {
 		this.percentAdmitted = percentAdmitted;
@@ -285,7 +322,8 @@ public class University {
 	}
 
 	/**
-	 * @param academicScale academic scale of school
+	 * @param academicScale
+	 *            academic scale of school
 	 */
 	public void setAcademicScale(String academicScale) {
 		this.academicScale = academicScale;
@@ -299,7 +337,8 @@ public class University {
 	}
 
 	/**
-	 * @param socialScale social scale of school
+	 * @param socialScale
+	 *            social scale of school
 	 */
 	public void setSocialScale(String socialScale) {
 		this.socialScale = socialScale;
@@ -313,7 +352,8 @@ public class University {
 	}
 
 	/**
-	 * @param qualityOfLife quality of life scale at school
+	 * @param qualityOfLife
+	 *            quality of life scale at school
 	 */
 	public void setQualityOfLife(String qualityOfLife) {
 		this.qualityOfLife = qualityOfLife;
@@ -327,7 +367,8 @@ public class University {
 	}
 
 	/**
-	 * @param emphases list of up to five areas that the university excels in
+	 * @param emphases
+	 *            list of up to five areas that the university excels in
 	 */
 	public void setEmphases(String[] emphases) {
 		this.emphases = emphases;
