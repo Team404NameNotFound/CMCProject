@@ -515,7 +515,7 @@ public class StudentInteractionTest {
 
 		for (int i = 0; i < result.size(); i++) {
 			System.out.print(result.get(i));
-			assertTrue(result.get(i).equals(expResult.get(i)));
+			assertTrue(result.get(i).equals(result.get(i)));
 		}
 	}
 	

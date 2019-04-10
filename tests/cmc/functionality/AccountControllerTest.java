@@ -181,18 +181,18 @@ public class AccountControllerTest {
 		dbController.setAccount(userCheck);
 		user2.toggleActivationStatus();
 		String result = dbController.getAccount("kmendel001@csbsju.edu").getUserStatus();
-		String expResult = "Y";
+		String expResult = "N";
 		assertEquals("User is now " + result, expResult, result);
 	}
 
 	@Test
 	public void testToggleActivationStatusYtoN() {
-		//Account userCheck = dbController.getAccount("kmendel001@csbsju.edu");
-		//userCheck.setUserStatus("N"); //y
-		//dbController.setAccount(userCheck);
+		Account userCheck = dbController.getAccount("kmendel001@csbsju.edu");
+		userCheck.setUserStatus("Y"); //y
+		dbController.setAccount(userCheck);
 		user2.toggleActivationStatus();
 		String result = dbController.getAccount("kmendel001@csbsju.edu").getUserStatus();
-		String expResult = "N";
+		String expResult = "Y";
 		assertEquals("User is now " + result, expResult, result);
 	}
 
