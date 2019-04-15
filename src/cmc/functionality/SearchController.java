@@ -277,6 +277,92 @@ public class SearchController {
 
 		return returnSchools;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public ArrayList<University> fieldSearch2(String schoolName, String state, String location, int numStudentsMin,
+			int numStudentsMax, float percentFemaleMin, float percentFemaleMax, int SATVerbalMin, int SATVerbalMax,
+			int SATMathMin, int SATMathMax, int expensesMin, int expensesMax, float PercentFinancialAidMin,
+			float percenetFinancialAidMax, int numberApplicantsMin, int numberApplicatnsMax, float percentAddmittedMin,
+			float percentAdmittedMax, float percentEnrolledMin, float percentEnrolledMax, int academicScaleMin,
+			int academicScaleMax, int socialScalemin, int socialScaleMax, int qualityOfLifeMin, int qualityOfLifeMax,
+			String[] emphases, String control) {
+		ArrayList<University> allSchools = new ArrayList<University>();
+		ArrayList<Integer> matchIndex = new ArrayList<Integer>();
+		for (int i = 0; i < this.universityList.length; i++) {
+			allSchools.add(this.universityList[i]);
+			matchIndex.add(i);
+		}
+		ArrayList<University> searchResults = new ArrayList<University>();
+		
+		//filtering through the names
+		if (schoolName != "-1") {
+			for (int i = 0; i < allSchools.size(); i++) {
+				if (!allSchools.get(i).getName().toLowerCase().contains(schoolName.toLowerCase())){
+					matchIndex.remove((Integer)i);
+				}
+			}	
+		}
+		
+		//filtering through the states
+		if (state != "-1") {
+			for (int j = 0; j < matchIndex.size(); j++) {
+				int i = matchIndex.get(j);
+				if (!allSchools.get(i).getState().toLowerCase().contains(state.toLowerCase())){
+					matchIndex.remove((Integer)i);
+				}
+			}	
+		}
+		
+		//filtering through the locations
+		if (location != "-1") {
+			for (int j = 0; j < matchIndex.size(); j++) {
+				int i = matchIndex.get(j);
+				if (!allSchools.get(i).getLocation().toLowerCase().contains(location.toLowerCase())){
+					matchIndex.remove((Integer)i);
+				}
+			}	
+		}
+		
+		//filtering through the locations
+		if ((numStudentsMin != -1) && (numStudentsMax != -1)) {
+			for (int j = 0; j < matchIndex.size(); j++) {
+				int i = matchIndex.get(j);
+				if (!compareRange(numStudentsMin, numStudentsMax, Integer.parseInt(allSchools.get(i).getEnrollment()))){
+					matchIndex.remove((Integer)i);
+				}
+			}	
+		}
+		
+		
+		return searchResults;
+	}
+	
+	/**
+	 * Aux method for search 
+	 * @param min1
+	 * @param max1
+	 * @param min2
+	 * @param max2
+	 * @return true if the searched ranges encompass the range of the school
+	 */
+	private boolean compareRange(int searchMin, int searchMax, int schoolEnrollment) {
+		return (searchMin <= schoolEnrollment) && (searchMax >= schoolEnrollment);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 
 	/**
 	 * Rank the university

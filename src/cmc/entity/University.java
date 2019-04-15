@@ -1,5 +1,5 @@
 /**
-g * This class allows for the creation of University objects
+ * This class allows for the creation of University objects
  */
 package cmc.entity;
 
