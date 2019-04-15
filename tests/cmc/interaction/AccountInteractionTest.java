@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
+import cmc.entity.University;
+import cmc.functionality.DBController;
+
 public class AccountInteractionTest {
 	AccountInteraction ac;
 	@Before
@@ -22,7 +25,7 @@ public class AccountInteractionTest {
 
 	@Test
 	public void testLogin() {
-		assertTrue(ac.login("cz001", "password"));
+		assertTrue(ac.login("juser", "user"));
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -34,7 +37,7 @@ public class AccountInteractionTest {
 	@Test(expected = NullPointerException.class)
 	public void testLoginFailsUserInactive()
 	{
-		ac.login("luser", "user");
+		ac.login("cz001", "password");
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -128,18 +131,29 @@ public class AccountInteractionTest {
 	}
 	@Test
 	public void testLogout() {
-		ac.login("cz001", "password");
+		ac.login("juser", "user");
 		assertTrue(ac.logout());
 	}
 
 	@Test
 	public void testForgotPsw() {
-		fail("Not yet implemented");
+		DBController db = new DBController();
+		String oldPassword = db.getAccount("cuser").getPassword();
+		ac.forgotPsw("cuser");
+		assertFalse(db.getAccount("cuser").getPassword().equals(oldPassword));
+		
+				
 	}
 
 	@Test
 	public void testViewSchoolList() {
-		fail("Not yet implemented");
+		DBController db = new DBController();
+		ArrayList<University> schooList = db.getUniversityList();
+		ArrayList<University> acUniList = ac.viewSchoolList();
+		for(int i = 0; i < schooList.size(); i++)
+		{
+			assertTrue(schooList.get(i).getName().equals(acUniList.get(i).getName()));
+		}
 	}
 
 }

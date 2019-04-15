@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Phase2_FunctionalityTestDriver {
 
-	static AccountInteraction user = new AccountInteraction();
+//	static AccountInteraction user = new AccountInteraction();
 	static StudentInteraction student = new StudentInteraction();
 	static AdminInteraction admin = new AdminInteraction();
 	static AdminInteraction adInt = new AdminInteraction();
@@ -173,8 +173,8 @@ public class Phase2_FunctionalityTestDriver {
 //
 //		// U11 View saved schools
 	    System.out.println("UC 16 View User Profile");
-		String userUsername = "cuser";
-		String userPassword = "user";
+		String userUsername = "ajheroux@csbsju.edu";
+		String userPassword = "qjsti";
 		student.login(userUsername, userPassword);
 		System.out.println("UC 11 View saved schools:");
 		System.out.println("-------------------------");
@@ -232,8 +232,8 @@ public class Phase2_FunctionalityTestDriver {
 //	
 //	//U16 View user profile
 
-	    System.out.println("-------------------------");		
-		user.viewProfile("kmendel001@csbsju.edu");
+//	    System.out.println("-------------------------");		
+//		user.viewProfile("kmendel001@csbsju.edu");
 //	    
 //		// U13 View saved school details
 //		System.out.println("View saved school details:");

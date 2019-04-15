@@ -23,7 +23,7 @@ public class StudentInteraction extends AccountInteraction {
 	 * Create a new StudentInteraction
 	 */
 	public StudentInteraction() {
-		super();
+//		super();
 		sfCon = new StudentFunctionalityController();
 	}
 
@@ -63,6 +63,17 @@ public class StudentInteraction extends AccountInteraction {
 
 		}
 		return personalMatches;
+	}
+	
+	public boolean login(String username, String password) {
+	
+//	StudentFunctionalityController sfCon = new StudentFunctionalityController();
+	if (this.sfCon.login(username, password)) {
+		//UFCon = new UserFunctionalityController();
+		return true;
+	} else {
+		return false;
+	}
 	}
 
 	/**

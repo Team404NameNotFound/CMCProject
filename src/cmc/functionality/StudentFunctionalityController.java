@@ -16,6 +16,8 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 	 * Creating a new StudentFunctionalityController
 	 */
 	public StudentFunctionalityController() {
+		super();
+		this.account = new AccountController();
 		this.searchCon = new SearchController(this.DBCon.getUniversityList());
 	}
 
@@ -137,6 +139,38 @@ public class StudentFunctionalityController extends UserFunctionalityController 
 		return this.account.viewSavedSchools();
 	}
 
+	
+	public boolean login(String userName, String password) {
+		if (!loggedIn) {
+			if (this.DBCon.checkUser(userName)) {
+				if (this.DBCon.getAccount(userName).getUserStatus().equals("Y"))
+				{
+					AccountController userAcc = new AccountController(this.DBCon.getAccount(userName));
+					if (userAcc.checkPassword(password)) 
+					{
+						this.account = new AccountController(this.DBCon.getAccount(userName));
+						this.loggedIn = true;
+						System.out.print("Success 1");
+						return true;
+					} 
+					else 
+					{
+						throw new IllegalArgumentException("Invalid Password");
+					}
+				}
+				else
+				{
+					System.out.print("Success 3");
+					throw new NullPointerException("Sorry, User is not active");
+				}
+			}
+			else 
+			{
+				throw new IllegalArgumentException("Sorry,username does not exist");
+			}
+		}
+		return false;
+	}
 	/**
 	 * Remove a school from the saved schools list
 	 * 

@@ -9,7 +9,7 @@ import cmc.functionality.UserFunctionalityController;
  * @author tzhang001
  *
  */
-public class AccountInteraction {
+public abstract class AccountInteraction {
 
 	UserFunctionalityController UFCon;
 
@@ -17,7 +17,7 @@ public class AccountInteraction {
 	 * Create a new AccountInteraction
 	 */
 	public AccountInteraction() {
-		UFCon = new UserFunctionalityController();
+		//UFCon = new UserFunctionalityController();
 	}
 
 	/**
@@ -37,16 +37,17 @@ public class AccountInteraction {
 	 * @param String
 	 *            password
 	 */
-	public boolean login(String username, String password) {
-		UFCon = new UserFunctionalityController();
-		if (this.UFCon.login(username, password)) {
-			//UFCon = new UserFunctionalityController();
-			return true;
-		} else {
-			return false;
-		}
+	public abstract boolean login(String username, String password);
+		
+//		UFCon = new UserFunctionalityController();
+//		if (this.UFCon.login(username, password)) {
+//			//UFCon = new UserFunctionalityController();
+//			return true;
+//		} else {
+//			return false;
+//		}
 
-	}
+	
 
 	/**
 	 * View a school's detail information

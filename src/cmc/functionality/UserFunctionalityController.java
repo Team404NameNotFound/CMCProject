@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * @author ajheroux
  *
  */
-public class UserFunctionalityController {
+public abstract class  UserFunctionalityController {
 
 	// Making instance variables
 	AccountController account;
@@ -58,7 +58,7 @@ public class UserFunctionalityController {
 					AccountController userAcc = new AccountController(this.DBCon.getAccount(userName));
 					if (userAcc.checkPassword(password)) 
 					{
-						this.account = new AccountController(this.DBCon.getAccount(userName));
+						account = new AccountController(this.DBCon.getAccount(userName));
 						this.loggedIn = true;
 						System.out.print("Success 1");
 						return true;
