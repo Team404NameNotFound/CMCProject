@@ -304,7 +304,7 @@ public class SearchController {
 		//filtering through the names
 		if (schoolName != "-1") {
 			for (int i = 0; i < allSchools.size(); i++) {
-				if (!allSchools.get(i).getName().toLowerCase().contains(schoolName.toLowerCase())){
+				if ((!allSchools.get(i).getName().toLowerCase().contains(schoolName.toLowerCase())) && allSchools.get(i).getName() != "-1"){
 					matchIndex.remove((Integer)i);
 				}
 			}	
@@ -312,9 +312,10 @@ public class SearchController {
 		
 		//filtering through the states
 		if (state != "-1") {
-			for (int j = 0; j < matchIndex.size(); j++) {
+			int indexListSize = matchIndex.size();
+			for (int j = 0; j < indexListSize; j++) {
 				int i = matchIndex.get(j);
-				if (!allSchools.get(i).getState().toLowerCase().contains(state.toLowerCase())){
+				if ((!allSchools.get(i).getState().toLowerCase().contains(state.toLowerCase())) && allSchools.get(i).getState() != "-1"){
 					matchIndex.remove((Integer)i);
 				}
 			}	
@@ -322,17 +323,19 @@ public class SearchController {
 		
 		//filtering through the locations
 		if (location != "-1") {
-			for (int j = 0; j < matchIndex.size(); j++) {
+			int indexListSize = matchIndex.size();
+			for (int j = 0; j < indexListSize; j++) {
 				int i = matchIndex.get(j);
-				if (!allSchools.get(i).getLocation().toLowerCase().contains(location.toLowerCase())){
+				if ((!allSchools.get(i).getLocation().toLowerCase().contains(location.toLowerCase())) && allSchools.get(i).getLocation() != "-1"){
 					matchIndex.remove((Integer)i);
 				}
 			}	
 		}
 		
-		//filtering through the locations
+		//filtering through the enrollment
 		if ((numStudentsMin != -1) && (numStudentsMax != -1)) {
-			for (int j = 0; j < matchIndex.size(); j++) {
+			int indexListSize = matchIndex.size();
+			for (int j = 0; j < indexListSize; j++) {
 				int i = matchIndex.get(j);
 				if (!compareRange(numStudentsMin, numStudentsMax, Integer.parseInt(allSchools.get(i).getEnrollment()))){
 					matchIndex.remove((Integer)i);
@@ -340,6 +343,137 @@ public class SearchController {
 			}	
 		}
 		
+		//filtering through the percent female
+		if ((percentFemaleMin != -1) && (percentFemaleMax != -1)) {
+			int indexListSize = matchIndex.size();
+			for (int j = 0; j < indexListSize; j++) {
+				int i = matchIndex.get(j);
+				if (!compareRange((int)percentFemaleMin, (int)percentFemaleMax, Integer.parseInt(allSchools.get(i).getPercentFemale()))){
+					matchIndex.remove((Integer)i);
+				}
+			}	
+		}
+		
+		//filtering through the SAT Verbal
+		if ((SATVerbalMin != -1) && (SATVerbalMax != -1)) {
+			int indexListSize = matchIndex.size();
+			for (int j = 0; j < indexListSize; j++) {
+				int i = matchIndex.get(j);
+				if (!compareRange(SATVerbalMin, SATVerbalMax, Integer.parseInt(allSchools.get(i).getSatVerbal()))){
+					matchIndex.remove((Integer)i);
+				}
+			}	
+		}
+		
+		//filtering through the SAT Math
+		if ((SATMathMin != -1) && (SATMathMax != -1)) {
+			int indexListSize = matchIndex.size();
+			for (int j = 0; j < indexListSize; j++) {
+				int i = matchIndex.get(j);
+				if (!compareRange(SATMathMin, SATMathMax, Integer.parseInt(allSchools.get(i).getSatMath()))){
+					matchIndex.remove((Integer)i);
+				}
+			}	
+		}
+		
+		//filtering through the expenses
+		if ((expensesMin != -1) && (expensesMax != -1)) {
+			int indexListSize = matchIndex.size();
+			for (int j = 0; j < indexListSize; j++) {
+				int i = matchIndex.get(j);
+				if (!compareRange(expensesMin, expensesMax, Integer.parseInt(allSchools.get(i).getCost()))){
+					matchIndex.remove((Integer)i);
+				}
+			}	
+		}
+		
+		//filtering through the percent financial aid
+		if ((PercentFinancialAidMin != -1) && (percenetFinancialAidMax != -1)) {
+			int indexListSize = matchIndex.size();
+			for (int j = 0; j < indexListSize; j++) {
+				int i = matchIndex.get(j);
+				if (!compareRange((int)PercentFinancialAidMin, (int)percenetFinancialAidMax, Integer.parseInt(allSchools.get(i).getPercentFinAid()))){
+					matchIndex.remove((Integer)i);
+				}
+			}	
+		}
+		
+		//filtering through the number of applicants
+		if ((numberApplicantsMin != -1) && (numberApplicatnsMax != -1)) {
+			int indexListSize = matchIndex.size();
+			for (int j = 0; j < indexListSize; j++) {
+				int i = matchIndex.get(j);
+				if (!compareRange(numberApplicantsMin, numberApplicatnsMax, Integer.parseInt(allSchools.get(i).getApplicants()))){
+					matchIndex.remove((Integer)i);
+				}
+			}	
+		}
+		
+		//filtering through the percent admitted 
+		if ((percentAddmittedMin != -1) && (percentAdmittedMax != -1)) {
+			int indexListSize = matchIndex.size();
+			for (int j = 0; j < indexListSize; j++) {
+				int i = matchIndex.get(j);
+				if (!compareRange((int)percentAddmittedMin, (int)percentAdmittedMax, Integer.parseInt(allSchools.get(i).getPercentAdmitted()))){
+					matchIndex.remove((Integer)i);
+				}
+			}	
+		}
+		
+		//filtering through the percent enrolled
+		if ((percentEnrolledMin != -1) && (percentEnrolledMax != -1)) {
+			int indexListSize = matchIndex.size();
+			for (int j = 0; j < indexListSize; j++) {
+				int i = matchIndex.get(j);
+				if (!compareRange((int)percentEnrolledMin, (int)percentEnrolledMin, Integer.parseInt(allSchools.get(i).getPercentEnrolled()))){
+					matchIndex.remove((Integer)i);
+				}
+			}	
+		}
+		
+		//filtering through the academic scale
+		if ((academicScaleMin != -1) && (academicScaleMax != -1)) {
+			int indexListSize = matchIndex.size();
+			for (int j = 0; j < indexListSize; j++) {
+				int i = matchIndex.get(j);
+				if (!compareRange(academicScaleMin, academicScaleMax, Integer.parseInt(allSchools.get(i).getAcademicScale()))){
+					matchIndex.remove((Integer)i);
+				}
+			}	
+		}
+		
+		//filtering through the social scale
+		if ((socialScalemin != -1) && (socialScaleMax != -1)) {
+			int indexListSize = matchIndex.size();
+			for (int j = 0; j < indexListSize; j++) {
+				int i = matchIndex.get(j);
+				if (!compareRange(socialScalemin, socialScaleMax, Integer.parseInt(allSchools.get(i).getSocialScale()))){
+					matchIndex.remove((Integer)i);
+				}
+			}	
+		}
+		
+		//filtering through the quality of life
+		if ((qualityOfLifeMin != -1) && (qualityOfLifeMax != -1)) {
+			int indexListSize = matchIndex.size();
+			for (int j = 0; j < indexListSize; j++) {
+				int i = matchIndex.get(j);
+				if (!compareRange(qualityOfLifeMin, qualityOfLifeMax, Integer.parseInt(allSchools.get(i).getQualityOfLife()))){
+					matchIndex.remove((Integer)i);
+				}
+			}	
+		}
+		
+		//filtering through the quality of life
+		if ((qualityOfLifeMin != -1) && (qualityOfLifeMax != -1)) {
+			int indexListSize = matchIndex.size();
+			for (int j = 0; j < indexListSize; j++) {
+				int i = matchIndex.get(j);
+				if (!compareRange(qualityOfLifeMin, qualityOfLifeMax, Integer.parseInt(allSchools.get(i).getQualityOfLife()))){
+					matchIndex.remove((Integer)i);
+				}
+			}	
+		}
 		
 		return searchResults;
 	}
@@ -352,8 +486,8 @@ public class SearchController {
 	 * @param max2
 	 * @return true if the searched ranges encompass the range of the school
 	 */
-	private boolean compareRange(int searchMin, int searchMax, int schoolEnrollment) {
-		return (searchMin <= schoolEnrollment) && (searchMax >= schoolEnrollment);
+	private boolean compareRange(int searchMin, int searchMax, int schoolStat) {
+		return ((searchMin <= schoolStat) && (searchMax >= schoolStat)) || schoolStat == -1;
 	}
 	
 	
