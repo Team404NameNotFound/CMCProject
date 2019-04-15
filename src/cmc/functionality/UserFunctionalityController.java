@@ -53,22 +53,30 @@ public class UserFunctionalityController {
 	public boolean login(String userName, String password) {
 		if (!loggedIn) {
 			if (this.DBCon.checkUser(userName)) {
-				if (this.DBCon.getAccount(userName).getUserStatus().equals("Y")) {
+				if (this.DBCon.getAccount(userName).getUserStatus().equals("Y"))
+				{
 					AccountController userAcc = new AccountController(this.DBCon.getAccount(userName));
-					if (userAcc.checkPassword(password)) {
-						account = new AccountController(this.DBCon.getAccount(userName));
+					if (userAcc.checkPassword(password)) 
+					{
+						this.account = new AccountController(this.DBCon.getAccount(userName));
 						this.loggedIn = true;
+						System.out.print("Success 1");
 						return true;
-					} else {
+					} 
+					else 
+					{
 						throw new IllegalArgumentException("Invalid Password");
-
 					}
-				} else {
+				}
+				else
+				{
+					System.out.print("Success 3");
 					throw new NullPointerException("Sorry, User is not active");
 				}
-			} else {
+			}
+			else 
+			{
 				throw new IllegalArgumentException("Sorry,username does not exist");
-
 			}
 		}
 		return false;
@@ -81,9 +89,11 @@ public class UserFunctionalityController {
 		if (loggedIn) {
 			this.account = null;
 			this.loggedIn = false;
+			System.out.print("Success 5");
+			return true;
 
 		}
-		return true;
+		return false;
 	}
 
 	/**
@@ -102,6 +112,7 @@ public class UserFunctionalityController {
 			profile.add(userAcc.getUsername());
 			profile.add(userAcc.getPassword());
 			profile.add(userAcc.getUserType());
+			profile.add(userAcc.getUserStatus());
 
 			return profile;
 		} else {

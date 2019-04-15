@@ -38,7 +38,9 @@ public class AccountInteraction {
 	 *            password
 	 */
 	public boolean login(String username, String password) {
+		UFCon = new UserFunctionalityController();
 		if (this.UFCon.login(username, password)) {
+			//UFCon = new UserFunctionalityController();
 			return true;
 		} else {
 			return false;
@@ -65,11 +67,12 @@ public class AccountInteraction {
 	 */
 	public ArrayList<String> viewProfile(String userName) {
 		ArrayList<String> userInfo = UFCon.viewUserProfile(userName);
-		// System.out.println("User info gotten for: " + userInfo.get(0));
+		System.out.println("User info gotten for: " + userInfo.get(0));
+		for (int i = 0; i < userInfo.size(); i++) {
+			System.out.println("" + userInfo.get(i));
+			}
 		return userInfo;
-		// for (int i = 0; i < userInfo.size(); i++) {
-		// System.out.println("" + userInfo.get(i));
-		// }
+		
 	}
 
 	/**
@@ -95,7 +98,9 @@ public class AccountInteraction {
 	 * Logs out the currently logged in user
 	 */
 	public boolean logout() {
-		return this.UFCon.logout();
+		Boolean logoutStatus =  this.UFCon.logout();
+		this.UFCon = null;
+		return logoutStatus;
 	}
 
 	/**

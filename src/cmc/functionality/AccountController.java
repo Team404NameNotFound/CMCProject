@@ -39,13 +39,14 @@ public class AccountController {
 		}
 	}
 
+
 	/**
 	 * creates new AccountController object
 	 */
 	public AccountController() {
 
 	}
-
+	
 	/**
 	 * Returns list of all schools
 	 * 

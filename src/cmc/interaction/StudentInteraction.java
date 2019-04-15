@@ -182,6 +182,7 @@ public class StudentInteraction extends AccountInteraction {
 	 */
 	public ArrayList<UserSavedSchool> viewSavedSchools() {
 		this.sfCon.viewSavedSchools();
+		super.UFCon = UFCon;
 		return this.sfCon.viewSavedSchools();
 	}
 
